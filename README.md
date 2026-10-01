@@ -24,4 +24,4 @@ Market facts and the limits of provider claims are documented on the evidence sl
 
 The default 6.59% annual bank rate is a dated scenario: CBUAE six-month EIBOR of 4.58991% on 1 October 2026 plus a 2-percentage-point assumed margin taken from FAB’s illustrative invoice-discounting example. It is not a current bank offer, average market rate, or confirmed Aaronz borrowing cost.
 
-Typography: DM Sans throughout, including titles, the wordmark, body text and data. The font and its licence are bundled for offline use.
+Typography: Plus Jakarta Sans throughout, including titles, the wordmark, body text and data. The font and its licence are bundled for offline use.
