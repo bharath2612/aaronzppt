@@ -1,4 +1,4 @@
-# Arronz commission finance
+# Aaronz commission finance
 
 Open `index.html` directly in your browser. Reveal.js and the font are bundled locally, so no server or internet connection is required. Use the arrow controls to present, or **Read as page** to scroll. Mobile starts in read mode.
 
@@ -18,8 +18,10 @@ Annual advance volume = annual commission market × market share × advance rate
 
 Contribution = advance volume × (customer fee − annual bank rate × duration / day-count basis − additional bank charge rate).
 
-Customer fees are a percentage of gross advances. Interest is modeled on gross advances for the full duration. The result excludes operating costs, credit losses and taxes, and assumes a commercial agreement allowing Arronz to retain the residual. Market share is annual commission value financed once, not a share of all property transaction value. Additional bank charges default to zero and should be configured from the actual facility terms.
+Customer fees are a percentage of gross advances. Interest is modeled on gross advances for the full duration. The result excludes operating costs, credit losses and taxes, and assumes a commercial agreement allowing Aaronz to retain the residual. Market share is annual commission value financed once, not a share of all property transaction value. Additional bank charges default to zero and should be configured from the actual facility terms.
 
-Market facts and the limits of provider claims are documented on the evidence slide. The 90% Arronz advance, fee assumptions and funding rates are proposals, not approved offers.
+Market facts and the limits of provider claims are documented on the evidence slide. The 90% Aaronz advance, fee assumptions and funding rates are proposals, not approved offers.
 
-The default 6.59% annual bank rate is a dated scenario: CBUAE six-month EIBOR of 4.58991% on 1 October 2026 plus a 2-percentage-point assumed margin taken from FAB’s illustrative invoice-discounting example. It is not a current bank offer, average market rate, or confirmed Arronz borrowing cost.
+The default 6.59% annual bank rate is a dated scenario: CBUAE six-month EIBOR of 4.58991% on 1 October 2026 plus a 2-percentage-point assumed margin taken from FAB’s illustrative invoice-discounting example. It is not a current bank offer, average market rate, or confirmed Aaronz borrowing cost.
+
+Typography: Instrument Serif for slide titles and DM Sans for body text and data. Both fonts and their licences are bundled for offline use.

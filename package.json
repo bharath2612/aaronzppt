@@ -1,7 +1,7 @@
 {
-  "name": "arronz",
+  "name": "aaronz",
   "version": "1.0.0",
-  "description": "Arronz Reveal.js presentation with an interactive commission-finance calculator",
+  "description": "Aaronz Reveal.js presentation with an interactive commission-finance calculator",
   "main": "index.js",
   "scripts": {
     "start": "python3 -m http.server 4173",
@@ -12,7 +12,9 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@fontsource-variable/dm-sans": "^5.3.0",
     "@fontsource-variable/manrope": "^5.3.0",
+    "@fontsource/instrument-serif": "^5.3.0",
     "reveal.js": "^6.0.2"
   },
   "devDependencies": {
