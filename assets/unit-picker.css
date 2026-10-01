@@ -1,0 +1,12 @@
+/* Custom amount-unit menu; native selects remain the calculation source. */
+.calculator .input-wrap:has(.unit-picker),.input-wrap:has(.unit-picker){overflow:visible}
+.unit-picker{position:relative;flex:0 0 auto;margin:4px;z-index:3}
+.unit-picker:has(.unit-menu:not([hidden])){z-index:20}
+.unit-picker .unit-trigger{display:flex;align-items:center;justify-content:center;gap:12px;min-width:66px;padding:9px 11px;border:1px solid #d8e0d5;border-radius:5px;background:#edf1e9;color:#245b43;font:600 12px 'Plus Jakarta Sans',sans-serif;cursor:pointer;text-decoration:none}
+.unit-picker .unit-trigger:hover,.unit-picker .unit-trigger[aria-expanded="true"]{background:#dfe8db;border-color:#a5bba4}
+.unit-trigger svg{transition:transform .15s}.unit-trigger[aria-expanded="true"] svg{transform:rotate(180deg)}
+.unit-picker .unit-menu{position:absolute;right:0;top:calc(100% + 9px);width:244px;padding:6px;background:#fff;border:1px solid #d4ddd0;border-radius:9px;box-shadow:0 12px 32px #1e2b251c,0 2px 6px #1e2b250a;text-align:left}
+.unit-picker .unit-option{display:flex;align-items:center;gap:12px;width:100%;padding:11px 10px;border:0;border-radius:5px;background:transparent;color:#1e2b25;text-align:left;cursor:pointer;text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif}
+.unit-option .unit-symbol{display:grid;place-items:center;width:35px;height:35px;flex-shrink:0;background:#f2f4ef;border:1px solid #e2e7de;border-radius:5px;font-size:12px;font-weight:600}
+.unit-description{display:flex;flex-direction:column;gap:4px;flex:1}.unit-description strong{font-size:12px;font-weight:600}.unit-description small{font-size:10px;color:#778176}
+.unit-option .unit-check{color:#245b43;visibility:hidden;font-size:15px}.unit-option[aria-selected="true"]{background:#eaf0e5}.unit-option[aria-selected="true"] .unit-check{visibility:visible}.unit-picker .unit-option:hover,.unit-picker .unit-option:focus-visible{background:#f0f4ec;outline:2px solid #7e9c7a;outline-offset:-2px}

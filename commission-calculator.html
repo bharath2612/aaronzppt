@@ -11,7 +11,7 @@
 /* Keep results in place while inputs are being edited. */
 input::placeholder{color:#a1aaa3;opacity:1}.field-feedback{font-size:11px;line-height:1.4;color:var(--red);margin-top:6px}.field-feedback[hidden]{display:none}.is-pending .amount,.is-pending .stat-value{color:#9cafa4}.is-pending td:last-child{color:#8c9890}.is-pending .total{color:#8c9890}.is-pending .legend{color:#8c9890}
 </style>
-</head>
+<link rel="stylesheet" href="assets/unit-picker.css"></head>
 <body><main>
 <header><div class="brand">Commission finance / UAE</div><div class="tag">Annual earnings calculator</div></header>
 <h1>What do we keep?</h1><p class="intro">Set your pricing, funding cost and annual volume. See the annual amount left for your company.</p>
@@ -79,4 +79,4 @@ function setMode(next){mode=next;const direct=mode==='processed';$('marketField'
 $('marketMode').addEventListener('click',()=>setMode('market'));$('processedMode').addEventListener('click',()=>setMode('processed'));
 $('form').addEventListener('input',update);$('form').addEventListener('change',update);$('form').addEventListener('submit',e=>e.preventDefault());$('reset').addEventListener('click',()=>{$('marketUnit').value='1000000000';$('processedUnit').value='1000000';for(const [key,val] of Object.entries(defaults))$(key).value=val;setMode('market');});update();
 
-})();</script></body></html>
+})();</script><script src="assets/unit-picker.js"></script></body></html>
