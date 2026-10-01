@@ -2,7 +2,7 @@
 
 Open `index.html` directly in your browser. Reveal.js and the font are bundled locally, so no server or internet connection is required. Use the arrow controls to present, or **Read as page** to scroll. Mobile starts in read mode.
 
-The presentation contains twelve slides, source links, proposed deal flows and the interactive calculator. `commission-calculator.html` remains available as a standalone calculator.
+The presentation contains fifteen slides, source links, proposed deal flows and the interactive calculator. `commission-calculator.html` remains available as a standalone calculator.
 
 ## Edit
 - `index.html`: slide content
@@ -25,3 +25,5 @@ Market facts and the limits of provider claims are documented on the evidence sl
 The default 6.59% annual bank rate is a dated scenario: CBUAE six-month EIBOR of 4.58991% on 1 October 2026 plus a 2-percentage-point assumed margin taken from FAB’s illustrative invoice-discounting example. It is not a current bank offer, average market rate, or confirmed Aaronz borrowing cost.
 
 Typography: Plus Jakarta Sans throughout, including titles, the wordmark, body text and data. The font and its licence are bundled for offline use.
+
+Funding options: the three cards link to banks, non-bank providers and embedded / referral partners. Provider names link to official evidence; potential Aaronz arrangements are distinguished from published products.
