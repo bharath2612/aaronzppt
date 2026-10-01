@@ -29,3 +29,6 @@ body.reader .reveal{touch-action:pan-y}body.reader .reveal .slides>section{persp
 
 /* One typeface across the presentation. */
 .reveal h1{font-size:70px;line-height:1.08;font-weight:500;letter-spacing:-.045em}.reveal .slide-head h2{font-size:45px;line-height:1.18;font-weight:500;letter-spacing:-.04em}.reveal .calculator-slide .slide-head h2{font-size:35px}.wordmark{font-size:32px;font-weight:650;letter-spacing:-1.6px}.brand-mark{font-size:30px}body.reader .reveal h1{font-size:60px}body.reader .reveal .slide-head h2{font-size:40px}@media(max-width:800px){body.reader .reveal h1{font-size:48px}body.reader .reveal .slide-head h2{font-size:32px}.wordmark{font-size:27px}}@media(max-width:480px){body.reader .reveal h1{font-size:42px}}
+
+/* Keep results in place while inputs are being edited. */
+input::placeholder{color:#a1aaa3;opacity:1}.field-feedback{font-size:11px;line-height:1.4;color:var(--red);margin-top:6px}.field-feedback[hidden]{display:none}.is-pending .amount,.is-pending .stat-value{color:#9cafa4}.is-pending td:last-child{color:#8c9890}.is-pending .total{color:#8c9890}.is-pending .legend{color:#8c9890}

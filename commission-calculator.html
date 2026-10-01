@@ -8,7 +8,10 @@
 @font-face{font-family:'Instrument Serif';src:url('assets/vendor/instrument-serif-latin-400-normal.woff2') format('woff2');font-weight:400;font-display:swap}
 
 :root{--bg:#f4f3ee;--ink:#202d29;--muted:#6d7771;--line:#d9ddd5;--green:#23654d;--red:#a44336}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:15px}main{max-width:1200px;margin:auto;padding:40px 44px}header{display:flex;justify-content:space-between;align-items:center;padding-bottom:25px;border-bottom:1px solid var(--line)}.brand{font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase}.tag{color:var(--muted);font-size:12px}h1{font-family:'DM Sans','Helvetica Neue',sans-serif;font-weight:400;font-size:48px;letter-spacing:-2px;margin:40px 0 12px}.intro{color:var(--muted);margin:0 0 36px;line-height:1.6}.layout{display:grid;grid-template-columns:340px 1fr;gap:65px}.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}h2{font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin:0}button{background:none;border:0;color:var(--green);font:inherit;font-size:12px;cursor:pointer;padding:6px}button:hover{text-decoration:underline}.field{margin-bottom:22px}label{display:block;font-size:13px;margin-bottom:8px;font-weight:500}.input-wrap{display:flex;align-items:center;border:1px solid var(--line);border-radius:6px;background:#fff;overflow:hidden}.input-wrap:focus-within{outline:2px solid var(--green);outline-offset:2px}input,select{width:100%;min-width:0;border:0;background:transparent;padding:12px;color:var(--ink);font-size:19px;font-family:inherit;outline:none}input:invalid{color:var(--red)}.unit{font-size:12px;color:var(--muted);padding:0 12px;white-space:nowrap}.hint{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5}details{border-top:1px solid var(--line);padding-top:17px;margin-top:26px}summary{cursor:pointer;font-size:13px;margin-bottom:20px}details input,details select{font-size:16px}.result{background:var(--ink);color:#fff;border-radius:9px;padding:32px 34px}.eyebrow{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#becdc4}.amount{font-size:clamp(32px,4.4vw,58px);font-weight:400;letter-spacing:-2px;margin:17px 0 7px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}.amount small{font-size:17px;letter-spacing:0;color:#becdc4;margin-right:9px}.result-note{font-size:12px;color:#becdc4;line-height:1.6}.stats{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:25px;padding-top:22px;border-top:1px solid #46534d}.stat-label{font-size:11px;color:#becdc4;margin-bottom:7px}.stat-value{font-size:22px;font-variant-numeric:tabular-nums}.breakdown{margin-top:32px}table{width:100%;border-collapse:collapse;margin-top:16px}td{padding:14px 0;border-bottom:1px solid var(--line);font-size:13px}td:last-child{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}.total td{font-weight:600;color:var(--green)}.negative{color:var(--red)!important}.track{height:9px;display:flex;background:#dde2da;border-radius:5px;overflow:hidden;margin:22px 0 10px}.bank-bar{background:#9aa79f}.our-bar{background:var(--green)}.legend{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);gap:20px}.explain{font-size:12px;line-height:1.7;color:var(--muted);margin-top:24px}.error{color:var(--red);font-size:13px;min-height:20px;margin-bottom:8px}footer{margin-top:40px;border-top:1px solid var(--line);padding-top:18px;display:flex;justify-content:space-between;gap:24px;font-size:11px;color:var(--muted);line-height:1.6}a{color:inherit} @media(max-width:850px){main{padding:24px}.layout{grid-template-columns:1fr;gap:30px}h1{font-size:38px;margin-top:30px}.inputs{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}.section-title,details{grid-column:1/-1}.result{padding:26px}.amount{font-size:44px}footer{flex-direction:column;gap:8px}}@media(max-width:450px){.inputs{display:block}.amount{font-size:35px}.tag{display:none}main{padding:20px}.stats{gap:12px}.stat-value{font-size:19px}}
-.mode-toggle{grid-column:1/-1;display:flex;background:#e7e9e2;border-radius:7px;padding:4px;margin-bottom:24px;gap:4px}.mode-toggle button{flex:1;padding:11px 8px;border-radius:5px;color:var(--muted);font-size:12px}.mode-toggle button[aria-pressed="true"]{background:var(--ink);color:white}.mode-toggle button:focus-visible{outline:2px solid var(--green);outline-offset:2px}[hidden]{display:none!important}</style>
+.mode-toggle{grid-column:1/-1;display:flex;background:#e7e9e2;border-radius:7px;padding:4px;margin-bottom:24px;gap:4px}.mode-toggle button{flex:1;padding:11px 8px;border-radius:5px;color:var(--muted);font-size:12px}.mode-toggle button[aria-pressed="true"]{background:var(--ink);color:white}.mode-toggle button:focus-visible{outline:2px solid var(--green);outline-offset:2px}[hidden]{display:none!important}
+/* Keep results in place while inputs are being edited. */
+input::placeholder{color:#a1aaa3;opacity:1}.field-feedback{font-size:11px;line-height:1.4;color:var(--red);margin-top:6px}.field-feedback[hidden]{display:none}.is-pending .amount,.is-pending .stat-value{color:#9cafa4}.is-pending td:last-child{color:#8c9890}.is-pending .total{color:#8c9890}.is-pending .legend{color:#8c9890}
+</style>
 </head>
 <body><main>
 <header><div class="brand">Commission finance / UAE</div><div class="tag">Annual earnings calculator</div></header>
@@ -36,7 +39,8 @@
 </div></section></div>
 <footer><span><span id="formula">Model: annual market × share × advance rate × (customer fee − annual bank rate × days ÷ year basis − bank charges).</span><br>Annual volume counts each financed commission once. Faster repayment does not multiply annual volume.</span><span>Planning assumptions, not a lender quote.<br>Default AED 13.59bn refers to Dubai 2025, not all UAE.</span></footer>
 </main>
-<script>
+<script>(()=>{
+
 let mode="market";
 const defaults={market:13.59,share:1,processed:100,fee:3,rate:6.59,days:60,advance:90,charges:0,basis:360};
 const $=id=>document.getElementById(id);
@@ -44,8 +48,28 @@ function calculate(v){const captured=v.mode==='processed'?v.processed:v.market*v
 const number=n=>new Intl.NumberFormat('en-AE',{notation:'compact',compactDisplay:'short',maximumFractionDigits:2}).format(Object.is(n,-0)?0:n);
 const money=n=>'AED '+number(n);
 const pct=n=>new Intl.NumberFormat('en-AE',{maximumFractionDigits:2}).format(n)+'%';
-function update(){const v={mode};let valid=true;for(const key of Object.keys(defaults)){if(mode==='market'&&key==='processed'||mode==='processed'&&(key==='market'||key==='share'))continue;const el=$(key);v[key]=Number(el.value);if(el.value===''||!Number.isFinite(v[key])||!el.checkValidity())valid=false;}
- $('error').textContent=valid?'':'Enter valid values in every field. Percentages must be between 0 and 100.';$('results').hidden=!valid;if(!valid)return;
+function update(){const v={mode};let valid=true;const pending=[];
+ for(const key of Object.keys(defaults)){
+  const el=$(key),inactive=mode==='market'&&key==='processed'||mode==='processed'&&(key==='market'||key==='share');
+  const feedbackId=key+'Feedback';let feedback=$(feedbackId);
+  if(!feedback){feedback=document.createElement('div');feedback.id=feedbackId;feedback.className='field-feedback';el.closest('.field')?.append(feedback);el.setAttribute('aria-describedby',[(el.getAttribute('aria-describedby')||''),feedbackId].filter(Boolean).join(' '));}
+  if(el.tagName==='INPUT')el.placeholder='0';
+  const empty=el.value==='',invalid=!empty&&(!Number.isFinite(Number(el.value))||!el.checkValidity());
+  feedback.textContent=!inactive&&invalid?'Use a value from '+el.min+' to '+el.max+'.':'';
+  feedback.hidden=!feedback.textContent;el.setAttribute('aria-invalid',String(!inactive&&invalid));
+  if(inactive)continue;v[key]=Number(el.value);
+  if(empty||invalid){valid=false;pending.push(key);}
+ }
+ $('error').textContent='';$('results').hidden=false;$('results').classList.toggle('is-pending',!valid);
+ if(!valid){
+  $('retained').textContent='0';$('total').textContent='AED 0';$('total').classList.remove('negative');
+  for(const id of ['perDeal','captured','volume','revenue','interest','bankCharges'])$(id).textContent='AED 0';
+  $('retention').textContent='—';$('bankBar').style.width='0%';$('ourBar').style.width='0%';
+  $('bankLegend').textContent='Bank cost: —';$('ourLegend').textContent='Retained: —';
+  $('explain').textContent='Complete the inputs to see your estimate.';
+  if(mode==='market'&&pending.includes('market'))$('marketHint').textContent='AED 0 per year';
+  return;
+ }
  if(mode==='market')v.market*=Number($('marketUnit').value);else v.processed*=Number($('processedUnit').value);
  const r=calculate(v);if(mode==='market')$('marketHint').textContent=money(v.market)+' per year';$('retained').textContent=number(r.retained);$('total').textContent=money(r.retained);$('total').classList.toggle('negative',r.retained<0);$('perDeal').textContent=money(r.netRate*1000);$('retention').textContent=r.revenue>0?pct(r.retained/r.revenue*100):'—';
  for(const [id,val] of Object.entries({captured:r.captured,volume:r.volume,revenue:r.revenue,interest:-r.interest,bankCharges:-r.charges}))$(id).textContent=money(val);
@@ -55,4 +79,5 @@ function update(){const v={mode};let valid=true;for(const key of Object.keys(def
 function setMode(next){mode=next;const direct=mode==='processed';$('marketField').hidden=direct;$('shareField').hidden=direct;$('processedField').hidden=!direct;$('marketMode').setAttribute('aria-pressed',String(!direct));$('processedMode').setAttribute('aria-pressed',String(direct));$('capturedLabel').textContent=direct?'Annual commission processed':'Commission value captured';$('formula').textContent='Model: '+(direct?'annual commission processed':'annual market × share')+' × advance rate × (customer fee − annual bank rate × days ÷ year basis − bank charges).';update();}
 $('marketMode').addEventListener('click',()=>setMode('market'));$('processedMode').addEventListener('click',()=>setMode('processed'));
 $('form').addEventListener('input',update);$('form').addEventListener('change',update);$('form').addEventListener('submit',e=>e.preventDefault());$('reset').addEventListener('click',()=>{$('marketUnit').value='1000000000';$('processedUnit').value='1000000';for(const [key,val] of Object.entries(defaults))$(key).value=val;setMode('market');});update();
-</script></body></html>
+
+})();</script></body></html>

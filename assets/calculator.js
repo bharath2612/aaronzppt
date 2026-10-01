@@ -7,8 +7,28 @@ function calculate(v){const captured=v.mode==='processed'?v.processed:v.market*v
 const number=n=>new Intl.NumberFormat('en-AE',{notation:'compact',compactDisplay:'short',maximumFractionDigits:2}).format(Object.is(n,-0)?0:n);
 const money=n=>'AED '+number(n);
 const pct=n=>new Intl.NumberFormat('en-AE',{maximumFractionDigits:2}).format(n)+'%';
-function update(){const v={mode};let valid=true;for(const key of Object.keys(defaults)){if(mode==='market'&&key==='processed'||mode==='processed'&&(key==='market'||key==='share'))continue;const el=$(key);v[key]=Number(el.value);if(el.value===''||!Number.isFinite(v[key])||!el.checkValidity())valid=false;}
- $('error').textContent=valid?'':'Enter valid values in every field. Percentages must be between 0 and 100.';$('results').hidden=!valid;if(!valid)return;
+function update(){const v={mode};let valid=true;const pending=[];
+ for(const key of Object.keys(defaults)){
+  const el=$(key),inactive=mode==='market'&&key==='processed'||mode==='processed'&&(key==='market'||key==='share');
+  const feedbackId=key+'Feedback';let feedback=$(feedbackId);
+  if(!feedback){feedback=document.createElement('div');feedback.id=feedbackId;feedback.className='field-feedback';el.closest('.field')?.append(feedback);el.setAttribute('aria-describedby',[(el.getAttribute('aria-describedby')||''),feedbackId].filter(Boolean).join(' '));}
+  if(el.tagName==='INPUT')el.placeholder='0';
+  const empty=el.value==='',invalid=!empty&&(!Number.isFinite(Number(el.value))||!el.checkValidity());
+  feedback.textContent=!inactive&&invalid?'Use a value from '+el.min+' to '+el.max+'.':'';
+  feedback.hidden=!feedback.textContent;el.setAttribute('aria-invalid',String(!inactive&&invalid));
+  if(inactive)continue;v[key]=Number(el.value);
+  if(empty||invalid){valid=false;pending.push(key);}
+ }
+ $('error').textContent='';$('results').hidden=false;$('results').classList.toggle('is-pending',!valid);
+ if(!valid){
+  $('retained').textContent='0';$('total').textContent='AED 0';$('total').classList.remove('negative');
+  for(const id of ['perDeal','captured','volume','revenue','interest','bankCharges'])$(id).textContent='AED 0';
+  $('retention').textContent='—';$('bankBar').style.width='0%';$('ourBar').style.width='0%';
+  $('bankLegend').textContent='Bank cost: —';$('ourLegend').textContent='Retained: —';
+  $('explain').textContent='Complete the inputs to see your estimate.';
+  if(mode==='market'&&pending.includes('market'))$('marketHint').textContent='AED 0 per year';
+  return;
+ }
  if(mode==='market')v.market*=Number($('marketUnit').value);else v.processed*=Number($('processedUnit').value);
  const r=calculate(v);if(mode==='market')$('marketHint').textContent=money(v.market)+' per year';$('retained').textContent=number(r.retained);$('total').textContent=money(r.retained);$('total').classList.toggle('negative',r.retained<0);$('perDeal').textContent=money(r.netRate*1000);$('retention').textContent=r.revenue>0?pct(r.retained/r.revenue*100):'—';
  for(const [id,val] of Object.entries({captured:r.captured,volume:r.volume,revenue:r.revenue,interest:-r.interest,bankCharges:-r.charges}))$(id).textContent=money(val);
