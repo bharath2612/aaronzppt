@@ -2,7 +2,7 @@
 
 Open `index.html` directly in your browser. Reveal.js and the font are bundled locally, so no server or internet connection is required. Use the arrow controls to present, or **Read as page** to scroll. Mobile starts in read mode.
 
-The presentation contains nine slides, source links, proposed deal flows and the interactive calculator. `commission-calculator.html` remains available as a standalone calculator.
+The presentation contains eleven slides, source links, proposed deal flows and the interactive calculator. `commission-calculator.html` remains available as a standalone calculator.
 
 ## Edit
 - `index.html`: slide content

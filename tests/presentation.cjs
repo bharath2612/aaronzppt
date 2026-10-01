@@ -6,7 +6,7 @@ const {pathToFileURL}=require('node:url');
  try{
  const page=await browser.newPage({viewport:{width:1440,height:1000}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto(pathToFileURL(process.cwd()+'/index.html').href);await page.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());await page.evaluate(()=>document.fonts.ready);
- const ids=['home','overview','flow','verification','eligibility','developers','economics','calculator-slide','sources'];
+ const ids=['home','overview','flow','verification','eligibility','developers','economics','calculator-slide','competition','banks','sources'];
  for(let i=0;i<ids.length;i++){await page.evaluate(i=>deck.slide(i),i);await page.waitForTimeout(300);await page.screenshot({path:'.build/'+ids[i]+'.png'});const overflow=await page.locator('#'+ids[i]).evaluate(el=>{const r=el.getBoundingClientRect();return [...el.querySelectorAll('*')].filter(x=>x.getClientRects().length&&getComputedStyle(x).position!=='absolute').filter(x=>{const b=x.getBoundingClientRect();return b.bottom>r.bottom+2||b.right>r.right+2}).map(x=>x.id||x.className||x.tagName)});assert.deepEqual(overflow,[],ids[i]+' overflow: '+overflow);}
  await page.evaluate(()=>deck.slide(7));await page.waitForTimeout(300);assert.equal(await page.locator('#retained').textContent(),'2.33M');
  await page.locator('#processedMode').click();assert.equal(await page.locator('#volume').textContent(),'AED 90M');assert.equal(await page.locator('#retained').textContent(),'1.71M');
@@ -20,6 +20,6 @@ const {pathToFileURL}=require('node:url');
  await page.locator('#viewToggle').click();assert(await page.locator('body').evaluate(e=>e.classList.contains('reader')));await page.locator('.site-nav a[href="#/flow"]').click();await page.waitForTimeout(600);assert(await page.locator('#flow').isVisible());
  await page.locator('#viewToggle').click();assert.equal(await page.evaluate(()=>deck.getIndices().h),2);
  const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});mobile.on('pageerror',e=>errors.push(e.message));await mobile.goto(pathToFileURL(process.cwd()+'/index.html').href);await mobile.waitForFunction(()=>document.body.classList.contains('reader'));await mobile.waitForTimeout(500);assert.equal(await mobile.locator('.slides>section[inert]').count(),0);await mobile.screenshot({path:'.build/mobile.png',fullPage:true});await mobile.locator('#overview').scrollIntoViewIfNeeded();await mobile.screenshot({path:'.build/mobile-overview.png'});assert(await mobile.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Mobile horizontal overflow');await mobile.locator('.site-nav a[href="#/calculator-slide"]').click();await mobile.waitForTimeout(500);await mobile.locator('#processedMode').click();assert.equal(await mobile.locator('#volume').textContent(),'AED 90M');
- assert.deepEqual(errors,[]);console.log('Passed: nine slide layouts; calculator modes, rounding, loss, validation and reset; keyboard input; expanded controls; read mode; mobile layout and controls.');
+ assert.deepEqual(errors,[]);console.log('Passed: eleven slide layouts; calculator modes, rounding, loss, validation and reset; keyboard input; expanded controls; read mode; mobile layout and controls.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});
