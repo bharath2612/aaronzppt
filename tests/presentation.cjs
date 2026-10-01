@@ -8,13 +8,13 @@ const {pathToFileURL}=require('node:url');
  await page.goto(pathToFileURL(process.cwd()+'/index.html').href);await page.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());await page.evaluate(()=>document.fonts.ready);
  const ids=['home','overview','flow','verification','eligibility','economics','calculator-slide','sources'];
  for(let i=0;i<ids.length;i++){await page.evaluate(i=>deck.slide(i),i);await page.waitForTimeout(300);await page.screenshot({path:'.build/'+ids[i]+'.png'});const overflow=await page.locator('#'+ids[i]).evaluate(el=>{const r=el.getBoundingClientRect();return [...el.querySelectorAll('*')].filter(x=>x.getClientRects().length&&getComputedStyle(x).position!=='absolute').filter(x=>{const b=x.getBoundingClientRect();return b.bottom>r.bottom+2||b.right>r.right+2}).map(x=>x.id||x.className||x.tagName)});assert.deepEqual(overflow,[],ids[i]+' overflow: '+overflow);}
- await page.evaluate(()=>deck.slide(6));await page.waitForTimeout(300);assert.equal(await page.locator('#retained').textContent(),'1.63M');
- await page.locator('#processedMode').click();assert.equal(await page.locator('#volume').textContent(),'AED 90M');assert.equal(await page.locator('#retained').textContent(),'1.2M');
+ await page.evaluate(()=>deck.slide(6));await page.waitForTimeout(300);assert.equal(await page.locator('#retained').textContent(),'2.33M');
+ await page.locator('#processedMode').click();assert.equal(await page.locator('#volume').textContent(),'AED 90M');assert.equal(await page.locator('#retained').textContent(),'1.71M');
  await page.locator('#advance').fill('100');assert.equal(await page.locator('#volume').textContent(),'AED 100M');
- await page.locator('#days').fill('120');assert.equal(await page.locator('#retained').textContent(),'-333.33K');
+ await page.locator('#rate').fill('10');await page.locator('#days').fill('120');assert.equal(await page.locator('#retained').textContent(),'-333.33K');
  await page.locator('#days').press('ArrowUp');assert.equal(await page.evaluate(()=>deck.getIndices().h),6);
  await page.locator('#processed').fill('');assert.equal(await page.locator('#results').isVisible(),false);
- await page.locator('#reset').click();assert.equal(await page.locator('#retained').textContent(),'1.63M');
+ await page.locator('#reset').click();assert.equal(await page.locator('#retained').textContent(),'2.33M');
  await page.locator('summary').click();await page.screenshot({path:'.build/calculator-expanded.png'});
  const expanded=await page.locator('#calculator-slide').evaluate(e=>e.scrollHeight<=e.clientHeight);assert(expanded,'Expanded calculator overflows');
  await page.locator('#viewToggle').click();assert(await page.locator('body').evaluate(e=>e.classList.contains('reader')));await page.locator('.site-nav a[href="#/flow"]').click();await page.waitForTimeout(600);assert(await page.locator('#flow').isVisible());

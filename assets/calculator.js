@@ -1,7 +1,7 @@
 (()=>{
 
 let mode="market";
-const defaults={market:13.59,share:1,processed:100,fee:3,rate:10,days:60,advance:90,charges:0,basis:360};
+const defaults={market:13.59,share:1,processed:100,fee:3,rate:6.59,days:60,advance:90,charges:0,basis:360};
 const $=id=>document.getElementById(id);
 function calculate(v){const captured=v.mode==='processed'?v.processed:v.market*v.share/100,volume=captured*v.advance/100,revenue=volume*v.fee/100,interest=volume*v.rate/100*v.days/v.basis,charges=volume*v.charges/100;return{captured,volume,revenue,interest,charges,retained:revenue-interest-charges,netRate:v.fee-v.rate*v.days/v.basis-v.charges,breakEven:v.rate*v.days/v.basis+v.charges};}
 const number=n=>new Intl.NumberFormat('en-AE',{notation:'compact',compactDisplay:'short',maximumFractionDigits:2}).format(Object.is(n,-0)?0:n);

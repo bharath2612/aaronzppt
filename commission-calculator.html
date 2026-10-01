@@ -17,7 +17,7 @@
 <div class="field" id="shareField"><label for="share">Our market share</label><div class="input-wrap"><input id="share" type="number" min="0" max="100" step="any" value="1" required><span class="unit">%</span></div><div class="hint">Share of annual commission value actually financed.</div></div>
 <div class="field" id="processedField" hidden><label for="processed">Total commission processed annually</label><div class="input-wrap"><span class="unit">AED</span><input id="processed" type="number" min="0" max="1000000000000000" step="any" value="100" required><select id="processedUnit" aria-label="Processed commission unit" style="width:78px;flex-shrink:0;font-size:14px"><option value="1000000000">B</option><option value="1000000" selected>M</option><option value="1000">K</option><option value="1">AED</option></select></div><div class="hint">Before the advance percentage: AED 100M at 90% means AED 90M advanced.</div></div>
 <div class="field"><label for="fee">Fixed customer fee, per advance</label><div class="input-wrap"><input id="fee" type="number" min="0" max="100" step="any" value="3" required><span class="unit">%</span></div><div class="hint">Total fee charged, including the funding partner’s cost.</div></div>
-<div class="field"><label for="rate">Bank interest rate, annualised</label><div class="input-wrap"><input id="rate" type="number" min="0" max="100" step="any" value="10" required><span class="unit">% / year</span></div><div class="hint">All-in annual rate, including the bank’s margin.</div></div>
+<div class="field"><label for="rate">Bank interest rate, annualised</label><div class="input-wrap"><input id="rate" type="number" min="0" max="100" step="any" value="6.59" required><span class="unit">% / year</span></div><div class="hint">Example: 6M EIBOR 4.58991% (1 Oct 2026) + assumed 2% bank margin ≈ 6.59%. Not a quote.</div></div>
 <div class="field"><label for="days">Factoring duration</label><div class="input-wrap"><input id="days" type="number" min="1" max="3650" step="1" value="60" required><span class="unit">days</span></div></div>
 <div class="field"><label for="advance">Commission advanced</label><div class="input-wrap"><input id="advance" type="number" min="0" max="100" step="any" value="90" required><span class="unit">%</span></div><div class="hint">The portion of each commission financed before fees.</div></div>
 <details><summary>Bank charges & calculation basis</summary>
@@ -35,7 +35,7 @@
 </main>
 <script>
 let mode="market";
-const defaults={market:13.59,share:1,processed:100,fee:3,rate:10,days:60,advance:90,charges:0,basis:360};
+const defaults={market:13.59,share:1,processed:100,fee:3,rate:6.59,days:60,advance:90,charges:0,basis:360};
 const $=id=>document.getElementById(id);
 function calculate(v){const captured=v.mode==='processed'?v.processed:v.market*v.share/100,volume=captured*v.advance/100,revenue=volume*v.fee/100,interest=volume*v.rate/100*v.days/v.basis,charges=volume*v.charges/100;return{captured,volume,revenue,interest,charges,retained:revenue-interest-charges,netRate:v.fee-v.rate*v.days/v.basis-v.charges,breakEven:v.rate*v.days/v.basis+v.charges};}
 const number=n=>new Intl.NumberFormat('en-AE',{notation:'compact',compactDisplay:'short',maximumFractionDigits:2}).format(Object.is(n,-0)?0:n);
