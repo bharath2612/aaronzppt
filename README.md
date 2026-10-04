@@ -2,7 +2,7 @@
 
 Open `index.html` directly in your browser. Reveal.js and the font are bundled locally, so no server or internet connection is required. Use the arrow controls to present, or **Read as page** to scroll. Mobile starts in read mode.
 
-The presentation contains sixteen slides, source links, proposed deal flows and the interactive calculator. `commission-calculator.html` remains available as a standalone calculator.
+The presentation contains seventeen slides, source links, proposed deal flows and the interactive calculator. `commission-calculator.html` remains available as a standalone calculator.
 
 ## Edit
 - `index.html`: slide content
@@ -29,3 +29,5 @@ Typography: Plus Jakarta Sans throughout, including titles, the wordmark, body t
 Funding options: the three cards link to banks, non-bank providers and embedded / referral partners. Provider names link to official evidence; potential Aaronz arrangements are distinguished from published products.
 
 Licensing: the DIFC route compares arranging credit through a licensed partner with providing credit in Aaronz’s own name. Permissions and mainland scope require regulatory confirmation; official sources are linked on the slide.
+
+The licensing requirements slide compares DFSA base capital, ongoing capital tests, application and annual base fees, required appointments and client-money restrictions. Figures are dated 4 October 2026, with separate fee add-ons and setup-cost exclusions.
