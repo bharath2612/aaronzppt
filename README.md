@@ -2,7 +2,7 @@
 
 Open `index.html` directly in your browser. Reveal.js and the font are bundled locally, so no server or internet connection is required. Use the arrow controls to present, or **Read as page** to scroll. Mobile starts in read mode.
 
-The presentation contains fifteen slides, source links, proposed deal flows and the interactive calculator. `commission-calculator.html` remains available as a standalone calculator.
+The presentation contains sixteen slides, source links, proposed deal flows and the interactive calculator. `commission-calculator.html` remains available as a standalone calculator.
 
 ## Edit
 - `index.html`: slide content
@@ -27,3 +27,5 @@ The default 6.59% annual bank rate is a dated scenario: CBUAE six-month EIBOR of
 Typography: Plus Jakarta Sans throughout, including titles, the wordmark, body text and data. The font and its licence are bundled for offline use.
 
 Funding options: the three cards link to banks, non-bank providers and embedded / referral partners. Provider names link to official evidence; potential Aaronz arrangements are distinguished from published products.
+
+Licensing: the DIFC route compares arranging credit through a licensed partner with providing credit in Aaronz’s own name. Permissions and mainland scope require regulatory confirmation; official sources are linked on the slide.
