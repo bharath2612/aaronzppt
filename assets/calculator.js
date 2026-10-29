@@ -1,7 +1,7 @@
 (()=>{
 
 let mode="market";
-const defaults={market:13.59,share:1,processed:100,fee:3,rate:6.59,days:60,advance:90,charges:0,basis:360};
+const defaults={market:13.59,share:1,processed:100,ourRate:12,rate:6.59,days:30,advance:100,charges:0,basis:360};
 const $=id=>document.getElementById(id);
 function calculate(v){const captured=v.mode==='processed'?v.processed:v.market*v.share/100,volume=captured*v.advance/100,revenue=volume*v.fee/100,interest=volume*v.rate/100*v.days/v.basis,charges=volume*v.charges/100;return{captured,volume,revenue,interest,charges,retained:revenue-interest-charges,netRate:v.fee-v.rate*v.days/v.basis-v.charges,breakEven:v.rate*v.days/v.basis+v.charges};}
 const number=n=>new Intl.NumberFormat('en-AE',{notation:'compact',compactDisplay:'short',maximumFractionDigits:2}).format(Object.is(n,-0)?0:n);
@@ -19,6 +19,7 @@ function update(){const v={mode};let valid=true;const pending=[];
   if(inactive)continue;v[key]=Number(el.value);
   if(empty||invalid){valid=false;pending.push(key);}
  }
+ v.fee=v.ourRate*v.days/v.basis;$('fee').value=valid||!pending.some(k=>['ourRate','days'].includes(k))?String(Number(v.fee.toFixed(4))):'';
  $('error').textContent='';$('results').hidden=false;$('results').classList.toggle('is-pending',!valid);
  if(!valid){
   $('retained').textContent='0';$('total').textContent='AED 0';$('total').classList.remove('negative');
@@ -35,7 +36,7 @@ function update(){const v={mode};let valid=true;const pending=[];
  const bankFraction=r.revenue>0?(r.interest+r.charges)/r.revenue:0;$('bankBar').style.width=(Math.min(1,bankFraction)*100)+'%';$('ourBar').style.width=(r.revenue>0?Math.max(0,1-bankFraction)*100:0)+'%';$('bankLegend').textContent='Bank cost: '+(r.revenue>0?pct(bankFraction*100)+' of fees':money(r.interest+r.charges));$('ourLegend').textContent='Retained: '+(r.revenue>0?pct(r.retained/r.revenue*100):money(r.retained));
  $('explain').textContent='Bank interest over '+v.days+' days is '+pct(v.rate*v.days/v.basis)+' of advances. Your fee must exceed '+pct(r.breakEven)+' to cover the modeled bank costs. '+(r.retained<0?'This scenario loses money before operating costs. ':'')+'Assumes interest on the gross advance for the full duration and an agreement allowing your company to retain the fee balance.';
 }
-function setMode(next){mode=next;const direct=mode==='processed';$('marketPanel').hidden=direct;$('marketField').hidden=direct;$('shareField').hidden=direct;$('processedField').hidden=!direct;$('marketMode').setAttribute('aria-selected',String(!direct));$('processedMode').setAttribute('aria-selected',String(direct));$('marketMode').tabIndex=direct?-1:0;$('processedMode').tabIndex=direct?0:-1;$('capturedLabel').textContent=direct?'Annual commission processed':'Commission value captured';$('formula').textContent='Model: '+(direct?'annual commission processed':'annual market × share')+' × advance rate × (customer fee − annual bank rate × days ÷ year basis − bank charges).';update();}
+function setMode(next){mode=next;const direct=mode==='processed';$('marketPanel').hidden=direct;$('marketField').hidden=direct;$('shareField').hidden=direct;$('processedField').hidden=!direct;$('marketMode').setAttribute('aria-selected',String(!direct));$('processedMode').setAttribute('aria-selected',String(direct));$('marketMode').tabIndex=direct?-1:0;$('processedMode').tabIndex=direct?0:-1;$('capturedLabel').textContent=direct?'Annual commission processed':'Commission value captured';$('formula').textContent='Model: '+(direct?'annual commission processed':'annual market × share')+' × advance rate × ((our annual rate − annual bank rate) × days ÷ year basis − bank charges).';update();}
 $('marketMode').addEventListener('click',()=>setMode('market'));$('processedMode').addEventListener('click',()=>setMode('processed'));
 document.querySelector('.mode-toggle').addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();e.stopPropagation();const next=e.key==='Home'?'market':e.key==='End'?'processed':mode==='market'?'processed':'market';setMode(next);$(next==='market'?'marketMode':'processedMode').focus();});
 $('form').addEventListener('input',update);$('form').addEventListener('change',update);$('form').addEventListener('submit',e=>e.preventDefault());$('reset').addEventListener('click',()=>{$('marketUnit').value='1000000000';$('processedUnit').value='1000000';for(const [key,val] of Object.entries(defaults))$(key).value=val;setMode('market');});update();
