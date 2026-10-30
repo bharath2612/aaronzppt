@@ -1,6 +1,6 @@
 # Project status
 
-Updated: 2026-10-30 08:33 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-10-30-0833-fee-scenarios.md`.
+Updated: 2026-10-30 11:04 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-10-30-1104-channel-connect-review.md`.
 
 Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE real-estate commission finance. It has 26 slides, an embedded earnings calculator, a fee-scenarios slide and a standalone calculator page (`commission-calculator.html`). There's no backend or build pipeline. It's published by GitHub Pages from `main`: https://bharath2612.github.io/aaronzppt/.
 
@@ -28,12 +28,15 @@ Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE re
 - **Developer flow diagram** (`diagrams/aaronz-developer-flows.*`):
   - A brokerage journey: Flow A "Sale not yet done" starts at step 1; Flow B "Sale done, yet to raise invoice" starts at step 2. At step 2 the brokerage picks Express (steps 3–4, paid within 24h) or Normal (paid at 30/60 days).
   - Developer integration models from a whiteboard: Emaar, Imtiaz, Danube, All developers. "Handling money?" is an open question.
-- **Notion** (new workspace, both pages private):
+- **Notion** (new workspace, all pages private):
   - [Launch tracker](https://app.notion.com/p/4086ebf7407281b9ab6af8f6ca4e04bd): 29 tasks, 26 Oct–6 Dec, timeline grouped by workstream.
   - [Pitch page](https://app.notion.com/p/4086ebf74072819a9a25f2ea0ac75ae5): the USD 20M valuation case, the three-year view, Beehive as the comparable, and a calculator.
+  - [Channel Connect agreement: scope and learnings](https://app.notion.com/p/4096ebf7407281f7b22bd5fe6a90bbf1): Channel Connect is Imtiaz's exclusive broker and pays broker commission (5%, due 30 days after invoice once the SPA is signed and Imtiaz has the funds plus DLD). The broker can't assign its rights (11.2); immediate termination cancels commission (7.2); Channel Connect hasn't countersigned. Personal data left out.
 - `aaronz-admin-monthly-expenses.xlsx` exists locally and is deliberately uncommitted.
 
 ## Verification (2026-10-30)
+
+- Channel Connect PDF: all 12 scanned pages rendered locally with PDFKit and read; the Notion page was created (the API returned its ID).
 
 - `npm test` passed: all 26 slide layouts, funding navigation, calculator modes, rounding, loss, validation and reset, fee scenarios, keyboard input, expanded controls, read mode, and mobile layout.
 - `git diff --check` passed.
@@ -49,3 +52,4 @@ Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE re
 3. Verify that GitHub Pages deployed this commit.
 4. Meeting minutes from the "Phone Book, Dubai Marina Mall Branch 2" recording are blocked: the user declined installing a local transcriber. They need another transcription route.
 5. Open: the collection-account vs arranging-only inconsistency (see `docs/PROBLEMS.md`).
+6. Channel Connect: get a countersigned copy; ask whether it would consent to assigning receivables or to a payment direction to Aaronz; decide where the Notion page should live.

@@ -27,3 +27,7 @@ At 390px the four-column table and second input were clipped. Inputs now stack a
 ## 2026-10-30 — 90-day scenario margin (open)
 
 At a 12% bank rate, the 12% 90-day rate nets AED 0 per AED 100K. The user expected a ~3.5% fee, which would need 14%. Awaiting a decision.
+
+## 2026-10-30 — Channel Connect commissions as financeable receivables (open)
+
+The broker may not assign or novate its rights (11.2), immediate termination voids all commission including sold units (7.2), and Channel Connect has not countersigned the copy reviewed. Financing Imtiaz/Channel Connect commissions likely needs Channel Connect's written consent or acknowledgement; legal confirmation pending.

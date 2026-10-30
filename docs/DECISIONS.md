@@ -15,3 +15,7 @@ Both developer situations share one numbered brokerage journey: Flow A ("Sale no
 ## 2026-10-30 — Fee scenarios slide
 
 A separate slide (not a change to the main calculator) compares 30/60/90-day developer payment durations per AED 100K advanced. Our annual rate is editable per scenario (defaults 18/15/12%); one shared bank rate (default 12%, a user assumption) and a static fixed fee per deal (default AED 0) is added after "left for us" to give net revenue. 360-day basis, 100% advanced.
+
+## 2026-10-30 — Agreement reviews in Notion
+
+Contract reviews (starting with Channel Connect) go to private Notion pages as plain-English summaries with clause references and financing learnings, not into the deck. Personal data from contracts (passport, date of birth, bank/IBAN) is excluded from Notion and repo docs.
