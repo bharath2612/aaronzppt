@@ -31,3 +31,15 @@ At a 12% bank rate, the 12% 90-day rate nets AED 0 per AED 100K. The user expect
 ## 2026-10-30 — Channel Connect commissions as financeable receivables (open)
 
 The broker may not assign or novate its rights (11.2), immediate termination voids all commission including sold units (7.2), and Channel Connect has not countersigned the copy reviewed. Financing Imtiaz/Channel Connect commissions likely needs Channel Connect's written consent or acknowledgement; legal confirmation pending.
+
+## 2026-10-30 — Imtiaz deck dark theme rendered white (resolved)
+
+`assets/vendor/reveal.css` sets `.reveal-viewport` to white, so dark slides showed white text on white. Fixed by setting the viewport background in `assets/imtiaz.css`. A slide id `next` also clashed with the footer's `#next` button; it's renamed `next-steps`.
+
+## 2026-10-30 — Aaronz & Co logo resolution (open)
+
+The only available Aaronz & Co logo is a 291×156 PNG from aaronz.co, cropped to 251×131. At 76px high it may look soft on high-density screens next to the vector Imtiaz logo. Needs a vector or larger source.
+
+## 2026-10-30 — Live demo branding differs from the deck (open)
+
+The today-ai Imtiaz demo shows a "Today" wordmark at the payment choice; the Imtiaz deck brands the product "Aaronz". It's a separate repo, so nothing was changed there.

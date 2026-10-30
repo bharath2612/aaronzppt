@@ -134,6 +134,38 @@ chain([all, node('App → Push\ninventory RT', 0, allY), mimic, node('Agreement'
 stroke([[950,allY+58],[950,allY+130]], '#b4472e');
 text('HANDLING MONEY?', 790, allY+140, 320, 28, '#b4472e', 'center');
 
+// FastPay RECAP vs Aaronz: process comparison. FastPay steps from its product pages (accessed 1 Oct 2026, deck Competition slide).
+stroke([[40,2560],[3190,2560]], '#dce3dc', false);
+text('FastPay vs Aaronz / How the process differs', 40, 2600, 3100, 46);
+text('FastPay works outside the developer’s flow and needs developer approval after the invoice. Aaronz sits inside the developer’s usual booking and invoice flow, at the source.', 40, 2665, 3100, 26, muted);
+const pcols = [420, 860, 1300, 1740, 2180, 2620];
+const pnode = (label, col, cy, color, fill) => box(label, pcols[col], cy-70, color, fill, 380, 140, 24);
+const amber = '#a5641b';
+
+const fY = 2860;
+const fp = box('FASTPAY\nOutside the\ndeveloper flow', 60, fY-80, grey, '#ffffff', 320, 160, 28);
+chain([fp,
+  pnode('Sale and invoice sit in\nthe developer’s system', 0, fY, grey, '#f1f3f2'),
+  pnode('Agency submits the invoice\nto FastPay, a separate\nplatform', 1, fY, grey, '#f1f3f2'),
+  pnode('Developer must approve\neach invoice', 2, fY, amber, '#fbf4e6'),
+  pnode('KYC, eligibility and\nprocessing cut-offs', 3, fY, amber, '#fbf4e6'),
+  pnode('Partner funds the agency\n2–9 days after approval', 4, fY, grey, '#f1f3f2'),
+  pnode('Developer repays\nthe partner at term', 5, fY, grey, '#f1f3f2')], grey);
+
+const zY = 3110;
+const az = box('AARONZ\nAt the source', 60, zY-80, green, '#ffffff', 320, 160, 28);
+az.strokeWidth = 3;
+chain([az,
+  pnode('Booking and invoice happen\nin the developer’s own flow\n(Aaronz link / app)', 0, zY, green, '#e8f1e8'),
+  pnode('Express option offered\nat checkout', 1, zY, green, '#e8f1e8'),
+  pnode('Brokerage reviews the amount\nand accepts the terms', 2, zY, green, '#e8f1e8'),
+  pnode('Brokerage confirms\nbank account', 3, zY, green, '#e8f1e8'),
+  pnode('Commission paid\nwithin 24 hours', 4, zY, green, '#cfe5cf'),
+  pnode('Developer pays Aaronz\non the agreed due date', 5, zY, green, '#e8f1e8')], green);
+
+text('No separate approval chase: the invoice is raised inside the developer’s flow, so it is already known to the developer.', 1300, zY+85, 1500, 22, green);
+text('FastPay steps per its product pages, accessed 1 Oct 2026 (see the deck’s Competition slide). Aaronz timings are our proposal, not yet live.', 40, 3260, 3100, 22, muted);
+
 const scene = {type:'excalidraw', version:2, source:'https://excalidraw.com', elements,
   appState:{viewBackgroundColor:'#ffffff', gridSize:null, exportBackground:true, exportWithDarkMode:false}, files:{}};
 const out = path.join(__dirname, 'aaronz-developer-flows.excalidraw');
