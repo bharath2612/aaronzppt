@@ -19,3 +19,11 @@ No local speech-to-text tool is installed. The user declined installing whisper.
 ## 2026-10-29 — Calculator inconsistencies (open)
 
 The Unit economics slide (90% / 3% / 60 days) and `commission-calculator.html` (fixed 3% fee) don't match the deck calculator's new 12% / 30-day / 100% defaults.
+
+## 2026-10-30 — Fee scenarios table on phones (resolved)
+
+At 390px the four-column table and second input were clipped. Inputs now stack and the table scrolls horizontally in its own wrapper; page width stays 390px.
+
+## 2026-10-30 — 90-day scenario margin (open)
+
+At a 12% bank rate, the 12% 90-day rate nets AED 0 per AED 100K. The user expected a ~3.5% fee, which would need 14%. Awaiting a decision.
