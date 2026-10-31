@@ -31,3 +31,7 @@ Per AED 100K of commission, by days after DLD registration: same day 1,500; 15 d
 ## 2026-10-30 — Live demo instead of an embedded payout page
 
 The booking-confirmation email's button opens the live today-ai demo (https://today-ai-zeta.vercel.app/developer-flows#imtiaz/booking) in a new tab, so the product looks ready. A payout slide rebuilt from the user's screenshot was removed at the user's request, and the email shows no visible fallback link.
+
+## 2026-10-31 — Payout link, Aaronz pay button, auto-push
+
+The email button now opens https://today-ai-zeta.vercel.app/presentations/imtiaz-commission, replacing the developer-flows link above. It's styled like an Apple Pay button: "Get paid with" plus the Aaronz & Co logo. The cover headline says "Brokerages", not "Brokers", and is highlighted. The user asked for verified changes to be committed and pushed automatically, without waiting for a "push" message.

@@ -4,7 +4,7 @@ Open `index.html` directly in your browser. Reveal.js and the font are bundled l
 
 The presentation contains twenty-six slides, source links, proposed deal flows, the interactive calculator and a fee-scenarios slide (30/60/90-day developer payment durations with editable rates, bank rate and fixed fee; logic in `assets/scenarios.js`). `commission-calculator.html` remains available as a standalone calculator.
 
-`imtiaz.html` is a separate 11-slide proposal deck for Imtiaz Developments (dark, Chronicle-style design in `assets/imtiaz.css`; it reuses `assets/presentation.js`). Its booking-email button opens the live payout demo at https://today-ai-zeta.vercel.app/developer-flows#imtiaz/booking. Logos: `assets/brand/imtiaz-logo.svg` (from imtiaz.ae) and `assets/brand/aaronz-co-logo.png` (from aaronz.co).
+`imtiaz.html` is a separate 11-slide proposal deck for Imtiaz Developments (dark, Chronicle-style design in `assets/imtiaz.css`; it reuses `assets/presentation.js`). Its booking-email button opens the live payout demo at https://today-ai-zeta.vercel.app/presentations/imtiaz-commission. Logos: `assets/brand/imtiaz-logo.svg` (from imtiaz.ae) and `assets/brand/aaronz-co-logo.png` (from aaronz.co).
 
 ## Edit
 - `index.html`: slide content

@@ -29,7 +29,8 @@ body:not(.reader) .reveal .slides>section.present:not(.c-cover){display:flex!imp
 .accent{color:var(--green)}
 /* Cover */
 .c-cover{display:flex!important;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:#fff;color:#111;border-radius:18px}
-.c-cover h1{font-size:76px;line-height:1.06;max-width:1050px;color:#0b0b0b}
+.c-cover h1{font-size:76px;line-height:1.06;max-width:1300px;color:#0b0b0b}
+.c-cover h1 mark{background:#a9d2fb;color:inherit;padding:0 .08em;white-space:nowrap;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .c-cover .c-lede{font-size:20px!important;color:#5c6460!important;max-width:680px;margin:26px auto 0!important}
 .c-meta{position:absolute!important;bottom:34px;left:48px;right:48px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#7a817d}
 .c-lockup{display:flex;align-items:center;gap:36px;margin-bottom:52px}
@@ -179,7 +180,7 @@ body:not(.reader) .reveal .slides>section.present:not(.c-cover){display:flex!imp
 /* Read-as-page and phones */
 .reader .reveal .slides>section{border-color:var(--line)}
 .reader .c-meta{position:static!important;margin-top:40px;gap:10px;flex-wrap:wrap}
-@media(max-width:800px){.c-cards,.c-split,.c-entries,.c-steps,.c-foot3,.mocks,.money,.chips,.weeks,.c-pilot-low,.kpis,.horizons,.big-stats,.sizing,.decisions,.faq,.delivers{grid-template-columns:1fr!important}.c-cards .c-card,.horizons>li,.decisions li{min-height:0}.c-cover{min-height:620px}.c-cover h1{font-size:44px}.c-lockup{gap:18px}.c-lockup img{height:48px}.c-head h2{font-size:30px}.stats strong,.big-stats strong{font-size:48px}.statement{padding:28px}.statement .big{font-size:24px!important}.table-wrap{overflow-x:auto}.c-table{min-width:600px;font-size:14px}}
+@media(max-width:800px){.c-cards,.c-split,.c-entries,.c-steps,.c-foot3,.mocks,.money,.chips,.weeks,.c-pilot-low,.kpis,.horizons,.big-stats,.sizing,.decisions,.faq,.delivers{grid-template-columns:1fr!important}.c-cards .c-card,.horizons>li,.decisions li{min-height:0}.c-cover{min-height:620px}.c-cover h1{font-size:44px}.c-cover h1 mark{white-space:normal}.c-lockup{gap:18px}.c-lockup img{height:48px}.c-head h2{font-size:30px}.stats strong,.big-stats strong{font-size:48px}.statement{padding:28px}.statement .big{font-size:24px!important}.table-wrap{overflow-x:auto}.c-table{min-width:600px;font-size:14px}}
 /* How it works: booking confirmation email */
 .mail-window{max-width:1080px;margin:0 auto;width:100%;background:#fafaf8;color:#1d2420;border-radius:16px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
 .mail-chrome{display:flex;align-items:center;gap:8px;padding:12px 18px;background:#ecebe7;border-bottom:1px solid #dddcd6}
@@ -192,8 +193,9 @@ body:not(.reader) .reveal .slides>section.present:not(.c-cover){display:flex!imp
 .mail-content{display:grid;grid-template-columns:1.45fr 1fr;gap:36px;padding:26px 28px 30px}
 .mail-letter p{font-size:16px;line-height:1.6;color:#1d2420}
 .mail-letter p+p{margin-top:12px}
-.reveal .mail-button{display:inline-flex;gap:14px;align-items:center;margin:20px 0 6px;background:#7d2f45;color:#fff;text-decoration:none;font-weight:600;font-size:16px;padding:15px 22px;border-radius:10px}
-.reveal .mail-button:hover{background:#68263a}
+.reveal .mail-button{display:inline-flex;gap:12px;align-items:center;margin:20px 0 6px;background:#0b0b0b;color:#fff;text-decoration:none;font-weight:500;font-size:18px;padding:12px 28px;border-radius:10px}
+.reveal .mail-button:hover{background:#2a2a2a}
+.mail-button img{height:36px;width:auto;display:block}
 .mail-letter .mail-small{font-size:13px;color:#6b706c;margin-top:14px}
 .mail-letter .mail-sign{font-size:14px;color:#3d4440}
 .mail-facts{margin:0;background:#f1efe9;border-radius:12px;padding:6px 20px;align-self:start}

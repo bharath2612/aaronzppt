@@ -15,7 +15,7 @@ const {pathToFileURL}=require('node:url');
   assert.deepEqual(problems,[],ids[i]+' overflow: '+problems);}
  assert.equal(await page.locator('#slideCount').textContent(),'11 / 11');
  // The booking email button opens the live payout page in a new tab.
- for(const a of await page.locator('#how-it-works .mail-letter a').all()){assert.equal(await a.getAttribute('href'),'https://today-ai-zeta.vercel.app/developer-flows#imtiaz/booking');assert.equal(await a.getAttribute('target'),'_blank');}
+ for(const a of await page.locator('#how-it-works .mail-letter a').all()){assert.equal(await a.getAttribute('href'),'https://today-ai-zeta.vercel.app/presentations/imtiaz-commission');assert.equal(await a.getAttribute('target'),'_blank');}
  const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});mobile.on('pageerror',e=>errors.push(e.message));
  await mobile.goto(url);await mobile.waitForFunction(()=>document.body.classList.contains('reader'));await mobile.waitForTimeout(500);
  assert(await mobile.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Imtiaz deck mobile overflow');await mobile.screenshot({path:'.build/imtiaz-mobile.png',fullPage:true});
