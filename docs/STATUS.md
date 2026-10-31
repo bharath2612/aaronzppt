@@ -1,6 +1,6 @@
 # Project status
 
-Updated: 2026-10-30 18:31 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-10-30-1831-imtiaz-deck.md`.
+Updated: 2026-10-31 11:45 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-10-31-1145-imtiaz-copy-edits.md`.
 
 Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE real-estate commission finance. It contains:
 
@@ -38,6 +38,8 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
     10. next steps;
     11. finance FAQ.
   - **Design:** dark Chronicle-style, with Aaronz green as the accent. The broker-facing option is "Aaronz"; the alternative is "Standard". No mention of Channel Connect.
+  - **Slide 4 (what changes for Imtiaz):** no balance-sheet row. "What we need" is eligible commission data for each sale: total eligible commission per booking, plus the milestone and date it becomes payable.
+  - **Booking email:** "Now you can get your commission instantly, through our partnership with Aaronz." The small print says Imtiaz charges nothing and Aaronz charges the early-payout fee.
   - **Live demo link:** the email button opens https://today-ai-zeta.vercel.app/developer-flows#imtiaz/booking in a new tab. That page lives in the separate `today-ai` repo, FLOW-003.
   - **Payout fees** per AED 100K, by days after DLD registration:
     - same day 1,500;
@@ -65,7 +67,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - [Imtiaz: options we can offer](https://app.notion.com/p/4096ebf7407281cbaa4bf06a41bb28fe)
 - `aaronz-admin-monthly-expenses.xlsx` exists locally and is deliberately uncommitted.
 
-## Verification (2026-10-30 18:31)
+## Verification (2026-10-31 11:45)
 
 - `npm test` passed:
   - "twenty-six slide layouts ... mobile layout and controls";
@@ -77,7 +79,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
 
 ## Next
 
-1. **Push or keep local?** Pushing publishes `imtiaz.html`, which names Imtiaz and uses its logo, on the public Pages site. It has `noindex` but is reachable by URL. Needs the user's decision.
+1. **Live site:** the Imtiaz deck is published at https://bharath2612.github.io/aaronzppt/imtiaz.html (the user approved the push). The pilot, next-steps and FAQ slides still refer to a "payment direction"; the user hasn't yet decided whether to reword them to match slide 4.
 2. **Before Monday:** click through the deck and the live demo end to end. The live demo shows a "Today" wordmark at the payment choice, while the deck says "Aaronz".
 3. **Confirm Imtiaz's real booking process:**
    - digital or paper booking form;
