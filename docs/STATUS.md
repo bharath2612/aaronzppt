@@ -1,6 +1,6 @@
 # Project status
 
-Updated: 2026-10-31 15:24 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-10-31-1524-imtiaz-button-cover.md`.
+Updated: 2026-10-31 15:27 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-10-31-1527-imtiaz-all-payments.md`.
 
 Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE real-estate commission finance. It contains:
 
@@ -37,11 +37,12 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
     9. market size;
     10. next steps;
     11. finance FAQ.
-  - **Design:** dark Chronicle-style, with Aaronz green as the accent. The broker-facing option is "Aaronz"; the alternative is "Standard". No mention of Channel Connect.
+  - **Design:** dark Chronicle-style, with Aaronz green as the accent. No mention of Channel Connect.
+  - **Model (since 2026-10-31):** Aaronz handles every broker commission payment for Imtiaz. Imtiaz pays all commission to Aaronz on its usual dates, and Aaronz pays every brokerage. Each brokerage chooses the usual date (no fee) or early payout (a fee). There's no "Standard" option and no "payment direction" any more; next-steps decision 03 is "Appoint Aaronz as commission payer".
   - **Slide 4 (what changes for Imtiaz):** no balance-sheet row. "What we need" is eligible commission data for each sale: total eligible commission per booking, plus the milestone and date it becomes payable.
   - **Booking email:** "Now you can get your commission instantly, through our partnership with Aaronz." The small print says Imtiaz charges nothing and Aaronz charges the early-payout fee.
   - **Email button:** black, Apple Pay style: "Get paid with" plus the white Aaronz & Co logo. It opens https://today-ai-zeta.vercel.app/presentations/imtiaz-commission in a new tab. That page lives in the separate `today-ai` repo.
-  - **Payout fees** per AED 100K, by days after DLD registration:
+  - **Payout fees** per AED 100K, by days after DLD registration (the deck treats 45 days as the usual date):
     - same day 1,500;
     - 15 days 750;
     - 30 days 250;
@@ -67,7 +68,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - [Imtiaz: options we can offer](https://app.notion.com/p/4096ebf7407281cbaa4bf06a41bb28fe)
 - `aaronz-admin-monthly-expenses.xlsx` exists locally and is deliberately uncommitted.
 
-## Verification (2026-10-31 15:24)
+## Verification (2026-10-31 15:27)
 
 - `npm test` passed:
   - "twenty-six slide layouts ... mobile layout and controls";
@@ -79,7 +80,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
 
 ## Next
 
-1. **Live site:** the Imtiaz deck is published, and changes are now pushed automatically after verification (the user asked on 2026-10-31). It's at https://bharath2612.github.io/aaronzppt/imtiaz.html (the user approved the push). The pilot, next-steps and FAQ slides still refer to a "payment direction"; the user hasn't yet decided whether to reword them to match slide 4.
+1. **Live site:** the Imtiaz deck is published, and changes are now pushed automatically after verification (the user asked on 2026-10-31). It's at https://bharath2612.github.io/aaronzppt/imtiaz.html (the user approved the push). Still open: whether the usual date really is 45 days after DLD registration, and the FAQ's "no loan, guarantee or recourse" line.
 2. **Before Monday:** click through the deck and the live demo end to end. The live demo shows a "Today" wordmark at the payment choice, while the deck says "Aaronz".
 3. **Confirm Imtiaz's real booking process:**
    - digital or paper booking form;

@@ -35,3 +35,7 @@ The booking-confirmation email's button opens the live today-ai demo (https://to
 ## 2026-10-31 — Payout link, Aaronz pay button, auto-push
 
 The email button now opens https://today-ai-zeta.vercel.app/presentations/imtiaz-commission, replacing the developer-flows link above. It's styled like an Apple Pay button: "Get paid with" plus the Aaronz & Co logo. The cover headline says "Brokerages", not "Brokers", and is highlighted. The user asked for verified changes to be committed and pushed automatically, without waiting for a "push" message.
+
+## 2026-10-31 — Aaronz pays all Imtiaz broker commissions
+
+Brokers no longer choose between Aaronz and Imtiaz. Aaronz handles every commission payment: Imtiaz pays all broker commission to Aaronz on its usual dates, and Aaronz pays each brokerage. The brokerage chooses the usual date at no fee, or early payout for a fee (the same schedule as before; 45 days is treated as the usual date). The deck says "fee", not "interest". The "Standard" option and the "payment direction" wording are removed.
