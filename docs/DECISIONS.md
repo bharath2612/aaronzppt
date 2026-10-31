@@ -39,3 +39,7 @@ The email button now opens https://today-ai-zeta.vercel.app/presentations/imtiaz
 ## 2026-10-31 — Aaronz pays all Imtiaz broker commissions
 
 Brokers no longer choose between Aaronz and Imtiaz. Aaronz handles every commission payment: Imtiaz pays all broker commission to Aaronz on its usual dates, and Aaronz pays each brokerage. The brokerage chooses the usual date at no fee, or early payout for a fee (the same schedule as before; 45 days is treated as the usual date). The deck says "fee", not "interest". The "Standard" option and the "payment direction" wording are removed.
+
+## 2026-10-31 — Current-process slide second
+
+Slide 2 of the Imtiaz deck is now "Current process": two five-step flows comparing today's path (milestone, Imtiaz notifies, broker invoices, paid on payment terms) with Aaronz (notify at booking, broker chooses timing, invoice requested at DLD registration, paid immediately or on schedule). The proposal moves to slide 3. The flow wording follows the user's description; Imtiaz's real process is still to be confirmed.

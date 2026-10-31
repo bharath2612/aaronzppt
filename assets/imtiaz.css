@@ -204,3 +204,21 @@ body:not(.reader) .reveal .slides>section.present:not(.c-cover){display:flex!imp
 .mail-facts dt{color:#6b706c}
 .mail-facts dd{margin:0;font-weight:650}
 @media(max-width:800px){.mail-content{grid-template-columns:1fr}.mail-meta{grid-template-columns:1fr}}
+/* Current process vs with Aaronz */
+.flows{display:grid;gap:18px;max-width:1240px;margin:0 auto}
+.flow{display:grid;grid-template-columns:170px 1fr;gap:18px;align-items:stretch}
+.flow-label{display:flex;flex-direction:column;justify-content:center}
+.flow-label h3{font-size:22px;margin-top:8px}
+.flow:not(.us) .flow-label .c-tag{color:var(--faint)!important}
+.flow ol{display:grid!important;grid-template-columns:repeat(5,1fr);gap:22px;list-style:none;margin:0!important;padding:0}
+.flow li{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px 20px;margin:0!important}
+.flow li:not(:last-child)::after{content:"→";position:absolute;right:-18px;top:50%;transform:translateY(-50%);color:var(--faint);font-size:15px}
+.flow li>b{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--faint);font-weight:400}
+.flow h4{font-size:17px;margin:10px 0 6px;color:var(--ink)}
+.flow li p{font-size:14px!important;color:var(--muted);line-height:1.5;margin:0!important}
+.flow.us li{border-color:rgba(111,207,151,.25)}
+.flow.us .flow-label .c-tag{color:var(--green)!important}
+.flow.us li:not(:last-child)::after{color:var(--green)}
+.flow.us li.end{background:linear-gradient(180deg,#173426 0%,#0f1f18 100%)}
+.flow.us li.end h4{color:var(--green)}
+@media(max-width:800px){.flow{grid-template-columns:1fr}.flow ol{grid-template-columns:1fr!important;gap:12px}.flow li:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-15px;transform:translateX(-50%)}}
