@@ -1,11 +1,11 @@
 # Project status
 
-Updated: 2026-11-01 10:07 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-01-1007-imtiaz-market.md`.
+Updated: 2026-11-01 10:40 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-01-1040-imtiaz-market-last.md`.
 
 Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE real-estate commission finance. It contains:
 
 - the main deck (`index.html`, 26 slides), with an embedded earnings calculator and a fee-scenarios slide;
-- a separate Imtiaz proposal deck (`imtiaz.html`, 12 slides);
+- a separate Imtiaz proposal deck (`imtiaz.html`, 8 slides);
 - a standalone calculator page (`commission-calculator.html`).
 
 There's no backend or build pipeline. GitHub Pages publishes it from `main`: https://bharath2612.github.io/aaronzppt/.
@@ -33,13 +33,9 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
     5. the proposal (cards for agents, brokerages and Imtiaz);
     6. what changes for Imtiaz;
     7. at the source vs an approval-based platform ("Why this design");
-    8. market size ("Why we're in this market");
-    9. 60-day pilot;
-    10. future potential;
-    11. next steps;
-    12. finance FAQ.
+    8. market size ("Why we're in this market"), the last slide.
 
-    The "Follow the money" slide was removed on 2026-11-01.
+    Removed on 2026-11-01: "Follow the money", then the pilot, future potential, next steps and finance FAQ slides (the user wants market size last).
   - **Market slide** (`#market`, Dubai 2025), pitched to the developer rather than to investors:
     - stats: AED 682.5B property sales across 214,912 deals; 62.6% off-plan; AED 13.59B brokerage commissions; +31%;
     - cards: Start · Off-plan (AED 293B, 134,623 deals, about 5%, paid by developers); Later · Secondary (about 80,300 ready deals, usually 2%, paid by buyer or seller); With Imtiaz (per AED 1B of broker sales, AED 50M commission, all handled by Aaronz, cost AED 0);
@@ -48,7 +44,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
     - Today: booking → milestone reached → Imtiaz notifies the broker to invoice → invoice raised → paid on Imtiaz's payment terms.
     - With Aaronz: booking (Aaronz notifies the brokerage) → broker chooses when to be paid → DLD registration (invoice requested immediately) → Aaronz verifies the invoice is authentic → paid immediately on the selected date.
   - **Design:** dark Chronicle-style, with Aaronz green as the accent. No mention of Channel Connect.
-  - **Model (since 2026-10-31):** Aaronz handles every broker commission payment for Imtiaz. Imtiaz pays all commission to Aaronz on its usual dates, and Aaronz pays every brokerage. Each brokerage chooses when to be paid and is paid exactly on that date (usual date: no fee; earlier: a fee). There's no "Standard" option and no "payment direction" any more; next-steps decision 03 is "Appoint Aaronz as commission payer".
+  - **Model (since 2026-10-31):** Aaronz handles every broker commission payment for Imtiaz. Imtiaz pays all commission to Aaronz on its usual dates, and Aaronz pays every brokerage. Each brokerage chooses when to be paid and is paid exactly on that date (usual date: no fee; earlier: a fee). There's no "Standard" option and no "payment direction" any more.
   - **Slide 6 (what changes for Imtiaz):** no balance-sheet row. "What we need" is eligible commission data for each sale: total eligible commission per booking, plus the milestone and date it becomes payable.
   - **Email** (a separate mail after the booking confirmation):
     - header: Imtiaz × Aaronz & Co lockup, with a "Booking confirmed" pill;
@@ -86,11 +82,11 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - [Imtiaz: options we can offer](https://app.notion.com/p/4096ebf7407281cbaa4bf06a41bb28fe)
 - `aaronz-admin-monthly-expenses.xlsx` exists locally and is deliberately uncommitted.
 
-## Verification (2026-11-01 10:07)
+## Verification (2026-11-01 10:40)
 
 - `npm test` passed:
   - "twenty-six slide layouts ... mobile layout and controls";
-  - "Imtiaz deck, twelve slide layouts, email call to action and payout selection, and mobile reader layout".
+  - "Imtiaz deck, eight slide layouts, email call to action and payout selection, and mobile reader layout".
 - `git diff --check` clean.
 - Every Imtiaz slide was inspected in desktop screenshots; the cover and email slides were checked again after these edits. The developer-flows diagram was rendered (1977×2048) and inspected.
 - The payout picker is tested end to end: CTA click lands on `#/select`; 15 days + 50% gives AED 49,625 then AED 50,000 on Fri 18 Dec 2026; the usual date gives AED 100,000; Confirm shows the scheduled message.
@@ -98,7 +94,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
 
 ## Next
 
-1. **Live site:** the Imtiaz deck is published, and changes are now pushed automatically after verification (the user asked on 2026-10-31). It's at https://bharath2612.github.io/aaronzppt/imtiaz.html (the user approved the push). Still open: whether the usual date really is 45 days after DLD registration, and the FAQ's "no loan, guarantee or recourse" line.
+1. **Live site:** the Imtiaz deck is published, and changes are now pushed automatically after verification (the user asked on 2026-10-31). It's at https://bharath2612.github.io/aaronzppt/imtiaz.html (the user approved the push). Still open: whether the usual date really is 45 days after DLD registration.
 2. **Before Monday:** click through the deck end to end, including the payout picker. The external today-ai demo is no longer linked from the deck.
 3. **Confirm Imtiaz's real booking process:**
    - digital or paper booking form;

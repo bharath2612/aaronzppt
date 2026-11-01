@@ -57,3 +57,7 @@ The market slide now follows "Why this design". It tells the developer why Aaron
 - **Phases:** start with off-plan commission paid by developers (AED 293B, 134,623 deals); add secondary later (about 80,300 deals, usually 2%).
 
 The old "half of brokerages choose early pay" sizing is gone, because Aaronz now handles all commission (AED 50M per AED 1B of sales). The secondary deal count is total minus off-plan (214,912 − 134,623). A secondary value isn't shown: the reported AED 314.7B doesn't reconcile with the totals.
+
+## 2026-11-01 — Imtiaz deck ends on market size
+
+At the user's request the pilot, future potential, next steps and finance FAQ slides were removed, so the market slide is last. The deck is now 8 slides: cover, current process, email, payout picker, proposal, what changes for Imtiaz, why this design, market. Their now-unused styles were deleted. The pilot plan, safeguards, decisions and FAQ answers remain in git history (commit 99ef75f) if they're needed as talking points.
