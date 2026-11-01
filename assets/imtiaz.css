@@ -193,9 +193,8 @@ body:not(.reader) .reveal .slides>section.present:not(.c-cover){display:flex!imp
 .mail-content{display:grid;grid-template-columns:1.45fr 1fr;gap:36px;padding:26px 28px 30px}
 .mail-letter p{font-size:16px;line-height:1.6;color:#1d2420}
 .mail-letter p+p{margin-top:12px}
-.reveal .mail-button{display:inline-flex;gap:12px;align-items:center;margin:20px 0 6px;background:#0b0b0b;color:#fff;text-decoration:none;font-weight:500;font-size:18px;padding:12px 28px;border-radius:10px}
+.reveal .mail-button{display:inline-flex;align-items:center;margin:18px 0 18px;background:#0b0b0b;color:#fff;text-decoration:none;font-weight:500;font-size:15px;padding:10px 20px;border-radius:9px}
 .reveal .mail-button:hover{background:#2a2a2a}
-.mail-button img{height:36px;width:auto;display:block}
 .mail-letter .mail-small{font-size:13px;color:#6b706c;margin-top:14px}
 .mail-letter .mail-sign{font-size:14px;color:#3d4440}
 .mail-facts{margin:0;background:#f1efe9;border-radius:12px;padding:6px 20px;align-self:start}
@@ -222,3 +221,32 @@ body:not(.reader) .reveal .slides>section.present:not(.c-cover){display:flex!imp
 .flow.us li.end{background:linear-gradient(180deg,#173426 0%,#0f1f18 100%)}
 .flow.us li.end h4{color:var(--green)}
 @media(max-width:800px){.flow{grid-template-columns:1fr}.flow ol{grid-template-columns:1fr!important;gap:12px}.flow li:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-15px;transform:translateX(-50%)}}
+/* Email: Imtiaz × Aaronz lockup and booking-confirmed line */
+.mail-lockup{display:flex;align-items:center;gap:12px}
+.mail-lockup img{height:30px;width:auto}
+.mail-lockup span{color:#9aa19d;font-size:15px}
+.mail-letter .mail-confirmed{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:#2f5a44;background:#e8f1ea;border-radius:999px;padding:5px 12px;margin-bottom:6px}
+.mail-confirmed span{font-weight:700}
+/* How brokerages would select */
+.sel{display:grid;grid-template-columns:1.5fr 1fr;gap:24px;max-width:1120px;margin:0 auto;width:100%}
+.sel-panel{background:#fafaf8;color:#1d2420;border-radius:16px;padding:26px 28px}
+.sel-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding-bottom:16px;border-bottom:1px solid #e6e5e0}
+.sel-top small{display:block;font-size:13px;color:#6b706c}
+.sel-top strong{font-size:30px;font-weight:650}
+.sel-badge{font-size:12px;color:#2f5a44;background:#e8f1ea;border-radius:999px;padding:5px 12px;white-space:nowrap}
+.reveal .sel-q{font-size:15px!important;font-weight:600;margin:18px 0 10px!important;color:#1d2420}
+.sel-opts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.sel-opts.two{grid-template-columns:1fr 2fr}
+.sel-opts button{font:inherit;text-align:left;background:#fff;border:1.5px solid #dddcd6;border-radius:12px;padding:12px 14px;cursor:pointer;color:#1d2420}
+.sel-opts button b{display:block;font-size:16px}
+.sel-opts button span{display:block;font-size:13px;color:#6b706c;margin-top:2px}
+.sel-opts button[aria-pressed="true"]{border-color:var(--brand);background:#eef5f0;box-shadow:0 0 0 1px var(--brand)}
+.sel-sum{background:linear-gradient(180deg,#173426 0%,#0f1f18 100%);border:1px solid rgba(111,207,151,.25);border-radius:16px;padding:28px;display:flex;flex-direction:column}
+.sel-sum strong{font-size:46px;font-weight:600;color:var(--green);margin-top:12px;line-height:1.1}
+.reveal .sel-date{font-size:18px!important;margin-top:6px!important}
+.reveal .sel-rest{font-size:15px!important;color:var(--muted);margin-top:6px!important}
+.reveal .sel-promise{font-size:16px!important;margin-top:18px!important;color:var(--ink)}
+.reveal .sel-fee{font-size:13px!important;color:var(--faint);margin-top:6px!important}
+.sel-confirm{font:inherit;margin-top:auto;align-self:flex-start;background:var(--green);color:#0b1a12;border:0;border-radius:9px;padding:10px 22px;font-weight:600;font-size:15px;cursor:pointer}
+.reveal .sel-done{margin-top:auto!important;font-size:15px!important;color:var(--green)}
+@media(max-width:800px){.sel{grid-template-columns:1fr}.sel-opts{grid-template-columns:1fr 1fr}.sel-opts.two{grid-template-columns:1fr}.sel-top{flex-direction:column}.sel-confirm,.reveal .sel-done{margin-top:18px!important}}
