@@ -61,3 +61,12 @@ The old "half of brokerages choose early pay" sizing is gone, because Aaronz now
 ## 2026-11-01 — Imtiaz deck ends on market size
 
 At the user's request the pilot, future potential, next steps and finance FAQ slides were removed, so the market slide is last. The deck is now 8 slides: cover, current process, email, payout picker, proposal, what changes for Imtiaz, why this design, market. Their now-unused styles were deleted. The pilot plan, safeguards, decisions and FAQ answers remain in git history (commit 99ef75f) if they're needed as talking points.
+
+## 2026-11-01 — Imtiaz deck moves to a light theme
+
+The user felt black looked "vibe-coded" and asked for white and a more premium, Chronicle-level finish. `assets/imtiaz.css` was rewritten as a light system, based on Chronicle's own palette (page #f3f3f3, cards #e1e1e1–#eaeaea, ink about #212121, tight negative tracking):
+- white canvas, one 1240px content column, left-aligned slide heads;
+- one ink, one grey, deep green as the single accent (one solid green card per slide);
+- flat cards, hairline tables, tabular numerals, source notes aligned to the column.
+
+About 30 unused rules left over from removed slides were dropped. Manrope stays, because Chronicle's typeface (ABC Diatype) is licensed.

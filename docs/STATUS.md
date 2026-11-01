@@ -1,6 +1,6 @@
 # Project status
 
-Updated: 2026-11-01 10:40 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-01-1040-imtiaz-market-last.md`.
+Updated: 2026-11-01 10:57 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-01-1057-imtiaz-light-theme.md`.
 
 Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE real-estate commission finance. It contains:
 
@@ -43,7 +43,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - **Current process slide** (`#process`):
     - Today: booking → milestone reached → Imtiaz notifies the broker to invoice → invoice raised → paid on Imtiaz's payment terms.
     - With Aaronz: booking (Aaronz notifies the brokerage) → broker chooses when to be paid → DLD registration (invoice requested immediately) → Aaronz verifies the invoice is authentic → paid immediately on the selected date.
-  - **Design:** dark Chronicle-style, with Aaronz green as the accent. No mention of Channel Connect.
+  - **Design (since 2026-11-01):** light, Chronicle-style. White canvas; one 1240px column with left-aligned headlines (except the centred cover); near-black ink and one grey; deep Aaronz green (#173f2e) as the only accent, used for one solid card per slide; flat grey cards and hairlines instead of shadows; tabular numerals. Manrope stays (vendored). No mention of Channel Connect.
   - **Model (since 2026-10-31):** Aaronz handles every broker commission payment for Imtiaz. Imtiaz pays all commission to Aaronz on its usual dates, and Aaronz pays every brokerage. Each brokerage chooses when to be paid and is paid exactly on that date (usual date: no fee; earlier: a fee). There's no "Standard" option and no "payment direction" any more.
   - **Slide 6 (what changes for Imtiaz):** no balance-sheet row. "What we need" is eligible commission data for each sale: total eligible commission per booking, plus the milestone and date it becomes payable.
   - **Email** (a separate mail after the booking confirmation):
@@ -82,7 +82,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - [Imtiaz: options we can offer](https://app.notion.com/p/4096ebf7407281cbaa4bf06a41bb28fe)
 - `aaronz-admin-monthly-expenses.xlsx` exists locally and is deliberately uncommitted.
 
-## Verification (2026-11-01 10:40)
+## Verification (2026-11-01 10:57)
 
 - `npm test` passed:
   - "twenty-six slide layouts ... mobile layout and controls";
