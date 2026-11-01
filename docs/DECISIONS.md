@@ -82,3 +82,7 @@ At the user's request ("do all of them"):
 - **PDF:** a committed `imtiaz.pdf`, regenerated with `npm run export:imtiaz`. It must be re-run after every deck change.
 
 The cover image was not done: it needs an Imtiaz project image we have rights to use.
+
+## 2026-11-01 — No slide transition; Aaronz & Co logo in the nav
+
+The user found the fade between slides "very bad", so it was removed completely and the deck uses Reveal's `transition:'none'` again (asserted in the test). The Imtiaz deck nav now shows the Aaronz & Co SVG logo instead of the shared "aaronz/" wordmark. The main deck is unchanged.

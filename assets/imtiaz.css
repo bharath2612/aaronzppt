@@ -185,3 +185,7 @@ body:not(.reader) .reveal .slides>section.present:not(.c-cover){display:flex!imp
 body.presenting .site-nav,body.presenting .deck-footer{display:none}
 body.presenting .reveal{height:100dvh}
 @media(max-width:800px){.nav-pdf,#presentToggle{display:none}}
+/* Nav logo: Aaronz & Co lockup instead of the shared "aaronz/" wordmark */
+.nav-logo{display:flex;align-items:center}
+.nav-logo img{height:36px;width:auto;display:block}
+@media(max-width:800px){.nav-logo img{height:30px}}
