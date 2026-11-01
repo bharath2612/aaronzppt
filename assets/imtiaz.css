@@ -1,16 +1,18 @@
 /* Imtiaz proposal deck. Light, Chronicle-style system on top of presentation.css:
    white canvas, one 1240px column with left-aligned headlines, near-black ink, one grey,
-   deep Aaronz green as the only accent, flat grey cards, hairlines instead of shadows. */
-@font-face{font-family:'Manrope';src:url('./vendor/manrope-latin-wght-normal.woff2') format('woff2');font-weight:200 800;font-display:swap}
+   deep Aaronz green as the only accent, flat grey cards, hairlines instead of shadows.
+   Inter (variable, with optical sizes) so large headlines get the Display cut. */
+@font-face{font-family:'Inter';src:url('./vendor/inter-latin-opsz-normal.woff2') format('woff2');font-weight:100 900;font-display:swap}
 :root{--paper:#fff;--ink:#0f1110;--muted:#5d625f;--faint:#8e938f;--line:#e7e7e3;--card:#f5f5f2;--tint:#eef4f0;--green:#1f6b4a;--brand:#173f2e;--mint:#a9e5c3;--w:1240px;--mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;--r-background-color:#fff;--r-main-color:var(--ink)}
 .reveal-viewport,.reveal,body{background:var(--paper)}
-body,.reveal{font-family:'Manrope','Helvetica Neue',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+body,.reveal{font-family:'Inter','Helvetica Neue',sans-serif;font-optical-sizing:auto;font-feature-settings:'cv11','ss01';color:var(--ink);-webkit-font-smoothing:antialiased}
 .site-nav{background:var(--paper);border-color:var(--line)}
 .site-nav nav a{color:var(--faint)}
 .site-nav nav a.active,.wordmark{color:var(--ink)}
 .site-nav button{border-color:var(--line);color:var(--ink);border-radius:8px}
 .deck-footer{background:var(--paper);border-color:var(--line);color:var(--faint)}
 .deck-footer button{color:var(--ink)}
+.reveal h1,.reveal h2,.reveal h3,.reveal h4{font-family:inherit}
 .reveal h1,.reveal h2{font-weight:500;letter-spacing:-.035em;color:var(--ink)}
 .reveal h3,.reveal h4{font-weight:600;letter-spacing:-.015em;color:var(--ink)}
 .reveal .progress{color:var(--green)}
@@ -23,6 +25,7 @@ body:not(.reader) .reveal .slides>section.present:not(.c-cover){display:flex!imp
 .c-head,.c-cards,.flows,.mail-window,.sel,.table-wrap,.mkt-stats,.mkt-plan{width:100%;max-width:var(--w);margin-left:auto;margin-right:auto}
 .c-head{text-align:left;margin-bottom:36px}
 .c-eyebrow{font-family:var(--mono);font-size:12px!important;letter-spacing:.1em;text-transform:uppercase!important;color:var(--faint)!important;margin-bottom:14px!important}
+.c-eyebrow span{color:var(--ink);margin-right:14px}
 .c-head h2{font-size:48px;line-height:1.08}
 .c-head>p:not(.c-eyebrow){font-size:19px;color:var(--muted);margin:14px 0 0!important;max-width:760px;line-height:1.5}
 .c-tag{font-family:var(--mono);font-size:11px!important;letter-spacing:.1em;text-transform:uppercase!important;color:var(--faint)!important}
@@ -48,7 +51,7 @@ body:not(.reader) .reveal .slides>section.present:not(.c-cover){display:flex!imp
 .c-lockup .x{font-size:28px;color:var(--faint);font-weight:300}
 /* Proposal cards */
 .c-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.c-cards .c-card{display:flex;flex-direction:column;min-height:440px}
+.c-cards .c-card{display:flex;flex-direction:column;min-height:380px}
 .note{display:grid;grid-template-columns:32px 1fr auto;gap:12px;align-items:center;padding:9px 0}
 .note+.note{border-top:1px solid var(--line);opacity:.55}
 .note>span{width:32px;height:32px;border-radius:8px;background:var(--brand);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff}
@@ -105,7 +108,6 @@ body:not(.reader) .reveal .slides>section.present:not(.c-cover){display:flex!imp
 .mail-lockup img{height:30px;width:auto}
 .mail-lockup span{color:var(--faint);font-size:15px}
 .mail-letter .mail-confirmed{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--green);background:var(--tint);border-radius:999px;padding:5px 12px;margin-bottom:8px}
-.mail-confirmed span{font-weight:700}
 @media(max-width:800px){.mail-content{grid-template-columns:1fr}.mail-meta{grid-template-columns:1fr}}
 /* Current process vs with Aaronz */
 .flows{display:grid;gap:16px}
@@ -115,17 +117,17 @@ body:not(.reader) .reveal .slides>section.present:not(.c-cover){display:flex!imp
 .flow.us .flow-label .c-tag{color:var(--green)!important}
 .flow ol{display:grid!important;grid-template-columns:repeat(5,1fr);gap:22px;list-style:none;margin:0!important;padding:0}
 .flow li{position:relative;background:var(--card);border:1px solid transparent;border-radius:14px;padding:18px 18px 20px;margin:0!important}
-.flow li:not(:last-child)::after{content:"→";position:absolute;right:-17px;top:50%;transform:translateY(-50%);color:var(--faint);font-size:14px}
+.flow li:not(:last-child)::after{content:"";position:absolute;right:-19px;top:50%;width:16px;height:16px;transform:translateY(-50%);background:var(--faint);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 8h11M9 4l4 4-4 4' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 8h11M9 4l4 4-4 4' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
 .flow li>b{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--faint);font-weight:400}
 .flow h4{font-size:17px;margin:10px 0 6px}
 .flow li p{font-size:14px!important;color:var(--muted);line-height:1.5;margin:0!important}
 .flow:not(.us) li h4{color:var(--muted)}
 .flow.us li{background:#fff;border-color:#d5e5db}
-.flow.us li:not(:last-child)::after{color:var(--green)}
+.flow.us li:not(:last-child)::after{background:var(--green)}
 .flow.us li.end{background:var(--brand);border-color:var(--brand)}
 .flow.us li.end h4{color:#fff}
 .flow.us li.end p,.flow.us li.end>b{color:rgba(255,255,255,.72)}
-@media(max-width:800px){.flow{grid-template-columns:1fr}.flow ol{grid-template-columns:1fr!important;gap:12px}.flow li:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-15px;transform:translateX(-50%)}}
+@media(max-width:800px){.flow{grid-template-columns:1fr}.flow ol{grid-template-columns:1fr!important;gap:12px}.flow li:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-14px;transform:translateX(-50%) rotate(90deg)}}
 /* How brokerages would select */
 .sel{display:grid;grid-template-columns:1.5fr 1fr;gap:16px}
 .sel-panel{background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:16px;padding:26px 28px}
@@ -171,3 +173,15 @@ body:not(.reader) .reveal .slides>section.present:not(.c-cover){display:flex!imp
 .reveal .mkt-plan p:not(.c-tag){font-size:14px!important;color:var(--muted);line-height:1.5;margin-top:12px!important}
 .reveal .mkt-plan .lead p:not(.c-tag){color:rgba(255,255,255,.72)}
 @media(max-width:800px){.mkt-stats{grid-template-columns:1fr 1fr}.mkt-stats>div:nth-child(3){border-left:0}.mkt-stats strong{font-size:30px}.mkt-plan{grid-template-columns:1fr}}
+/* Icons */
+.ico{width:14px;height:14px;flex:none;display:inline-block;vertical-align:-2px}
+.reveal .sel-done{display:inline-flex;align-items:center;gap:8px}
+.note .ok{color:var(--green);display:flex}
+.note .ok .ico{width:18px;height:18px}
+/* Nav actions and presenting (fullscreen, no site chrome) */
+.nav-actions{display:flex;gap:8px;align-items:center}
+.nav-pdf{border:1px solid var(--line);color:var(--ink);padding:10px 15px;border-radius:8px;font-size:12px;text-decoration:none}
+.nav-pdf:hover,.site-nav button:hover{border-color:#cfcfca}
+body.presenting .site-nav,body.presenting .deck-footer{display:none}
+body.presenting .reveal{height:100dvh}
+@media(max-width:800px){.nav-pdf,#presentToggle{display:none}}

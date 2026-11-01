@@ -36,10 +36,16 @@ The broker may not assign or novate its rights (11.2), immediate termination voi
 
 `assets/vendor/reveal.css` sets `.reveal-viewport` to white, so dark slides showed white text on white. Fixed by setting the viewport background in `assets/imtiaz.css`. A slide id `next` also clashed with the footer's `#next` button; it's renamed `next-steps`.
 
-## 2026-10-30 — Aaronz & Co logo resolution (open)
+## 2026-10-30 — Aaronz & Co logo resolution (resolved 2026-11-01)
 
 The only available Aaronz & Co logo is a 291×156 PNG from aaronz.co, cropped to 251×131. At 76px high it may look soft on high-density screens next to the vector Imtiaz logo. Needs a vector or larger source.
 
 ## 2026-10-30 — Live demo branding differs from the deck (open)
 
 The today-ai Imtiaz demo shows a "Today" wordmark at the payment choice; the Imtiaz deck brands the product "Aaronz". It's a separate repo, so nothing was changed there.
+
+Resolution (2026-11-01): aaronz.co has no vector logo; its only other large images are service icons. The PNG was upscaled six times and traced with potrace (JS port, run from the scratchpad, not a project dependency) into `assets/brand/aaronz-co-logo.svg`. Checked side by side against the PNG. Replace it with the official SVG if the brand team has one.
+
+## 2026-11-01 — Imtiaz cover headline kept the old font
+
+`presentation.css` sets `.reveal h1` to Plus Jakarta Sans directly, so after the switch to Inter the cover headline still rendered in Jakarta (seen in the exported PDF). Fixed with `.reveal h1, h2, h3, h4 {font-family: inherit}` in `assets/imtiaz.css`.

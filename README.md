@@ -4,7 +4,7 @@ Open `index.html` directly in your browser. Reveal.js and the font are bundled l
 
 The presentation contains twenty-six slides, source links, proposed deal flows, the interactive calculator and a fee-scenarios slide (30/60/90-day developer payment durations with editable rates, bank rate and fixed fee; logic in `assets/scenarios.js`). `commission-calculator.html` remains available as a standalone calculator.
 
-`imtiaz.html` is a separate 8-slide proposal deck for Imtiaz Developments (dark, Chronicle-style design in `assets/imtiaz.css`; it reuses `assets/presentation.js`). Its email's "Get commission now" button goes to the next slide, an interactive payout picker (`assets/imtiaz-select.js`). Logos: `assets/brand/imtiaz-logo.svg` (from imtiaz.ae) and `assets/brand/aaronz-co-logo.png` (from aaronz.co).
+`imtiaz.html` is a separate 8-slide proposal deck for Imtiaz Developments. It has a light, Chronicle-style design in `assets/imtiaz.css`, set in Inter (vendored, OFL), and reuses `assets/presentation.js`. Its email's "Get commission now" button goes to the next slide, an interactive payout picker (`assets/imtiaz-select.js`). `assets/imtiaz-present.js` adds a fade between slides and a Present button (fullscreen, no site chrome). Speaker notes sit in each slide's `aside.notes`; press S for the speaker view (Reveal notes plugin, vendored as `assets/vendor/reveal-notes.js`). Run `npm run export:imtiaz` after any deck change to regenerate `imtiaz.pdf`, which the nav links to. Logos: `assets/brand/imtiaz-logo.svg` (from imtiaz.ae) and `assets/brand/aaronz-co-logo.svg` (traced from aaronz.co's PNG).
 
 ## Edit
 - `index.html`: slide content

@@ -1,4 +1,4 @@
-const deck = new Reveal({width:1440,height:800,margin:0.035,center:false,hash:true,controls:false,progress:true,transition:'none',transitionSpeed:'fast',disableLayout:false,scrollActivationWidth:null,keyboardCondition:()=>!document.activeElement?.closest('input,select,textarea,button,summary'),touch:false});
+const deck = new Reveal({width:1440,height:800,margin:0.035,center:false,hash:true,controls:false,progress:true,transition:'none',transitionSpeed:'fast',disableLayout:false,scrollActivationWidth:null,keyboardCondition:()=>!document.activeElement?.closest('input,select,textarea,button,summary'),touch:false,plugins:window.RevealNotes?[window.RevealNotes]:[]});
 let reader=false;
 const toggle=document.getElementById('viewToggle');
 function selectedSection(){const id=location.hash.replace(/^#\/?/,'');return document.getElementById(id)||document.getElementById('home');}

@@ -70,3 +70,15 @@ The user felt black looked "vibe-coded" and asked for white and a more premium, 
 - flat cards, hairline tables, tabular numerals, source notes aligned to the column.
 
 About 30 unused rules left over from removed slides were dropped. Manrope stays, because Chronicle's typeface (ABC Diatype) is licensed.
+
+## 2026-11-01 — Premium finish for the Imtiaz deck
+
+At the user's request ("do all of them"):
+- **Typeface:** Inter, variable with optical sizes (the Display cut at large sizes), vendored with its OFL licence, replacing Manrope. Chronicle's ABC Diatype would need a paid licence.
+- **Logo:** a traced vector Aaronz & Co logo.
+- **Copy:** shorter cards and tables, with the detail and the removed pilot/FAQ talking points moved into speaker notes. `presentation.js` now registers the Reveal notes plugin only when `window.RevealNotes` is loaded, so the main deck is unaffected.
+- **Presenting:** a Present button (fullscreen, site chrome hidden) and fade transitions, both Imtiaz-only in `assets/imtiaz-present.js`.
+- **Labels and icons:** numbered section labels, and SVG arrows and checks instead of text glyphs.
+- **PDF:** a committed `imtiaz.pdf`, regenerated with `npm run export:imtiaz`. It must be re-run after every deck change.
+
+The cover image was not done: it needs an Imtiaz project image we have rights to use.
