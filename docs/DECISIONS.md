@@ -48,4 +48,4 @@ Slide 2 of the Imtiaz deck is now "Current process": two five-step flows compari
 
 The email slide (now slide 3) is a separate follow-up after the booking confirmation, branded Imtiaz × Aaronz. It's framed as punctuality, not fees: "choose when to get paid, and get paid exactly on that day". Its small "Get commission now" button goes to a new slide 4, "How brokerages would select". That slide is an interactive picker: same day / 15 / 30 days / usual date, and 100% / 50%. It replaces the link to the external today-ai demo, so the deck works offline and stays on Aaronz branding. The fee appears only as a small line on the picker and on the finance slides.
 
-The user listed the options as "50 days, 30 days, 100%, 50%". The picker uses the confirmed schedule (same day, 15, 30, usual date = 45 days); "50 days" was read as 15. This needs confirming.
+The user listed the options as "50 days, 30 days, 100%, 50%". The picker uses the confirmed schedule (same day, 15, 30, usual date = 45 days); "50 days" was read as 15; the user confirmed 15 days on 2026-11-01.
