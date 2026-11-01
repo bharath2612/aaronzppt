@@ -1,6 +1,6 @@
 # Project status
 
-Updated: 2026-11-01 10:01 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-01-1001-imtiaz-remove-money.md`.
+Updated: 2026-11-01 10:07 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-01-1007-imtiaz-market.md`.
 
 Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE real-estate commission finance. It contains:
 
@@ -32,14 +32,18 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
     4. how brokerages would select: the payout picker (`#select`);
     5. the proposal (cards for agents, brokerages and Imtiaz);
     6. what changes for Imtiaz;
-    7. at the source vs an approval-based platform;
-    8. 60-day pilot;
-    9. future potential;
-    10. market size;
+    7. at the source vs an approval-based platform ("Why this design");
+    8. market size ("Why we're in this market");
+    9. 60-day pilot;
+    10. future potential;
     11. next steps;
     12. finance FAQ.
 
     The "Follow the money" slide was removed on 2026-11-01.
+  - **Market slide** (`#market`, Dubai 2025), pitched to the developer rather than to investors:
+    - stats: AED 682.5B property sales across 214,912 deals; 62.6% off-plan; AED 13.59B brokerage commissions; +31%;
+    - cards: Start · Off-plan (AED 293B, 134,623 deals, about 5%, paid by developers); Later · Secondary (about 80,300 ready deals, usually 2%, paid by buyer or seller); With Imtiaz (per AED 1B of broker sales, AED 50M commission, all handled by Aaronz, cost AED 0);
+    - sources: DLD (9 Mar 2026) for commissions; Bayut and Truhauz reports of DLD data for sales and off-plan figures.
   - **Current process slide** (`#process`):
     - Today: booking → milestone reached → Imtiaz notifies the broker to invoice → invoice raised → paid on Imtiaz's payment terms.
     - With Aaronz: booking (Aaronz notifies the brokerage) → broker chooses when to be paid → DLD registration (invoice requested immediately) → Aaronz verifies the invoice is authentic → paid immediately on the selected date.
@@ -82,7 +86,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - [Imtiaz: options we can offer](https://app.notion.com/p/4096ebf7407281cbaa4bf06a41bb28fe)
 - `aaronz-admin-monthly-expenses.xlsx` exists locally and is deliberately uncommitted.
 
-## Verification (2026-11-01 10:01)
+## Verification (2026-11-01 10:07)
 
 - `npm test` passed:
   - "twenty-six slide layouts ... mobile layout and controls";

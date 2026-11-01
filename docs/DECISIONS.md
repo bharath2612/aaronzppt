@@ -49,3 +49,11 @@ Slide 2 of the Imtiaz deck is now "Current process": two five-step flows compari
 The email slide (now slide 3) is a separate follow-up after the booking confirmation, branded Imtiaz × Aaronz. It's framed as punctuality, not fees: "choose when to get paid, and get paid exactly on that day". Its small "Get commission now" button goes to a new slide 4, "How brokerages would select". That slide is an interactive picker: same day / 15 / 30 days / usual date, and 100% / 50%. It replaces the link to the external today-ai demo, so the deck works offline and stays on Aaronz branding. The fee appears only as a small line on the picker and on the finance slides.
 
 The user listed the options as "50 days, 30 days, 100%, 50%". The picker uses the confirmed schedule (same day, 15, 30, usual date = 45 days); "50 days" was read as 15; the user confirmed 15 days on 2026-11-01.
+
+## 2026-11-01 — Market slide: off-plan first, secondary later
+
+The market slide now follows "Why this design". It tells the developer why Aaronz is in this market:
+- **Dubai 2025:** AED 682.5B in sales across 214,912 deals; 62.6% off-plan; AED 13.59B in brokerage commissions, up 31%.
+- **Phases:** start with off-plan commission paid by developers (AED 293B, 134,623 deals); add secondary later (about 80,300 deals, usually 2%).
+
+The old "half of brokerages choose early pay" sizing is gone, because Aaronz now handles all commission (AED 50M per AED 1B of sales). The secondary deal count is total minus off-plan (214,912 − 134,623). A secondary value isn't shown: the reported AED 314.7B doesn't reconcile with the totals.

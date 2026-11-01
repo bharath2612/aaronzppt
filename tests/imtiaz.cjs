@@ -7,7 +7,7 @@ const {pathToFileURL}=require('node:url');
  const url=pathToFileURL(process.cwd()+'/imtiaz.html').href;const errors=[];
  const page=await browser.newPage({viewport:{width:1440,height:1000}});page.on('pageerror',e=>errors.push(e.message));
  await page.goto(url);await page.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());await page.evaluate(()=>document.fonts.ready);
- const ids=['home','process','how-it-works','select','proposal','cfo','source-advantage','pilot','future','market','next-steps','faq'];
+ const ids=['home','process','how-it-works','select','proposal','cfo','source-advantage','market','pilot','future','next-steps','faq'];
  assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('.slides>section')].map(s=>s.id)),ids);
  for(let i=0;i<ids.length;i++){await page.evaluate(i=>deck.slide(i),i);await page.waitForTimeout(300);await page.screenshot({path:'.build/imtiaz-'+ids[i]+'.png'});
   // Content must stay inside the slide and clear of the absolutely positioned source note.
