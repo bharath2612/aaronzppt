@@ -102,3 +102,7 @@ The user dropped the "2 to 3 days" figure. Brokerages raise the invoice the same
 ## 2026-11-04 — Investor wording: same day, commission milestone, handpicked
 
 The investor deck says "same day", which matches the cover and fee table and is the stronger pitch. It carries a footnote that invoices raised after a daily cut-off are paid the next working day, because a late invoice can't be paid that day. This replaces "within 24 hours". Timelines and fees count from the commission milestone, not DLD registration; the Imtiaz deck is unchanged. "Handpicked developers only" replaces "Top-tier developers only" because "top-tier" invites the objection that Aaronz isn't capturing the whole market. The criterion is a clean financial track record.
+
+## 2026-11-04 — Investor same-day cut-off is 2 pm; Imtiaz deck keeps DLD registration
+
+The user set the cut-off: settled the same day if the invoice is raised before 2 pm. The move from DLD registration to the commission milestone applies to the investor deck only, so the Imtiaz deck stays as it is.

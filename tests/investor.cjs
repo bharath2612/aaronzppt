@@ -27,6 +27,9 @@ const {pathToFileURL}=require('node:url');
  assert.deepEqual(await page.locator('#team h3').allTextContents(),['Jikku Luke','Surinder Jaiswani','Bharath Chippa']);
  // Timelines: roughly 2 months today, the same day with Aaronz, both from the commission milestone.
  for(const id of ['problem','solution']){assert.equal(await page.locator('#'+id+' .inv-time li').count(),3);assert.match(await page.locator('#'+id+' .inv-time li h3').first().textContent(),/Commission milestone/);}
+ // The timeline spans the whole column, ending at the right edge with its last step right-aligned.
+ for(const id of ['problem','solution']){await page.evaluate(id=>deck.slide([...document.querySelectorAll('.slides>section')].findIndex(s=>s.id===id)),id);await page.waitForTimeout(200);const g=await page.evaluate(id=>{const q=s=>document.querySelector('#'+id+' '+s).getBoundingClientRect();const lastLi=document.querySelector('#'+id+' .inv-time li:last-child');return {time:q('.inv-time'),call:q('.inv-call'),last:lastLi.getBoundingClientRect(),align:getComputedStyle(lastLi).textAlign};},id);assert(Math.abs(g.time.width-g.call.width)<2&&Math.abs(g.last.right-g.call.right)<2,id+' timeline does not span the column');assert.equal(g.align,'right');}
+ assert.match(await page.locator('#solution .source').textContent(),/before 2 pm/);
  assert.match(await page.locator('#problem .inv-call').textContent(),/Roughly 2 months/);assert.match(await page.locator('#solution .inv-call').textContent(),/same day/);
  const wording=await page.evaluate(()=>document.querySelector('.slides').textContent);assert(!/24 hours|DLD registration|DLD reservation/.test(wording),'old wording still shown');
  assert.equal(await page.locator('#developers h2').textContent(),'Handpicked developers only');

@@ -20,14 +20,26 @@
 .rows>div{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:15px}
 .rows dt{color:var(--muted)}
 .rows dd{margin:0;font-weight:600}
-/* Timelines on the problem and solution slides */
-.inv-time{width:100%;max-width:var(--w);margin:8px auto 0!important;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,1fr)}
-.reveal .inv-time li{position:relative;margin:0;padding:24px 28px 26px 0;border-top:2px solid var(--line)}
-.inv-time li::before{content:'';position:absolute;top:-7px;left:0;width:12px;height:12px;border-radius:50%;background:var(--ink)}
-.inv-time.us li{border-color:var(--orange)}
-.inv-time.us li::before{background:var(--orange)}
-.inv-time h3{font-size:22px;line-height:1.2;margin:8px 0 6px}
-.reveal .inv-time li p:not(.c-tag){font-size:16px!important;color:var(--muted);line-height:1.5}
+/* Timelines: one line across the full column, with a node at each end and one in the middle.
+   Duration pills sit on the line, halfway between nodes (columns are equal, so -25% and 25% of a column). */
+.reveal .inv-time{position:relative;width:100%;max-width:var(--w);margin:14px auto 32px!important;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,1fr)}
+.inv-time::before{content:'';position:absolute;top:13px;left:0;right:0;height:4px;border-radius:2px;background:#c9c9c4}
+.inv-time.us::before{background:var(--orange)}
+.reveal .inv-time li{position:relative;margin:0;padding:56px 0 0}
+.inv-time li::before{content:'';position:absolute;top:5px;width:20px;height:20px;border-radius:50%;background:var(--ink);box-shadow:0 0 0 5px var(--paper)}
+.inv-time.us li::before{background:var(--brand)}
+.inv-time li:nth-child(1){text-align:left;padding-right:32px}
+.inv-time li:nth-child(1)::before{left:0}
+.inv-time li:nth-child(2){text-align:center;padding-left:24px;padding-right:24px}
+.inv-time li:nth-child(2)::before{left:50%;transform:translateX(-50%)}
+.inv-time li:nth-child(3){text-align:right;padding-left:32px}
+.inv-time li:nth-child(3)::before{right:0}
+.inv-time .when{position:absolute;top:0;transform:translateX(-50%);padding:5px 16px;border-radius:999px;background:var(--paper);border:1px solid #c9c9c4;font-size:14px;font-weight:600;line-height:1.4;white-space:nowrap;color:var(--ink)}
+.inv-time.us .when{border-color:var(--orange);color:var(--brand)}
+.inv-time li:nth-child(2) .when{left:-25%}
+.inv-time li:nth-child(3) .when{left:25%}
+.inv-time h3{font-size:26px;line-height:1.2;margin:0 0 8px}
+.reveal .inv-time li p{font-size:17px!important;color:var(--muted);line-height:1.5}
 /* How we make money */
 .inv-split{width:100%;max-width:var(--w);margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr;gap:16px}
 .inv-split .c-card{display:flex;flex-direction:column}
@@ -40,4 +52,4 @@
 .inv-call{width:100%;max-width:var(--w);margin:12px auto 0;padding:24px 28px}
 .reveal .inv-call h3{font-size:24px;margin:0;color:#fff}
 .reveal .inv-call p{font-size:16px!important;margin-top:6px!important}
-@media(max-width:800px){.inv-split,.mkt-plan.two{grid-template-columns:1fr}.inv-factors{grid-template-columns:1fr}.inv-time{grid-template-columns:1fr}.c-lockup img{height:60px}.todo{white-space:normal}}
+@media(max-width:800px){.inv-split,.mkt-plan.two{grid-template-columns:1fr}.inv-factors{grid-template-columns:1fr}.reveal .inv-time{grid-template-columns:1fr;gap:24px}.inv-time::before,.inv-time li::before{display:none}.reveal .inv-time li{padding:0!important;text-align:left!important}.inv-time .when{position:static!important;display:inline-block;transform:none;margin-bottom:10px}.c-lockup img{height:60px}.todo{white-space:normal}}
