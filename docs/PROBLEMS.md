@@ -90,3 +90,7 @@ The "o" is two mirrored halves. Their overlap was under a pixel at logo sizes, s
 ## 2026-11-04 — "Months" vs the investor timeline's numbers
 
 The problem title now says "months", replacing the "roughly 2 months" label noted earlier. The timeline still adds up to 35 to 50 days, so the same question applies. Resolved: the user accepted "months" as is.
+
+## 2026-11-04 — Single words dropping to a last line on investor slides
+
+The text under titles was capped at 760px, so "it." dropped to its own line after a wording change. The same fault had been fixed only on the product slide. Now fixed for the whole deck, with a test. The test skips text with inline markup and only checks one viewport width, so other screen sizes could still show it.
