@@ -114,3 +114,7 @@ The repo and GitHub Pages site are public, so `investor/notes.md` is ignored by 
 ## 2026-11-04 — Three developer tests on the investor partner slide
 
 The user approved three tests (reputation, cash flow, payment record) for the initial phase, with the firm ending "If they don't pass all three, we don't sign." "Initial phase" answers the objection that being selective limits the market. The earlier five factors now sit inside the tests.
+
+## 2026-11-04 — Investor deck in US dollars
+
+The user wants every investor deck figure in US dollars with no conversion footnote. Market figures use the pegged 3.6725 AED per dollar, kept in the speaker note. "No footers" was read as no currency footnote, so the market sources and the 2 pm and fee terms stay until the user says otherwise. The Imtiaz and main decks stay in AED.

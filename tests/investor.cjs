@@ -38,6 +38,8 @@ const {pathToFileURL}=require('node:url');
  assert.equal(await page.locator('#developers h2').textContent(),'Handpicked developers only');
  // The developer slide shows the three tests and the firm ending.
  assert.deepEqual(await page.locator('#developers .inv-factors h3').allTextContents(),['Reputation','Cash flow','Payment record']);assert.match(await page.locator('#developers .inv-call').textContent(),/we don.t sign/);
+ // All visible figures are in US dollars; AED appears only in the market slide's speaker note.
+ assert(!/AED/.test(await page.evaluate(()=>{const c=document.querySelector('.slides').cloneNode(true);c.querySelectorAll('aside.notes').forEach(n=>n.remove());return c.textContent;})),'AED still shown');assert.match(await page.locator('#market .mkt-stats').textContent(),/\$185\.8B/);
  const text=await page.evaluate(()=>document.body.textContent);assert(!/channel connect/i.test(text),'Channel Connect mentioned');
  const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});mobile.on('pageerror',e=>errors.push(e.message));
  await mobile.goto(url);await mobile.waitForFunction(()=>document.body.classList.contains('reader'));await mobile.waitForTimeout(500);
