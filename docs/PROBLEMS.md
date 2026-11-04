@@ -68,4 +68,4 @@ The problem timeline adds up to 35 to 50 days (4 to 5 days, then 30 to 45), whic
 
 ## 2026-11-04 — Investor problem cards are unsourced
 
-The brokerage, developer and market cards come from reasoning about the model, not data or interviews, so behaviour claims are worded with "may". "Nobody fixes it at the source" is an absolute claim based only on the providers already researched. Needs real examples, or softer wording, before investors see it.
+The brokerage, developer and risk cards come from reasoning about the model, not data or interviews, so behaviour claims are worded with "may". They need real examples before investors see them. "Nobody fixes it at the source" was removed at the user's request and replaced with a risk card.
