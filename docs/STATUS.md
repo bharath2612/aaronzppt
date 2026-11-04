@@ -1,6 +1,6 @@
 # Project status
 
-Updated: 2026-11-04 15:37 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-04-1537-investor-product-not-service.md`.
+Updated: 2026-11-04 15:41 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-04-1541-investor-word-rule.md`.
 
 Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE real-estate commission finance. It contains:
 
@@ -97,7 +97,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - [Imtiaz: options we can offer](https://app.notion.com/p/4096ebf7407281cbaa4bf06a41bb28fe)
 - `aaronz-admin-monthly-expenses.xlsx` exists locally and is deliberately uncommitted.
 
-## Verification (2026-11-04 15:37 +04)
+## Verification (2026-11-04 15:41 +04)
 
 - `npm test` passed:
   - "twenty-six slide layouts ... mobile layout and controls";

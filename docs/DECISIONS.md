@@ -134,3 +134,7 @@ The user retitled the slide "Fully autonomous solution", with the vision of a co
 ## 2026-11-04 — Investor product slide: a product, not a service
 
 The user wants the slide to stress software over headcount: a product that manages this automatically instead of an army of accountants. The title "A product, not a service" replaces "Fully autonomous solution", and the autonomy vision stays in the lede.
+
+## 2026-11-04 — "Automatically" is banned from the investor pitch
+
+The user doesn't want the word anywhere in the pitch, including speaker notes. The deck uses "on its own" and "by AI"; the test enforces the rule.
