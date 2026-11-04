@@ -6,7 +6,8 @@
   "scripts": {
     "start": "python3 -m http.server 4173",
     "test": "node tests/presentation.cjs && node tests/imtiaz.cjs && node tests/investor.cjs",
-    "export:imtiaz": "node tools/export-imtiaz-pdf.cjs"
+    "export:imtiaz": "node tools/export-imtiaz-pdf.cjs",
+    "export:investor": "node tools/export-investor-pdf.cjs"
   },
   "keywords": [],
   "author": "",

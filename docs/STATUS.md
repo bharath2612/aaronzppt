@@ -1,6 +1,6 @@
 # Project status
 
-Updated: 2026-11-04 17:38 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-04-1738-investor-agent-product.md`.
+Updated: 2026-11-04 18:02 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-04-1802-investor-currency-switch.md`.
 
 Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE real-estate commission finance. It contains:
 
@@ -32,7 +32,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - **Problem and solution cards:** each slide has Brokerages, Agents, Developers and The risk, all styled the same, in the same order, so every problem has its answer. The claims are unsourced, and two answers depend on open points (`docs/PROBLEMS.md`).
   - **Founder notes:** `investor/notes.md` holds what the user has said about this deck. It is local only and ignored by git. Read it first and keep it updated.
   - **Developer slide:** "Every developer tested before we sign", with five tests (reputation, cash flow, payment record, market share, unsold inventory); developers that fail any test are not signed.
-  - **Currency:** all figures in US dollars, converted at the pegged 3.6725 (rate in the speaker note only).
+  - **Currency:** USD/AED dropdown in the nav (USD default), with a PDF per currency from `npm run export:investor`. Logic in `investor/currency.js`.
   - **Market title:** "Dubai's commission market: $3.7B and growing fast".
   - **Money slide:** spread by days until the developer pays, on $25,000 at 15% charged and 9% cost of money: 30 days $125, 60 days $250, 90 days $375. How fees are set when the date moves is open (`docs/PROBLEMS.md`).
   - **Competition slide:** Lyte and Tongo (global, larger cards), FastPay RECAP and ACOT (local). Only Lyte has a published valuation, from one source (`docs/PROBLEMS.md`).
@@ -41,7 +41,6 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - **Logo:** one-line "Aaronz AI" (`investor/aaronz-ai-logo.svg`, built by `tools/make-aaronz-ai-logo.py`); investor deck only.
   - **Team slide:** three names only, at the user's request.
   - **Still "To be added":** the raise amount and the use-of-funds split. The categories (licence, funding capital, product, team) are suggestions awaiting confirmation.
-  - No PDF export yet.
 - **Imtiaz deck** (`imtiaz.html`, for the CFO meeting; current date to be confirmed by the user):
   - **Slides:**
     1. cover (Imtiaz Developments × Aaronz & Co logos at equal height, white; headline "Brokerages paid the same day." highlighted in light blue, then "Imtiaz pays as usual.");
@@ -100,11 +99,11 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - [Imtiaz: options we can offer](https://app.notion.com/p/4096ebf7407281cbaa4bf06a41bb28fe)
 - `aaronz-admin-monthly-expenses.xlsx` exists locally and is deliberately uncommitted.
 
-## Verification (2026-11-04 17:38 +04)
+## Verification (2026-11-04 18:02 +04)
 
 - `npm test` passed:
   - "twenty-six slide layouts ... mobile layout and controls";
-  - "investor deck, eleven slide layouts, orange palette, placeholders, timelines, developer tests, fonts, logos, and mobile reader layout" (all nine slides inspected in screenshots on 2026-11-04, the team, problem, solution, fee and developer slides again after their edits; the mobile layout only by the overflow check);
+  - "investor deck, eleven slide layouts, orange palette, placeholders, timelines, developer tests, currency switch, fonts, logos, and mobile reader layout" (all nine slides inspected in screenshots on 2026-11-04, the team, problem, solution, fee and developer slides again after their edits; the mobile layout only by the overflow check);
   - "Imtiaz deck, eight slide layouts, email call to action and payout selection, fonts, logos, speaker notes, presenting mode, and mobile reader layout"; `npm run export:imtiaz` wrote an 8-page `imtiaz.pdf`. Page 4 (the picker) was inspected after the date change; the only slide content changed was on that page.
 - `git diff --check` clean.
 - The select slide was inspected in a desktop screenshot after the date change; the other Imtiaz slides were last inspected on 2026-11-01. The developer-flows diagram was rendered (1977×2048) and inspected.

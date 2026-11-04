@@ -154,3 +154,7 @@ The user replaced the single 45-day assumption ("offline commissions" read as of
 ## 2026-11-04 — Investor agent product modelled on LytePay
 
 The user asked for LytePay's model in the UAE. The slide uses LytePay's published 4.5% flat fee and its highest published 80% limit (one agency, SRI; others are capped by a balance). 9% cost of money is the user's figure; 60 days and 5% take-up are assumptions. It is framed as "the next product", which is our wording for the user to confirm.
+
+## 2026-11-04 — Investor deck switches between USD and AED
+
+Replaces USD-only; USD stays the default. Market figures use the source AED numbers. Example amounts are rounded to AED 92,000 ($25,000) and AED 37,000 ($10,000), and their fees are recalculated from those amounts rather than converted, so each currency's maths adds up on its own. PDFs are pre-built per currency.

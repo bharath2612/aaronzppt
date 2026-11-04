@@ -67,9 +67,27 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  // All visible figures are in US dollars; AED appears only in the market slide's speaker note.
  assert(!/AED/.test(await page.evaluate(()=>{const c=document.querySelector('.slides').cloneNode(true);c.querySelectorAll('aside.notes').forEach(n=>n.remove());return c.textContent;})),'AED still shown');assert.match(await page.locator('#market .mkt-stats').textContent(),/\$185\.8B/);
  const text=await page.evaluate(()=>document.body.textContent);assert(!/channel connect/i.test(text),'Channel Connect mentioned');
+ // Currency switch: USD by default, every figure changes in AED, and the PDF link follows.
+ assert.equal(await page.locator('#currency').inputValue(),'usd');assert.equal(await page.locator('#deckPdf').getAttribute('href'),'aaronz-investor-usd.pdf');
+ const aed=await browser.newPage({viewport:{width:1440,height:1000}});aed.on('pageerror',e=>errors.push(e.message));await aed.goto(url);await aed.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());await aed.selectOption('#currency','aed');
+ assert.equal(await aed.locator('#deckPdf').getAttribute('href'),'aaronz-investor-aed.pdf');
+ const slideText=await aed.evaluate(()=>{const c=document.querySelector('.slides').cloneNode(true);c.querySelectorAll('aside.notes').forEach(n=>n.remove());return c.textContent;});assert(!slideText.includes('$'),'dollar sign left in AED: '+(slideText.match(/.{20}\$.{10}/)||[''])[0]);
+ for(const figure of ['AED 682.5B','AED 13.59B','AED 293B','AED 2,300','AED 920','AED 1,665','AED 8.15M','AED 121M'])assert(slideText.includes(figure),figure);
+ for(const [c,cost,fee,spread,base] of [[30,690,1150,460,92000],[60,1380,2300,920,92000],[90,2070,3450,1380,92000]]){assert.equal(Math.round(base*.09*c/360),cost);assert.equal(Math.round(base*.15*c/360),fee);assert.equal(fee-cost,spread);}
+ for(let i=0;i<ids.length;i++){await aed.evaluate(i=>deck.slide(i),i);await aed.waitForTimeout(250);await aed.screenshot({path:'.build/investor-aed-'+ids[i]+'.png'});
+  const over=await aed.locator('#'+ids[i]).evaluate(el=>{const r=el.getBoundingClientRect();const note=el.querySelector(':scope>.source');const limit=note?note.getBoundingClientRect().top:r.bottom;return [...el.querySelectorAll('*')].filter(n=>!n.closest('aside.notes,.source,.c-meta')).filter(n=>{const b=n.getBoundingClientRect();return b.width>0&&(b.bottom>limit+1||b.left<r.left-1||b.right>r.right+1);}).map(n=>n.tagName+'.'+n.className);});assert.deepEqual(over,[],'AED '+ids[i]+' overflow: '+over);}
+ // Switching currency must not change how a figure looks: the market headline stays large in both currencies.
+ for(const [view,slide] of [[page,4],[aed,4]]){await view.evaluate(i=>deck.slide(i),slide);await view.waitForTimeout(200);assert.equal(await view.locator('#market .mkt-stats strong data').first().evaluate(e=>getComputedStyle(e).fontSize),'44px');}
+ // Table figures stay on one line in AED.
+ await aed.evaluate(i=>deck.slide(i),7);await aed.waitForTimeout(200);assert.deepEqual(await aed.locator('#agents tbody td').evaluateAll(cells=>cells.filter(c=>c.scrollWidth>c.clientWidth+1||c.getClientRects()[0].height>60).map(c=>c.textContent)),[]);
+ // The choice survives a reload, a link can set it, and both PDFs exist; reading mode still works.
+ await aed.reload();await aed.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());assert.equal(await aed.locator('#currency').inputValue(),'aed');
+ for(const c of ['usd','aed'])assert(fs.statSync('investor/aaronz-investor-'+c+'.pdf').size>100000,c+' PDF missing');
+ await aed.click('#viewToggle');assert(await aed.evaluate(()=>document.body.classList.contains('reader')));await aed.click('#viewToggle');
+ await aed.goto(url+'?currency=usd');assert.equal(await aed.locator('#currency').inputValue(),'usd');
  const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});mobile.on('pageerror',e=>errors.push(e.message));
  await mobile.goto(url);await mobile.waitForFunction(()=>document.body.classList.contains('reader'));await mobile.waitForTimeout(500);
  assert(await mobile.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'investor deck mobile overflow');await mobile.screenshot({path:'.build/investor-mobile.png',fullPage:true});
- assert.deepEqual(errors,[]);console.log('Passed: investor deck, eleven slide layouts, orange palette, placeholders, timelines, developer tests, fonts, logos, and mobile reader layout.');
+ assert.deepEqual(errors,[]);console.log('Passed: investor deck, eleven slide layouts, orange palette, placeholders, timelines, developer tests, currency switch, fonts, logos, and mobile reader layout.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});

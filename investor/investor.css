@@ -83,7 +83,7 @@
 #agents .c-card.lead .rows>div{padding:5px 0;font-size:14px}
 #agents .c-card.lead .rows .total{font-size:18px}
 #agents .c-table th{padding:11px 20px;white-space:nowrap}
-#agents .c-table td{padding:10px 20px;vertical-align:middle}
+#agents .c-table td{padding:10px 20px;vertical-align:middle;white-space:nowrap}
 #agents .table-wrap,#agents .c-table{height:100%}
 #agents .c-cards.inv-who{margin-top:12px;gap:12px}
 #agents .c-cards.inv-who .c-card{padding:14px 18px}
@@ -105,3 +105,8 @@
 .c-head>p:not(.c-eyebrow){max-width:980px}
 .reveal .slides section p,.reveal .slides section h3{text-wrap:pretty}
 .inv-time li p,.reveal .slides section h3,.c-cards p:not(.c-tag),.inv-factors p:not(.c-tag){text-wrap:balance}
+/* Currency switch in the nav */
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.nav-currency select{font:inherit;font-size:12px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:10px 12px;cursor:pointer}
+.nav-currency select:hover{border-color:#cfcfca}
+@media(max-width:480px){.site-nav nav{display:none}}
