@@ -102,3 +102,7 @@ Funding periods assume the developer pays 45 days after the milestone. Same day:
 ## 2026-11-04 — "$100,000" example wasn't a real conversion
 
 When the investor deck moved to US dollars, the per-100,000 fee example was relabelled from AED to dollars, which kept the rates right but implied a commission far above reality. The user caught it. The example now uses $25,000. The 30-day loss logged earlier is also resolved in this deck: at 15% and 9%, the options give spreads of $188, $125 and $63. Whether that money slide's rates match the Imtiaz deck is open.
+
+## 2026-11-04 — Investor competition figures are thin
+
+Lyte's $33M valuation comes from a Dealroom search listing. The page itself returned 403, and CB Insights hides valuations, so it has no second source and no known date. Tongo's $11M total is from September 2022; later aggregator totals differ ($9.47M to $9.87M). No valuation exists for FastPay RECAP or ACOT. ACOT advertises same day before 2 pm for its top developer tiers, the same promise as the investor deck's solution slide.

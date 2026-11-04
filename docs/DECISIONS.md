@@ -142,3 +142,7 @@ The user doesn't want the word anywhere in the pitch, including speaker notes. T
 ## 2026-11-04 — Investor money slide: $25,000 commission, 15% charged, 9% cost of money
 
 The user set these figures, saying commissions are around $25,000 to $30,000. The fee table was recalculated at the same 15% a year so it doesn't contradict the example. That changes the investor deck's fee rates (same day 1.875%, was 1.5%), which awaits the user's confirmation. The Imtiaz deck keeps its AED fees.
+
+## 2026-11-04 — Investor competition picks
+
+The user asked for 2 global and 2 local players from the main deck's list, with the top-valued global ones given more weight. "Accord" was read as ACOT. Lyte is the only commission-finance player found with a published valuation. Tongo was chosen second on funding raised, shown as "valuation not disclosed". Gazeal has a higher reported valuation (about $14M to $15M, 2021 to 2022) but is a property platform where commission advances are a side offering, so it was left out. Modelled estimates from aggregators were not used.

@@ -62,6 +62,17 @@
 .c-card.lead .rows dt{color:#fff}
 .c-card.lead .rows .total{font-size:22px;font-weight:600}
 .c-card.lead .rows .total dt{font-weight:600}
+/* Competition: global players get the larger row */
+.inv-comp{width:100%;max-width:var(--w);margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.inv-comp .c-card{padding:24px 28px}
+.inv-comp .global{border-top:3px solid var(--orange);border-radius:4px 4px 16px 16px}
+.inv-comp h3{margin:8px 0 6px}
+.inv-comp .global h3{font-size:30px}
+.inv-comp .local h3{font-size:21px}
+.inv-comp .value{display:block;font-size:44px;font-weight:500;letter-spacing:-.03em;line-height:1.1;color:var(--brand)}
+.reveal .inv-comp .label{font-size:14px!important;color:var(--ink);margin:2px 0 10px!important}
+.reveal .inv-comp p:not(.c-tag):not(.label){font-size:15px!important;line-height:1.5}
+.reveal .inv-comp .local p.label{margin:0 0 6px!important}
 /* Developer selection */
 .inv-tests{width:100%;max-width:var(--w);margin:0 auto;display:grid;grid-template-columns:3fr 2fr;gap:16px}
 .reveal .inv-tests>div>.c-tag{margin-bottom:12px!important}
@@ -73,7 +84,7 @@
 .inv-call{width:100%;max-width:var(--w);margin:16px auto 0;padding:24px 28px}
 .reveal .inv-call h3{font-size:24px;margin:0;color:#fff}
 .reveal .inv-call p{font-size:16px!important;margin-top:6px!important}
-@media(max-width:800px){.c-cover h1{font-size:40px}.inv-split,.mkt-plan.two{grid-template-columns:1fr}.inv-tests,.inv-factors,.inv-factors.two{grid-template-columns:1fr}.reveal .inv-time{grid-template-columns:1fr;gap:24px}.inv-time::before,.inv-time li::before{display:none}.reveal .inv-time li{padding:0!important;text-align:left!important}.inv-time .when{position:static!important;display:inline-block;transform:none;margin-bottom:10px}.c-lockup img{height:44px}.nav-logo img{height:22px}.todo{white-space:normal}}
+@media(max-width:800px){.c-cover h1{font-size:40px}.inv-split,.mkt-plan.two{grid-template-columns:1fr}.inv-tests,.inv-factors,.inv-factors.two{grid-template-columns:1fr}.inv-comp{grid-template-columns:1fr}.reveal .inv-time{grid-template-columns:1fr;gap:24px}.inv-time::before,.inv-time li::before{display:none}.reveal .inv-time li{padding:0!important;text-align:left!important}.inv-time .when{position:static!important;display:inline-block;transform:none;margin-bottom:10px}.c-lockup img{height:44px}.nav-logo img{height:22px}.todo{white-space:normal}}
 /* No word left alone on a last line, on any slide. */
 .c-head>p:not(.c-eyebrow){max-width:980px}
 .reveal .slides section p,.reveal .slides section h3{text-wrap:pretty}
