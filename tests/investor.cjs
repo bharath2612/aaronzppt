@@ -80,6 +80,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  for(const [view,slide] of [[page,4],[aed,4]]){await view.evaluate(i=>deck.slide(i),slide);await view.waitForTimeout(200);assert.equal(await view.locator('#market .mkt-stats strong data').first().evaluate(e=>getComputedStyle(e).fontSize),'44px');}
  // Table figures stay on one line in AED.
  await aed.evaluate(i=>deck.slide(i),7);await aed.waitForTimeout(200);assert.deepEqual(await aed.locator('#agents tbody td').evaluateAll(cells=>cells.filter(c=>c.scrollWidth>c.clientWidth+1||c.getClientRects()[0].height>60).map(c=>c.textContent)),[]);
+ assert(!/\\ba AED/.test(await aed.evaluate(()=>document.querySelector('.slides').textContent)),'a AED grammar');
  // The choice survives a reload, a link can set it, and both PDFs exist; reading mode still works.
  await aed.reload();await aed.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());assert.equal(await aed.locator('#currency').inputValue(),'aed');
  for(const c of ['usd','aed'])assert(fs.statSync('investor/aaronz-investor-'+c+'.pdf').size>100000,c+' PDF missing');
