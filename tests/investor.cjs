@@ -27,7 +27,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.equal(await page.locator('.c-card.lead').first().evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(207, 64, 0)');
  // Slides with no confirmed facts must show visible placeholders, not invented content.
  for(const id of ['revenue','raise'])assert(await page.locator('#'+id+' .todo').count()>0,id+' lost its placeholders');
- assert.deepEqual(await page.locator('#team h3').allTextContents(),['Jikku Luke','Surandar Jesrani','Bharath Chippa']);
+ assert.deepEqual(await page.locator('#team h3').allTextContents(),['Surandar Jesrani','Jikku Luke','Bharath Chippa']);
  // Timelines: roughly 2 months today, the same day with Aaronz, both from the commission milestone.
  for(const id of ['problem','solution']){assert.equal(await page.locator('#'+id+' .inv-time li').count(),3);assert.match(await page.locator('#'+id+' .inv-time li h3').first().textContent(),/Commission milestone/);}
  // The timeline spans the whole column, ending at the right edge with its last step right-aligned.
