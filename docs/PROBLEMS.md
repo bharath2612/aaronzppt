@@ -89,4 +89,4 @@ The "o" is two mirrored halves. Their overlap was under a pixel at logo sizes, s
 
 ## 2026-11-04 — "Months" vs the investor timeline's numbers
 
-The problem title now says "months", replacing the "roughly 2 months" label noted earlier. The timeline still adds up to 35 to 50 days, so the same question applies.
+The problem title now says "months", replacing the "roughly 2 months" label noted earlier. The timeline still adds up to 35 to 50 days, so the same question applies. Resolved: the user accepted "months" as is.

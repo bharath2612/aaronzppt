@@ -40,6 +40,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  const wording=await page.evaluate(()=>document.querySelector('.slides').textContent);assert(!/24 hours|DLD registration|DLD reservation/.test(wording),'old wording still shown');
  assert.equal(await page.locator('#developers h2').textContent(),'Every developer tested before we sign');
  assert.equal(await page.locator('#home h1 mark').textContent(),'paid the same day.');assert.match(await page.locator('#home h1').textContent(),/^Real estate commissions, paid the same day\./);
+ assert.equal(await page.locator('#market h2').textContent(),"Dubai's commission market: $3.7B and growing fast");assert.match(await page.locator('#problem .c-head').textContent(),/months away/);
  // Product slide is filled in, and team names are centred.
  assert.equal(await page.locator('#product h2').textContent(),'Fully autonomous solution');assert.equal(await page.locator('#product .todo').count(),0);assert.match(await page.locator('#product .inv-call').textContent(),/Zero bloat/);
  assert.equal(await page.locator('#team .c-card').first().evaluate(e=>getComputedStyle(e).textAlign),'center');
