@@ -110,3 +110,7 @@ The user set the cut-off: settled the same day if the invoice is raised before 2
 ## 2026-11-04 — Investor founder notes stay local
 
 The repo and GitHub Pages site are public, so `investor/notes.md` is ignored by git rather than published. The trade-off: no backup, and tools working from a fresh clone won't have it.
+
+## 2026-11-04 — Three developer tests on the investor partner slide
+
+The user approved three tests (reputation, cash flow, payment record) for the initial phase, with the firm ending "If they don't pass all three, we don't sign." "Initial phase" answers the objection that being selective limits the market. The earlier five factors now sit inside the tests.

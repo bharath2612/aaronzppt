@@ -33,12 +33,12 @@ const {pathToFileURL}=require('node:url');
  assert.match(await page.locator('#problem h2').textContent(),/Roughly 2 months/);assert.deepEqual(await page.locator('#problem .inv-who .c-tag').allTextContents(),['Brokerages','Developers','The risk']);assert.match(await page.locator('#problem .inv-who .lead').textContent(),/Developers/);assert.match(await page.locator('#solution .inv-call').textContent(),/same day/);
  const wording=await page.evaluate(()=>document.querySelector('.slides').textContent);assert(!/24 hours|DLD registration|DLD reservation/.test(wording),'old wording still shown');
  assert.equal(await page.locator('#developers h2').textContent(),'Handpicked developers only');
- // The developer slide names every factor the user listed.
- assert.deepEqual(await page.locator('#developers .inv-factors h3').allTextContents(),['Reputation','Social reputation','Banking history','Balance sheets','Leverage']);
+ // The developer slide shows the three tests and the firm ending.
+ assert.deepEqual(await page.locator('#developers .inv-factors h3').allTextContents(),['Reputation','Cash flow','Payment record']);assert.match(await page.locator('#developers .inv-call').textContent(),/we don.t sign/);
  const text=await page.evaluate(()=>document.body.textContent);assert(!/channel connect/i.test(text),'Channel Connect mentioned');
  const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});mobile.on('pageerror',e=>errors.push(e.message));
  await mobile.goto(url);await mobile.waitForFunction(()=>document.body.classList.contains('reader'));await mobile.waitForTimeout(500);
  assert(await mobile.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'investor deck mobile overflow');await mobile.screenshot({path:'.build/investor-mobile.png',fullPage:true});
- assert.deepEqual(errors,[]);console.log('Passed: investor deck, nine slide layouts, orange palette, placeholders, timelines, developer factors, fonts, logos, and mobile reader layout.');
+ assert.deepEqual(errors,[]);console.log('Passed: investor deck, nine slide layouts, orange palette, placeholders, timelines, developer tests, fonts, logos, and mobile reader layout.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});
