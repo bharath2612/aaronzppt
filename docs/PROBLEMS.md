@@ -82,3 +82,7 @@ The notes were pushed in 391490b before checking repo visibility, which is publi
 ## 2026-11-04 — Investor developer slide looked broken in the user's browser
 
 Labels sat outside the column and the five cards wrapped to two rows. Cause: GitHub Pages sends `cache-control: max-age=600`, so the browser paired new HTML with an older cached `investor.css`. Reproduced by using the stylesheet from c1c1a14 with the current HTML. Fix: the link carries a content hash, enforced by `tests/investor.cjs`. The shared `assets/` files are not versioned this way.
+
+## 2026-11-04 — Grey line across the "o" in the Aaronz AI logo
+
+The "o" is two mirrored halves. Their overlap was under a pixel at logo sizes, so the antialiased edges left a faint line, which an enlarged check didn't show. Fixed with a larger overlap in `tools/make-aaronz-ai-logo.py`. Check logos at their real display size.
