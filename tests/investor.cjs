@@ -42,7 +42,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.equal(await page.locator('#home h1 mark').textContent(),'paid the same day.');assert.match(await page.locator('#home h1').textContent(),/^Real estate commissions, paid the same day\./);
  assert.equal(await page.locator('#market h2').textContent(),"Dubai's commission market: $3.7B and growing fast");assert.match(await page.locator('#problem .c-head').textContent(),/months away/);
  // Product slide is filled in, and team names are centred.
- assert.equal(await page.locator('#product h2').textContent(),'Fully autonomous solution');assert.equal(await page.locator('#product .todo').count(),0);assert.match(await page.locator('#product .inv-call').textContent(),/Zero bloat/);
+ assert.equal(await page.locator('#product h2').textContent(),'A product, not a service');assert.equal(await page.locator('#product .todo').count(),0);assert.match(await page.locator('#product .inv-call').textContent(),/Zero bloat/);
  assert.equal(await page.locator('#team .c-card').first().evaluate(e=>getComputedStyle(e).textAlign),'center');
  // The stylesheet link carries a hash of the file, so browsers can't pair new slides with an old cached stylesheet.
  const sheet=fs.readFileSync('investor/investor.css');const version=crypto.createHash('sha256').update(sheet).digest('hex').slice(0,8);assert.equal(await page.evaluate(()=>document.querySelector('link[href^="investor.css"]').getAttribute('href')),'investor.css?v='+version,'update the ?v= hash on investor.css in investor/index.html');

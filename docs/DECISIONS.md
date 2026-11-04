@@ -130,3 +130,7 @@ The user asked for "Aaronz AI" on one line in the Aaronz font. It is derived fro
 ## 2026-11-04 — Investor product slide: fully autonomous, zero bloat
 
 The user retitled the slide "Fully autonomous solution", with the vision of a completely autonomous product at maximum efficiency, built as an AI-native company from the ground up, and "zero bloat in the AI economy". Full autonomy is written as a goal in the lede and notes, because it isn't yet in operation.
+
+## 2026-11-04 — Investor product slide: a product, not a service
+
+The user wants the slide to stress software over headcount: a product that manages this automatically instead of an army of accountants. The title "A product, not a service" replaces "Fully autonomous solution", and the autonomy vision stays in the lede.
