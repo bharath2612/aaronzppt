@@ -1,6 +1,6 @@
 # Project status
 
-Updated: 2026-11-04 16:49 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-04-1649-investor-spread-example.md`.
+Updated: 2026-11-04 16:53 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-04-1653-investor-25k-example.md`.
 
 Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE real-estate commission finance. It contains:
 
@@ -34,7 +34,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - **Developer slide:** "Every developer tested before we sign", with five tests (reputation, cash flow, payment record, market share, unsold inventory); developers that fail any test are not signed.
   - **Currency:** all figures in US dollars, converted at the pegged 3.6725 (rate in the speaker note only).
   - **Market title:** "Dubai's commission market: $3.7B and growing fast".
-  - **Money slide:** fee table plus a spread example using an assumed 7% partner rate (not a quote). The 30-day fee loses money at that rate (`docs/PROBLEMS.md`).
+  - **Money slide:** fee table and spread example on a $25,000 commission at 15% charged and 9% cost of money: $469 less $281, a $188 spread. The investor deck's fee rates now differ from the Imtiaz deck.
   - **Cover heading:** "Real estate commissions, paid the same day. Autonomously, by AI." Only "paid the same day." is highlighted.
   - **Logo:** one-line "Aaronz AI" (`investor/aaronz-ai-logo.svg`, built by `tools/make-aaronz-ai-logo.py`); investor deck only.
   - **Team slide:** three names only, at the user's request.
@@ -98,7 +98,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - [Imtiaz: options we can offer](https://app.notion.com/p/4096ebf7407281cbaa4bf06a41bb28fe)
 - `aaronz-admin-monthly-expenses.xlsx` exists locally and is deliberately uncommitted.
 
-## Verification (2026-11-04 16:49 +04)
+## Verification (2026-11-04 16:53 +04)
 
 - `npm test` passed:
   - "twenty-six slide layouts ... mobile layout and controls";
@@ -111,7 +111,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
 
 ## Next
 
-0. **Investor deck:** the user supplies a real partner rate, raise amount and use of funds. Also decide the market-figure mismatch in `docs/PROBLEMS.md`, which affects the Imtiaz market slide.
+0. **Investor deck:** the user confirms the recalculated fee table, raise amount and use of funds. Also decide the market-figure mismatch in `docs/PROBLEMS.md`, which affects the Imtiaz market slide.
 1. **Live site:** the Imtiaz deck is published, and changes are now pushed automatically after verification (the user asked on 2026-10-31). It's at https://bharath2612.github.io/aaronzppt/imtiaz.html (the user approved the push). Still open: whether the usual date really is 45 days after DLD registration.
 2. **Before the meeting (date to be confirmed):** click through the deck end to end, including the payout picker. The external today-ai demo is no longer linked from the deck.
 3. **Confirm Imtiaz's real booking process:**

@@ -138,3 +138,7 @@ The user wants the slide to stress software over headcount: a product that manag
 ## 2026-11-04 — "Automatically" is banned from the investor pitch
 
 The user doesn't want the word anywhere in the pitch, including speaker notes. The deck uses "on its own" and "by AI"; the test enforces the rule.
+
+## 2026-11-04 — Investor money slide: $25,000 commission, 15% charged, 9% cost of money
+
+The user set these figures, saying commissions are around $25,000 to $30,000. The fee table was recalculated at the same 15% a year so it doesn't contradict the example. That changes the investor deck's fee rates (same day 1.875%, was 1.5%), which awaits the user's confirmation. The Imtiaz deck keeps its AED fees.

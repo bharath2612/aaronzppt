@@ -98,3 +98,7 @@ The text under titles was capped at 760px, so "it." dropped to its own line afte
 ## 2026-11-04 — Investor fee table loses money on the 30-day option at a 7% partner rate
 
 Funding periods assume the developer pays 45 days after the milestone. Same day: $1,500 fee, 45 days funded, 12% a year, $875 cost, $625 spread. 15 days: $750 fee, 30 days funded, 9% a year, $583 cost, $167 spread. 30 days: $250 fee, 15 days funded, 6% a year, $292 cost, a $42 loss. The main deck's fee scenarios slide also assumes a 12% bank rate, which would leave no spread on the same-day option. Waiting on the user and a real partner rate.
+
+## 2026-11-04 — "$100,000" example wasn't a real conversion
+
+When the investor deck moved to US dollars, the per-100,000 fee example was relabelled from AED to dollars, which kept the rates right but implied a commission far above reality. The user caught it. The example now uses $25,000. The 30-day loss logged earlier is also resolved in this deck: at 15% and 9%, the options give spreads of $188, $125 and $63. Whether that money slide's rates match the Imtiaz deck is open.

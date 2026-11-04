@@ -46,8 +46,9 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.equal(await page.locator('#market h2').textContent(),"Dubai's commission market: $3.7B and growing fast");assert.match(await page.locator('#problem .c-head').textContent(),/months away/);
  // The founder banned this word from the pitch, including speaker notes.
  assert(!/automatically/i.test(await page.evaluate(()=>document.querySelector('.slides').textContent)),'banned word in the deck');
- // The spread example adds up: fee minus partner cost, at 12% and 7% over 45 days on $100,000.
- assert.equal(Math.round(100000*.12*45/360),1500);assert.equal(Math.round(100000*.07*45/360),875);const spreadText=await page.locator('#revenue .lead').textContent();assert.match(spreadText,/\$1,500/);assert.match(spreadText,/\$875/);assert.match(spreadText,/\$625/);
+ // The spread example adds up: $25,000 at 15% and 9% over 45 days.
+ assert.equal(Math.round(25000*.15*45/360),469);assert.equal(Math.round(25000*.09*45/360),281);assert.equal(Math.round(25000*.06*45/360),188);const spreadText=await page.locator('#revenue .lead').textContent();for(const figure of ['$25,000','15% a year','9% a year','$469','$281','$188'])assert(spreadText.includes(figure),figure);
+ assert(!/100,000/.test(await page.locator('#revenue').textContent()),'old example amount still shown');
  // Product slide is filled in, and team names are centred.
  assert.equal(await page.locator('#product h2').textContent(),'A product, not a service');assert.equal(await page.locator('#product .todo').count(),0);assert.match(await page.locator('#product .inv-call').textContent(),/Zero bloat/);
  assert.equal(await page.locator('#team .c-card').first().evaluate(e=>getComputedStyle(e).textAlign),'center');
