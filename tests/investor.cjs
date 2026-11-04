@@ -32,7 +32,7 @@ const {pathToFileURL}=require('node:url');
  assert.match(await page.locator('#solution .source').textContent(),/before 2 pm/);
  assert.match(await page.locator('#problem h2').textContent(),/Roughly 2 months/);
  // Every problem card has a matching solution card, in the same order.
- for(const id of ['problem','solution']){assert.deepEqual(await page.locator('#'+id+' .inv-who .c-tag').allTextContents(),['Brokerages','Agents','Developers','The risk']);assert.match(await page.locator('#'+id+' .inv-who .lead').textContent(),/Developers/);}
+ for(const id of ['problem','solution']){assert.deepEqual(await page.locator('#'+id+' .inv-who .c-tag').allTextContents(),['Brokerages','Agents','Developers','The risk']);assert.equal(await page.locator('#'+id+' .inv-who .lead').count(),0,'problem and solution cards must all look the same');}
  assert.match(await page.locator('#solution h2').textContent(),/same day/);
  const wording=await page.evaluate(()=>document.querySelector('.slides').textContent);assert(!/24 hours|DLD registration|DLD reservation/.test(wording),'old wording still shown');
  assert.equal(await page.locator('#developers h2').textContent(),'Handpicked developers only');
