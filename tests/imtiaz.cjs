@@ -26,7 +26,7 @@ const {pathToFileURL}=require('node:url');
  await page.evaluate(()=>deck.slide(2));await cta.click();await page.waitForFunction(()=>location.hash==='#/select');
  assert.equal(await page.locator('#selAmount').textContent(),'AED 98,500');
  await page.click('#select [data-days="15"]');await page.click('#select [data-share="50"]');
- assert.equal(await page.locator('#selAmount').textContent(),'AED 49,625');assert.equal(await page.locator('#selRest').textContent(),'then AED 50,000 on Fri 18 Dec 2026');
+ assert.equal(await page.locator('#selAmount').textContent(),'AED 49,625');assert.equal(await page.locator('#selRest').textContent(),'then AED 50,000 on Fri 8 Jan 2027');
  await page.click('#select [data-days="45"]');assert.equal(await page.locator('#selAmount').textContent(),'AED 100,000');assert(await page.locator('#selRest').isHidden());
  await page.click('#selConfirm');assert(await page.locator('#selDone').isVisible());
  const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});mobile.on('pageerror',e=>errors.push(e.message));

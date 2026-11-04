@@ -2,7 +2,7 @@
 (()=>{
  const root=document.getElementById('select');if(!root)return;
  const commission=100000,usual=45,fees={0:1500,15:750,30:250,45:0};
- const dld=new Date(2026,10,3);
+ const dld=new Date(2026,10,24);
  const on=d=>{const x=new Date(dld);x.setDate(x.getDate()+d);return x.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short',year:'numeric'}).replace(',','');};
  const aed=n=>'AED '+n.toLocaleString('en-US');
  const $=id=>document.getElementById(id);

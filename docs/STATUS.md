@@ -1,6 +1,6 @@
 # Project status
 
-Updated: 2026-11-01 11:12 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-01-1112-imtiaz-no-fade-nav-logo.md`.
+Updated: 2026-11-04 08:51 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-04-0851-imtiaz-picker-date-agent-guide.md`.
 
 Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE real-estate commission finance. It contains:
 
@@ -15,7 +15,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
 - **Main deck:** slides in `index.html`, styles in `assets/presentation.css`, navigation in `assets/presentation.js`.
   - Calculator logic: `assets/calculator.js` and `assets/unit-picker.js`.
   - Fee-scenarios slide: `assets/scenarios.js`.
-- **Imtiaz deck:** `imtiaz.html` with styles in `assets/imtiaz.css`. It reuses `assets/presentation.js` and the vendored Manrope font.
+- **Imtiaz deck:** `imtiaz.html` with styles in `assets/imtiaz.css`. It reuses `assets/presentation.js` and is set in the vendored Inter font.
   - Logos: `assets/brand/imtiaz-logo.svg` and `assets/brand/aaronz-co-logo.svg` (vector, traced from the site PNG). Scripts: `assets/imtiaz-select.js` (payout picker) and `assets/imtiaz-present.js` (Present button). PDF: `npm run export:imtiaz` writes `imtiaz.pdf` (`tools/export-imtiaz-pdf.cjs`).
 - **Standalone calculator:** `commission-calculator.html` has its own inline copy of the calculation.
 - **Global player data:** `assets/global-players.json`. The tables shown on the slides are embedded in the HTML.
@@ -24,7 +24,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
 
 ## Current state
 
-- **Imtiaz deck** (`imtiaz.html`, for the Monday CFO meeting):
+- **Imtiaz deck** (`imtiaz.html`, for the CFO meeting; current date to be confirmed by the user):
   - **Slides:**
     1. cover (Imtiaz Developments × Aaronz & Co logos at equal height, white; headline "Brokerages paid the same day." highlighted in light blue, then "Imtiaz pays as usual.");
     2. current process (two five-step flows: today vs with Aaronz);
@@ -54,7 +54,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
     - When: same day, 15 or 30 days, or the usual date;
     - How much: 100% or 50%;
     - the amount and exact date update live, with a Confirm step;
-    - illustrative DLD registration on Tue 3 Nov 2026, so the usual date is Fri 18 Dec;
+    - illustrative DLD registration on Tue 24 Nov 2026, so the usual date is Fri 8 Jan 2027;
     - framing is punctuality ("Exactly on that day. Guaranteed."); the fee is a small grey line.
   - **Payout fees** per AED 100K, by days after DLD registration (the deck treats 45 days as the usual date):
     - same day 1,500;
@@ -82,20 +82,20 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - [Imtiaz: options we can offer](https://app.notion.com/p/4096ebf7407281cbaa4bf06a41bb28fe)
 - `aaronz-admin-monthly-expenses.xlsx` exists locally and is deliberately uncommitted.
 
-## Verification (2026-11-01 11:12)
+## Verification (2026-11-04 08:51 +04)
 
 - `npm test` passed:
   - "twenty-six slide layouts ... mobile layout and controls";
   - "Imtiaz deck, eight slide layouts, email call to action and payout selection, fonts, logos, speaker notes, presenting mode, and mobile reader layout"; `npm run export:imtiaz` wrote an 8-page `imtiaz.pdf`, inspected page by page.
 - `git diff --check` clean.
-- Every Imtiaz slide was inspected in desktop screenshots; the cover and email slides were checked again after these edits. The developer-flows diagram was rendered (1977×2048) and inspected.
-- The payout picker is tested end to end: CTA click lands on `#/select`; 15 days + 50% gives AED 49,625 then AED 50,000 on Fri 18 Dec 2026; the usual date gives AED 100,000; Confirm shows the scheduled message.
+- The select slide was inspected in a desktop screenshot after the date change; the other Imtiaz slides were last inspected on 2026-11-01. The developer-flows diagram was rendered (1977×2048) and inspected.
+- The payout picker is tested end to end: CTA click lands on `#/select`; 15 days + 50% gives AED 49,625 then AED 50,000 on Fri 8 Jan 2027; the usual date gives AED 100,000; Confirm shows the scheduled message.
 - No lint or build scripts are configured.
 
 ## Next
 
 1. **Live site:** the Imtiaz deck is published, and changes are now pushed automatically after verification (the user asked on 2026-10-31). It's at https://bharath2612.github.io/aaronzppt/imtiaz.html (the user approved the push). Still open: whether the usual date really is 45 days after DLD registration.
-2. **Before Monday:** click through the deck end to end, including the payout picker. The external today-ai demo is no longer linked from the deck.
+2. **Before the meeting (date to be confirmed):** click through the deck end to end, including the payout picker. The external today-ai demo is no longer linked from the deck.
 3. **Confirm Imtiaz's real booking process:**
    - digital or paper booking form;
    - who fills it in;

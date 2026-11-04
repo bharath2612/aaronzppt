@@ -86,3 +86,7 @@ The cover image was not done: it needs an Imtiaz project image we have rights to
 ## 2026-11-01 — No slide transition; Aaronz & Co logo in the nav
 
 The user found the fade between slides "very bad", so it was removed completely and the deck uses Reveal's `transition:'none'` again (asserted in the test). The Imtiaz deck nav now shows the Aaronz & Co SVG logo instead of the shared "aaronz/" wordmark. The main deck is unchanged.
+
+## 2026-11-04 — Fixed illustrative picker date
+
+The picker's DLD date moved to Tue 24 Nov 2026 and stays fixed rather than following today's date, so the slide, the PDF and the test all show the same dates. 24 Nov was chosen because none of the resulting payout dates falls on a weekend or a UAE national holiday, and it stays in the future for about three weeks. It will need moving again if the deck is shown after that.
