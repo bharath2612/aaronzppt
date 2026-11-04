@@ -122,3 +122,7 @@ The user wants every investor deck figure in US dollars with no conversion footn
 ## 2026-11-04 — Investor developer slide: tested, five criteria
 
 "Every developer tested before we sign" replaces "Handpicked developers only", because the user found it lazy and wanted internal testing in the label. Market share and unsold inventory join reputation, cash flow and payment record. The first three protect repayment and the last two show volume, so the slide groups them that way. The firm ending now says all five.
+
+## 2026-11-04 — Aaronz AI logo in the investor deck only
+
+The user asked for "Aaronz AI" on one line in the Aaronz font. It is derived from the traced logo rather than a font file, because the font isn't identified. The "I" is constructed, so an official vector from the brand's designer should replace it if one exists. The Imtiaz and main decks keep their logos. Body copy still says "Aaronz".

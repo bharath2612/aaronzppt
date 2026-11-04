@@ -1,6 +1,6 @@
 # Project status
 
-Updated: 2026-11-04 13:57 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-04-1357-investor-five-tests.md`.
+Updated: 2026-11-04 14:03 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-04-1403-investor-aaronz-ai-logo.md`.
 
 Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE real-estate commission finance. It contains:
 
@@ -33,6 +33,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - **Founder notes:** `investor/notes.md` holds what the user has said about this deck. It is local only and ignored by git. Read it first and keep it updated.
   - **Developer slide:** "Every developer tested before we sign", with five tests (reputation, cash flow, payment record, market share, unsold inventory); developers that fail any test are not signed.
   - **Currency:** all figures in US dollars, converted at the pegged 3.6725 (rate in the speaker note only).
+  - **Logo:** one-line "Aaronz AI" (`investor/aaronz-ai-logo.svg`, built by `tools/make-aaronz-ai-logo.py`); investor deck only.
   - **Team slide:** three names only, at the user's request.
   - **Still "To be added":** where AI does the work, our margin, the raise amount and the use-of-funds split. The categories (licence, funding capital, product, team) are suggestions awaiting confirmation.
   - No PDF export yet.
@@ -94,7 +95,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - [Imtiaz: options we can offer](https://app.notion.com/p/4096ebf7407281cbaa4bf06a41bb28fe)
 - `aaronz-admin-monthly-expenses.xlsx` exists locally and is deliberately uncommitted.
 
-## Verification (2026-11-04 13:57 +04)
+## Verification (2026-11-04 14:03 +04)
 
 - `npm test` passed:
   - "twenty-six slide layouts ... mobile layout and controls";

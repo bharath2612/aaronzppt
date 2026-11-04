@@ -17,6 +17,8 @@ const {pathToFileURL}=require('node:url');
  assert.equal(await page.locator('#slideCount').textContent(),'09 / 09');
  assert(await page.evaluate(()=>document.fonts.check('500 48px Inter')),'Inter not loaded');
  assert(await page.evaluate(()=>[...document.images].every(i=>i.complete&&i.naturalWidth>0)),'logo failed to load');
+ // Nav and cover use the one-line Aaronz AI logo.
+ assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('.nav-logo img,.c-lockup img')].map(i=>i.getAttribute('src'))),['aaronz-ai-logo.svg','aaronz-ai-logo.svg']);
  assert.equal(await page.evaluate(()=>deck.getConfig().transition),'none');
  // Brand: white canvas, with the orange palette replacing the Imtiaz deck's green.
  const css=name=>page.evaluate(n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim(),name);

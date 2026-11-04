@@ -4,7 +4,8 @@
 .reveal .progress{color:var(--orange)}
 .c-eyebrow span{color:var(--brand)}
 .c-cover h1 mark{background:var(--orange)}
-.c-lockup img{height:92px}
+.c-lockup img{height:64px;filter:none}
+.nav-logo img{height:26px}
 /* White text on the accent card needs its full strength on orange. */
 .c-card.lead p,.c-card.lead dt,.c-card.lead span{color:#fff}
 .reveal .mkt-plan .lead p:not(.c-tag){color:#fff}
@@ -64,4 +65,4 @@
 .inv-call{width:100%;max-width:var(--w);margin:16px auto 0;padding:24px 28px}
 .reveal .inv-call h3{font-size:24px;margin:0;color:#fff}
 .reveal .inv-call p{font-size:16px!important;margin-top:6px!important}
-@media(max-width:800px){.inv-split,.mkt-plan.two{grid-template-columns:1fr}.inv-tests,.inv-factors,.inv-factors.two{grid-template-columns:1fr}.reveal .inv-time{grid-template-columns:1fr;gap:24px}.inv-time::before,.inv-time li::before{display:none}.reveal .inv-time li{padding:0!important;text-align:left!important}.inv-time .when{position:static!important;display:inline-block;transform:none;margin-bottom:10px}.c-lockup img{height:60px}.todo{white-space:normal}}
+@media(max-width:800px){.inv-split,.mkt-plan.two{grid-template-columns:1fr}.inv-tests,.inv-factors,.inv-factors.two{grid-template-columns:1fr}.reveal .inv-time{grid-template-columns:1fr;gap:24px}.inv-time::before,.inv-time li::before{display:none}.reveal .inv-time li{padding:0!important;text-align:left!important}.inv-time .when{position:static!important;display:inline-block;transform:none;margin-bottom:10px}.c-lockup img{height:44px}.nav-logo img{height:22px}.todo{white-space:normal}}
