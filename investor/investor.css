@@ -54,11 +54,14 @@
 .inv-split .c-card{display:flex;flex-direction:column}
 .c-card.lead .big{display:block;font-size:44px;font-weight:500;letter-spacing:-.03em;line-height:1.1;margin-top:12px}
 /* Developer selection */
-.inv-factors{width:100%;max-width:var(--w);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.inv-factors .c-card{padding:26px 28px;border-top:3px solid var(--orange);border-radius:4px 4px 16px 16px}
-.inv-factors h3{font-size:26px;margin:10px 0 8px}
-.reveal .inv-factors p:not(.c-tag){font-size:17px!important;line-height:1.5}
+.inv-tests{width:100%;max-width:var(--w);margin:0 auto;display:grid;grid-template-columns:3fr 2fr;gap:16px}
+.reveal .inv-tests>div>.c-tag{margin-bottom:12px!important}
+.inv-factors.two{grid-template-columns:repeat(2,1fr)}
+.inv-factors{width:100%;max-width:var(--w);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.inv-factors .c-card{padding:22px;border-top:3px solid var(--orange);border-radius:4px 4px 16px 16px}
+.inv-factors h3{font-size:21px;margin:0 0 8px}
+.reveal .inv-factors p:not(.c-tag){font-size:15px!important;line-height:1.5}
 .inv-call{width:100%;max-width:var(--w);margin:16px auto 0;padding:24px 28px}
 .reveal .inv-call h3{font-size:24px;margin:0;color:#fff}
 .reveal .inv-call p{font-size:16px!important;margin-top:6px!important}
-@media(max-width:800px){.inv-split,.mkt-plan.two{grid-template-columns:1fr}.inv-factors{grid-template-columns:1fr}.reveal .inv-time{grid-template-columns:1fr;gap:24px}.inv-time::before,.inv-time li::before{display:none}.reveal .inv-time li{padding:0!important;text-align:left!important}.inv-time .when{position:static!important;display:inline-block;transform:none;margin-bottom:10px}.c-lockup img{height:60px}.todo{white-space:normal}}
+@media(max-width:800px){.inv-split,.mkt-plan.two{grid-template-columns:1fr}.inv-tests,.inv-factors,.inv-factors.two{grid-template-columns:1fr}.reveal .inv-time{grid-template-columns:1fr;gap:24px}.inv-time::before,.inv-time li::before{display:none}.reveal .inv-time li{padding:0!important;text-align:left!important}.inv-time .when{position:static!important;display:inline-block;transform:none;margin-bottom:10px}.c-lockup img{height:60px}.todo{white-space:normal}}

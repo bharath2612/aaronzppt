@@ -118,3 +118,7 @@ The user approved three tests (reputation, cash flow, payment record) for the in
 ## 2026-11-04 — Investor deck in US dollars
 
 The user wants every investor deck figure in US dollars with no conversion footnote. Market figures use the pegged 3.6725 AED per dollar, kept in the speaker note. "No footers" was read as no currency footnote, so the market sources and the 2 pm and fee terms stay until the user says otherwise. The Imtiaz and main decks stay in AED.
+
+## 2026-11-04 — Investor developer slide: tested, five criteria
+
+"Every developer tested before we sign" replaces "Handpicked developers only", because the user found it lazy and wanted internal testing in the label. Market share and unsold inventory join reputation, cash flow and payment record. The first three protect repayment and the last two show volume, so the slide groups them that way. The firm ending now says all five.

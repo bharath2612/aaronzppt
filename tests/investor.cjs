@@ -24,7 +24,7 @@ const {pathToFileURL}=require('node:url');
  assert.equal(await page.locator('.c-card.lead').first().evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(207, 64, 0)');
  // Slides with no confirmed facts must show visible placeholders, not invented content.
  for(const id of ['product','revenue','raise'])assert(await page.locator('#'+id+' .todo').count()>0,id+' lost its placeholders');
- assert.deepEqual(await page.locator('#team h3').allTextContents(),['Jikku Luke','Surinder Jaiswani','Bharath Chippa']);
+ assert.deepEqual(await page.locator('#team h3').allTextContents(),['Jikku Luke','Surandar Jesrani','Bharath Chippa']);
  // Timelines: roughly 2 months today, the same day with Aaronz, both from the commission milestone.
  for(const id of ['problem','solution']){assert.equal(await page.locator('#'+id+' .inv-time li').count(),3);assert.match(await page.locator('#'+id+' .inv-time li h3').first().textContent(),/Commission milestone/);}
  // The timeline spans the whole column, ending at the right edge with its last step right-aligned.
@@ -35,9 +35,9 @@ const {pathToFileURL}=require('node:url');
  for(const id of ['problem','solution']){assert.deepEqual(await page.locator('#'+id+' .inv-who .c-tag').allTextContents(),['Brokerages','Agents','Developers','The risk']);assert.equal(await page.locator('#'+id+' .inv-who .lead').count(),0,'problem and solution cards must all look the same');}
  assert.match(await page.locator('#solution h2').textContent(),/same day/);
  const wording=await page.evaluate(()=>document.querySelector('.slides').textContent);assert(!/24 hours|DLD registration|DLD reservation/.test(wording),'old wording still shown');
- assert.equal(await page.locator('#developers h2').textContent(),'Handpicked developers only');
- // The developer slide shows the three tests and the firm ending.
- assert.deepEqual(await page.locator('#developers .inv-factors h3').allTextContents(),['Reputation','Cash flow','Payment record']);assert.match(await page.locator('#developers .inv-call').textContent(),/we don.t sign/);
+ assert.equal(await page.locator('#developers h2').textContent(),'Every developer tested before we sign');
+ // The developer slide shows the five tests and the firm ending.
+ assert.deepEqual(await page.locator('#developers .inv-factors h3').allTextContents(),['Reputation','Cash flow','Payment record','Market share','Unsold inventory']);assert.match(await page.locator('#developers .inv-call').textContent(),/all five, we don.t sign/);
  // All visible figures are in US dollars; AED appears only in the market slide's speaker note.
  assert(!/AED/.test(await page.evaluate(()=>{const c=document.querySelector('.slides').cloneNode(true);c.querySelectorAll('aside.notes').forEach(n=>n.remove());return c.textContent;})),'AED still shown');assert.match(await page.locator('#market .mkt-stats').textContent(),/\$185\.8B/);
  const text=await page.evaluate(()=>document.body.textContent);assert(!/channel connect/i.test(text),'Channel Connect mentioned');
