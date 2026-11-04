@@ -86,7 +86,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
 
 - `npm test` passed:
   - "twenty-six slide layouts ... mobile layout and controls";
-  - "Imtiaz deck, eight slide layouts, email call to action and payout selection, fonts, logos, speaker notes, presenting mode, and mobile reader layout"; `npm run export:imtiaz` wrote an 8-page `imtiaz.pdf`, inspected page by page.
+  - "Imtiaz deck, eight slide layouts, email call to action and payout selection, fonts, logos, speaker notes, presenting mode, and mobile reader layout"; `npm run export:imtiaz` wrote an 8-page `imtiaz.pdf`. Page 4 (the picker) was inspected after the date change; the only slide content changed was on that page.
 - `git diff --check` clean.
 - The select slide was inspected in a desktop screenshot after the date change; the other Imtiaz slides were last inspected on 2026-11-01. The developer-flows diagram was rendered (1977×2048) and inspected.
 - The payout picker is tested end to end: CTA click lands on `#/select`; 15 days + 50% gives AED 49,625 then AED 50,000 on Fri 8 Jan 2027; the usual date gives AED 100,000; Confirm shows the scheduled message.
