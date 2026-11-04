@@ -150,3 +150,7 @@ The user asked for 2 global and 2 local players from the main deck's list, with 
 ## 2026-11-04 — Investor deck: developers pay in 30 to 90 days; spread depends on duration
 
 The user replaced the single 45-day assumption ("offline commissions" read as off-plan). Interest is commission × annual rate × days ÷ 360, so the slide shows the spread by duration instead of fees by payout date. The picker-style options (15 days, 30 days, usual date) no longer appear on this slide.
+
+## 2026-11-04 — Investor agent product modelled on LytePay
+
+The user asked for LytePay's model in the UAE. The slide uses LytePay's published 4.5% flat fee and its highest published 80% limit (one agency, SRI; others are capped by a balance). 9% cost of money is the user's figure; 60 days and 5% take-up are assumptions. It is framed as "the next product", which is our wording for the user to confirm.

@@ -9,7 +9,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  const page=await browser.newPage({viewport:{width:1440,height:1000}});page.on('pageerror',e=>errors.push(e.message));
  page.on('requestfailed',r=>errors.push('failed to load '+r.url()));
  await page.goto(url);await page.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());await page.evaluate(()=>document.fonts.ready);
- const ids=['home','team','problem','solution','market','product','revenue','developers','competition','raise'];
+ const ids=['home','team','problem','solution','market','product','revenue','agents','developers','competition','raise'];
  assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('.slides>section')].map(s=>s.id)),ids);
  for(let i=0;i<ids.length;i++){await page.evaluate(i=>deck.slide(i),i);await page.waitForTimeout(300);await page.screenshot({path:'.build/investor-'+ids[i]+'.png'});
   // Content must stay inside the slide and clear of the absolutely positioned source note.
@@ -18,7 +18,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
   // No paragraph or card title may leave one word alone on its last line.
   const orphans=await page.locator('#'+ids[i]).evaluate(el=>[...el.querySelectorAll('p,h3,h2,h1')].filter(n=>!n.closest('aside.notes')&&n.getClientRects().length).filter(n=>{const text=n.firstChild&&n.childNodes.length===1&&n.firstChild.nodeType===3?n.firstChild:null;if(!text)return false;const value=text.textContent;const cut=value.trimEnd().lastIndexOf(' ');if(cut<1)return false;const top=(a,b)=>{const r=document.createRange();r.setStart(text,a);r.setEnd(text,b);return r.getClientRects()[0].top;};return top(cut+1,value.trimEnd().length)-top(cut-1,cut)>2;}).map(n=>n.textContent));
   assert.deepEqual(orphans,[],ids[i]+' single word on a last line');}
- assert.equal(await page.locator('#slideCount').textContent(),'10 / 10');
+ assert.equal(await page.locator('#slideCount').textContent(),'11 / 11');
  assert(await page.evaluate(()=>document.fonts.check('500 48px Inter')),'Inter not loaded');
  assert(await page.evaluate(()=>[...document.images].every(i=>i.complete&&i.naturalWidth>0)),'logo failed to load');
  // Nav and cover use the one-line Aaronz AI logo.
@@ -53,6 +53,10 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  // Competition: two global players with the larger cards, then two local; only Lyte shows a valuation figure.
  assert.deepEqual(await page.locator('#competition .global h3').allTextContents(),['Lyte','Tongo']);assert.deepEqual(await page.locator('#competition .local h3').allTextContents(),['FastPay RECAP','ACOT']);assert.deepEqual(await page.locator('#competition .label').allTextContents(),['valuation','raised · valuation not disclosed','Valuation not disclosed','Valuation not disclosed']);
  assert.match(await page.locator('#problem .inv-time').textContent(),/30 to 90 days/);
+ // Agent product maths: 4.5% flat on $10,000, 9% cost of money, and the 5% take-up scenario.
+ for(const [days,cost,spread] of [[30,75,375],[60,150,300],[90,225,225]]){assert.equal(Math.round(10000*.09*days/360),cost);assert.equal(450-cost,spread);}
+ const agentPool=3.7e9*.5,agentOut=agentPool*.05*.8;assert.equal(Math.round(agentOut/1e6),74);assert.equal((agentOut*.045/1e6).toFixed(1),'3.3');assert.equal((agentOut*.09*60/360/1e6).toFixed(1),'1.1');assert.equal(((agentOut*.045-agentOut*.09*60/360)/1e6).toFixed(1),'2.2');assert.equal((agentOut/6/1e6).toFixed(1),'12.3');
+ assert.match(await page.locator('#agents .lead').textContent(),/\$74M.*\$12\.3M.*\$2\.2M/);
  // Product slide is filled in, and team names are centred.
  assert.equal(await page.locator('#product h2').textContent(),'A product, not a service');assert.equal(await page.locator('#product .todo').count(),0);assert.match(await page.locator('#product .inv-call').textContent(),/Zero bloat/);
  assert.equal(await page.locator('#team .c-card').first().evaluate(e=>getComputedStyle(e).textAlign),'center');
@@ -66,6 +70,6 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});mobile.on('pageerror',e=>errors.push(e.message));
  await mobile.goto(url);await mobile.waitForFunction(()=>document.body.classList.contains('reader'));await mobile.waitForTimeout(500);
  assert(await mobile.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'investor deck mobile overflow');await mobile.screenshot({path:'.build/investor-mobile.png',fullPage:true});
- assert.deepEqual(errors,[]);console.log('Passed: investor deck, ten slide layouts, orange palette, placeholders, timelines, developer tests, fonts, logos, and mobile reader layout.');
+ assert.deepEqual(errors,[]);console.log('Passed: investor deck, eleven slide layouts, orange palette, placeholders, timelines, developer tests, fonts, logos, and mobile reader layout.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});

@@ -76,6 +76,19 @@
 #revenue .c-table th{white-space:nowrap}
 #revenue .c-table td{vertical-align:middle}
 #revenue .table-wrap,#revenue .c-table{height:100%}
+/* Agent product: tighter, because the slide also carries the UAE players */
+#agents .c-head{margin-bottom:20px}
+#agents .inv-split .c-card{padding:18px 24px}
+#agents .c-card.lead .rows{margin-top:8px}
+#agents .c-card.lead .rows>div{padding:5px 0;font-size:14px}
+#agents .c-card.lead .rows .total{font-size:18px}
+#agents .c-table th{padding:11px 20px;white-space:nowrap}
+#agents .c-table td{padding:10px 20px;vertical-align:middle}
+#agents .table-wrap,#agents .c-table{height:100%}
+#agents .c-cards.inv-who{margin-top:12px;gap:12px}
+#agents .c-cards.inv-who .c-card{padding:14px 18px}
+#agents .c-cards.inv-who h3{font-size:17px;margin:4px 0 4px}
+.reveal #agents .c-cards.inv-who p:not(.c-tag){font-size:13px!important;line-height:1.4}
 /* Developer selection */
 .inv-tests{width:100%;max-width:var(--w);margin:0 auto;display:grid;grid-template-columns:3fr 2fr;gap:16px}
 .reveal .inv-tests>div>.c-tag{margin-bottom:12px!important}

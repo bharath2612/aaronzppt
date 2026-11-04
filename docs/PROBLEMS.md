@@ -110,3 +110,11 @@ Lyte's $33M valuation comes from a Dealroom search listing. The page itself retu
 ## 2026-11-04 — Investor spread falls if a developer pays later than the fee assumed
 
 The partner charges interest until the developer pays, so a fee fixed for 60 days ($625 on $25,000) leaves $62.50 instead of $250 if the developer pays at 90 days, and turns negative beyond about 100 days. Whether the fee is set per developer term, or charged until collection, is not decided. The solution slide's "Brokerages can also choose a later date" and the cover's date choice also need checking against this model.
+
+## 2026-11-04 — Open points on the investor agent product
+
+- **Regulation:** this means funding individuals. CBUAE rules require a licence for finance business onshore, and one secondary source says DFSA firms can't provide credit to retail clients, with an exception for business purposes. Not legal advice; needs a lawyer. LytePay holds a MAS payment licence and describes the product as not a loan; that doesn't carry over to the UAE.
+- **Double financing:** one commission can't back both a brokerage advance and an agent cash-out.
+- **Price:** ACOT's example fee is 3%, below the 4.5% used. At 3% on $10,000, the 60-day spread is $150, not $300.
+- **Data:** broker counts conflict (32,978 and about 39,776 in the same Khaleej Times article). The 50:50 split is "most cases" per Bayut, and top agents earn more.
+- **Claims:** ACOT, Agents First and Insiders of Dubai terms are from their own pages or press coverage, not independently verified.

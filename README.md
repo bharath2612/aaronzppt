@@ -6,7 +6,7 @@ The presentation contains twenty-six slides, source links, proposed deal flows, 
 
 `imtiaz.html` is a separate 8-slide proposal deck for Imtiaz Developments. It has a light, Chronicle-style design in `assets/imtiaz.css`, set in Inter (vendored, OFL), and reuses `assets/presentation.js`. Its email's "Get commission now" button goes to the next slide, an interactive payout picker (`assets/imtiaz-select.js`). `assets/imtiaz-present.js` adds a Present button (fullscreen, no site chrome). Slides change instantly, with no transition. The nav shows the Aaronz & Co logo instead of the shared "aaronz/" wordmark. Speaker notes sit in each slide's `aside.notes`; press S for the speaker view (Reveal notes plugin, vendored as `assets/vendor/reveal-notes.js`). Run `npm run export:imtiaz` after any deck change to regenerate `imtiaz.pdf`, which the nav links to. Logos: `assets/brand/imtiaz-logo.svg` (from imtiaz.ae) and `assets/brand/aaronz-co-logo.svg` (traced from aaronz.co's PNG).
 
-`investor/index.html` is a separate 10-slide investor deck in the Aaronz orange palette (`investor/investor.css`, on top of `assets/imtiaz.css`). It is a skeleton: anything not yet confirmed shows a dashed "To be added".
+`investor/index.html` is a separate 11-slide investor deck in the Aaronz orange palette (`investor/investor.css`, on top of `assets/imtiaz.css`). It is a skeleton: anything not yet confirmed shows a dashed "To be added".
 
 ## Edit
 - `index.html`: slide content
