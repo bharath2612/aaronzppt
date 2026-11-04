@@ -106,3 +106,7 @@ The investor deck says "same day", which matches the cover and fee table and is 
 ## 2026-11-04 — Investor same-day cut-off is 2 pm; Imtiaz deck keeps DLD registration
 
 The user set the cut-off: settled the same day if the invoice is raised before 2 pm. The move from DLD registration to the commission milestone applies to the investor deck only, so the Imtiaz deck stays as it is.
+
+## 2026-11-04 — Investor founder notes stay local
+
+The repo and GitHub Pages site are public, so `investor/notes.md` is ignored by git rather than published. The trade-off: no backup, and tools working from a fresh clone won't have it.

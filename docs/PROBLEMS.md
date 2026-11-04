@@ -69,3 +69,7 @@ The problem timeline adds up to 35 to 50 days (4 to 5 days, then 30 to 45), whic
 ## 2026-11-04 — Investor problem cards are unsourced
 
 The brokerage, developer and risk cards come from reasoning about the model, not data or interviews, so behaviour claims are worded with "may". They need real examples before investors see them. "Nobody fixes it at the source" was removed at the user's request and replaced with a risk card.
+
+## 2026-11-04 — Investor notes were published briefly
+
+The notes were pushed in 391490b before checking repo visibility, which is public. They are now removed from the current site and ignored by git, but that commit stays in the public history unless it is rewritten, which needs the user's approval. Check visibility before pushing anything sensitive. Note that `docs/` is public too.
