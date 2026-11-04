@@ -53,3 +53,7 @@ Resolution (2026-11-01): aaronz.co has no vector logo; its only other large imag
 ## 2026-11-04 — Off-plan figures don't reconcile with total commissions
 
 AED 293B of off-plan sales at about 5% implies about AED 14.65B of commission, more than the AED 13.59B DLD reports across the whole market. Likely causes: 5% is too high as a market-wide average, or the two figures use different scopes. Not resolved. The investor market slide omits the 5%; the Imtiaz market slide still shows both and needs the user's decision.
+
+## 2026-11-04 — Investor solution timeline starts at booking, fees start at DLD registration
+
+The solution slide promises 2 to 3 days from booking, as the user asked. The fee table on the same deck counts days from DLD registration, and the Imtiaz process slide pays after DLD registration. If payment waits for DLD registration, 2 to 3 days from booking may not hold. Waiting on the user.

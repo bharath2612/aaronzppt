@@ -20,6 +20,15 @@
 .rows>div{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:15px}
 .rows dt{color:var(--muted)}
 .rows dd{margin:0;font-weight:600}
+/* Timelines on the problem and solution slides */
+.inv-time{width:100%;max-width:var(--w);margin:8px auto 0!important;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,1fr)}
+.inv-time.us{grid-template-columns:repeat(3,1fr)}
+.reveal .inv-time li{position:relative;margin:0;padding:24px 28px 26px 0;border-top:2px solid var(--line)}
+.inv-time li::before{content:'';position:absolute;top:-7px;left:0;width:12px;height:12px;border-radius:50%;background:var(--ink)}
+.inv-time.us li{border-color:var(--orange)}
+.inv-time.us li::before{background:var(--orange)}
+.inv-time h3{font-size:22px;line-height:1.2;margin:8px 0 6px}
+.reveal .inv-time li p:not(.c-tag){font-size:16px!important;color:var(--muted);line-height:1.5}
 /* How we make money */
 .inv-split{width:100%;max-width:var(--w);margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr;gap:16px}
 .inv-split .c-card{display:flex;flex-direction:column}
@@ -32,4 +41,4 @@
 .inv-call{width:100%;max-width:var(--w);margin:12px auto 0;padding:24px 28px}
 .reveal .inv-call h3{font-size:24px;margin:0;color:#fff}
 .reveal .inv-call p{font-size:16px!important;margin-top:6px!important}
-@media(max-width:800px){.inv-split,.mkt-plan.two{grid-template-columns:1fr}.inv-factors{grid-template-columns:1fr}.c-lockup img{height:60px}.todo{white-space:normal}}
+@media(max-width:800px){.inv-split,.mkt-plan.two{grid-template-columns:1fr}.inv-factors{grid-template-columns:1fr}.inv-time,.inv-time.us{grid-template-columns:1fr}.c-lockup img{height:60px}.todo{white-space:normal}}

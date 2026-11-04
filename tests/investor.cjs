@@ -25,12 +25,15 @@ const {pathToFileURL}=require('node:url');
  // Slides with no confirmed facts must show visible placeholders, not invented content.
  for(const id of ['product','revenue','raise'])assert(await page.locator('#'+id+' .todo').count()>0,id+' lost its placeholders');
  assert.deepEqual(await page.locator('#team h3').allTextContents(),['Jikku Luke','Surinder Jaiswani','Bharath Chippa']);
+ // Timelines: four steps and roughly 2 months today; three steps and 2 to 3 days with Aaronz.
+ assert.equal(await page.locator('#problem .inv-time li').count(),4);assert.match(await page.locator('#problem .inv-call').textContent(),/Roughly 2 months/);
+ assert.equal(await page.locator('#solution .inv-time li').count(),3);assert.match(await page.locator('#solution .inv-call').textContent(),/2 to 3 days/);
  // The developer slide names every factor the user listed.
  assert.deepEqual(await page.locator('#developers .inv-factors h3').allTextContents(),['Reputation','Social reputation','Banking history','Balance sheets','Leverage']);
  const text=await page.evaluate(()=>document.body.textContent);assert(!/channel connect/i.test(text),'Channel Connect mentioned');
  const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});mobile.on('pageerror',e=>errors.push(e.message));
  await mobile.goto(url);await mobile.waitForFunction(()=>document.body.classList.contains('reader'));await mobile.waitForTimeout(500);
  assert(await mobile.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'investor deck mobile overflow');await mobile.screenshot({path:'.build/investor-mobile.png',fullPage:true});
- assert.deepEqual(errors,[]);console.log('Passed: investor deck, nine slide layouts, orange palette, placeholders, developer factors, fonts, logos, and mobile reader layout.');
+ assert.deepEqual(errors,[]);console.log('Passed: investor deck, nine slide layouts, orange palette, placeholders, timelines, developer factors, fonts, logos, and mobile reader layout.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});
