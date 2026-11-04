@@ -78,3 +78,7 @@ The notes were pushed in 391490b before checking repo visibility, which is publi
 
 - **Agents:** "nothing pending ties an agent to their agency" assumes the agency passes the agent's share on promptly. Aaronz pays the brokerage, not the agent.
 - **Risk:** "the brokerage no longer waits on the developer" holds only if Aaronz can't reclaim the money when a developer doesn't pay. Whether there is recourse to the brokerage isn't decided.
+
+## 2026-11-04 — Investor developer slide looked broken in the user's browser
+
+Labels sat outside the column and the five cards wrapped to two rows. Cause: GitHub Pages sends `cache-control: max-age=600`, so the browser paired new HTML with an older cached `investor.css`. Reproduced by using the stylesheet from c1c1a14 with the current HTML. Fix: the link carries a content hash, enforced by `tests/investor.cjs`. The shared `assets/` files are not versioned this way.

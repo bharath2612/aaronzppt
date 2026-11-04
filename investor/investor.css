@@ -12,7 +12,9 @@
 .mkt-plan .lead dl>div{border-color:rgba(255,255,255,.3)}
 .mkt-plan.two{grid-template-columns:repeat(2,1fr)}
 .c-cards.short .c-card{min-height:260px}
+#product .c-cards.short .c-card{min-height:200px}
 .c-cards.names .c-card{min-height:150px;justify-content:flex-end}
+.c-cards.names .c-card{justify-content:center;align-items:center;text-align:center}
 .c-cards.names h3{margin:0;font-size:28px}
 /* Placeholders stay visible, so an unfinished slide can't pass for a finished one. */
 .todo{display:inline-block;letter-spacing:0;border:1px dashed var(--faint);border-radius:6px;padding:2px 8px;font-size:13px;font-weight:500;line-height:1.4;color:var(--muted);white-space:nowrap}

@@ -1,6 +1,7 @@
 const { chromium }=require('@playwright/test');
 const assert=require('node:assert/strict');
 const {pathToFileURL}=require('node:url');
+const fs=require('node:fs');const crypto=require('node:crypto');
 (async()=>{
  const browser=await chromium.launch({headless:true});
  try{
@@ -25,7 +26,7 @@ const {pathToFileURL}=require('node:url');
  assert.equal(await css('--brand'),'#cf4000');assert.equal(await css('--orange'),'#ff6b35');assert.equal(await css('--paper'),'#fff');
  assert.equal(await page.locator('.c-card.lead').first().evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(207, 64, 0)');
  // Slides with no confirmed facts must show visible placeholders, not invented content.
- for(const id of ['product','revenue','raise'])assert(await page.locator('#'+id+' .todo').count()>0,id+' lost its placeholders');
+ for(const id of ['revenue','raise'])assert(await page.locator('#'+id+' .todo').count()>0,id+' lost its placeholders');
  assert.deepEqual(await page.locator('#team h3').allTextContents(),['Jikku Luke','Surandar Jesrani','Bharath Chippa']);
  // Timelines: roughly 2 months today, the same day with Aaronz, both from the commission milestone.
  for(const id of ['problem','solution']){assert.equal(await page.locator('#'+id+' .inv-time li').count(),3);assert.match(await page.locator('#'+id+' .inv-time li h3').first().textContent(),/Commission milestone/);}
@@ -38,6 +39,11 @@ const {pathToFileURL}=require('node:url');
  assert.match(await page.locator('#solution h2').textContent(),/same day/);
  const wording=await page.evaluate(()=>document.querySelector('.slides').textContent);assert(!/24 hours|DLD registration|DLD reservation/.test(wording),'old wording still shown');
  assert.equal(await page.locator('#developers h2').textContent(),'Every developer tested before we sign');
+ // Product slide is filled in, and team names are centred.
+ assert.equal(await page.locator('#product h2').textContent(),'Fully autonomous solution');assert.equal(await page.locator('#product .todo').count(),0);assert.match(await page.locator('#product .inv-call').textContent(),/Zero bloat/);
+ assert.equal(await page.locator('#team .c-card').first().evaluate(e=>getComputedStyle(e).textAlign),'center');
+ // The stylesheet link carries a hash of the file, so browsers can't pair new slides with an old cached stylesheet.
+ const sheet=fs.readFileSync('investor/investor.css');const version=crypto.createHash('sha256').update(sheet).digest('hex').slice(0,8);assert.equal(await page.evaluate(()=>document.querySelector('link[href^="investor.css"]').getAttribute('href')),'investor.css?v='+version,'update the ?v= hash on investor.css in investor/index.html');
  // The developer slide shows the five tests and the firm ending.
  assert.deepEqual(await page.locator('#developers .inv-factors h3').allTextContents(),['Reputation','Cash flow','Payment record','Market share','Unsold inventory']);assert.match(await page.locator('#developers .inv-call').textContent(),/all five, we don.t sign/);
  // All visible figures are in US dollars; AED appears only in the market slide's speaker note.
