@@ -73,6 +73,8 @@
 .reveal .inv-comp .label{font-size:14px!important;color:var(--ink);margin:2px 0 10px!important}
 .reveal .inv-comp p:not(.c-tag):not(.label){font-size:15px!important;line-height:1.5}
 .reveal .inv-comp .local p.label{margin:0 0 6px!important}
+#revenue .c-table th{white-space:nowrap}
+#revenue .table-wrap,#revenue .c-table{height:100%}
 /* Developer selection */
 .inv-tests{width:100%;max-width:var(--w);margin:0 auto;display:grid;grid-template-columns:3fr 2fr;gap:16px}
 .reveal .inv-tests>div>.c-tag{margin-bottom:12px!important}

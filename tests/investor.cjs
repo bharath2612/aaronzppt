@@ -46,11 +46,13 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.equal(await page.locator('#market h2').textContent(),"Dubai's commission market: $3.7B and growing fast");assert.match(await page.locator('#problem .c-head').textContent(),/months away/);
  // The founder banned this word from the pitch, including speaker notes.
  assert(!/automatically/i.test(await page.evaluate(()=>document.querySelector('.slides').textContent)),'banned word in the deck');
- // The spread example adds up: $25,000 at 15% and 9% over 45 days.
- assert.equal(Math.round(25000*.15*45/360),469);assert.equal(Math.round(25000*.09*45/360),281);assert.equal(Math.round(25000*.06*45/360),188);const spreadText=await page.locator('#revenue .lead').textContent();for(const figure of ['$25,000','15% a year','9% a year','$469','$281','$188'])assert(spreadText.includes(figure),figure);
+ // The spread example adds up: $25,000 at 15% and 9%, by days until the developer pays.
+ for(const [days,fee,cost,spread] of [[30,313,188,125],[60,625,375,250],[90,938,563,375]]){assert.equal(Math.round(25000*.15*days/360),fee);assert.equal(Math.round(25000*.09*days/360),cost);assert.equal(Math.round(25000*.06*days/360),spread);}
+ const moneyRows=await page.locator('#revenue tbody tr').allTextContents();assert.equal(moneyRows.length,3);assert.match(moneyRows[1],/60 days\$625\$375\$250/);const spreadText=await page.locator('#revenue .lead').textContent();for(const figure of ['$25,000','60 days','15% a year','9% a year','$625','$375','$250'])assert(spreadText.includes(figure),figure);
  assert(!/100,000/.test(await page.locator('#revenue').textContent()),'old example amount still shown');
  // Competition: two global players with the larger cards, then two local; only Lyte shows a valuation figure.
  assert.deepEqual(await page.locator('#competition .global h3').allTextContents(),['Lyte','Tongo']);assert.deepEqual(await page.locator('#competition .local h3').allTextContents(),['FastPay RECAP','ACOT']);assert.deepEqual(await page.locator('#competition .label').allTextContents(),['valuation','raised · valuation not disclosed','Valuation not disclosed','Valuation not disclosed']);
+ assert.match(await page.locator('#problem .inv-time').textContent(),/30 to 90 days/);
  // Product slide is filled in, and team names are centred.
  assert.equal(await page.locator('#product h2').textContent(),'A product, not a service');assert.equal(await page.locator('#product .todo').count(),0);assert.match(await page.locator('#product .inv-call').textContent(),/Zero bloat/);
  assert.equal(await page.locator('#team .c-card').first().evaluate(e=>getComputedStyle(e).textAlign),'center');

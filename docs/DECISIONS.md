@@ -146,3 +146,7 @@ The user set these figures, saying commissions are around $25,000 to $30,000. Th
 ## 2026-11-04 — Investor competition picks
 
 The user asked for 2 global and 2 local players from the main deck's list, with the top-valued global ones given more weight. "Accord" was read as ACOT. Lyte is the only commission-finance player found with a published valuation. Tongo was chosen second on funding raised, shown as "valuation not disclosed". Gazeal has a higher reported valuation (about $14M to $15M, 2021 to 2022) but is a property platform where commission advances are a side offering, so it was left out. Modelled estimates from aggregators were not used.
+
+## 2026-11-04 — Investor deck: developers pay in 30 to 90 days; spread depends on duration
+
+The user replaced the single 45-day assumption ("offline commissions" read as off-plan). Interest is commission × annual rate × days ÷ 360, so the slide shows the spread by duration instead of fees by payout date. The picker-style options (15 days, 30 days, usual date) no longer appear on this slide.

@@ -106,3 +106,7 @@ When the investor deck moved to US dollars, the per-100,000 fee example was rela
 ## 2026-11-04 — Investor competition figures are thin
 
 Lyte's $33M valuation comes from a Dealroom search listing. The page itself returned 403, and CB Insights hides valuations, so it has no second source and no known date. Tongo's $11M total is from September 2022; later aggregator totals differ ($9.47M to $9.87M). No valuation exists for FastPay RECAP or ACOT. ACOT advertises same day before 2 pm for its top developer tiers, the same promise as the investor deck's solution slide.
+
+## 2026-11-04 — Investor spread falls if a developer pays later than the fee assumed
+
+The partner charges interest until the developer pays, so a fee fixed for 60 days ($625 on $25,000) leaves $62.50 instead of $250 if the developer pays at 90 days, and turns negative beyond about 100 days. Whether the fee is set per developer term, or charged until collection, is not decided. The solution slide's "Brokerages can also choose a later date" and the cover's date choice also need checking against this model.
