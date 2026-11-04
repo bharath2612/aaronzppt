@@ -28,15 +28,15 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  // Slides with no confirmed facts must show visible placeholders, not invented content.
  for(const id of ['revenue','raise'])assert(await page.locator('#'+id+' .todo').count()>0,id+' lost its placeholders');
  assert.deepEqual(await page.locator('#team h3').allTextContents(),['Surandar Jesrani','Jikku Luke','Bharath Chippa']);
- // Timelines: roughly 2 months today, the same day with Aaronz, both from the commission milestone.
+ // Timelines: months today, the same day with Aaronz, both from the commission milestone.
  for(const id of ['problem','solution']){assert.equal(await page.locator('#'+id+' .inv-time li').count(),3);assert.match(await page.locator('#'+id+' .inv-time li h3').first().textContent(),/Commission milestone/);}
  // The timeline spans the whole column, ending at the right edge with its last step right-aligned.
  for(const id of ['problem','solution']){await page.evaluate(id=>deck.slide([...document.querySelectorAll('.slides>section')].findIndex(s=>s.id===id)),id);await page.waitForTimeout(200);const g=await page.evaluate(id=>{const q=s=>document.querySelector('#'+id+' '+s).getBoundingClientRect();const lastLi=document.querySelector('#'+id+' .inv-time li:last-child');return {time:q('.inv-time'),call:q('.c-head'),last:lastLi.getBoundingClientRect(),align:getComputedStyle(lastLi).textAlign};},id);assert(Math.abs(g.time.width-g.call.width)<2&&Math.abs(g.last.right-g.call.right)<2,id+' timeline does not span the column');assert.equal(g.align,'right');}
  assert.match(await page.locator('#solution .source').textContent(),/before 2 pm/);
- assert.match(await page.locator('#problem h2').textContent(),/Roughly 2 months/);
+ assert.equal(await page.locator('#problem h2').textContent(),'Brokerages wait months to receive their commission');
  // Every problem card has a matching solution card, in the same order.
  for(const id of ['problem','solution']){assert.deepEqual(await page.locator('#'+id+' .inv-who .c-tag').allTextContents(),['Brokerages','Agents','Developers','The risk']);assert.equal(await page.locator('#'+id+' .inv-who .lead').count(),0,'problem and solution cards must all look the same');}
- assert.match(await page.locator('#solution h2').textContent(),/same day/);
+ assert.equal(await page.locator('#solution h2').textContent(),'We pay them the same day');
  const wording=await page.evaluate(()=>document.querySelector('.slides').textContent);assert(!/24 hours|DLD registration|DLD reservation/.test(wording),'old wording still shown');
  assert.equal(await page.locator('#developers h2').textContent(),'Every developer tested before we sign');
  assert.equal(await page.locator('#home h1 mark').textContent(),'Real estate commissions, paid the same day.');

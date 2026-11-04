@@ -86,3 +86,7 @@ Labels sat outside the column and the five cards wrapped to two rows. Cause: Git
 ## 2026-11-04 — Grey line across the "o" in the Aaronz AI logo
 
 The "o" is two mirrored halves. Their overlap was under a pixel at logo sizes, so the antialiased edges left a faint line, which an enlarged check didn't show. Fixed with a larger overlap in `tools/make-aaronz-ai-logo.py`. Check logos at their real display size.
+
+## 2026-11-04 — "Months" vs the investor timeline's numbers
+
+The problem title now says "months", replacing the "roughly 2 months" label noted earlier. The timeline still adds up to 35 to 50 days, so the same question applies.
