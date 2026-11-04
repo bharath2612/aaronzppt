@@ -1,0 +1,33 @@
+/* Investor deck. Same system as the Imtiaz deck (assets/imtiaz.css), in the orange palette.
+   #ff6b35 is decoration only (it fails contrast for small text); #cf4000 carries text and the accent card. */
+:root{--green:#cf4000;--brand:#cf4000;--mint:#fff;--tint:#fff3ec;--orange:#ff6b35}
+.reveal .progress{color:var(--orange)}
+.c-eyebrow span{color:var(--brand)}
+.c-cover h1 mark{background:var(--orange)}
+.c-lockup img{height:92px}
+/* White text on the accent card needs its full strength on orange. */
+.c-card.lead p,.c-card.lead dt,.c-card.lead span{color:#fff}
+.reveal .mkt-plan .lead p:not(.c-tag){color:#fff}
+.mkt-plan .lead dl>div{border-color:rgba(255,255,255,.3)}
+.mkt-plan.two{grid-template-columns:repeat(2,1fr)}
+.c-cards.short .c-card{min-height:260px}
+/* Placeholders stay visible, so an unfinished slide can't pass for a finished one. */
+.todo{display:inline-block;border:1px dashed var(--faint);border-radius:6px;padding:2px 8px;font-size:13px;font-weight:500;line-height:1.4;color:var(--muted);white-space:nowrap}
+.c-card.lead .todo{border-color:#fff;color:#fff}
+.rows{margin:auto 0 0;padding-top:18px}
+.rows>div{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:15px}
+.rows dt{color:var(--muted)}
+.rows dd{margin:0;font-weight:600}
+/* How we make money */
+.inv-split{width:100%;max-width:var(--w);margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr;gap:16px}
+.inv-split .c-card{display:flex;flex-direction:column}
+.c-card.lead .big{display:block;font-size:44px;font-weight:500;letter-spacing:-.03em;line-height:1.1;margin-top:12px}
+/* Developer selection */
+.inv-factors{width:100%;max-width:var(--w);margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:12px;counter-reset:factor}
+.inv-factors .c-card{padding:22px;border-top:3px solid var(--orange);border-radius:4px 4px 16px 16px}
+.inv-factors h3{font-size:19px;margin:0 0 8px}
+.reveal .inv-factors p{font-size:14px!important;line-height:1.45}
+.inv-call{width:100%;max-width:var(--w);margin:12px auto 0;padding:24px 28px}
+.reveal .inv-call h3{font-size:24px;margin:0;color:#fff}
+.reveal .inv-call p{font-size:16px!important;margin-top:6px!important}
+@media(max-width:800px){.inv-split,.mkt-plan.two{grid-template-columns:1fr}.inv-factors{grid-template-columns:1fr}.c-lockup img{height:60px}.todo{white-space:normal}}

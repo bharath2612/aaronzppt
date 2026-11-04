@@ -49,3 +49,7 @@ Resolution (2026-11-01): aaronz.co has no vector logo; its only other large imag
 ## 2026-11-01 — Imtiaz cover headline kept the old font
 
 `presentation.css` sets `.reveal h1` to Plus Jakarta Sans directly, so after the switch to Inter the cover headline still rendered in Jakarta (seen in the exported PDF). Fixed with `.reveal h1, h2, h3, h4 {font-family: inherit}` in `assets/imtiaz.css`.
+
+## 2026-11-04 — Off-plan figures don't reconcile with total commissions
+
+AED 293B of off-plan sales at about 5% implies about AED 14.65B of commission, more than the AED 13.59B DLD reports across the whole market. Likely causes: 5% is too high as a market-wide average, or the two figures use different scopes. Not resolved. The investor market slide omits the 5%; the Imtiaz market slide still shows both and needs the user's decision.

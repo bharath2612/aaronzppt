@@ -8,7 +8,7 @@ Read `docs/STATUS.md` (current truth and next steps) and the newest file in `doc
 
 ## Commands
 
-- `npm test`: runs `tests/presentation.cjs` and `tests/imtiaz.cjs` (needs Playwright Chromium). Slide screenshots land in `.build/` (ignored by git).
+- `npm test`: runs `tests/presentation.cjs`, `tests/imtiaz.cjs` and `tests/investor.cjs` (needs Playwright Chromium). Slide screenshots land in `.build/` (ignored by git).
 - `npm run export:imtiaz`: regenerates `imtiaz.pdf`. Re-run it after every Imtiaz deck change.
 - `npm start`: optional local server on port 4173.
 - No lint or build scripts are configured.
@@ -17,6 +17,7 @@ Read `docs/STATUS.md` (current truth and next steps) and the newest file in `doc
 
 - **Main deck:** `index.html`, `assets/presentation.css`, `assets/presentation.js`, `assets/calculator.js`, `assets/unit-picker.js`, `assets/scenarios.js`.
 - **Imtiaz deck:** `imtiaz.html`, `assets/imtiaz.css`, `assets/imtiaz-select.js` (payout picker), `assets/imtiaz-present.js` (Present button). It shares `assets/presentation.js` with the main deck, so check both decks when changing it.
+- **Investor deck:** `investor/index.html`, `investor/investor.css`. It builds on `assets/imtiaz.css`, so check it when changing that file. Show unknown facts as a visible "To be added", never invented text.
 - **Standalone calculator:** `commission-calculator.html` has its own inline copy of the calculation.
 - **Diagrams:** scripts in `diagrams/`, rendered with `@excalidraw/cli`.
 

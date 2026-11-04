@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "python3 -m http.server 4173",
-    "test": "node tests/presentation.cjs && node tests/imtiaz.cjs",
+    "test": "node tests/presentation.cjs && node tests/imtiaz.cjs && node tests/investor.cjs",
     "export:imtiaz": "node tools/export-imtiaz-pdf.cjs"
   },
   "keywords": [],

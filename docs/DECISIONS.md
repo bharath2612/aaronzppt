@@ -90,3 +90,7 @@ The user found the fade between slides "very bad", so it was removed completely 
 ## 2026-11-04 — Fixed illustrative picker date
 
 The picker's DLD date moved to Tue 24 Nov 2026 and stays fixed rather than following today's date, so the slide, the PDF and the test all show the same dates. 24 Nov was chosen because none of the resulting payout dates falls on a weekend or a UAE national holiday, and it stays in the future for about three weeks. It will need moving again if the deck is shown after that.
+
+## 2026-11-04 — Investor deck in its own folder, in Aaronz orange
+
+The investor deck lives in `investor/` and has 9 slides. The user merged "how we make sure" with "which developers" into "Top-tier developers only", merged the amount and use of funds into "The raise", and approved adding "How we make money". It is branded Aaronz, using the orange found in the `today-admin` theme (`#ff6b35` for decoration, `#cf4000` for text and the accent card, because `#ff6b35` is too low-contrast for small text). It reuses `assets/imtiaz.css` and overrides tokens in `investor/investor.css`, so layout fixes carry across both decks but changes to `imtiaz.css` must be checked here too (the test covers this). Unknown facts appear as a visible "To be added", never invented text.
