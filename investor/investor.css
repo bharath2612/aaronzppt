@@ -74,6 +74,7 @@
 .reveal .inv-comp p:not(.c-tag):not(.label){font-size:15px!important;line-height:1.5}
 .reveal .inv-comp .local p.label{margin:0 0 6px!important}
 #revenue .c-table th{white-space:nowrap}
+#revenue .c-table td{vertical-align:middle}
 #revenue .table-wrap,#revenue .c-table{height:100%}
 /* Developer selection */
 .inv-tests{width:100%;max-width:var(--w);margin:0 auto;display:grid;grid-template-columns:3fr 2fr;gap:16px}
