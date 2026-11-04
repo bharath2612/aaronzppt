@@ -57,3 +57,7 @@ AED 293B of off-plan sales at about 5% implies about AED 14.65B of commission, m
 ## 2026-11-04 — Investor solution timeline starts at booking, fees start at DLD registration
 
 The solution slide promises 2 to 3 days from booking, as the user asked. The fee table on the same deck counts days from DLD registration, and the Imtiaz process slide pays after DLD registration. If payment waits for DLD registration, 2 to 3 days from booking may not hold. Waiting on the user.
+
+## 2026-11-04 — Investor 24-hour promise vs cover and fee table (replaces the 2-to-3-days question above)
+
+The solution slide's clock now starts at the invoice, so the booking question no longer applies. Still open: the cover says "paid the same day", while the solution says "within 24 hours"; and the fee table counts days from DLD registration with a "Same day" option, while the solution counts from the invoice. Waiting on the user.

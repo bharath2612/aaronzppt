@@ -25,9 +25,10 @@ const {pathToFileURL}=require('node:url');
  // Slides with no confirmed facts must show visible placeholders, not invented content.
  for(const id of ['product','revenue','raise'])assert(await page.locator('#'+id+' .todo').count()>0,id+' lost its placeholders');
  assert.deepEqual(await page.locator('#team h3').allTextContents(),['Jikku Luke','Surinder Jaiswani','Bharath Chippa']);
- // Timelines: four steps and roughly 2 months today; three steps and 2 to 3 days with Aaronz.
+ // Timelines: roughly 2 months today; settled within 24 hours of the invoice with Aaronz.
  assert.equal(await page.locator('#problem .inv-time li').count(),4);assert.match(await page.locator('#problem .inv-call').textContent(),/Roughly 2 months/);
- assert.equal(await page.locator('#solution .inv-time li').count(),3);assert.match(await page.locator('#solution .inv-call').textContent(),/2 to 3 days/);
+ assert.equal(await page.locator('#solution .inv-time li').count(),4);assert.match(await page.locator('#solution .inv-call').textContent(),/within 24 hours/);
+ assert(!/2 to 3 days/.test(await page.locator('#problem,#solution').allTextContents().then(t=>t.join(' '))),'2 to 3 days still shown');
  // The developer slide names every factor the user listed.
  assert.deepEqual(await page.locator('#developers .inv-factors h3').allTextContents(),['Reputation','Social reputation','Banking history','Balance sheets','Leverage']);
  const text=await page.evaluate(()=>document.body.textContent);assert(!/channel connect/i.test(text),'Channel Connect mentioned');

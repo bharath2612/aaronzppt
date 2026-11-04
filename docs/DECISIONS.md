@@ -94,3 +94,7 @@ The picker's DLD date moved to Tue 24 Nov 2026 and stays fixed rather than follo
 ## 2026-11-04 — Investor deck in its own folder, in Aaronz orange
 
 The investor deck lives in `investor/` and has 9 slides. The user merged "how we make sure" with "which developers" into "Top-tier developers only", merged the amount and use of funds into "The raise", and approved adding "How we make money". It is branded Aaronz, using the orange found in the `today-admin` theme (`#ff6b35` for decoration, `#cf4000` for text and the accent card, because `#ff6b35` is too low-contrast for small text). It reuses `assets/imtiaz.css` and overrides tokens in `investor/investor.css`, so layout fixes carry across both decks but changes to `imtiaz.css` must be checked here too (the test covers this). Unknown facts appear as a visible "To be added", never invented text.
+
+## 2026-11-04 — Investor pitch: settled within 24 hours of the invoice
+
+The user dropped the "2 to 3 days" figure. Brokerages raise the invoice the same day they are notified, so the problem is the 30 to 45 days (sometimes 90) that follow. The solution is notification the day the milestone is achieved, and settlement within 24 hours of the invoice. The "sometimes over 3" months on the problem slide is computed: about a week plus 90 days.
