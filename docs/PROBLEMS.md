@@ -65,3 +65,7 @@ The solution slide's clock now starts at the invoice, so the booking question no
 ## 2026-11-04 — Investor "roughly 2 months" vs the timeline's own numbers
 
 The problem timeline adds up to 35 to 50 days (4 to 5 days, then 30 to 45), which is closer to 5 to 7 weeks than 2 months. The label stays as the user asked. The earlier cover and fee-table wording conflict is resolved by using "same day" and the commission milestone throughout the investor deck. The daily cut-off was set to 2 pm later the same day.
+
+## 2026-11-04 — Investor problem cards are unsourced
+
+The brokerage, developer and market cards come from reasoning about the model, not data or interviews, so behaviour claims are worded with "may". "Nobody fixes it at the source" is an absolute claim based only on the providers already researched. Needs real examples, or softer wording, before investors see it.

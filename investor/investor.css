@@ -40,6 +40,14 @@
 .inv-time li:nth-child(3) .when{left:25%}
 .inv-time h3{font-size:26px;line-height:1.2;margin:0 0 8px}
 .reveal .inv-time li p{font-size:17px!important;color:var(--muted);line-height:1.5}
+/* Problem slide: a compact timeline as the evidence, three cards as the argument */
+.reveal .inv-time.compact{margin:0 auto 24px!important}
+.reveal .inv-time.compact li{padding-top:46px}
+.inv-time.compact h3{font-size:20px;margin-bottom:4px}
+.reveal .inv-time.compact li p{font-size:15px!important}
+.c-cards.inv-who .c-card{min-height:0;padding:22px 24px}
+.c-cards.inv-who h3{font-size:21px;margin:8px 0 8px}
+.reveal .c-cards.inv-who p:not(.c-tag){font-size:15px!important;line-height:1.5}
 /* How we make money */
 .inv-split{width:100%;max-width:var(--w);margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr;gap:16px}
 .inv-split .c-card{display:flex;flex-direction:column}
