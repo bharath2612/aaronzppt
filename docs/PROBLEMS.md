@@ -73,3 +73,8 @@ The brokerage, developer and risk cards come from reasoning about the model, not
 ## 2026-11-04 — Investor notes were published briefly
 
 The notes were pushed in 391490b before checking repo visibility, which is public. They are now removed from the current site and ignored by git, but that commit stays in the public history unless it is rewritten, which needs the user's approval. Check visibility before pushing anything sensitive. Note that `docs/` is public too.
+
+## 2026-11-04 — Investor solution cards rest on two unconfirmed points
+
+- **Agents:** "nothing pending ties an agent to their agency" assumes the agency passes the agent's share on promptly. Aaronz pays the brokerage, not the agent.
+- **Risk:** "the brokerage no longer waits on the developer" holds only if Aaronz can't reclaim the money when a developer doesn't pay. Whether there is recourse to the brokerage isn't decided.

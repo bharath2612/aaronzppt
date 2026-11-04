@@ -1,6 +1,6 @@
 # Project status
 
-Updated: 2026-11-04 13:37 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-04-1337-investor-developer-tests.md`.
+Updated: 2026-11-04 13:45 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-04-1345-investor-matching-cards.md`.
 
 Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE real-estate commission finance. It contains:
 
@@ -29,7 +29,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
 - **Investor deck** (`investor/index.html`, Aaronz brand in orange `#ff6b35` and `#cf4000`, white canvas):
   - **Slides:** cover; the team; the problem; the solution; the market; the AI-native product; how we make money; handpicked developers only; the raise.
   - **Timelines:** the problem slide shows roughly 2 months from the commission milestone to money in the bank (4 to 5 days, then 30 to 45 days). The solution slide shows paid the same day, with a footnote: same day if the invoice is raised before 2 pm, otherwise the next working day. Both timelines run the full column width. The 2-month label vs the 35 to 50 days is noted in `docs/PROBLEMS.md`.
-  - **Problem cards:** below the timeline, Brokerages, Developers (accent) and The risk. The claims are unsourced (`docs/PROBLEMS.md`).
+  - **Problem and solution cards:** each slide has Brokerages, Agents, Developers (accent) and The risk, in the same order, so every problem has its answer. The claims are unsourced, and two answers depend on open points (`docs/PROBLEMS.md`).
   - **Founder notes:** `investor/notes.md` holds what the user has said about this deck. It is local only and ignored by git. Read it first and keep it updated.
   - **Developer slide:** three tests (reputation, cash flow, payment record); developers that fail any test are not signed.
   - **Team slide:** three names only, at the user's request.
@@ -93,7 +93,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - [Imtiaz: options we can offer](https://app.notion.com/p/4096ebf7407281cbaa4bf06a41bb28fe)
 - `aaronz-admin-monthly-expenses.xlsx` exists locally and is deliberately uncommitted.
 
-## Verification (2026-11-04 13:37 +04)
+## Verification (2026-11-04 13:45 +04)
 
 - `npm test` passed:
   - "twenty-six slide layouts ... mobile layout and controls";

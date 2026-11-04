@@ -45,8 +45,9 @@
 .reveal .inv-time.compact li{padding-top:46px}
 .inv-time.compact h3{font-size:20px;margin-bottom:4px}
 .reveal .inv-time.compact li p{font-size:15px!important}
-.c-cards.inv-who .c-card{min-height:0;padding:22px 24px}
-.c-cards.inv-who h3{font-size:21px;margin:8px 0 8px}
+.c-cards.inv-who{grid-template-columns:repeat(4,1fr);gap:14px}
+.c-cards.inv-who .c-card{min-height:0;padding:22px}
+.c-cards.inv-who h3{font-size:20px;margin:8px 0 8px}
 .reveal .c-cards.inv-who p:not(.c-tag){font-size:15px!important;line-height:1.5}
 /* How we make money */
 .inv-split{width:100%;max-width:var(--w);margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr;gap:16px}
