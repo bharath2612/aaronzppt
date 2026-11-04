@@ -61,3 +61,7 @@ The solution slide promises 2 to 3 days from booking, as the user asked. The fee
 ## 2026-11-04 — Investor 24-hour promise vs cover and fee table (replaces the 2-to-3-days question above)
 
 The solution slide's clock now starts at the invoice, so the booking question no longer applies. Still open: the cover says "paid the same day", while the solution says "within 24 hours"; and the fee table counts days from DLD registration with a "Same day" option, while the solution counts from the invoice. Waiting on the user.
+
+## 2026-11-04 — Investor "roughly 2 months" vs the timeline's own numbers
+
+The problem timeline adds up to 35 to 50 days (4 to 5 days, then 30 to 45), which is closer to 5 to 7 weeks than 2 months. The label stays as the user asked. The earlier cover and fee-table wording conflict is resolved by using "same day" and the commission milestone throughout the investor deck. The daily cut-off time is not yet defined.

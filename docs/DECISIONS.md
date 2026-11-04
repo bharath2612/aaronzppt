@@ -98,3 +98,7 @@ The investor deck lives in `investor/` and has 9 slides. The user merged "how we
 ## 2026-11-04 — Investor pitch: settled within 24 hours of the invoice
 
 The user dropped the "2 to 3 days" figure. Brokerages raise the invoice the same day they are notified, so the problem is the 30 to 45 days (sometimes 90) that follow. The solution is notification the day the milestone is achieved, and settlement within 24 hours of the invoice. The "sometimes over 3" months on the problem slide is computed: about a week plus 90 days.
+
+## 2026-11-04 — Investor wording: same day, commission milestone, handpicked
+
+The investor deck says "same day", which matches the cover and fee table and is the stronger pitch. It carries a footnote that invoices raised after a daily cut-off are paid the next working day, because a late invoice can't be paid that day. This replaces "within 24 hours". Timelines and fees count from the commission milestone, not DLD registration; the Imtiaz deck is unchanged. "Handpicked developers only" replaces "Top-tier developers only" because "top-tier" invites the objection that Aaronz isn't capturing the whole market. The criterion is a clean financial track record.

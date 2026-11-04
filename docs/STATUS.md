@@ -1,6 +1,6 @@
 # Project status
 
-Updated: 2026-11-04 09:46 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-04-0946-investor-24-hour-settlement.md`.
+Updated: 2026-11-04 10:08 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-04-1008-investor-same-day-handpicked.md`.
 
 Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE real-estate commission finance. It contains:
 
@@ -27,8 +27,8 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
 ## Current state
 
 - **Investor deck** (`investor/index.html`, Aaronz brand in orange `#ff6b35` and `#cf4000`, white canvas):
-  - **Slides:** cover; the team; the problem; the solution; the market; the AI-native product; how we make money; top-tier developers only; the raise.
-  - **Timelines:** the problem slide shows the wait after the invoice (30 to 45 days, sometimes 90; roughly 2 months from sale, sometimes over 3). The solution slide shows notification the day the milestone is achieved and settlement within 24 hours of the invoice. How that fits the cover and fee table is open (`docs/PROBLEMS.md`).
+  - **Slides:** cover; the team; the problem; the solution; the market; the AI-native product; how we make money; handpicked developers only; the raise.
+  - **Timelines:** the problem slide shows roughly 2 months from the commission milestone to money in the bank (4 to 5 days, then 30 to 45 days). The solution slide shows paid the same day, with a footnote for invoices after the daily cut-off (time not yet defined). The 2-month label vs the 35 to 50 days is noted in `docs/PROBLEMS.md`.
   - **Team slide:** three names only, at the user's request.
   - **Still "To be added":** where AI does the work, our margin, the raise amount and the use-of-funds split. The categories (licence, funding capital, product, team) are suggestions awaiting confirmation.
   - No PDF export yet.
@@ -90,11 +90,11 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - [Imtiaz: options we can offer](https://app.notion.com/p/4096ebf7407281cbaa4bf06a41bb28fe)
 - `aaronz-admin-monthly-expenses.xlsx` exists locally and is deliberately uncommitted.
 
-## Verification (2026-11-04 09:46 +04)
+## Verification (2026-11-04 10:08 +04)
 
 - `npm test` passed:
   - "twenty-six slide layouts ... mobile layout and controls";
-  - "investor deck, nine slide layouts, orange palette, placeholders, timelines, developer factors, fonts, logos, and mobile reader layout" (all nine slides inspected in screenshots on 2026-11-04, the team, problem and solution slides again after their edits; the mobile layout only by the overflow check);
+  - "investor deck, nine slide layouts, orange palette, placeholders, timelines, developer factors, fonts, logos, and mobile reader layout" (all nine slides inspected in screenshots on 2026-11-04, the team, problem, solution and fee slides again after their edits, the developer slide retitle covered by the test only; the mobile layout only by the overflow check);
   - "Imtiaz deck, eight slide layouts, email call to action and payout selection, fonts, logos, speaker notes, presenting mode, and mobile reader layout"; `npm run export:imtiaz` wrote an 8-page `imtiaz.pdf`. Page 4 (the picker) was inspected after the date change; the only slide content changed was on that page.
 - `git diff --check` clean.
 - The select slide was inspected in a desktop screenshot after the date change; the other Imtiaz slides were last inspected on 2026-11-01. The developer-flows diagram was rendered (1977×2048) and inspected.

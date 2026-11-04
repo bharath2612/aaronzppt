@@ -14,14 +14,14 @@
 .c-cards.names .c-card{min-height:150px;justify-content:flex-end}
 .c-cards.names h3{margin:0;font-size:28px}
 /* Placeholders stay visible, so an unfinished slide can't pass for a finished one. */
-.todo{display:inline-block;border:1px dashed var(--faint);border-radius:6px;padding:2px 8px;font-size:13px;font-weight:500;line-height:1.4;color:var(--muted);white-space:nowrap}
+.todo{display:inline-block;letter-spacing:0;border:1px dashed var(--faint);border-radius:6px;padding:2px 8px;font-size:13px;font-weight:500;line-height:1.4;color:var(--muted);white-space:nowrap}
 .c-card.lead .todo{border-color:#fff;color:#fff}
 .rows{margin:auto 0 0;padding-top:18px}
 .rows>div{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:15px}
 .rows dt{color:var(--muted)}
 .rows dd{margin:0;font-weight:600}
 /* Timelines on the problem and solution slides */
-.inv-time{width:100%;max-width:var(--w);margin:8px auto 0!important;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,1fr)}
+.inv-time{width:100%;max-width:var(--w);margin:8px auto 0!important;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,1fr)}
 .reveal .inv-time li{position:relative;margin:0;padding:24px 28px 26px 0;border-top:2px solid var(--line)}
 .inv-time li::before{content:'';position:absolute;top:-7px;left:0;width:12px;height:12px;border-radius:50%;background:var(--ink)}
 .inv-time.us li{border-color:var(--orange)}

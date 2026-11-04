@@ -25,10 +25,11 @@ const {pathToFileURL}=require('node:url');
  // Slides with no confirmed facts must show visible placeholders, not invented content.
  for(const id of ['product','revenue','raise'])assert(await page.locator('#'+id+' .todo').count()>0,id+' lost its placeholders');
  assert.deepEqual(await page.locator('#team h3').allTextContents(),['Jikku Luke','Surinder Jaiswani','Bharath Chippa']);
- // Timelines: roughly 2 months today; settled within 24 hours of the invoice with Aaronz.
- assert.equal(await page.locator('#problem .inv-time li').count(),4);assert.match(await page.locator('#problem .inv-call').textContent(),/Roughly 2 months/);
- assert.equal(await page.locator('#solution .inv-time li').count(),4);assert.match(await page.locator('#solution .inv-call').textContent(),/within 24 hours/);
- assert(!/2 to 3 days/.test(await page.locator('#problem,#solution').allTextContents().then(t=>t.join(' '))),'2 to 3 days still shown');
+ // Timelines: roughly 2 months today, the same day with Aaronz, both from the commission milestone.
+ for(const id of ['problem','solution']){assert.equal(await page.locator('#'+id+' .inv-time li').count(),3);assert.match(await page.locator('#'+id+' .inv-time li h3').first().textContent(),/Commission milestone/);}
+ assert.match(await page.locator('#problem .inv-call').textContent(),/Roughly 2 months/);assert.match(await page.locator('#solution .inv-call').textContent(),/same day/);
+ const wording=await page.evaluate(()=>document.querySelector('.slides').textContent);assert(!/24 hours|DLD registration|DLD reservation/.test(wording),'old wording still shown');
+ assert.equal(await page.locator('#developers h2').textContent(),'Handpicked developers only');
  // The developer slide names every factor the user listed.
  assert.deepEqual(await page.locator('#developers .inv-factors h3').allTextContents(),['Reputation','Social reputation','Banking history','Balance sheets','Leverage']);
  const text=await page.evaluate(()=>document.body.textContent);assert(!/channel connect/i.test(text),'Channel Connect mentioned');
