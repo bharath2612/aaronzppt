@@ -94,3 +94,7 @@ The problem title now says "months", replacing the "roughly 2 months" label note
 ## 2026-11-04 — Single words dropping to a last line on investor slides
 
 The text under titles was capped at 760px, so "it." dropped to its own line after a wording change. The same fault had been fixed only on the product slide. Now fixed for the whole deck, with a test. The test skips text with inline markup and only checks one viewport width, so other screen sizes could still show it.
+
+## 2026-11-04 — Investor fee table loses money on the 30-day option at a 7% partner rate
+
+Funding periods assume the developer pays 45 days after the milestone. Same day: $1,500 fee, 45 days funded, 12% a year, $875 cost, $625 spread. 15 days: $750 fee, 30 days funded, 9% a year, $583 cost, $167 spread. 30 days: $250 fee, 15 days funded, 6% a year, $292 cost, a $42 loss. The main deck's fee scenarios slide also assumes a 12% bank rate, which would leave no spread on the same-day option. Waiting on the user and a real partner rate.

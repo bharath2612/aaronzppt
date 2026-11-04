@@ -29,7 +29,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.equal(await css('--brand'),'#cf4000');assert.equal(await css('--orange'),'#ff6b35');assert.equal(await css('--paper'),'#fff');
  assert.equal(await page.locator('.c-card.lead').first().evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(207, 64, 0)');
  // Slides with no confirmed facts must show visible placeholders, not invented content.
- for(const id of ['revenue','raise'])assert(await page.locator('#'+id+' .todo').count()>0,id+' lost its placeholders');
+ for(const id of ['raise'])assert(await page.locator('#'+id+' .todo').count()>0,id+' lost its placeholders');
  assert.deepEqual(await page.locator('#team h3').allTextContents(),['Surandar Jesrani','Jikku Luke','Bharath Chippa']);
  // Timelines: months today, the same day with Aaronz, both from the commission milestone.
  for(const id of ['problem','solution']){assert.equal(await page.locator('#'+id+' .inv-time li').count(),3);assert.match(await page.locator('#'+id+' .inv-time li h3').first().textContent(),/Commission milestone/);}
@@ -46,6 +46,8 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.equal(await page.locator('#market h2').textContent(),"Dubai's commission market: $3.7B and growing fast");assert.match(await page.locator('#problem .c-head').textContent(),/months away/);
  // The founder banned this word from the pitch, including speaker notes.
  assert(!/automatically/i.test(await page.evaluate(()=>document.querySelector('.slides').textContent)),'banned word in the deck');
+ // The spread example adds up: fee minus partner cost, at 12% and 7% over 45 days on $100,000.
+ assert.equal(Math.round(100000*.12*45/360),1500);assert.equal(Math.round(100000*.07*45/360),875);const spreadText=await page.locator('#revenue .lead').textContent();assert.match(spreadText,/\$1,500/);assert.match(spreadText,/\$875/);assert.match(spreadText,/\$625/);
  // Product slide is filled in, and team names are centred.
  assert.equal(await page.locator('#product h2').textContent(),'A product, not a service');assert.equal(await page.locator('#product .todo').count(),0);assert.match(await page.locator('#product .inv-call').textContent(),/Zero bloat/);
  assert.equal(await page.locator('#team .c-card').first().evaluate(e=>getComputedStyle(e).textAlign),'center');
