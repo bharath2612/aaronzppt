@@ -8,6 +8,7 @@
   document.querySelectorAll('[data-usd]').forEach(el=>{el.textContent=el.dataset[currency];});
   document.documentElement.dataset.currency=currency;select.value=currency;
   pdf.href='aaronz-investor-'+currency+'.pdf';
+  document.dispatchEvent(new Event('currencychange'));
   if(typeof deck!=='undefined'&&deck.isReady())deck.layout();
  }
  select.addEventListener('change',()=>{save(select.value);apply(select.value);select.blur();});

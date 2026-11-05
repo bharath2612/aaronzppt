@@ -122,3 +122,7 @@ The partner charges interest until the developer pays, so a fee fixed for 60 day
 ## 2026-11-05 — Partner licence model is unconfirmed
 
 No partnership is confirmed in the repo. A licence can't simply be sublet: the partner would need to be the regulated provider, or Aaronz its agent. Who funds, owns the receivable, carries first loss and sets pricing is undecided, and the main deck notes the fee-minus-cost maths only applies if the contract gives Aaronz that margin. Mawarid is Sharia-compliant, so its pricing may not be described as interest, which would affect the money slide's wording.
+
+## 2026-11-05 — Investor funding slide names Mawarid before terms are confirmed
+
+The public deck names Mawarid and carries an assumed valuation of $20M, which could anchor investors. The small print says terms aren't final. At the default 15% and 9%, partner funding makes the least profit ($0.25M at $300M a year) and loses money at $74M and $150M.

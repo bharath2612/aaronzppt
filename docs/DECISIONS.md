@@ -162,3 +162,7 @@ Replaces USD-only; USD stays the default. Market figures use the source AED numb
 ## 2026-11-05 — Investor raise excludes a licence
 
 The user plans to operate under an embedded finance partner's licence, such as Mawarid Finance, rather than obtain one. This changes the earlier DIFC direction for the investor deck. The Imtiaz deck's speaker note still mentions pursuing a DIFC licence, and the main deck has licensing slides; both are unchanged and flagged.
+
+## 2026-11-05 — Investor funding simulation assumes Mawarid funds and licenses
+
+The user says Mawarid would give both licence and capital. The slide uses equity of $1M at an assumed $20M pre-money, partner funding of all advances, and losses carried by Aaronz (the cautious case). Rates of 7%, 9% and 11% are test values. Its "Founders keep" figure is for this round only, before any later rounds.

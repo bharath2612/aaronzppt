@@ -9,7 +9,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  const page=await browser.newPage({viewport:{width:1440,height:1000}});page.on('pageerror',e=>errors.push(e.message));
  page.on('requestfailed',r=>errors.push('failed to load '+r.url()));
  await page.goto(url);await page.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());await page.evaluate(()=>document.fonts.ready);
- const ids=['home','team','problem','solution','market','product','revenue','agents','developers','competition','raise'];
+ const ids=['home','team','problem','solution','market','product','revenue','agents','developers','competition','funding','raise'];
  assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('.slides>section')].map(s=>s.id)),ids);
  for(let i=0;i<ids.length;i++){await page.evaluate(i=>deck.slide(i),i);await page.waitForTimeout(300);await page.screenshot({path:'.build/investor-'+ids[i]+'.png'});
   // Content must stay inside the slide and clear of the absolutely positioned source note.
@@ -18,7 +18,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
   // No paragraph or card title may leave one word alone on its last line.
   const orphans=await page.locator('#'+ids[i]).evaluate(el=>[...el.querySelectorAll('p,h3,h2,h1')].filter(n=>!n.closest('aside.notes')&&n.getClientRects().length).filter(n=>{const text=n.firstChild&&n.childNodes.length===1&&n.firstChild.nodeType===3?n.firstChild:null;if(!text)return false;const value=text.textContent;const cut=value.trimEnd().lastIndexOf(' ');if(cut<1)return false;const top=(a,b)=>{const r=document.createRange();r.setStart(text,a);r.setEnd(text,b);return r.getClientRects()[0].top;};return top(cut+1,value.trimEnd().length)-top(cut-1,cut)>2;}).map(n=>n.textContent));
   assert.deepEqual(orphans,[],ids[i]+' single word on a last line');}
- assert.equal(await page.locator('#slideCount').textContent(),'11 / 11');
+ assert.equal(await page.locator('#slideCount').textContent(),'12 / 12');
  assert(await page.evaluate(()=>document.fonts.check('500 48px Inter')),'Inter not loaded');
  assert(await page.evaluate(()=>[...document.images].every(i=>i.complete&&i.naturalWidth>0)),'logo failed to load');
  // Nav and cover use the one-line Aaronz AI logo.
@@ -59,6 +59,14 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.match(await page.locator('#agents .lead').textContent(),/\$74M.*\$12\.3M.*\$2\.2M/);
  // Licensing comes through an embedded finance partner, so it isn't a use of funds.
  assert.deepEqual(await page.locator('#raise .rows dt').allTextContents(),['Funding capital','Product','Team']);
+ // Funding simulation: defaults, then switches recalculate, checked by hand against the formula.
+ const fund=async id=>page.locator('#'+id).textContent();
+ assert.equal(await fund('partnerKeep'),'95.2%');assert.equal(await fund('partnerEquity'),'$1M');assert.equal(await fund('partnerFunded'),'$50M');assert.equal(await fund('partnerCost'),'$4.50M');assert.equal(await fund('partnerProfit'),'$0.25M');assert.equal(await fund('equityOnlyKeep'),'28.2%');assert.equal(await fund('equityOnlyProfit'),'$4.75M');assert.equal(await fund('ownDebtEquity'),'$6M');assert.equal(await fund('ownDebtProfit'),'$0.70M');assert.equal(await fund('ownDebtKeep'),'76.9%');
+ assert.match(await fund('fundCall'),/\$133\.3?M/);
+ await page.evaluate(i=>deck.slide(i),ids.indexOf('funding'));await page.waitForTimeout(200);
+ await page.click('#funding [data-fund="volume"][data-value="74"]');assert.equal(await fund('partnerProfit'),'−$0.45M');assert.equal(await fund('ownDebtProfit'),'−$0.33M');assert.equal(await fund('equityOnlyProfit'),'$0.67M');
+ await page.click('#funding [data-fund="fee"][data-value="18"]');await page.click('#funding [data-fund="rate"][data-value="7"]');assert.equal(await fund('partnerCost'),'$0.86M');assert.equal(await fund('partnerProfit'),'$0.17M');
+ await page.click('#funding [data-fund="volume"][data-value="300"]');await page.click('#funding [data-fund="fee"][data-value="15"]');await page.click('#funding [data-fund="rate"][data-value="9"]');
  // Product slide is filled in, and team names are centred.
  assert.equal(await page.locator('#product h2').textContent(),'A product, not a service');assert.equal(await page.locator('#product .todo').count(),0);assert.match(await page.locator('#product .inv-call').textContent(),/Zero bloat/);
  assert.equal(await page.locator('#team .c-card').first().evaluate(e=>getComputedStyle(e).textAlign),'center');
@@ -74,6 +82,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  const aed=await browser.newPage({viewport:{width:1440,height:1000}});aed.on('pageerror',e=>errors.push(e.message));await aed.goto(url);await aed.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());await aed.selectOption('#currency','aed');
  assert.equal(await aed.locator('#deckPdf').getAttribute('href'),'aaronz-investor-aed.pdf');
  const slideText=await aed.evaluate(()=>{const c=document.querySelector('.slides').cloneNode(true);c.querySelectorAll('aside.notes').forEach(n=>n.remove());return c.textContent;});assert(!slideText.includes('$'),'dollar sign left in AED: '+(slideText.match(/.{20}\$.{10}/)||[''])[0]);
+ assert.equal(await aed.locator('#partnerFunded').textContent(),'AED 183.6M');assert.equal(await aed.locator('#funding [data-value="300"]').textContent(),'AED 1.10B');
  for(const figure of ['AED 682.5B','AED 13.59B','AED 293B','AED 2,300','AED 920','AED 1,665','AED 8.15M','AED 121M'])assert(slideText.includes(figure),figure);
  for(const [c,cost,fee,spread,base] of [[30,690,1150,460,92000],[60,1380,2300,920,92000],[90,2070,3450,1380,92000]]){assert.equal(Math.round(base*.09*c/360),cost);assert.equal(Math.round(base*.15*c/360),fee);assert.equal(fee-cost,spread);}
  for(let i=0;i<ids.length;i++){await aed.evaluate(i=>deck.slide(i),i);await aed.waitForTimeout(250);await aed.screenshot({path:'.build/investor-aed-'+ids[i]+'.png'});
@@ -91,6 +100,6 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});mobile.on('pageerror',e=>errors.push(e.message));
  await mobile.goto(url);await mobile.waitForFunction(()=>document.body.classList.contains('reader'));await mobile.waitForTimeout(500);
  assert(await mobile.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'investor deck mobile overflow');await mobile.screenshot({path:'.build/investor-mobile.png',fullPage:true});
- assert.deepEqual(errors,[]);console.log('Passed: investor deck, eleven slide layouts, orange palette, placeholders, timelines, developer tests, currency switch, fonts, logos, and mobile reader layout.');
+ assert.deepEqual(errors,[]);console.log('Passed: investor deck, twelve slide layouts, orange palette, placeholders, timelines, developer tests, currency switch, fonts, logos, and mobile reader layout.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});
