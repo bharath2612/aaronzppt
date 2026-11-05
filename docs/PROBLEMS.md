@@ -126,3 +126,7 @@ No partnership is confirmed in the repo. A licence can't simply be sublet: the p
 ## 2026-11-05 — Investor funding slide names Mawarid before terms are confirmed
 
 The public deck names Mawarid and carries an assumed valuation of $20M, which could anchor investors. The small print says terms aren't final. At the default 15% and 9%, partner funding makes the least profit ($0.25M at $300M a year) and loses money at $74M and $150M.
+
+## 2026-11-05 — Investor money slide still describes borrowing
+
+The funding slide now says equity is the working capital, but the money slide says we borrow from finance partners at 9% and keep the spread. On equity alone, a 60-day payout of $25,000 earns the full $625, with no $375 partner cost. The user has not yet said whether borrowing stays, so the money slide is unchanged. The funding slide no longer names Mawarid or a $20M valuation, which closes the concern about naming them publicly, but those remain in git history. Licence coverage under an equity-funded model is unconfirmed.

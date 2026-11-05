@@ -77,18 +77,6 @@
 #revenue .c-table td{vertical-align:middle}
 #revenue .table-wrap,#revenue .c-table{height:100%}
 /* Agent product: tighter, because the slide also carries the UAE players */
-#agents .c-head{margin-bottom:20px}
-#agents .inv-split .c-card{padding:18px 24px}
-#agents .c-card.lead .rows{margin-top:8px}
-#agents .c-card.lead .rows>div{padding:5px 0;font-size:14px}
-#agents .c-card.lead .rows .total{font-size:18px}
-#agents .c-table th{padding:11px 20px;white-space:nowrap}
-#agents .c-table td{padding:10px 20px;vertical-align:middle;white-space:nowrap}
-#agents .table-wrap,#agents .c-table{height:100%}
-#agents .c-cards.inv-who{margin-top:12px;gap:12px}
-#agents .c-cards.inv-who .c-card{padding:14px 18px}
-#agents .c-cards.inv-who h3{font-size:17px;margin:4px 0 4px}
-.reveal #agents .c-cards.inv-who p:not(.c-tag){font-size:13px!important;line-height:1.4}
 /* Developer selection */
 .inv-tests{width:100%;max-width:var(--w);margin:0 auto;display:grid;grid-template-columns:3fr 2fr;gap:16px}
 .reveal .inv-tests>div>.c-tag{margin-bottom:12px!important}
@@ -110,15 +98,4 @@
 .nav-currency select{font:inherit;font-size:12px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:10px 12px;cursor:pointer}
 .nav-currency select:hover{border-color:#cfcfca}
 @media(max-width:480px){.site-nav nav{display:none}}
-/* Funding simulation */
-#funding .c-head{margin-bottom:18px}
-.fund-controls{width:100%;max-width:var(--w);margin:0 auto 14px;display:flex;gap:32px;flex-wrap:wrap}
-.reveal .fund-control .c-tag{margin-bottom:6px!important}
-.fund-control button{font:inherit;font-size:14px;font-weight:500;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px 14px;margin-right:6px;cursor:pointer}
-.fund-control button:hover{border-color:#cfcfca}
-.fund-control button[aria-pressed="true"]{background:var(--tint);border-color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand)}
-#funding .c-table th{padding:9px 20px}
-#funding .c-table td{padding:7px 20px;white-space:nowrap}
-#funding .c-table th.col-us,#funding .c-table td.col-us{color:var(--brand);font-weight:600}
-#funding .inv-call{padding:14px 24px}
-.reveal #funding .inv-call h3{font-size:18px}
+#funding .inv-time{margin-top:48px!important;margin-bottom:56px!important}

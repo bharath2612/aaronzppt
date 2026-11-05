@@ -9,7 +9,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  const page=await browser.newPage({viewport:{width:1440,height:1000}});page.on('pageerror',e=>errors.push(e.message));
  page.on('requestfailed',r=>errors.push('failed to load '+r.url()));
  await page.goto(url);await page.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());await page.evaluate(()=>document.fonts.ready);
- const ids=['home','team','problem','solution','market','product','revenue','agents','developers','competition','funding','raise'];
+ const ids=['home','team','problem','solution','market','product','revenue','developers','competition','funding','raise'];
  assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('.slides>section')].map(s=>s.id)),ids);
  for(let i=0;i<ids.length;i++){await page.evaluate(i=>deck.slide(i),i);await page.waitForTimeout(300);await page.screenshot({path:'.build/investor-'+ids[i]+'.png'});
   // Content must stay inside the slide and clear of the absolutely positioned source note.
@@ -18,7 +18,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
   // No paragraph or card title may leave one word alone on its last line.
   const orphans=await page.locator('#'+ids[i]).evaluate(el=>[...el.querySelectorAll('p,h3,h2,h1')].filter(n=>!n.closest('aside.notes')&&n.getClientRects().length).filter(n=>{const text=n.firstChild&&n.childNodes.length===1&&n.firstChild.nodeType===3?n.firstChild:null;if(!text)return false;const value=text.textContent;const cut=value.trimEnd().lastIndexOf(' ');if(cut<1)return false;const top=(a,b)=>{const r=document.createRange();r.setStart(text,a);r.setEnd(text,b);return r.getClientRects()[0].top;};return top(cut+1,value.trimEnd().length)-top(cut-1,cut)>2;}).map(n=>n.textContent));
   assert.deepEqual(orphans,[],ids[i]+' single word on a last line');}
- assert.equal(await page.locator('#slideCount').textContent(),'12 / 12');
+ assert.equal(await page.locator('#slideCount').textContent(),'11 / 11');
  assert(await page.evaluate(()=>document.fonts.check('500 48px Inter')),'Inter not loaded');
  assert(await page.evaluate(()=>[...document.images].every(i=>i.complete&&i.naturalWidth>0)),'logo failed to load');
  // Nav and cover use the one-line Aaronz AI logo.
@@ -53,20 +53,10 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  // Competition: two global players with the larger cards, then two local; only Lyte shows a valuation figure.
  assert.deepEqual(await page.locator('#competition .global h3').allTextContents(),['Lyte','Tongo']);assert.deepEqual(await page.locator('#competition .local h3').allTextContents(),['FastPay RECAP','ACOT']);assert.deepEqual(await page.locator('#competition .label').allTextContents(),['valuation','raised · valuation not disclosed','Valuation not disclosed','Valuation not disclosed']);
  assert.match(await page.locator('#problem .inv-time').textContent(),/30 to 90 days/);
- // Agent product maths: 4.5% flat on $10,000, 9% cost of money, and the 5% take-up scenario.
- for(const [days,cost,spread] of [[30,75,375],[60,150,300],[90,225,225]]){assert.equal(Math.round(10000*.09*days/360),cost);assert.equal(450-cost,spread);}
- const agentPool=3.7e9*.5,agentOut=agentPool*.05*.8;assert.equal(Math.round(agentOut/1e6),74);assert.equal((agentOut*.045/1e6).toFixed(1),'3.3');assert.equal((agentOut*.09*60/360/1e6).toFixed(1),'1.1');assert.equal(((agentOut*.045-agentOut*.09*60/360)/1e6).toFixed(1),'2.2');assert.equal((agentOut/6/1e6).toFixed(1),'12.3');
- assert.match(await page.locator('#agents .lead').textContent(),/\$74M.*\$12\.3M.*\$2\.2M/);
  // Licensing comes through an embedded finance partner, so it isn't a use of funds.
  assert.deepEqual(await page.locator('#raise .rows dt').allTextContents(),['Funding capital','Product','Team']);
- // Funding simulation: defaults, then switches recalculate, checked by hand against the formula.
- const fund=async id=>page.locator('#'+id).textContent();
- assert.equal(await fund('partnerKeep'),'95.2%');assert.equal(await fund('partnerEquity'),'$1M');assert.equal(await fund('partnerFunded'),'$50M');assert.equal(await fund('partnerCost'),'$4.50M');assert.equal(await fund('partnerProfit'),'$0.25M');assert.equal(await fund('equityOnlyKeep'),'28.2%');assert.equal(await fund('equityOnlyProfit'),'$4.75M');assert.equal(await fund('ownDebtEquity'),'$6M');assert.equal(await fund('ownDebtProfit'),'$0.70M');assert.equal(await fund('ownDebtKeep'),'76.9%');
- assert.match(await fund('fundCall'),/\$133\.3?M/);
- await page.evaluate(i=>deck.slide(i),ids.indexOf('funding'));await page.waitForTimeout(200);
- await page.click('#funding [data-fund="volume"][data-value="74"]');assert.equal(await fund('partnerProfit'),'−$0.45M');assert.equal(await fund('ownDebtProfit'),'−$0.33M');assert.equal(await fund('equityOnlyProfit'),'$0.67M');
- await page.click('#funding [data-fund="fee"][data-value="18"]');await page.click('#funding [data-fund="rate"][data-value="7"]');assert.equal(await fund('partnerCost'),'$0.86M');assert.equal(await fund('partnerProfit'),'$0.17M');
- await page.click('#funding [data-fund="volume"][data-value="300"]');await page.click('#funding [data-fund="fee"][data-value="15"]');await page.click('#funding [data-fund="rate"][data-value="9"]');
+ // Funding is a plain equity raise for working capital, with no simulation or named partner.
+ assert.equal(await page.locator('#funding h2').textContent(),'We raise equity for working capital');assert.equal(await page.locator('#funding button,#funding table').count(),0);assert(!/mawarid/i.test(await page.evaluate(()=>document.body.textContent)),'partner named');
  // Product slide is filled in, and team names are centred.
  assert.equal(await page.locator('#product h2').textContent(),'A product, not a service');assert.equal(await page.locator('#product .todo').count(),0);assert.match(await page.locator('#product .inv-call').textContent(),/Zero bloat/);
  assert.equal(await page.locator('#team .c-card').first().evaluate(e=>getComputedStyle(e).textAlign),'center');
@@ -82,15 +72,14 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  const aed=await browser.newPage({viewport:{width:1440,height:1000}});aed.on('pageerror',e=>errors.push(e.message));await aed.goto(url);await aed.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());await aed.selectOption('#currency','aed');
  assert.equal(await aed.locator('#deckPdf').getAttribute('href'),'aaronz-investor-aed.pdf');
  const slideText=await aed.evaluate(()=>{const c=document.querySelector('.slides').cloneNode(true);c.querySelectorAll('aside.notes').forEach(n=>n.remove());return c.textContent;});assert(!slideText.includes('$'),'dollar sign left in AED: '+(slideText.match(/.{20}\$.{10}/)||[''])[0]);
- assert.equal(await aed.locator('#partnerFunded').textContent(),'AED 183.6M');assert.equal(await aed.locator('#funding [data-value="300"]').textContent(),'AED 1.10B');
- for(const figure of ['AED 682.5B','AED 13.59B','AED 293B','AED 2,300','AED 920','AED 1,665','AED 8.15M','AED 121M'])assert(slideText.includes(figure),figure);
+ for(const figure of ['AED 682.5B','AED 13.59B','AED 293B','AED 2,300','AED 920','AED 121M'])assert(slideText.includes(figure),figure);
  for(const [c,cost,fee,spread,base] of [[30,690,1150,460,92000],[60,1380,2300,920,92000],[90,2070,3450,1380,92000]]){assert.equal(Math.round(base*.09*c/360),cost);assert.equal(Math.round(base*.15*c/360),fee);assert.equal(fee-cost,spread);}
  for(let i=0;i<ids.length;i++){await aed.evaluate(i=>deck.slide(i),i);await aed.waitForTimeout(250);await aed.screenshot({path:'.build/investor-aed-'+ids[i]+'.png'});
   const over=await aed.locator('#'+ids[i]).evaluate(el=>{const r=el.getBoundingClientRect();const note=el.querySelector(':scope>.source');const limit=note?note.getBoundingClientRect().top:r.bottom;return [...el.querySelectorAll('*')].filter(n=>!n.closest('aside.notes,.source,.c-meta')).filter(n=>{const b=n.getBoundingClientRect();return b.width>0&&(b.bottom>limit+1||b.left<r.left-1||b.right>r.right+1);}).map(n=>n.tagName+'.'+n.className);});assert.deepEqual(over,[],'AED '+ids[i]+' overflow: '+over);}
  // Switching currency must not change how a figure looks: the market headline stays large in both currencies.
  for(const [view,slide] of [[page,4],[aed,4]]){await view.evaluate(i=>deck.slide(i),slide);await view.waitForTimeout(200);assert.equal(await view.locator('#market .mkt-stats strong data').first().evaluate(e=>getComputedStyle(e).fontSize),'44px');}
  // Table figures stay on one line in AED.
- await aed.evaluate(i=>deck.slide(i),7);await aed.waitForTimeout(200);assert.deepEqual(await aed.locator('#agents tbody td').evaluateAll(cells=>cells.filter(c=>c.scrollWidth>c.clientWidth+1||c.getClientRects()[0].height>60).map(c=>c.textContent)),[]);
+ await aed.evaluate(i=>deck.slide(i),ids.indexOf('revenue'));await aed.waitForTimeout(200);assert.deepEqual(await aed.locator('#revenue tbody td').evaluateAll(cells=>cells.filter(c=>{const d=c.querySelector('data');return c.scrollWidth>c.clientWidth+1||(d&&d.getClientRects().length>1);}).map(c=>c.textContent)),[]);
  assert(!/\ba AED/.test(await aed.evaluate(()=>document.querySelector('.slides').textContent)),'a AED grammar');
  // The choice survives a reload, a link can set it, and both PDFs exist; reading mode still works.
  await aed.reload();await aed.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());assert.equal(await aed.locator('#currency').inputValue(),'aed');
@@ -100,6 +89,6 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});mobile.on('pageerror',e=>errors.push(e.message));
  await mobile.goto(url);await mobile.waitForFunction(()=>document.body.classList.contains('reader'));await mobile.waitForTimeout(500);
  assert(await mobile.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'investor deck mobile overflow');await mobile.screenshot({path:'.build/investor-mobile.png',fullPage:true});
- assert.deepEqual(errors,[]);console.log('Passed: investor deck, twelve slide layouts, orange palette, placeholders, timelines, developer tests, currency switch, fonts, logos, and mobile reader layout.');
+ assert.deepEqual(errors,[]);console.log('Passed: investor deck, eleven slide layouts, orange palette, placeholders, timelines, developer tests, currency switch, fonts, logos, and mobile reader layout.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});

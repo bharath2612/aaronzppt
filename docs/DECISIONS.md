@@ -166,3 +166,7 @@ The user plans to operate under an embedded finance partner's licence, such as M
 ## 2026-11-05 — Investor funding simulation assumes Mawarid funds and licenses
 
 The user says Mawarid would give both licence and capital. The slide uses equity of $1M at an assumed $20M pre-money, partner funding of all advances, and losses carried by Aaronz (the cautious case). Rates of 7%, 9% and 11% are test values. Its "Founders keep" figure is for this round only, before any later rounds.
+
+## 2026-11-05 — Investor deck funds advances with equity; agent product slide removed
+
+The user rejected the funding simulation: the plan is simply raising equity from VCs for working capital. The slide now says that in three steps, with no switches, comparison or partner name, and `investor/funding.js` is gone. This replaces the Mawarid simulation decision above. The agent cash-out slide was removed at the user's request, leaving 11 slides. Its research stays in git history and in `investor/notes.md`.
