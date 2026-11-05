@@ -57,6 +57,8 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  for(const [days,cost,spread] of [[30,75,375],[60,150,300],[90,225,225]]){assert.equal(Math.round(10000*.09*days/360),cost);assert.equal(450-cost,spread);}
  const agentPool=3.7e9*.5,agentOut=agentPool*.05*.8;assert.equal(Math.round(agentOut/1e6),74);assert.equal((agentOut*.045/1e6).toFixed(1),'3.3');assert.equal((agentOut*.09*60/360/1e6).toFixed(1),'1.1');assert.equal(((agentOut*.045-agentOut*.09*60/360)/1e6).toFixed(1),'2.2');assert.equal((agentOut/6/1e6).toFixed(1),'12.3');
  assert.match(await page.locator('#agents .lead').textContent(),/\$74M.*\$12\.3M.*\$2\.2M/);
+ // Licensing comes through an embedded finance partner, so it isn't a use of funds.
+ assert.deepEqual(await page.locator('#raise .rows dt').allTextContents(),['Funding capital','Product','Team']);
  // Product slide is filled in, and team names are centred.
  assert.equal(await page.locator('#product h2').textContent(),'A product, not a service');assert.equal(await page.locator('#product .todo').count(),0);assert.match(await page.locator('#product .inv-call').textContent(),/Zero bloat/);
  assert.equal(await page.locator('#team .c-card').first().evaluate(e=>getComputedStyle(e).textAlign),'center');

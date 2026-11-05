@@ -158,3 +158,7 @@ The user asked for LytePay's model in the UAE. The slide uses LytePay's publishe
 ## 2026-11-04 — Investor deck switches between USD and AED
 
 Replaces USD-only; USD stays the default. Market figures use the source AED numbers. Example amounts are rounded to AED 92,000 ($25,000) and AED 37,000 ($10,000), and their fees are recalculated from those amounts rather than converted, so each currency's maths adds up on its own. PDFs are pre-built per currency.
+
+## 2026-11-05 — Investor raise excludes a licence
+
+The user plans to operate under an embedded finance partner's licence, such as Mawarid Finance, rather than obtain one. This changes the earlier DIFC direction for the investor deck. The Imtiaz deck's speaker note still mentions pursuing a DIFC licence, and the main deck has licensing slides; both are unchanged and flagged.

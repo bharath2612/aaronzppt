@@ -1,6 +1,6 @@
 # Project status
 
-Updated: 2026-11-04 18:02 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-04-1802-investor-currency-switch.md`.
+Updated: 2026-11-05 12:24 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-05-1224-investor-no-own-licence.md`.
 
 Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE real-estate commission finance. It contains:
 
@@ -40,7 +40,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - **Cover heading:** "Real estate commissions, paid the same day. Autonomously, by AI." Only "paid the same day." is highlighted.
   - **Logo:** one-line "Aaronz AI" (`investor/aaronz-ai-logo.svg`, built by `tools/make-aaronz-ai-logo.py`); investor deck only.
   - **Team slide:** three names only, at the user's request.
-  - **Still "To be added":** the raise amount and the use-of-funds split. The categories (licence, funding capital, product, team) are suggestions awaiting confirmation.
+  - **Still "To be added":** the raise amount and the use-of-funds split. The categories (funding capital, product, team; licence comes through a partner, unconfirmed) are suggestions awaiting confirmation.
 - **Imtiaz deck** (`imtiaz.html`, for the CFO meeting; current date to be confirmed by the user):
   - **Slides:**
     1. cover (Imtiaz Developments × Aaronz & Co logos at equal height, white; headline "Brokerages paid the same day." highlighted in light blue, then "Imtiaz pays as usual.");
@@ -99,7 +99,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - [Imtiaz: options we can offer](https://app.notion.com/p/4096ebf7407281cbaa4bf06a41bb28fe)
 - `aaronz-admin-monthly-expenses.xlsx` exists locally and is deliberately uncommitted.
 
-## Verification (2026-11-04 18:02 +04)
+## Verification (2026-11-05 12:24 +04)
 
 - `npm test` passed:
   - "twenty-six slide layouts ... mobile layout and controls";

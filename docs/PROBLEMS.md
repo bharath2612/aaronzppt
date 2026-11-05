@@ -118,3 +118,7 @@ The partner charges interest until the developer pays, so a fee fixed for 60 day
 - **Price:** ACOT's example fee is 3%, below the 4.5% used. At 3% on $10,000, the 60-day spread is $150, not $300.
 - **Data:** broker counts conflict (32,978 and about 39,776 in the same Khaleej Times article). The 50:50 split is "most cases" per Bayut, and top agents earn more.
 - **Claims:** ACOT, Agents First and Insiders of Dubai terms are from their own pages or press coverage, not independently verified.
+
+## 2026-11-05 — Partner licence model is unconfirmed
+
+No partnership is confirmed in the repo. A licence can't simply be sublet: the partner would need to be the regulated provider, or Aaronz its agent. Who funds, owns the receivable, carries first loss and sets pricing is undecided, and the main deck notes the fee-minus-cost maths only applies if the contract gives Aaronz that margin. Mawarid is Sharia-compliant, so its pricing may not be described as interest, which would affect the money slide's wording.
