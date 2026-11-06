@@ -174,3 +174,7 @@ The user rejected the funding simulation: the plan is simply raising equity from
 ## 2026-11-06 — Investor problem split into three audience slides
 
 At the user's request, the problem is now three slides: developers, brokers (individual agents, in the user's word) and brokerages. They share section number 02, so later slide numbers are unchanged. The brokerage slide keeps the approved title and timeline. The solution slide is not yet reworked to match.
+
+## 2026-11-06 — Investor problem slides lead with each audience's main problem
+
+The user said the developer and brokerage slides had the wrong hero problems. Developers: cash flow, and the wish for a partner to pay commission, with smaller developers as a minor point. Brokerages: they can't plan or demand their money; smaller ones can't push developers to pay and many fail, and every brokerage wants money sooner for campaigns. The brokerage timeline was dropped because the broker slide covers timing.

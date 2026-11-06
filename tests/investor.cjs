@@ -32,13 +32,13 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  for(const id of ['raise'])assert(await page.locator('#'+id+' .todo').count()>0,id+' lost its placeholders');
  assert.deepEqual(await page.locator('#team h3').allTextContents(),['Surandar Jesrani','Jikku Luke','Bharath Chippa']);
  // Timelines: months today, the same day with Aaronz, both from the commission milestone.
- for(const id of ['problem-brokerages','solution']){assert.equal(await page.locator('#'+id+' .inv-time li').count(),3);assert.match(await page.locator('#'+id+' .inv-time li h3').first().textContent(),/Commission milestone/);}
+ for(const id of ['solution']){assert.equal(await page.locator('#'+id+' .inv-time li').count(),3);assert.match(await page.locator('#'+id+' .inv-time li h3').first().textContent(),/Commission milestone/);}
  // The timeline spans the whole column, ending at the right edge with its last step right-aligned.
- for(const id of ['problem-brokers','problem-brokerages','solution']){await page.evaluate(id=>deck.slide([...document.querySelectorAll('.slides>section')].findIndex(s=>s.id===id)),id);await page.waitForTimeout(200);const g=await page.evaluate(id=>{const q=s=>document.querySelector('#'+id+' '+s).getBoundingClientRect();const lastLi=document.querySelector('#'+id+' .inv-time li:last-child');return {time:q('.inv-time'),call:q('.c-head'),last:lastLi.getBoundingClientRect(),align:getComputedStyle(lastLi).textAlign};},id);assert(Math.abs(g.time.width-g.call.width)<2&&Math.abs(g.last.right-g.call.right)<2,id+' timeline does not span the column');assert.equal(g.align,'right');}
+ for(const id of ['problem-brokers','solution']){await page.evaluate(id=>deck.slide([...document.querySelectorAll('.slides>section')].findIndex(s=>s.id===id)),id);await page.waitForTimeout(200);const g=await page.evaluate(id=>{const q=s=>document.querySelector('#'+id+' '+s).getBoundingClientRect();const lastLi=document.querySelector('#'+id+' .inv-time li:last-child');return {time:q('.inv-time'),call:q('.c-head'),last:lastLi.getBoundingClientRect(),align:getComputedStyle(lastLi).textAlign};},id);assert(Math.abs(g.time.width-g.call.width)<2&&Math.abs(g.last.right-g.call.right)<2,id+' timeline does not span the column');assert.equal(g.align,'right');}
  assert.match(await page.locator('#solution .source').textContent(),/before 2 pm/);
- assert.equal(await page.locator('#problem-brokerages h2').textContent(),'Brokerages wait months to receive their commission');
+ assert.equal(await page.locator('#problem h2').textContent(),'Developers need a partner to pay commission');assert.equal(await page.locator('#problem-brokerages h2').textContent(),"Brokerages can't plan, and can't demand their money");assert.deepEqual(await page.locator('#problem-brokerages .c-tag').allTextContents(),['Planning','Smaller brokerages','Campaigns']);assert.equal(await page.locator('#problem .c-tag').last().textContent(),'Smaller developers');
  // The problem is three slides, one per audience, in this order; the solution keeps its four matching cards.
- assert.deepEqual(await page.locator('[id^="problem"] .c-eyebrow').allTextContents(),['02The problem · Developers','02The problem · Brokers','02The problem · Brokerages']);assert.match(await page.locator('#problem-brokers .c-head').textContent(),/4 to 5 months/);assert.match(await page.locator('#problem-brokerages .c-head').textContent(),/campaigns/);
+ assert.deepEqual(await page.locator('[id^="problem"] .c-eyebrow').allTextContents(),['02The problem · Developers','02The problem · Brokers','02The problem · Brokerages']);assert.match(await page.locator('#problem-brokers .c-head').textContent(),/4 to 5 months/);
  for(const id of ['problem','problem-brokers','problem-brokerages','solution'])assert.equal(await page.locator('#'+id+' .c-card.lead').count(),0,id+' cards must all look the same');
  assert.deepEqual(await page.locator('#solution .inv-who .c-tag').allTextContents(),['Brokerages','Agents','Developers','The risk']);
  assert.equal(await page.locator('#solution h2').textContent(),'We pay them the same day');
@@ -54,7 +54,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert(!/100,000/.test(await page.locator('#revenue').textContent()),'old example amount still shown');
  // Competition: two global players with the larger cards, then two local; only Lyte shows a valuation figure.
  assert.deepEqual(await page.locator('#competition .global h3').allTextContents(),['Lyte','Tongo']);assert.deepEqual(await page.locator('#competition .local h3').allTextContents(),['FastPay RECAP','ACOT']);assert.deepEqual(await page.locator('#competition .label').allTextContents(),['valuation','raised · valuation not disclosed','Valuation not disclosed','Valuation not disclosed']);
- assert.match(await page.locator('#problem-brokerages .inv-time').textContent(),/30 to 90 days/);
+ assert.match(await page.locator('#problem-brokers .inv-time').textContent(),/2 to 3 months/);
  // Licensing comes through an embedded finance partner, so it isn't a use of funds.
  assert.deepEqual(await page.locator('#raise .rows dt').allTextContents(),['Funding capital','Product','Team']);
  // Funding is a plain equity raise for working capital, with no simulation or named partner.

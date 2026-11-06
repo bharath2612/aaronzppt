@@ -134,3 +134,7 @@ The funding slide now says equity is the working capital, but the money slide sa
 ## 2026-11-06 — Smaller-developer problem conflicts with the developer tests
 
 The new developer problem slide targets smaller developers short of cash, but the developer slide only signs developers that pass all five tests, including cash flow and market share. Smaller developers with weak cash flow would fail. Paying their brokers while they pay later is also the credit risk those tests exist to avoid. Unresolved until the user decides which story holds. The deck also says "brokers" on the problem slides but "Agents" on the solution slide.
+
+## 2026-11-06 — Developer problem now leads with cash flow
+
+The developer problem slide now leads with developers having cash flow issues, which conflicts more directly with the cash-flow test on the developer slide than the smaller-developer version did. The solution slide's notes still compare against the removed 30 to 90 day timeline. Both are open.

@@ -1,6 +1,6 @@
 # Project status
 
-Updated: 2026-11-06 13:16 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-06-1316-investor-three-problem-slides.md`.
+Updated: 2026-11-06 13:51 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-06-1351-investor-hero-problems.md`.
 
 Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE real-estate commission finance. It contains:
 
@@ -28,7 +28,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
 
 - **Investor deck** (`investor/index.html`, Aaronz brand in orange `#ff6b35` and `#cf4000`, white canvas):
   - **Slides:** cover; the team; three problem slides (developers, brokers, brokerages); the solution; the market; a product, not a service (product); how we make money; every developer tested before we sign; competition; we raise equity for working capital (funding); the raise.
-  - **Problem slides** (one per audience, all labelled 02): developers, "Smaller developers struggle to fund commission" (`#problem`); brokers, "Brokers wait 4 to 5 months to be paid for a deal", with a start, close and payment timeline (`#problem-brokers`); brokerages, "Brokerages wait months to receive their commission", with the 4 to 5 days then 30 to 90 days timeline and a campaigns card (`#problem-brokerages`).
+  - **Problem slides** (one per audience, all labelled 02): developers, "Developers need a partner to pay commission", with smaller developers as a minor point (`#problem`); brokers, "Brokers wait 4 to 5 months to be paid for a deal", with the only problem timeline (`#problem-brokers`); brokerages, "Brokerages can't plan, and can't demand their money", covering planning, smaller brokerages and campaigns (`#problem-brokerages`). The milestone, 4 to 5 days, 30 to 90 days timeline is no longer in the deck.
   - **Solution slide:** "We pay them the same day", with a footnote: same day if the invoice is raised before 2 pm, otherwise the next working day. It still has the four cards (Brokerages, Agents, Developers, The risk) that matched the old single problem slide.
   - **Founder notes:** `investor/notes.md` holds what the user has said about this deck. It is local only and ignored by git. Read it first and keep it updated.
   - **Developer slide:** "Every developer tested before we sign", with five tests (reputation, cash flow, payment record, market share, unsold inventory); developers that fail any test are not signed.
