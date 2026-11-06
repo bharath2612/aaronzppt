@@ -170,3 +170,7 @@ The user says Mawarid would give both licence and capital. The slide uses equity
 ## 2026-11-05 — Investor deck funds advances with equity; agent product slide removed
 
 The user rejected the funding simulation: the plan is simply raising equity from VCs for working capital. The slide now says that in three steps, with no switches, comparison or partner name, and `investor/funding.js` is gone. This replaces the Mawarid simulation decision above. The agent cash-out slide was removed at the user's request, leaving 11 slides. Its research stays in git history and in `investor/notes.md`.
+
+## 2026-11-06 — Investor problem split into three audience slides
+
+At the user's request, the problem is now three slides: developers, brokers (individual agents, in the user's word) and brokerages. They share section number 02, so later slide numbers are unchanged. The brokerage slide keeps the approved title and timeline. The solution slide is not yet reworked to match.

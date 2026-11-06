@@ -1,13 +1,13 @@
 # Project status
 
-Updated: 2026-11-05 15:15 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-05-1515-investor-equity-funding.md`.
+Updated: 2026-11-06 13:16 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-06-1316-investor-three-problem-slides.md`.
 
 Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE real-estate commission finance. It contains:
 
 - the main deck (`index.html`, 26 slides), with an embedded earnings calculator and a fee-scenarios slide;
 - a separate Imtiaz proposal deck (`imtiaz.html`, 8 slides);
 - a standalone calculator page (`commission-calculator.html`).
-- an investor deck (`investor/index.html`, 11 slides), a skeleton being filled in progressively.
+- an investor deck (`investor/index.html`, 13 slides), a skeleton being filled in progressively.
 
 There's no backend or build pipeline. GitHub Pages publishes it from `main`: https://bharath2612.github.io/aaronzppt/.
 
@@ -27,9 +27,9 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
 ## Current state
 
 - **Investor deck** (`investor/index.html`, Aaronz brand in orange `#ff6b35` and `#cf4000`, white canvas):
-  - **Slides:** cover; the team; the problem; the solution; the market; a product, not a service (product); how we make money; every developer tested before we sign; competition; we raise equity for working capital (funding); the raise.
-  - **Timelines:** the problem slide, "Brokerages wait months to receive their commission", shows 4 to 5 days, then 30 to 90 days. The solution slide, "We pay them the same day", has a footnote: same day if the invoice is raised before 2 pm, otherwise the next working day. Both timelines run the full column width.
-  - **Problem and solution cards:** each slide has Brokerages, Agents, Developers and The risk, all styled the same, in the same order, so every problem has its answer. The claims are unsourced, and two answers depend on open points (`docs/PROBLEMS.md`).
+  - **Slides:** cover; the team; three problem slides (developers, brokers, brokerages); the solution; the market; a product, not a service (product); how we make money; every developer tested before we sign; competition; we raise equity for working capital (funding); the raise.
+  - **Problem slides** (one per audience, all labelled 02): developers, "Smaller developers struggle to fund commission" (`#problem`); brokers, "Brokers wait 4 to 5 months to be paid for a deal", with a start, close and payment timeline (`#problem-brokers`); brokerages, "Brokerages wait months to receive their commission", with the 4 to 5 days then 30 to 90 days timeline and a campaigns card (`#problem-brokerages`).
+  - **Solution slide:** "We pay them the same day", with a footnote: same day if the invoice is raised before 2 pm, otherwise the next working day. It still has the four cards (Brokerages, Agents, Developers, The risk) that matched the old single problem slide.
   - **Founder notes:** `investor/notes.md` holds what the user has said about this deck. It is local only and ignored by git. Read it first and keep it updated.
   - **Developer slide:** "Every developer tested before we sign", with five tests (reputation, cash flow, payment record, market share, unsold inventory); developers that fail any test are not signed.
   - **Currency:** USD/AED dropdown in the nav (USD default), with a PDF per currency from `npm run export:investor`. Logic in `investor/currency.js`.

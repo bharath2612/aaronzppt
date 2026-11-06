@@ -50,6 +50,8 @@
 .inv-time.compact h3{font-size:20px;margin-bottom:4px}
 .reveal .inv-time.compact li p{font-size:15px!important}
 .c-cards.inv-who{grid-template-columns:repeat(4,1fr);gap:14px}
+.c-cards.inv-who.two{grid-template-columns:repeat(2,1fr)}
+.c-cards.inv-who.three{grid-template-columns:repeat(3,1fr)}
 .c-cards.inv-who .c-card{min-height:0;padding:22px}
 .c-cards.inv-who h3{font-size:20px;margin:8px 0 8px}
 .reveal .c-cards.inv-who p:not(.c-tag){font-size:15px!important;line-height:1.5}

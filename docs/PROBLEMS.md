@@ -130,3 +130,7 @@ The public deck names Mawarid and carries an assumed valuation of $20M, which co
 ## 2026-11-05 — Investor money slide still describes borrowing
 
 The funding slide now says equity is the working capital, but the money slide says we borrow from finance partners at 9% and keep the spread. On equity alone, a 60-day payout of $25,000 earns the full $625, with no $375 partner cost. The user has not yet said whether borrowing stays, so the money slide is unchanged. The funding slide no longer names Mawarid or a $20M valuation, which closes the concern about naming them publicly, but those remain in git history. Licence coverage under an equity-funded model is unconfirmed.
+
+## 2026-11-06 — Smaller-developer problem conflicts with the developer tests
+
+The new developer problem slide targets smaller developers short of cash, but the developer slide only signs developers that pass all five tests, including cash flow and market share. Smaller developers with weak cash flow would fail. Paying their brokers while they pay later is also the credit risk those tests exist to avoid. Unresolved until the user decides which story holds. The deck also says "brokers" on the problem slides but "Agents" on the solution slide.
