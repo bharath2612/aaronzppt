@@ -214,3 +214,7 @@ The user said the deck may go to multiple parties. The cover, tab title, footer 
 ## 2026-11-10 — Gap slide shows the wait as long vs short bars
 
 The user wanted the gap slide to show the impact visually. Today's wait is drawn as a full five-month line, and the Aaronz line is 40% of it (paid at closing, month 2 of 5). This is the real ratio, not an exaggeration. The calendar version with start and end markers was replaced.
+
+## 2026-11-10 — Financier brief moves to /brief/; solution shows benefits, not pricing
+
+The deck goes to several parties, so it now lives at `/brief/` (files `brief/`, `tests/brief.cjs`, `npm run export:brief`). `reem/index.html` stays only as a redirect, so links already shared keep working. It can be deleted once those links no longer matter. The solution slide no longer shows the 18%, 12% and 6% split or the worked example; it lists benefits for developers, brokerages and brokers. Pricing stays in the Flow B PDF.

@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "python3 -m http.server 4173",
-    "test": "node tests/presentation.cjs && node tests/imtiaz.cjs && node tests/investor.cjs && node tests/reem.cjs",
+    "test": "node tests/presentation.cjs && node tests/imtiaz.cjs && node tests/investor.cjs && node tests/brief.cjs",
     "export:imtiaz": "node tools/export-imtiaz-pdf.cjs",
     "export:investor": "node tools/export-investor-pdf.cjs",
-    "export:reem": "node tools/export-reem-pdf.cjs"
+    "export:brief": "node tools/export-brief-pdf.cjs"
   },
   "keywords": [],
   "author": "",

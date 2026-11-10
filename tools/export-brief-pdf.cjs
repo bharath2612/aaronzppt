@@ -1,18 +1,18 @@
-// Exports reem/index.html to reem/aaronz-commission-finance.pdf: 1440×800 per slide, without the site chrome.
+// Exports brief/index.html to brief/aaronz-commission-finance.pdf: 1440×800 per slide, without the site chrome.
 const {chromium}=require('@playwright/test');
 const {pathToFileURL}=require('node:url');
 (async()=>{
  const browser=await chromium.launch();
  try{
   const page=await browser.newPage({viewport:{width:1440,height:800},deviceScaleFactor:2});
-  await page.goto(pathToFileURL(process.cwd()+'/reem/index.html').href);
+  await page.goto(pathToFileURL(process.cwd()+'/brief/index.html').href);
   await page.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());await page.evaluate(()=>document.fonts.ready);
   await page.evaluate(()=>{document.body.classList.add('presenting');deck.configure({progress:false});deck.layout();});
   const total=await page.evaluate(()=>deck.getTotalSlides());const shots=[];
   for(let i=0;i<total;i++){await page.evaluate(i=>deck.slide(i),i);await page.waitForTimeout(250);shots.push((await page.screenshot({type:'jpeg',quality:88})).toString('base64'));}
   const doc=await browser.newPage();
   await doc.setContent('<style>@page{size:1440px 800px;margin:0}body{margin:0}img{display:block;width:1440px;height:800px;page-break-after:always}</style>'+shots.map(s=>'<img src="data:image/jpeg;base64,'+s+'">').join(''));
-  await doc.pdf({path:'reem/aaronz-commission-finance.pdf',width:'1440px',height:'800px',printBackground:true});
-  console.log('Wrote reem/aaronz-commission-finance.pdf with '+total+' pages.');
+  await doc.pdf({path:'brief/aaronz-commission-finance.pdf',width:'1440px',height:'800px',printBackground:true});
+  console.log('Wrote brief/aaronz-commission-finance.pdf with '+total+' pages.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});

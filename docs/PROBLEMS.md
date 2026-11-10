@@ -150,3 +150,7 @@ The first Reem market slides counted only Sell and Sell - Pre registration, abou
 ## 2026-11-10 — Reem gap and solution slides describe different funding models
 
 The gap slide (user's wording) says Aaronz allocates funds to pay the brokerage and is repaid by the developer. The solution slide says a licensed finance partner pays from its own account, with Aaronz as software (Flow B). Unresolved until the user decides. Also: a line-based regex used to remove CSS cut parts of the mobile media block; it was rewritten in full, so edit shared media blocks by hand.
+
+## 2026-11-10 — Scripted CSS edits keep hitting the wrong rule
+
+This happened three times in this deck: two line-based regexes cut parts of the mobile block, and a search for `.wait{` matched the broker slide's `.months .wait{` and deleted the broker styles. Each was caught by screenshots before pushing, and fixed by rebuilding from the last commit. Also, the gap container's `.wait` class collided with the broker slide's `.wait` segment; it is now `.gap-wait`. On phones the Dubai chart had been wider than the screen since it was built; columns now shrink and a test checks both charts fit.
