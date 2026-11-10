@@ -146,3 +146,7 @@ The Reem deck uses DLD Atlas totals (AED 508.2B of sales and an estimated AED 10
 ## 2026-11-10 — Reem market figures understated DLD sales by a quarter (fixed)
 
 The first Reem market slides counted only Sell and Sell - Pre registration, about 25% below DLD's reported sales value in every year, with off-plan at 72% instead of 63%. They now use DLD's reported values, with 2021 and 2022 recalculated from all DLD sales registrations, which match DLD's reports within 0.5% for 2023 to 2025. All decks now agree with DLD within 0.4% for 2025.
+
+## 2026-11-10 — Reem gap and solution slides describe different funding models
+
+The gap slide (user's wording) says Aaronz allocates funds to pay the brokerage and is repaid by the developer. The solution slide says a licensed finance partner pays from its own account, with Aaronz as software (Flow B). Unresolved until the user decides. Also: a line-based regex used to remove CSS cut parts of the mobile media block; it was rewritten in full, so edit shared media blocks by hand.

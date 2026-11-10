@@ -1,6 +1,6 @@
 # Project status
 
-Updated: 2026-11-10 18:04 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-10-1804-reem-abu-dhabi-market.md`.
+Updated: 2026-11-10 18:08 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-10-1808-reem-gap-calendar.md`.
 
 Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE real-estate commission finance. It contains:
 
@@ -29,7 +29,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
 ## Current state
 
 - **Reem deck** (`reem/index.html`, for a financier, AED only, same orange brand):
-  - **Slides:** cover; market, "Dubai property sales grew close to 10× in five years" (DLD reported sales value, AED 71.7B in 2020 to AED 680B in 2025; 2021 and 2022 carry a small "EST" tag, estimated from DLD transaction data, and the deck never names the Atlas); Abu Dhabi market, "Abu Dhabi property sales grew 6× in four years" (ADREC sales value AED 15B in 2021 to AED 93B in 2025, plus AED 137B for 2026 to 9 November from ADREC sales records, tagged YTD; 2020 left out as ADREC says registration incentives inflated it); four problem slides telling one chain story (developers, brokerages, brokers, then "the gap" a financier funds), each with a Developer → Brokerage → Broker strip; solution, "A finance partner pays the brokerage the same day" (Flow B, worked AED 100,000 example at 18%, 12% and 6%). The commission and "where we are" slides were removed at the user's request on 2026-11-10.
+  - **Slides:** cover; market, "Dubai property sales grew close to 10× in five years" (DLD reported sales value, AED 71.7B in 2020 to AED 680B in 2025; 2021 and 2022 carry a small "EST" tag, estimated from DLD transaction data, and the deck never names the Atlas); Abu Dhabi market, "Abu Dhabi property sales grew 6× in four years" (ADREC sales value AED 15B in 2021 to AED 93B in 2025, plus AED 137B for 2026 to 9 November from ADREC sales records, tagged YTD; 2020 left out as ADREC says registration incentives inflated it); four problem slides telling one chain story (developers, brokerages, brokers, then "Aaronz fills the two-month gap": a Today vs With Aaronz calendar where Aaronz pays the brokerage at the close and the developer pays Aaronz back), each with a Developer → Brokerage → Broker strip; solution, "A finance partner pays the brokerage the same day" (Flow B, worked AED 100,000 example at 18%, 12% and 6%). The commission and "where we are" slides were removed at the user's request on 2026-11-10.
   - The Reem problem slides no longer match the investor deck's (changed 2026-11-10 at the user's request); whether the investor deck follows is open.
 - **Investor deck** (`investor/index.html`, Aaronz brand in orange `#ff6b35` and `#cf4000`, white canvas):
   - **Slides:** cover; the team; three problem slides (developers, brokers, brokerages); the solution; the market; a product, not a service (product); how we make money; every developer tested before we sign; competition; we raise equity for working capital (funding); the raise.
@@ -112,7 +112,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
 
 ## Next
 
-- **Reem deck:** confirm who Reem is and whether the deck should stay public (it shows pricing). The developer headline is still waiting on the user's pick; change it in both decks together.
+- **Reem deck:** the gap slide says Aaronz allocates funds and is repaid by the developer, but the solution slide says a licensed partner pays (Flow B); the user must pick one. Confirm who Reem is and whether the deck should stay public (it shows pricing). The developer headline is still waiting on the user's pick; change it in both decks together.
 0. **Investor deck:** the user confirms the recalculated fee table, raise amount and use of funds. Also decide the market-figure mismatch in `docs/PROBLEMS.md`, which affects the Imtiaz market slide.
 1. **Live site:** the Imtiaz deck is published, and changes are now pushed automatically after verification (the user asked on 2026-10-31). It's at https://bharath2612.github.io/aaronzppt/imtiaz.html (the user approved the push). Still open: whether the usual date really is 45 days after DLD registration.
 2. **Before the meeting (date to be confirmed):** click through the deck end to end, including the payout picker. The external today-ai demo is no longer linked from the deck.
