@@ -24,7 +24,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  // Market: DLD's reported sales value, with 2021 and 2022 estimated from DLD transaction data.
  const sales=[71.7,148.6,262.7,410.2,521,680];
  assert.deepEqual(await page.locator('#market .bars .val').allTextContents(),sales.map(v=>'AED '+v+'B'));
- assert.deepEqual(await page.locator('#market .bars li').evaluateAll(l=>l.map(e=>e.querySelector('.est')?.textContent||'')),['','EST','EST','','','']);assert.match(await page.locator('#market .source').textContent(),/Estimated: 2021 and 2022 add up every sales registration in DLD transaction data/);assert(!/Atlas/.test(await page.evaluate(()=>document.querySelector('.slides').textContent)),'Atlas named in the deck');assert.match(await page.locator('#market .source').textContent(),/Annual Data Review 2025/);
+ assert.deepEqual(await page.locator('#market .bars li').evaluateAll(l=>l.map(e=>e.querySelector('.est')?.textContent||'')),['','DLD DATA','DLD DATA','','','']);assert.match(await page.locator('#market .source').textContent(),/DLD data: 2021 and 2022 add up every sales registration in DLD transaction data/);assert(!/Atlas/.test(await page.evaluate(()=>document.querySelector('.slides').textContent)),'Atlas named in the deck');assert.match(await page.locator('#market .source').textContent(),/Annual Data Review 2025/);
  // Bar heights are proportional to the values, with the tallest at 85%.
  for(const id of ['market'])assert.deepEqual(await page.locator('#'+id+' .bar').evaluateAll(b=>b.map(e=>parseFloat(e.style.height))),sales.map(v=>Math.round(v/sales[5]*850)/10));
  // Abu Dhabi: 2021 from ADREC's 2025 report, 2022 to 2025 from its H1 2026 report (two halves added), 2026 to date from ADREC transaction records.
