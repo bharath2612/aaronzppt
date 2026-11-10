@@ -47,9 +47,7 @@ The user may add more slides.
 - **Fixed:** on the highlighted 2026 bar, the box had picked up the orange fill. It is now forced transparent, and the test checks both Dubai and RAK boxes stay empty.
 - **Verification:** `npm test` passed all four suites, and the RAK slide was inspected.
 
-## Follow-up: RAK 2024 note and 2026 gap box
 
-- **2024 bar:** the note "Includes AED 2.65B of tourism land" now sits inside the bar. The user said 2.6B; the source's exact AED 2.65B was used.
-- **2026 bar:** the AED 2.1B (January to September) has a dashed box on top, "To match 2025: AED 1.1B" (3.19 − 2.12), the same as Dubai and labelled as a gap, not a forecast.
-- **Fixed:** the highlight colour had filled the box orange. A CSS rule now keeps `.bar.fc` empty, and the test checks its background is transparent.
-- **Verification:** `npm test` passed all four suites, `npm run export:brief` wrote 10 pages, and the slide was inspected.
+## Note: two sessions in one folder
+
+Two Claude Code sessions made this same RAK change in this folder at the same time. Commit 79c25bc (21:56:55) and commit 039f13c (21:57:35) both landed. The second only re-exported the PDF and added a duplicate section to this note, which has been removed. The slide content is identical. Per the one-tool-at-a-time rule, only one session should work on this repo at a time.
