@@ -10,14 +10,14 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  page.on('requestfailed',r=>errors.push('failed to load '+r.url()));
  await page.goto(url);await page.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());await page.evaluate(()=>document.fonts.ready);
  // The financier brief: market, the three problems, and the solution.
- const ids=['home','market','problem','problem-brokerages','problem-brokers','problem-gap','solution'];
+ const ids=['home','market','market-ad','problem','problem-brokerages','problem-brokers','problem-gap','solution'];
  assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('.slides>section')].map(s=>s.id)),ids);
  for(let i=0;i<ids.length;i++){await page.evaluate(i=>deck.slide(i),i);await page.waitForTimeout(300);await page.screenshot({path:'.build/reem-'+ids[i]+'.png'});
   const problems=await page.locator('#'+ids[i]).evaluate(el=>{const r=el.getBoundingClientRect();const note=el.querySelector(':scope>.source');const limit=note?note.getBoundingClientRect().top:r.bottom;return [...el.querySelectorAll('*')].filter(n=>!n.closest('aside.notes,.source,.c-meta')).filter(n=>{const b=n.getBoundingClientRect();return b.width>0&&(b.bottom>limit+1||b.left<r.left-1||b.right>r.right+1);}).map(n=>n.tagName+'.'+n.className);});
   assert.deepEqual(problems,[],ids[i]+' overflow: '+problems);
   const orphans=await page.locator('#'+ids[i]).evaluate(el=>[...el.querySelectorAll('p,h3,h2,h1')].filter(n=>!n.closest('aside.notes')&&n.getClientRects().length).filter(n=>{const text=n.firstChild&&n.childNodes.length===1&&n.firstChild.nodeType===3?n.firstChild:null;if(!text)return false;const value=text.textContent;const cut=value.trimEnd().lastIndexOf(' ');if(cut<1)return false;const top=(a,b)=>{const r=document.createRange();r.setStart(text,a);r.setEnd(text,b);return r.getClientRects()[0].top;};return top(cut+1,value.trimEnd().length)-top(cut-1,cut)>2;}).map(n=>n.textContent));
   assert.deepEqual(orphans,[],ids[i]+' single word on a last line');}
- assert.equal(await page.locator('#slideCount').textContent(),'07 / 07');
+ assert.equal(await page.locator('#slideCount').textContent(),'08 / 08');
  assert(await page.evaluate(()=>document.fonts.check('500 48px Inter')),'Inter not loaded');
  assert(await page.evaluate(()=>[...document.images].every(i=>i.complete&&i.naturalWidth>0)),'logo failed to load');
  assert.equal(await page.evaluate(()=>deck.getConfig().transition),'none');
@@ -27,6 +27,12 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.deepEqual(await page.locator('#market .bars li').evaluateAll(l=>l.map(e=>e.querySelector('.est')?.textContent||'')),['','EST','EST','','','']);assert.match(await page.locator('#market .source').textContent(),/Estimated: 2021 and 2022 add up every sales registration in DLD transaction data/);assert(!/Atlas/.test(await page.evaluate(()=>document.querySelector('.slides').textContent)),'Atlas named in the deck');assert.match(await page.locator('#market .source').textContent(),/Annual Data Review 2025/);
  // Bar heights are proportional to the values, with the tallest at 85%.
  for(const id of ['market'])assert.deepEqual(await page.locator('#'+id+' .bar').evaluateAll(b=>b.map(e=>parseFloat(e.style.height))),sales.map(v=>Math.round(v/sales[5]*850)/10));
+ // Abu Dhabi: ADREC sales value 2021 to 2025, then 2026 to date from ADREC sales records.
+ const ad=[15,25,53,53,93,136.7];
+ assert.deepEqual(await page.locator('#market-ad .bars .val').allTextContents(),ad.map(v=>'AED '+Math.round(v)+'B'));
+ assert.deepEqual(await page.locator('#market-ad .bar').evaluateAll(b=>b.map(e=>parseFloat(e.style.height))),ad.map(v=>Math.round(v/ad[5]*850)/10));
+ assert.equal(Math.round(ad[4]/ad[0]),6);assert.match(await page.locator('#market-ad h2').textContent(),/6× in four years/);
+ assert.deepEqual(await page.locator('#market-ad .bars li').evaluateAll(l=>l.map(e=>e.querySelector('.est')?.textContent||'')),['','','','','','YTD']);
  // The problem follows one commission down the chain: developer, brokerage, broker, then the gap to fund.
  assert.deepEqual(await page.locator('[id^="problem"] .c-eyebrow').allTextContents(),['02The problem · Developers','02The problem · Brokerages','02The problem · Brokers','02The problem · The gap']);
  assert.deepEqual(await page.locator('[id^="problem"] .chain .node.on').allTextContents(),['Developer','Brokerage','Broker']);
@@ -47,6 +53,6 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});mobile.on('pageerror',e=>errors.push(e.message));
  await mobile.goto(url);await mobile.waitForFunction(()=>document.body.classList.contains('reader'));await mobile.waitForTimeout(500);
  assert(await mobile.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Reem deck mobile overflow');await mobile.screenshot({path:'.build/reem-mobile.png',fullPage:true});
- assert.deepEqual(errors,[]);console.log('Passed: Reem deck, seven slide layouts, market figures, problem slides, worked example, PDF and mobile reader layout.');
+ assert.deepEqual(errors,[]);console.log('Passed: Reem deck, eight slide layouts, market figures, problem slides, worked example, PDF and mobile reader layout.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});

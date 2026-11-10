@@ -198,3 +198,7 @@ The commission series had published support only for 2024 and 2025. The user rem
 ## 2026-11-10 — Reem problem told as one commission chain
 
 The user said the problem slides' layout and messaging were weak. The Reem deck now follows one commission from developer to brokerage to broker, each slide with its own visual, and ends on a new "gap" slide: commission is earned at the sale and paid months later, and someone has to fund that gap. This sets up the finance-partner solution. The investor deck keeps its old problem slides for now.
+
+## 2026-11-10 — Abu Dhabi market slide uses ADREC reports and sales records
+
+The Abu Dhabi slide uses ADREC's 2025 report for 2021 to 2025 and adds 2026 to date from the ADREC sales CSV the user supplied. That CSV matches ADREC's reported totals within 3% for 2022 to 2025 and for H1 2026. 2020 is left out because ADREC says registration incentives inflated it.

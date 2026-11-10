@@ -6,6 +6,8 @@
 .bars li.now .bar{background:var(--orange)}
 .bars .val{font-size:18px;font-weight:600;margin-bottom:8px;white-space:nowrap}
 .bars li.now .val{color:var(--brand)}
+.bars li.ytd .bar{background:repeating-linear-gradient(135deg,#ffd2bf 0 10px,#fff3ec 10px 20px);border:2px solid var(--orange);border-bottom:0}
+.bars li.ytd .val{color:var(--brand)}
 .bars .yr{position:absolute;bottom:-34px;font-size:16px;color:var(--muted)}
 .reveal .bars .sub{font-size:13px!important;color:var(--muted);margin:0 0 6px!important;white-space:nowrap}
 .reveal .bars .est{font-size:9px;font-weight:700;letter-spacing:.06em;line-height:1;color:var(--brand);border:1px solid var(--orange);border-radius:3px;padding:2px 4px;margin:0 0 5px;white-space:nowrap}
