@@ -1,4 +1,4 @@
-// Exports reem/index.html to reem/aaronz-reem.pdf: 1440×800 per slide, without the site chrome.
+// Exports reem/index.html to reem/aaronz-commission-finance.pdf: 1440×800 per slide, without the site chrome.
 const {chromium}=require('@playwright/test');
 const {pathToFileURL}=require('node:url');
 (async()=>{
@@ -12,7 +12,7 @@ const {pathToFileURL}=require('node:url');
   for(let i=0;i<total;i++){await page.evaluate(i=>deck.slide(i),i);await page.waitForTimeout(250);shots.push((await page.screenshot({type:'jpeg',quality:88})).toString('base64'));}
   const doc=await browser.newPage();
   await doc.setContent('<style>@page{size:1440px 800px;margin:0}body{margin:0}img{display:block;width:1440px;height:800px;page-break-after:always}</style>'+shots.map(s=>'<img src="data:image/jpeg;base64,'+s+'">').join(''));
-  await doc.pdf({path:'reem/aaronz-reem.pdf',width:'1440px',height:'800px',printBackground:true});
-  console.log('Wrote reem/aaronz-reem.pdf with '+total+' pages.');
+  await doc.pdf({path:'reem/aaronz-commission-finance.pdf',width:'1440px',height:'800px',printBackground:true});
+  console.log('Wrote reem/aaronz-commission-finance.pdf with '+total+' pages.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});

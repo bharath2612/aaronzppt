@@ -206,3 +206,7 @@ The Abu Dhabi slide uses ADREC's 2025 report for 2021 to 2025 and adds 2026 to d
 ## 2026-11-10 — Abu Dhabi figures from ADREC's latest report
 
 The user chose ADREC's latest report (H1 2026) for 2022 to 2025, adding the two half-year values (26, 52, 53, 94 bn). 2021 (AED 15B) comes from the 2025 report, which is the latest to cover it. 2026 to date (AED 137B) comes from ADREC transaction records, because no report covers it yet. ADREC's reports disagree on 2023 (50 excluding one-off land deals, or 53 including them); the H1 2026 halves give 52.
+
+## 2026-11-10 — Financier deck names no recipient
+
+The user said the deck may go to multiple parties. The cover, tab title, footer and PDF name no longer mention Reem, and the PDF is now `reem/aaronz-commission-finance.pdf`. The cover line is "Aaronz closes the gap between a property sale and the commission payment." The URL path `/reem/` is unchanged so existing links keep working.

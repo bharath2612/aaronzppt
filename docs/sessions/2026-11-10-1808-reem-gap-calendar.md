@@ -49,3 +49,13 @@ The user said the copy was too casual (citing "hardest hit") and asked for profe
 - **Solution cards:** Early payment, Net return, Platform fee.
 
 `npm test` passed all four suites, and the developer, brokerage and solution slides were inspected.
+
+## Follow-up: no recipient named
+
+The user said not to mention "Prepared for Reem", because the deck may go to several parties. The changes:
+- **Cover line:** removed the recipient; it now reads "Aaronz closes the gap between a property sale and the commission payment."
+- **Cover meta:** now just "November 2026", with "Prepared for Reem" and "Draft" removed.
+- **Browser tab title and footer:** "Commission finance".
+- **PDF:** renamed from `aaronz-reem.pdf` to `aaronz-commission-finance.pdf`.
+
+The test now fails if "Reem" appears in the title, description, visible text or PDF link. The URL path `/reem/` is unchanged, so it still shows the name in the address bar.

@@ -50,12 +50,14 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.deepEqual(await page.locator('#solution .amt').allTextContents(),['AED 97,780.82','AED 1,479.45','AED 739.73']);
  assert.equal(await page.locator('#commission,#allocation').count(),0,'removed slides are back');
  assert.equal(await page.locator('#market h2').textContent(),'Dubai property sales grew 10× in five years');
+ // The deck goes to more than one party, so it names no recipient anywhere a viewer can see.
+ assert(!/reem/i.test(await page.evaluate(()=>document.title+document.querySelector('meta[name=description]').content+document.body.innerText+document.getElementById('deckPdf').getAttribute('href'))),'recipient named in the deck');
  const text=await page.evaluate(()=>document.querySelector('.slides').textContent);
  assert(!/automatically/i.test(text),'banned word in the deck');assert(!/channel connect|mawarid/i.test(text),'third party named');
  const sheet=f=>crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex').slice(0,8);
  assert.equal(await page.evaluate(()=>document.querySelector('link[href^="reem.css"]').getAttribute('href')),'reem.css?v='+sheet('reem/reem.css'),'update the ?v= hash on reem.css in reem/index.html');
  assert.equal(await page.evaluate(()=>document.querySelector('link[href^="../investor/investor.css"]').getAttribute('href')),'../investor/investor.css?v='+sheet('investor/investor.css'),'update the ?v= hash on investor.css in reem/index.html');
- assert(fs.statSync('reem/aaronz-reem.pdf').size>100000,'PDF missing');
+ assert(fs.statSync('reem/aaronz-commission-finance.pdf').size>100000,'PDF missing');
  await page.click('#viewToggle');assert(await page.evaluate(()=>document.body.classList.contains('reader')));await page.click('#viewToggle');
  const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});mobile.on('pageerror',e=>errors.push(e.message));
  await mobile.goto(url);await mobile.waitForFunction(()=>document.body.classList.contains('reader'));await mobile.waitForTimeout(500);
