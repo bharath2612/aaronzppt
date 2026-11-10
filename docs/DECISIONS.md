@@ -186,3 +186,7 @@ The Reem deck is for a financier, so its solution is the embedded finance partne
 ## 2026-11-10 — Reem market uses DLD reported sales, Atlas for 2021 and 2022
 
 User decision: "Use DLD official numbers, recalculate 2021 and 2022 from Atlas". Sources are DLD's annual reports (2020, 2024, and the 2025 data review), using the newest report where they disagree. 2021 and 2022 are taken from all DLD sales registrations in the Atlas. Commission stays at 2% of sales value.
+
+## 2026-11-10 — Don't name the Atlas on the Reem deck
+
+The user said the "DLD Atlas" label "doesn't hold any credibility". Estimated years carry an "Estimated" badge, with the reasoning on its own line in the source note: estimated from DLD transaction data, and within 0.5% of DLD's reported totals where both exist.

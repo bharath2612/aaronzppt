@@ -59,3 +59,7 @@ The user shared DLD annual reports and asked for the Reem market figures to be c
 
 - The developer headline is still waiting on the user's pick.
 - Confirm whether the Reem deck should stay public.
+
+## Follow-up: estimated badge
+
+The user said the "DLD Atlas" label "doesn't hold any credibility". The 2021 and 2022 bars now carry a small "Estimated" badge. The source note has a second line: "Estimated: 2021 and 2022 add up every sales registration in DLD transaction data. The same method is within 0.5% of DLD's reported totals for 2023 to 2025." The deck no longer names the Atlas anywhere, including speaker notes and the commission source line, and a test enforces that. `npm test` passed all four suites, and the market screenshot was inspected.
