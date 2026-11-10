@@ -40,6 +40,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.deepEqual(await page.locator('[id^="problem"] .c-eyebrow').allTextContents(),['02The problem · Developers','02The problem · Brokerages','02The problem · Brokers','02The problem · The gap']);
  assert.deepEqual(await page.locator('[id^="problem"] .chain .node.on').allTextContents(),['Developer','Brokerage','Broker']);
  assert.match(await page.locator('#problem-brokers .months').textContent(),/About 2 months[\s\S]*2 to 3 months/);
+ assert.deepEqual(await page.locator('#problem-brokers .ticks li').allTextContents(),['Month 1Engages the lead','Month 2Closes the deal','Month 3Completes registration','Month 4Waits for payment','Month 5Receives the commission']);
  // The gap slide: today the brokerage waits months 3 and 4; with Aaronz those two months are one block Aaronz funds.
  assert.equal(await page.locator('#problem-gap h2').textContent(),'Aaronz fills the market gap');
  // The gap: today's wait is the full five-month line; with Aaronz it ends at closing, 40% of that length.

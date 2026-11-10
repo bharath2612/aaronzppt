@@ -45,3 +45,17 @@ Confirm with the user that the "numbers" reading is right. Decide when to delete
   The lines stay 12px thin. The test checks the breakpoint labels.
 - **Solution slide:** the user said to skip "that line", read as the timeline (confirm, then partner pays same day, then developer repays in 30 to 45 days), since the gap slide now shows it. It was removed, so the slide is the headline, the subtitle and the three benefit cards. The test checks there is no timeline.
 - **Verification:** `npm test` passed all four suites. Both slides were inspected on desktop and the gap slide at 390px.
+
+## Follow-up: broker journey by month
+
+On the broker slide, each month on the bar now has a step under it, worded formally from the user's list:
+
+| Month | Step |
+|---|---|
+| 1 | Engages the lead |
+| 2 | Closes the deal |
+| 3 | Completes registration |
+| 4 | Waits for payment |
+| 5 | Receives the commission |
+
+Thin dividers separate the months. The test checks all five steps. `npm test` passed all four suites, and the slide was inspected on desktop and at 390px, where it fits.
