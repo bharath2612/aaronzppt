@@ -178,3 +178,7 @@ At the user's request, the problem is now three slides: developers, brokers (ind
 ## 2026-11-06 — Investor problem slides lead with each audience's main problem
 
 The user said the developer and brokerage slides had the wrong hero problems. Developers: cash flow, and the wish for a partner to pay commission, with smaller developers as a minor point. Brokerages: they can't plan or demand their money; smaller ones can't push developers to pay and many fail, and every brokerage wants money sooner for campaigns. The brokerage timeline was dropped because the broker slide covers timing.
+
+## 2026-11-10 — Reem financier deck uses Flow B and DLD Atlas figures
+
+The Reem deck is for a financier, so its solution is the embedded finance partner flow (the partner approves and pays; Aaronz earns a 6% fee), not the investor deck's equity-funded story. Market figures come from the user's DLD Atlas (Sell and Sell - Pre registration, 2020 to 2025), and commission is estimated at 2% of sales value, in line with the land department's 2025 ratio. AED only. The three problem slides are copies of the investor deck's, and a test keeps their headlines in step.
