@@ -218,3 +218,7 @@ The user wanted the gap slide to show the impact visually. Today's wait is drawn
 ## 2026-11-10 — Financier brief moves to /brief/; solution shows benefits, not pricing
 
 The deck goes to several parties, so it now lives at `/brief/` (files `brief/`, `tests/brief.cjs`, `npm run export:brief`). `reem/index.html` stays only as a redirect, so links already shared keep working. It can be deleted once those links no longer matter. The solution slide no longer shows the 18%, 12% and 6% split or the worked example; it lists benefits for developers, brokerages and brokers. Pricing stays in the Flow B PDF.
+
+## 2026-11-10 — Market slides: Dubai 2026 gap box, RAK completed sales
+
+Dubai 2026 shows DLD data to date plus a dashed box for the amount still needed to match 2025. It is labelled as a gap, not a forecast, because DLD's own 2026 data points to about AED 476B, and a 700B forecast was declined. RAK uses completed sales for 2020 to 2026, the only RAK series that is complete for every year; off-plan, reported separately, is excluded and the slide says so. Sales figures exclude mortgages and gifts throughout, because commission is only paid on sales.

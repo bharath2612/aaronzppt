@@ -1,6 +1,6 @@
 # Project status
 
-Updated: 2026-11-10 19:49 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-10-1949-brief-neutral-url.md`.
+Updated: 2026-11-10 21:47 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-10-2147-brief-markets-rak.md`.
 
 Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE real-estate commission finance. It contains:
 
@@ -8,7 +8,7 @@ Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE re
 - a separate Imtiaz proposal deck (`imtiaz.html`, 8 slides);
 - a standalone calculator page (`commission-calculator.html`).
 - an investor deck (`investor/index.html`, 13 slides), a skeleton being filled in progressively;
-- a financier brief (`brief/index.html`, 8 slides, https://bharath2612.github.io/aaronzppt/brief/; the old `/reem/` address redirects).
+- a financier brief (`brief/index.html`, 10 slides, https://bharath2612.github.io/aaronzppt/brief/; the old `/reem/` address redirects).
 
 There's no backend or build pipeline. GitHub Pages publishes it from `main`: https://bharath2612.github.io/aaronzppt/.
 
@@ -29,7 +29,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
 ## Current state
 
 - **Financier brief** (`brief/index.html`, shared with several parties so it names no recipient, AED only; orange is the brand accent and marks problems, green `#1f6b4a` marks what Aaronz fixes, everything else is neutral ink and grey):
-  - **Slides:** cover; market, "Dubai property sales grew 10× in five years" (DLD reported sales value, AED 71.7B in 2020 to AED 680B in 2025; 2021 and 2022 carry a small "DLD DATA" tag, added up from DLD transaction data, and the deck never names the Atlas); Abu Dhabi market, "Abu Dhabi property sales grew 6× in four years" (2021 AED 15B from ADREC's 2025 report; 2022 to 2025 AED 26B, 52B, 53B, 94B from ADREC's H1 2026 report, adding the two halves; 2026 AED 137B to 9 November from ADREC transaction records, tagged YTD and highlighted as the lead bar; side cards cover 2026 only: AED 137B, +45% on all of 2025, 83% off-plan; 2020 left out as ADREC says registration incentives inflated it); four problem slides telling one chain story in concise, formal copy ("Developers carry commission costs on every sale", "Brokerages cannot forecast commission income", "Brokers wait up to five months to be paid" (with the broker's step under each month: engages the lead, closes the deal, completes registration, waits for payment, receives the commission), then "Aaronz fills the market gap": two bars on a month scale, today up to 5 months to payment against about 2 months with Aaronz ("Paid at closing"), the Aaronz bar exactly 40% of today's, drawn as thin lines with breakpoints (Work starts, Deal closes at month 2, Paid at month 5; with Aaronz, Paid at closing) and interval labels under each stretch; green callout that a finance partner pays and the developer repays the partner), each with a Developer → Brokerage → Broker strip; solution, "A finance partner pays the brokerage the same day" (benefits in words, no timeline and no pricing: developers better cash flow; brokerages attract brokers, plan growth, run more campaigns; brokers paid on time and free to move). The commission and "where we are" slides were removed at the user's request on 2026-11-10.
+  - **Slides:** cover (title only); section break "The market"; market, "Dubai property sales grew 10× in five years" (DLD reported sales value, AED 71.7B in 2020 to AED 680B in 2025; 2021 and 2022 added up from DLD transaction data, explained in the footnote; 2026 AED 423.4B to 10 November with a dashed box for the AED 257B still needed to match 2025, labelled as a gap, not a forecast; the deck never names the Atlas); Abu Dhabi market, "Abu Dhabi property sales are rising sharply" (2020 AED 38B and 2021 AED 15B from ADREC's 2025 report; 2022 to 2025 AED 26B, 52B, 53B, 94B from ADREC's H1 2026 report, adding the two halves; 2026 AED 137B to 9 November from ADREC transaction records, tagged YTD and highlighted as the lead bar; side cards cover 2026 only: AED 137B, +45% on all of 2025, 83% off-plan; ADREC notes 2020 was raised by registration incentives); Ras Al Khaimah, "RAK completed sales have more than tripled since 2020" (completed sales only, AED 1.0B in 2020 to 3.2B in 2025 and 2.1B for 2026 January to September, 2026 highlighted; off-plan, reported separately, is excluded); four problem slides telling one chain story in concise, formal copy ("Developers carry commission costs on every sale", "Brokerages cannot forecast commission income", "Brokers wait up to five months to be paid" (with the broker's step under each month: engages the lead, closes the deal, completes registration, waits for payment, receives the commission), then "Aaronz fills the market gap": two bars on a month scale, today up to 5 months to payment against about 2 months with Aaronz ("Paid at closing"), the Aaronz bar exactly 40% of today's, drawn as thin lines with breakpoints (Work starts, Deal closes at month 2, Paid at month 5; with Aaronz, Paid at closing) and interval labels under each stretch; green callout that a finance partner pays and the developer repays the partner), each with a Developer → Brokerage → Broker strip; solution, "A finance partner pays the brokerage the same day" (benefits in words, no timeline and no pricing: developers better cash flow; brokerages attract brokers, plan growth, run more campaigns; brokers paid on time and free to move). The commission and "where we are" slides were removed at the user's request on 2026-11-10.
   - The brief's problem slides no longer match the investor deck's (changed 2026-11-10 at the user's request); whether the investor deck follows is open.
 - **Investor deck** (`investor/index.html`, Aaronz brand in orange `#ff6b35` and `#cf4000`, white canvas):
   - **Slides:** cover; the team; three problem slides (developers, brokers, brokerages); the solution; the market; a product, not a service (product); how we make money; every developer tested before we sign; competition; we raise equity for working capital (funding); the raise.
@@ -104,10 +104,10 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - [Imtiaz: options we can offer](https://app.notion.com/p/4096ebf7407281cbaa4bf06a41bb28fe)
 - `aaronz-admin-monthly-expenses.xlsx` exists locally and is deliberately uncommitted.
 
-## Verification (2026-11-10 19:49 +04)
+## Verification (2026-11-10 21:47 +04)
 
-- `npm test` passed all four suites, including "financier brief deck, eight slide layouts, market figures, problem slides, solution benefits, old-address redirect, PDF and mobile reader layout".
-- `npm run export:brief` wrote an 8-page `brief/aaronz-commission-finance.pdf`. The gap and solution slides were inspected on desktop; the gap slide and both market charts at 390px.
+- `npm test` passed all four suites, including "financier brief deck, ten slide layouts, market figures, problem slides, solution benefits, old-address redirect, PDF and mobile reader layout".
+- `npm run export:brief` wrote a 10-page `brief/aaronz-commission-finance.pdf`. The cover, section break and three market slides were inspected in screenshots.
 - No lint or build scripts are configured.
 
 ## Next

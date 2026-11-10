@@ -154,3 +154,7 @@ The gap slide (user's wording) says Aaronz allocates funds to pay the brokerage 
 ## 2026-11-10 — Scripted CSS edits keep hitting the wrong rule
 
 This happened three times in this deck: two line-based regexes cut parts of the mobile block, and a search for `.wait{` matched the broker slide's `.months .wait{` and deleted the broker styles. Each was caught by screenshots before pushing, and fixed by rebuilding from the last commit. Also, the gap container's `.wait` class collided with the broker slide's `.wait` segment; it is now `.gap-wait`. On phones the Dubai chart had been wider than the screen since it was built; columns now shrink and a test checks both charts fit.
+
+## 2026-11-10 — The three market charts use different measures
+
+Dubai and Abu Dhabi show all property sales, including off-plan. RAK shows completed sales only, because its off-plan figures are missing for 2020, 2021 and 2026 and partial for 2024. The RAK source line states this. If RAK publishes full off-plan figures, switch RAK to completed plus off-plan to match.
