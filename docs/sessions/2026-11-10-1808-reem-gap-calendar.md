@@ -30,3 +30,7 @@ The solution slide still says a licensed finance partner pays the brokerage (Flo
 - `npm test`: all four suites passed.
 - `npm run export:reem`: 8 pages.
 - The gap slide was inspected on desktop and at 390px.
+
+## Follow-up: headline
+
+The user said "Aaronz fills the two-month gap" "feels very bad" and asked for a bigger framing. The headline is now "Aaronz fills the market gap", and the test asserts it.

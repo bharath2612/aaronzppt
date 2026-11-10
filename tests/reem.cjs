@@ -38,6 +38,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.deepEqual(await page.locator('[id^="problem"] .chain .node.on').allTextContents(),['Developer','Brokerage','Broker']);
  assert.match(await page.locator('#problem-brokers .months').textContent(),/About 2 months[\s\S]*2 to 3 months/);
  // The gap slide: today the brokerage waits months 3 and 4; with Aaronz those two months are one block Aaronz funds.
+ assert.equal(await page.locator('#problem-gap h2').textContent(),'Aaronz fills the market gap');
  assert.equal(await page.locator('#problem-gap .gapcell').count(),1);assert.match(await page.locator('#problem-gap .fill').textContent(),/Aaronz pays the brokerage at the close/);
  // Both two-month blocks sit exactly under Month 3 to Month 4.
  const g=await page.evaluate(()=>{const q=s=>document.querySelector('#problem-gap '+s).getBoundingClientRect();const m=[...document.querySelectorAll('#problem-gap .cal-months span')].map(e=>e.getBoundingClientRect());return {m3:m[3].left,m4:m[4].right,fill:q('.fill'),gap:q('.gapcell'),fit:q('.fit')};});
