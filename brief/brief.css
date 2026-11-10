@@ -12,7 +12,11 @@
 .bars .val{font-size:18px;font-weight:600;margin-bottom:8px;white-space:nowrap}
 .bars li.now .val{color:var(--brand)}
 .bars .bar.fc{display:flex;align-items:center;justify-content:center;background:transparent;border:2px dashed var(--faint);border-bottom:0;border-radius:8px 8px 0 0}
+.bars li .bar.fc,.bars li.now .bar.fc{background:transparent}
 .bars .bar.fc+.bar{border-radius:0}
+.bars li .bar.fc{background:transparent}
+.bars li.now .bar.fc{background:transparent;border-color:var(--orange)}
+.reveal .bars .bar .in{display:block;padding:12px 8px 0;font-size:12px;font-weight:600;line-height:1.35;text-align:center;color:var(--muted)}
 .reveal .bars .bar.fc span{font-size:12px;font-weight:600;color:var(--muted);text-align:center;line-height:1.35}
 .bars li.ytd .bar{background:repeating-linear-gradient(135deg,#e4e4df 0 10px,#f5f5f2 10px 20px);border:2px solid var(--faint);border-bottom:0}
 .bars li.ytd .val{color:var(--ink)}
@@ -101,6 +105,7 @@ body:not(.reader) .reveal .slides>section.c-break.present{justify-content:center
  .bars{height:260px;gap:6px;padding:0}.bars .val{font-size:11px;white-space:normal;text-align:center;line-height:1.2;margin-bottom:4px}.reveal .bars .sub{display:none}
  .mkt-bars{row-gap:52px}
  .reveal .c-break h2{font-size:48px}
+ .reveal .bars .bar .in{font-size:9px;padding:6px 2px 0}
  .chain{flex-wrap:wrap;margin-top:0}
  .vs-row{font-size:15px;grid-template-columns:1.2fr 1fr 1fr;gap:8px}
  .months .seg strong{font-size:15px}.pv.months{margin-top:48px}

@@ -39,3 +39,10 @@
 ## Next
 
 The user may add more slides.
+
+## Follow-up: RAK bar annotations
+
+- **2024 bar:** the bar itself now says "Includes AED 2.65B of tourism land". The user wrote 2.6B; the source figure is 2.65B, so that was used.
+- **2026 bar:** it carries an empty dashed box "To match 2025: AED 1.1B" (3.19 − 2.12), the same treatment as Dubai. The source line says the box is the amount still needed to match 2025, not a forecast.
+- **Fixed:** on the highlighted 2026 bar, the box had picked up the orange fill. It is now forced transparent, and the test checks both Dubai and RAK boxes stay empty.
+- **Verification:** `npm test` passed all four suites, and the RAK slide was inspected.
