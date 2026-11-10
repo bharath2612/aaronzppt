@@ -42,11 +42,11 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.match(await page.locator('#problem-brokers .months').textContent(),/About 2 months[\s\S]*2 to 3 months/);
  // The gap slide: today the brokerage waits months 3 and 4; with Aaronz those two months are one block Aaronz funds.
  assert.equal(await page.locator('#problem-gap h2').textContent(),'Aaronz fills the market gap');
- assert.equal(await page.locator('#problem-gap .gapcell').count(),1);assert.match(await page.locator('#problem-gap .fill').textContent(),/Finance partner funds about 2 months/);assert.match(await page.locator('#problem-gap .cell.end.us').textContent(),/Aaronz takes its fee from the funder/);assert.match(await page.locator('#problem-gap .pin-start').textContent(),/Aaronz pays the brokerage through the finance partner/);assert.match(await page.locator('#problem-gap .pin-end').textContent(),/Developer pays the money back to the finance partner/);
- // Both two-month blocks sit exactly under Month 3 to Month 4.
- const g=await page.evaluate(()=>{const q=s=>document.querySelector('#problem-gap '+s).getBoundingClientRect();const m=[...document.querySelectorAll('#problem-gap .cal-months span')].map(e=>e.getBoundingClientRect());return {m3:m[3].left,m4:m[4].right,fill:q('.fill'),gap:q('.gapcell'),fit:q('.fit'),start:q('.pin-start'),end:q('.pin-end')};});
- assert(Math.abs(g.start.left-g.m3)<2&&Math.abs(g.end.right-g.m4)<2,'start and end pins not at the start of month 3 and the end of month 4');
- for(const b of [g.fill,g.gap,g.fit])assert(Math.abs(b.left-g.m3)<2&&Math.abs(b.right-g.m4)<2,'gap block not under months 3 and 4');
+ // The gap: today's wait is the full five-month line; with Aaronz it ends at closing, 40% of that length.
+ await page.evaluate(()=>deck.slide([...document.querySelectorAll('.slides>section')].findIndex(s=>s.id==='problem-gap')));await page.waitForTimeout(200);
+ const w=await page.evaluate(()=>[...document.querySelectorAll('#problem-gap .wait-track')].map(e=>e.getBoundingClientRect().width));
+ assert.equal(w.length,2);assert(Math.abs(w[1]/w[0]-0.4)<0.01,'Aaronz line is not 40% of today: '+w);
+ assert.match(await page.locator('#problem-gap .wait').textContent(),/Up to 5 months[\s\S]*About 2 months[\s\S]*Paid at closing/);
  assert.match(await page.locator('#problem-gap .inv-call').textContent(),/Aaronz pays the brokerage through a finance partner, and the developer repays the partner/);
  // Solution: the worked example adds up (AED 100,000, 45 days, 18% split 12% to the partner and 6% to Aaronz).
  const charge=r=>Math.round(100000*r*45/365*100)/100;assert.equal(charge(.18),2219.18);assert.equal(charge(.12),1479.45);assert.equal(charge(.06),739.73);

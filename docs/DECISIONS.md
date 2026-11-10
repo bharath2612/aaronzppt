@@ -210,3 +210,7 @@ The user chose ADREC's latest report (H1 2026) for 2022 to 2025, adding the two 
 ## 2026-11-10 — Financier deck names no recipient
 
 The user said the deck may go to multiple parties. The cover, tab title, footer and PDF name no longer mention Reem, and the PDF is now `reem/aaronz-commission-finance.pdf`. The cover line is "Aaronz closes the gap between a property sale and the commission payment." The URL path `/reem/` is unchanged so existing links keep working.
+
+## 2026-11-10 — Gap slide shows the wait as long vs short bars
+
+The user wanted the gap slide to show the impact visually. Today's wait is drawn as a full five-month line, and the Aaronz line is 40% of it (paid at closing, month 2 of 5). This is the real ratio, not an exaggeration. The calendar version with start and end markers was replaced.
