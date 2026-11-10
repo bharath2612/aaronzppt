@@ -139,6 +139,10 @@ The new developer problem slide targets smaller developers short of cash, but th
 
 The developer problem slide now leads with developers having cash flow issues, which conflicts more directly with the cash-flow test on the developer slide than the smaller-developer version did. The solution slide's notes still compare against the removed 30 to 90 day timeline. Both are open.
 
-## 2026-11-10 — Two market sizes across the decks
+## 2026-11-10 — Two market sizes across the decks (fixed the same day)
 
 The Reem deck uses DLD Atlas totals (AED 508.2B of sales and an estimated AED 10.2B of commission in 2025). The investor and Imtiaz decks use the land department's reported AED 682.5B and AED 13.59B. The Atlas counts only Sell and Sell - Pre registration. The Reem commission slide shows both, but the decks should eventually agree on one basis. The Reem deck is also public (noindex) with pricing and draft routing limits; the user has not yet confirmed that is acceptable.
+
+## 2026-11-10 — Reem market figures understated DLD sales by a quarter (fixed)
+
+The first Reem market slides counted only Sell and Sell - Pre registration, about 25% below DLD's reported sales value in every year, with off-plan at 72% instead of 63%. They now use DLD's reported values, with 2021 and 2022 recalculated from all DLD sales registrations, which match DLD's reports within 0.5% for 2023 to 2025. All decks now agree with DLD within 0.4% for 2025.

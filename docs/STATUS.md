@@ -1,6 +1,6 @@
 # Project status
 
-Updated: 2026-11-10 17:06 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-10-1706-reem-financier-deck.md`.
+Updated: 2026-11-10 17:17 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-10-1717-reem-dld-market-figures.md`.
 
 Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE real-estate commission finance. It contains:
 
@@ -29,7 +29,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
 ## Current state
 
 - **Reem deck** (`reem/index.html`, for a financier, AED only, same orange brand):
-  - **Slides:** cover; market, "Dubai property sales grew almost 10× in five years" (AED 52.3B in 2020 to AED 508.2B in 2025, from the DLD Atlas); commission pie, "The commission pie grew from AED 1.0B to AED 10.2B" (2% estimate, with the land department's AED 13.59B for 2025 alongside); the three problem slides copied from the investor deck; solution, "A finance partner pays the brokerage the same day" (Flow B, worked AED 100,000 example at 18%, 12% and 6%); where we are, "We are working out how to allocate funds" (routing rules v0.1: grades A to D and per-funder ceilings).
+  - **Slides:** cover; market, "Dubai property sales grew 9.5× in five years" (DLD reported sales value, AED 71.7B in 2020 to AED 680B in 2025; 2021 and 2022 recalculated from DLD records in the Atlas); commission pie, "The commission pie grew from AED 1.4B to AED 13.6B" (2% of sales value, matching the land department's AED 13.59B for 2025); the three problem slides copied from the investor deck; solution, "A finance partner pays the brokerage the same day" (Flow B, worked AED 100,000 example at 18%, 12% and 6%); where we are, "We are working out how to allocate funds" (routing rules v0.1: grades A to D and per-funder ceilings).
   - The problem headlines must match the investor deck; the test checks it.
 - **Investor deck** (`investor/index.html`, Aaronz brand in orange `#ff6b35` and `#cf4000`, white canvas):
   - **Slides:** cover; the team; three problem slides (developers, brokers, brokerages); the solution; the market; a product, not a service (product); how we make money; every developer tested before we sign; competition; we raise equity for working capital (funding); the raise.
@@ -104,7 +104,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - [Imtiaz: options we can offer](https://app.notion.com/p/4096ebf7407281cbaa4bf06a41bb28fe)
 - `aaronz-admin-monthly-expenses.xlsx` exists locally and is deliberately uncommitted.
 
-## Verification (2026-11-10 17:06 +04)
+## Verification (2026-11-10 17:17 +04)
 
 - `npm test` passed all four suites, including "Reem deck, eight slide layouts, market figures, problem slides, worked example, grades, PDF and mobile reader layout" and "investor deck, thirteen slide layouts, ...".
 - `npm run export:reem` wrote an 8-page `reem/aaronz-reem.pdf`. The Reem cover, market, commission, solution and allocation slides were inspected in screenshots; the problem slides are unchanged copies covered by the overflow and orphan checks.

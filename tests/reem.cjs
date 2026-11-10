@@ -21,11 +21,12 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert(await page.evaluate(()=>document.fonts.check('500 48px Inter')),'Inter not loaded');
  assert(await page.evaluate(()=>[...document.images].every(i=>i.complete&&i.naturalWidth>0)),'logo failed to load');
  assert.equal(await page.evaluate(()=>deck.getConfig().transition),'none');
- // Market: five years of DLD sales (Sell and Sell - Pre registration), and commission at 2% of that value.
- const sales=[52.3,105.1,191.5,301.5,396.5,508.2];
- assert.deepEqual(await page.locator('#market .bars .val').allTextContents(),sales.map(v=>'AED '+v.toFixed(1)+'B'));
+ // Market: DLD's reported sales value (2021 and 2022 recalculated from DLD records), and commission at 2% of it.
+ const sales=[71.7,148.6,262.7,410.2,521,680];
+ assert.deepEqual(await page.locator('#market .bars .val').allTextContents(),sales.map(v=>'AED '+v+'B'));
  assert.deepEqual(await page.locator('#commission .bars .val').allTextContents(),sales.map(v=>'AED '+(v*.02).toFixed(1)+'B'));
- assert.equal(Math.round((sales[5]/sales[4]-1)*100),28);assert.match(await page.locator('#commission .bar-side').textContent(),/\+28%/);
+ assert.equal(Math.round((sales[5]/sales[4]-1)*100),31);assert.match(await page.locator('#commission .bar-side').textContent(),/\+31%/);
+ assert.deepEqual(await page.locator('#market .bars .sub').allTextContents(),['DLD Atlas','DLD Atlas']);assert.match(await page.locator('#market .source').textContent(),/Annual Data Review 2025/);
  // Bar heights are proportional to the values, with the tallest at 85%.
  for(const id of ['market','commission'])assert.deepEqual(await page.locator('#'+id+' .bar').evaluateAll(b=>b.map(e=>parseFloat(e.style.height))),sales.map(v=>Math.round(v/sales[5]*850)/10));
  assert.match(await page.locator('#commission .source').textContent(),/2%/);

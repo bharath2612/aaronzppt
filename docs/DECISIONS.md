@@ -182,3 +182,7 @@ The user said the developer and brokerage slides had the wrong hero problems. De
 ## 2026-11-10 — Reem financier deck uses Flow B and DLD Atlas figures
 
 The Reem deck is for a financier, so its solution is the embedded finance partner flow (the partner approves and pays; Aaronz earns a 6% fee), not the investor deck's equity-funded story. Market figures come from the user's DLD Atlas (Sell and Sell - Pre registration, 2020 to 2025), and commission is estimated at 2% of sales value, in line with the land department's 2025 ratio. AED only. The three problem slides are copies of the investor deck's, and a test keeps their headlines in step.
+
+## 2026-11-10 — Reem market uses DLD reported sales, Atlas for 2021 and 2022
+
+User decision: "Use DLD official numbers, recalculate 2021 and 2022 from Atlas". Sources are DLD's annual reports (2020, 2024, and the 2025 data review), using the newest report where they disagree. 2021 and 2022 are taken from all DLD sales registrations in the Atlas. Commission stays at 2% of sales value.
