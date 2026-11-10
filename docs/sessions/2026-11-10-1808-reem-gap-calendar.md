@@ -38,3 +38,14 @@ The user said "Aaronz fills the two-month gap" "feels very bad" and asked for a 
 ## Follow-up: Dubai headline
 
 At the user's request, the Dubai market headline is now "Dubai property sales grew 10× in five years" ("close to" removed). The figures behind it, AED 71.7B to AED 680B, are 9.5×, which the headline rounds up.
+
+## Follow-up: professional copy
+
+The user said the copy was too casual (citing "hardest hit") and asked for professional wording with fewer words. Every slide's visible copy was tightened and the figures are unchanged:
+- **Developers:** "Developers carry commission costs on every sale". The cards are now "The need" and "Most exposed".
+- **Brokerages:** "Brokerages cannot forecast commission income". The rows are Certainty of payment date, Leverage over the developer, and Outcome; the small-brokerage outcome is now "Many exit the market".
+- **Brokers:** "Brokers wait up to five months to be paid". The points are "Living costs continue" and "Limited mobility".
+- **Gap slide:** "Aaronz funds brokerage payments and is repaid by the developer."
+- **Solution cards:** Early payment, Net return, Platform fee.
+
+`npm test` passed all four suites, and the developer, brokerage and solution slides were inspected.
