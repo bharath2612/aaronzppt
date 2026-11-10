@@ -190,3 +190,7 @@ User decision: "Use DLD official numbers, recalculate 2021 and 2022 from Atlas".
 ## 2026-11-10 — Don't name the Atlas on the Reem deck
 
 The user said the "DLD Atlas" label "doesn't hold any credibility". Estimated years carry an "Estimated" badge, with the reasoning on its own line in the source note: estimated from DLD transaction data, and within 0.5% of DLD's reported totals where both exist.
+
+## 2026-11-10 — Reem deck drops the commission and allocation slides
+
+The commission series had published support only for 2024 and 2025. The user removed it and the "where we are" routing slide. The market headline says "close to 10×" rather than 9.5×. The deck is now market, problems and solution.

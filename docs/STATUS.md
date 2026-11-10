@@ -1,6 +1,6 @@
 # Project status
 
-Updated: 2026-11-10 17:17 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-10-1717-reem-dld-market-figures.md`.
+Updated: 2026-11-10 17:46 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-10-1746-reem-trim-slides.md`.
 
 Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE real-estate commission finance. It contains:
 
@@ -8,7 +8,7 @@ Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE re
 - a separate Imtiaz proposal deck (`imtiaz.html`, 8 slides);
 - a standalone calculator page (`commission-calculator.html`).
 - an investor deck (`investor/index.html`, 13 slides), a skeleton being filled in progressively;
-- a financier brief for Reem (`reem/index.html`, 8 slides).
+- a financier brief for Reem (`reem/index.html`, 6 slides).
 
 There's no backend or build pipeline. GitHub Pages publishes it from `main`: https://bharath2612.github.io/aaronzppt/.
 
@@ -29,7 +29,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
 ## Current state
 
 - **Reem deck** (`reem/index.html`, for a financier, AED only, same orange brand):
-  - **Slides:** cover; market, "Dubai property sales grew 9.5× in five years" (DLD reported sales value, AED 71.7B in 2020 to AED 680B in 2025; 2021 and 2022 carry a small "EST" tag, estimated from DLD transaction data; the deck never names the Atlas); commission pie, "The commission pie grew from AED 1.4B to AED 13.6B" (2% of sales value, matching the land department's AED 13.59B for 2025); the three problem slides copied from the investor deck; solution, "A finance partner pays the brokerage the same day" (Flow B, worked AED 100,000 example at 18%, 12% and 6%); where we are, "We are working out how to allocate funds" (routing rules v0.1: grades A to D and per-funder ceilings).
+  - **Slides:** cover; market, "Dubai property sales grew close to 10× in five years" (DLD reported sales value, AED 71.7B in 2020 to AED 680B in 2025; 2021 and 2022 carry a small "EST" tag, estimated from DLD transaction data, and the deck never names the Atlas); the three problem slides copied from the investor deck; solution, "A finance partner pays the brokerage the same day" (Flow B, worked AED 100,000 example at 18%, 12% and 6%). The commission and "where we are" slides were removed at the user's request on 2026-11-10.
   - The problem headlines must match the investor deck; the test checks it.
 - **Investor deck** (`investor/index.html`, Aaronz brand in orange `#ff6b35` and `#cf4000`, white canvas):
   - **Slides:** cover; the team; three problem slides (developers, brokers, brokerages); the solution; the market; a product, not a service (product); how we make money; every developer tested before we sign; competition; we raise equity for working capital (funding); the raise.
@@ -104,15 +104,15 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - [Imtiaz: options we can offer](https://app.notion.com/p/4096ebf7407281cbaa4bf06a41bb28fe)
 - `aaronz-admin-monthly-expenses.xlsx` exists locally and is deliberately uncommitted.
 
-## Verification (2026-11-10 17:17 +04)
+## Verification (2026-11-10 17:46 +04)
 
-- `npm test` passed all four suites, including "Reem deck, eight slide layouts, market figures, problem slides, worked example, grades, PDF and mobile reader layout" and "investor deck, thirteen slide layouts, ...".
-- `npm run export:reem` wrote an 8-page `reem/aaronz-reem.pdf`. The Reem cover, market, commission, solution and allocation slides were inspected in screenshots; the problem slides are unchanged copies covered by the overflow and orphan checks.
+- `npm test` passed all four suites, including "Reem deck, six slide layouts, market figures, problem slides, worked example, PDF and mobile reader layout" and "investor deck, thirteen slide layouts, ...".
+- `npm run export:reem` wrote a 6-page `reem/aaronz-reem.pdf`. The Reem cover, market and solution slides were inspected in screenshots; the problem slides are unchanged copies covered by the overflow and orphan checks.
 - No lint or build scripts are configured.
 
 ## Next
 
-- **Reem deck:** confirm who Reem is and whether the deck should stay public (it shows pricing and the draft routing limits). The developer headline is still waiting on the user's pick; change it in both decks together.
+- **Reem deck:** confirm who Reem is and whether the deck should stay public (it shows pricing). The developer headline is still waiting on the user's pick; change it in both decks together.
 0. **Investor deck:** the user confirms the recalculated fee table, raise amount and use of funds. Also decide the market-figure mismatch in `docs/PROBLEMS.md`, which affects the Imtiaz market slide.
 1. **Live site:** the Imtiaz deck is published, and changes are now pushed automatically after verification (the user asked on 2026-10-31). It's at https://bharath2612.github.io/aaronzppt/imtiaz.html (the user approved the push). Still open: whether the usual date really is 45 days after DLD registration.
 2. **Before the meeting (date to be confirmed):** click through the deck end to end, including the payout picker. The external today-ai demo is no longer linked from the deck.
