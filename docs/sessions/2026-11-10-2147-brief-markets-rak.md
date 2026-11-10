@@ -46,3 +46,10 @@ The user may add more slides.
 - **2026 bar:** it carries an empty dashed box "To match 2025: AED 1.1B" (3.19 − 2.12), the same treatment as Dubai. The source line says the box is the amount still needed to match 2025, not a forecast.
 - **Fixed:** on the highlighted 2026 bar, the box had picked up the orange fill. It is now forced transparent, and the test checks both Dubai and RAK boxes stay empty.
 - **Verification:** `npm test` passed all four suites, and the RAK slide was inspected.
+
+## Follow-up: RAK 2024 note and 2026 gap box
+
+- **2024 bar:** the note "Includes AED 2.65B of tourism land" now sits inside the bar. The user said 2.6B; the source's exact AED 2.65B was used.
+- **2026 bar:** the AED 2.1B (January to September) has a dashed box on top, "To match 2025: AED 1.1B" (3.19 − 2.12), the same as Dubai and labelled as a gap, not a forecast.
+- **Fixed:** the highlight colour had filled the box orange. A CSS rule now keeps `.bar.fc` empty, and the test checks its background is transparent.
+- **Verification:** `npm test` passed all four suites, `npm run export:brief` wrote 10 pages, and the slide was inspected.
