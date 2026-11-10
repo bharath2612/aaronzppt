@@ -34,3 +34,7 @@ The solution slide still says a licensed finance partner pays the brokerage (Flo
 ## Follow-up: headline
 
 The user said "Aaronz fills the two-month gap" "feels very bad" and asked for a bigger framing. The headline is now "Aaronz fills the market gap", and the test asserts it.
+
+## Follow-up: Dubai headline
+
+At the user's request, the Dubai market headline is now "Dubai property sales grew 10× in five years" ("close to" removed). The figures behind it, AED 71.7B to AED 680B, are 9.5×, which the headline rounds up.

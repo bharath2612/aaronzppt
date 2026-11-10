@@ -48,7 +48,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  const charge=r=>Math.round(100000*r*45/365*100)/100;assert.equal(charge(.18),2219.18);assert.equal(charge(.12),1479.45);assert.equal(charge(.06),739.73);
  assert.deepEqual(await page.locator('#solution .amt').allTextContents(),['AED 97,780.82','AED 1,479.45','AED 739.73']);
  assert.equal(await page.locator('#commission,#allocation').count(),0,'removed slides are back');
- assert.equal(await page.locator('#market h2').textContent(),'Dubai property sales grew close to 10× in five years');
+ assert.equal(await page.locator('#market h2').textContent(),'Dubai property sales grew 10× in five years');
  const text=await page.evaluate(()=>document.querySelector('.slides').textContent);
  assert(!/automatically/i.test(text),'banned word in the deck');assert(!/channel connect|mawarid/i.test(text),'third party named');
  const sheet=f=>crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex').slice(0,8);
