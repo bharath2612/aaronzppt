@@ -8,7 +8,7 @@
 .bars li.now .val{color:var(--brand)}
 .bars .yr{position:absolute;bottom:-34px;font-size:16px;color:var(--muted)}
 .reveal .bars .sub{font-size:13px!important;color:var(--muted);margin:0 0 6px!important;white-space:nowrap}
-.reveal .bars .est{font-size:12px;font-weight:600;line-height:1;color:var(--brand);border:1px solid var(--orange);border-radius:999px;padding:4px 9px;margin:0 0 8px;white-space:nowrap}
+.reveal .bars .est{font-size:9px;font-weight:700;letter-spacing:.06em;line-height:1;color:var(--brand);border:1px solid var(--orange);border-radius:3px;padding:2px 4px;margin:0 0 5px;white-space:nowrap}
 .bar-side{display:flex;flex-direction:column;gap:14px;margin-bottom:0}
 .bar-side .c-card{min-height:0;padding:20px 22px}
 .bar-side strong{display:block;font-size:34px;line-height:1.1;font-weight:600;letter-spacing:-.02em}
