@@ -202,3 +202,7 @@ The user said the problem slides' layout and messaging were weak. The Reem deck 
 ## 2026-11-10 — Abu Dhabi market slide uses ADREC reports and sales records
 
 The Abu Dhabi slide uses ADREC's 2025 report for 2021 to 2025 and adds 2026 to date from the ADREC sales CSV the user supplied. That CSV matches ADREC's reported totals within 3% for 2022 to 2025 and for H1 2026. 2020 is left out because ADREC says registration incentives inflated it.
+
+## 2026-11-10 — Abu Dhabi figures from ADREC's latest report
+
+The user chose ADREC's latest report (H1 2026) for 2022 to 2025, adding the two half-year values (26, 52, 53, 94 bn). 2021 (AED 15B) comes from the 2025 report, which is the latest to cover it. 2026 to date (AED 137B) comes from ADREC transaction records, because no report covers it yet. ADREC's reports disagree on 2023 (50 excluding one-off land deals, or 53 including them); the H1 2026 halves give 52.

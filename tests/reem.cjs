@@ -27,11 +27,11 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.deepEqual(await page.locator('#market .bars li').evaluateAll(l=>l.map(e=>e.querySelector('.est')?.textContent||'')),['','EST','EST','','','']);assert.match(await page.locator('#market .source').textContent(),/Estimated: 2021 and 2022 add up every sales registration in DLD transaction data/);assert(!/Atlas/.test(await page.evaluate(()=>document.querySelector('.slides').textContent)),'Atlas named in the deck');assert.match(await page.locator('#market .source').textContent(),/Annual Data Review 2025/);
  // Bar heights are proportional to the values, with the tallest at 85%.
  for(const id of ['market'])assert.deepEqual(await page.locator('#'+id+' .bar').evaluateAll(b=>b.map(e=>parseFloat(e.style.height))),sales.map(v=>Math.round(v/sales[5]*850)/10));
- // Abu Dhabi: ADREC sales value 2021 to 2025, then 2026 to date from ADREC sales records.
- const ad=[15,25,53,53,93,136.7];
+ // Abu Dhabi: 2021 from ADREC's 2025 report, 2022 to 2025 from its H1 2026 report (two halves added), 2026 to date from ADREC transaction records.
+ const ad=[15,26,52,53,94,136.7];
  assert.deepEqual(await page.locator('#market-ad .bars .val').allTextContents(),ad.map(v=>'AED '+Math.round(v)+'B'));
  assert.deepEqual(await page.locator('#market-ad .bar').evaluateAll(b=>b.map(e=>parseFloat(e.style.height))),ad.map(v=>Math.round(v/ad[5]*850)/10));
- assert.equal(Math.round(ad[4]/ad[0]),6);assert.match(await page.locator('#market-ad h2').textContent(),/6× in four years/);
+ assert.equal(Math.round(ad[4]/ad[0]),6);assert.match(await page.locator('#market-ad .source').textContent(),/H1 2026 report, sum of half-year values/);assert.match(await page.locator('#market-ad h2').textContent(),/6× in four years/);
  assert.deepEqual(await page.locator('#market-ad .bars li').evaluateAll(l=>l.map(e=>e.querySelector('.est')?.textContent||'')),['','','','','','YTD']);
  // The problem follows one commission down the chain: developer, brokerage, broker, then the gap to fund.
  assert.deepEqual(await page.locator('[id^="problem"] .c-eyebrow').allTextContents(),['02The problem · Developers','02The problem · Brokerages','02The problem · Brokers','02The problem · The gap']);

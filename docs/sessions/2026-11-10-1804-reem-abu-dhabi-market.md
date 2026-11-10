@@ -54,3 +54,20 @@ It does not match for 2020 and 2021: AED 46.5B against 38B, and AED 18.1B agains
 ## Next
 
 Wait for the user's next instruction.
+
+## Follow-up: switched to ADREC's latest report
+
+The user asked why 2023 and 2024 looked the same. Measured live, the bars were the same height (124px), because the 2025 report rounds both years to AED 53B. The user then chose ADREC's latest report, H1 2026, for 2022 to 2025, adding the two halves of each year:
+
+| Year | Sales value |
+|---|---|
+| 2022 | AED 26B |
+| 2023 | AED 52B |
+| 2024 | AED 53B |
+| 2025 | AED 94B |
+
+2021 stays at AED 15B from the 2025 report, and 2026 to date stays at AED 137B from the transaction records. The headline is still 6× (15 to 94). The 2025 card now says AED 94B.
+
+**Reports available:** the 2024 annual report (2019 to 2024), H1 2025, the 2025 annual report (2019 to 2025), and H1 2026 (half-years from H1 2022 to H1 2026).
+
+**Verification:** `npm test` passed all four suites, and the slide was inspected.
