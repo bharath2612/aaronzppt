@@ -32,3 +32,16 @@ A scripted CSS edit matched `.months .wait{` instead of `.wait{` and deleted the
 ## Next
 
 Confirm with the user that the "numbers" reading is right. Decide when to delete the `/reem/` redirect.
+
+## Follow-up (19:55): breakpoints and solution timeline
+
+- **Gap slide:** the user asked to keep the month intervals on the lines. The dots, labels and interval text are:
+
+  | Row | Dots | Interval text under the line |
+  |---|---|---|
+  | Today | Work starts; Deal closes at 40%; Paid at the end | "Working the deal · about 2 months" and "Waiting for the developer · 2 to 3 months" |
+  | With Aaronz | Work starts; Paid at closing | "Working the deal · about 2 months" |
+
+  The lines stay 12px thin. The test checks the breakpoint labels.
+- **Solution slide:** the user said to skip "that line", read as the timeline (confirm, then partner pays same day, then developer repays in 30 to 45 days), since the gap slide now shows it. It was removed, so the slide is the headline, the subtitle and the three benefit cards. The test checks there is no timeline.
+- **Verification:** `npm test` passed all four suites. Both slides were inspected on desktop and the gap slide at 390px.

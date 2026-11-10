@@ -47,12 +47,13 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  const w=await page.evaluate(()=>[...document.querySelectorAll('#problem-gap .gap-wait .wait-track')].map(e=>e.getBoundingClientRect().width));
  assert.equal(w.length,2);assert(Math.abs(w[1]/w[0]-0.4)<0.01,'Aaronz line is not 40% of today: '+w);
  assert.match(await page.locator('#problem-gap .gap-wait').textContent(),/Up to 5 months[\s\S]*About 2 months[\s\S]*Paid at closing/);
- // One thin line per row, nothing else drawn: no filler boxes, and the lines stay slim.
- assert.equal(await page.locator('#problem-gap .gap-wait .line').count(),2);assert.equal(await page.locator('#problem-gap .saved,#problem-gap .seg').count(),0);
+ // One thin line per row with its breakpoints, no filler boxes, and the lines stay slim.
+ assert.deepEqual(await page.locator('#problem-gap .gap-wait .bp b').allTextContents(),['Work starts','Deal closes','Paid','Work starts','Paid at closing']);assert.equal(await page.locator('#problem-gap .saved,#problem-gap .seg').count(),0);
  assert(await page.locator('#problem-gap .gap-wait .wait-track').first().evaluate(e=>e.getBoundingClientRect().height)<=16,'gap lines too tall');
  assert.match(await page.locator('#problem-gap .inv-call').textContent(),/Aaronz pays the brokerage through a finance partner, and the developer repays the partner/);
  // Solution: benefits for each audience in words, with no pricing or worked example.
  assert.deepEqual(await page.locator('#solution .benefits .c-tag').allTextContents(),['Developers','Brokerages','Brokers']);
+ assert.equal(await page.locator('#solution .inv-time').count(),0,'the gap slide already shows the timeline');
  assert(!/%|AED/.test(await page.locator('#solution').evaluate(e=>{const c=e.cloneNode(true);c.querySelector('aside.notes')?.remove();return c.textContent;})),'pricing shown on the solution slide');
  assert.equal(await page.locator('#commission,#allocation').count(),0,'removed slides are back');
  assert.equal(await page.locator('#market h2').textContent(),'Dubai property sales grew 10× in five years');
