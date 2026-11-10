@@ -1,6 +1,6 @@
 # Project status
 
-Updated: 2026-11-10 17:46 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-10-1746-reem-trim-slides.md`.
+Updated: 2026-11-10 17:54 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-10-1805-reem-problem-story.md`.
 
 Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE real-estate commission finance. It contains:
 
@@ -8,7 +8,7 @@ Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE re
 - a separate Imtiaz proposal deck (`imtiaz.html`, 8 slides);
 - a standalone calculator page (`commission-calculator.html`).
 - an investor deck (`investor/index.html`, 13 slides), a skeleton being filled in progressively;
-- a financier brief for Reem (`reem/index.html`, 6 slides).
+- a financier brief for Reem (`reem/index.html`, 7 slides).
 
 There's no backend or build pipeline. GitHub Pages publishes it from `main`: https://bharath2612.github.io/aaronzppt/.
 
@@ -29,8 +29,8 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
 ## Current state
 
 - **Reem deck** (`reem/index.html`, for a financier, AED only, same orange brand):
-  - **Slides:** cover; market, "Dubai property sales grew close to 10× in five years" (DLD reported sales value, AED 71.7B in 2020 to AED 680B in 2025; 2021 and 2022 carry a small "EST" tag, estimated from DLD transaction data, and the deck never names the Atlas); the three problem slides copied from the investor deck; solution, "A finance partner pays the brokerage the same day" (Flow B, worked AED 100,000 example at 18%, 12% and 6%). The commission and "where we are" slides were removed at the user's request on 2026-11-10.
-  - The problem headlines must match the investor deck; the test checks it.
+  - **Slides:** cover; market, "Dubai property sales grew close to 10× in five years" (DLD reported sales value, AED 71.7B in 2020 to AED 680B in 2025; 2021 and 2022 carry a small "EST" tag, estimated from DLD transaction data, and the deck never names the Atlas); four problem slides telling one chain story (developers, brokerages, brokers, then "the gap" a financier funds), each with a Developer → Brokerage → Broker strip; solution, "A finance partner pays the brokerage the same day" (Flow B, worked AED 100,000 example at 18%, 12% and 6%). The commission and "where we are" slides were removed at the user's request on 2026-11-10.
+  - The Reem problem slides no longer match the investor deck's (changed 2026-11-10 at the user's request); whether the investor deck follows is open.
 - **Investor deck** (`investor/index.html`, Aaronz brand in orange `#ff6b35` and `#cf4000`, white canvas):
   - **Slides:** cover; the team; three problem slides (developers, brokers, brokerages); the solution; the market; a product, not a service (product); how we make money; every developer tested before we sign; competition; we raise equity for working capital (funding); the raise.
   - **Problem slides** (one per audience, all labelled 02): developers, "Developers need a partner to pay commission", with smaller developers as a minor point (`#problem`); brokers, "Brokers wait 4 to 5 months to be paid for a deal", with the only problem timeline (`#problem-brokers`); brokerages, "Brokerages can't plan, and can't demand their money", covering planning, smaller brokerages and campaigns (`#problem-brokerages`). The milestone, 4 to 5 days, 30 to 90 days timeline is no longer in the deck.

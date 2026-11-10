@@ -194,3 +194,7 @@ The user said the "DLD Atlas" label "doesn't hold any credibility". Estimated ye
 ## 2026-11-10 — Reem deck drops the commission and allocation slides
 
 The commission series had published support only for 2024 and 2025. The user removed it and the "where we are" routing slide. The market headline says "close to 10×" rather than 9.5×. The deck is now market, problems and solution.
+
+## 2026-11-10 — Reem problem told as one commission chain
+
+The user said the problem slides' layout and messaging were weak. The Reem deck now follows one commission from developer to brokerage to broker, each slide with its own visual, and ends on a new "gap" slide: commission is earned at the sale and paid months later, and someone has to fund that gap. This sets up the finance-partner solution. The investor deck keeps its old problem slides for now.
