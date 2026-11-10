@@ -33,6 +33,9 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.deepEqual(await page.locator('#market-ad .bar').evaluateAll(b=>b.map(e=>parseFloat(e.style.height))),ad.map(v=>Math.round(v/ad[5]*850)/10));
  assert.equal(Math.round(ad[4]/ad[0]),6);assert.match(await page.locator('#market-ad .source').textContent(),/H1 2026 report, sum of half-year values/);assert.match(await page.locator('#market-ad h2').textContent(),/6× in four years/);
  assert.deepEqual(await page.locator('#market-ad .bars li').evaluateAll(l=>l.map(e=>e.querySelector('.est')?.textContent||'')),['','','','','','YTD']);
+ // 2026 is the highlighted bar and the only year on the side cards.
+ assert.deepEqual(await page.locator('#market-ad .bars li').evaluateAll(l=>l.map(e=>e.className)),['','','','','','now']);
+ assert.equal(await page.locator('#market-ad .bar-side .lead strong').textContent(),'AED 137B');assert.equal(Math.round((ad[5]/ad[4]-1)*100),45);assert.match(await page.locator('#market-ad .bar-side').textContent(),/\+45%[\s\S]*83%/);
  // The problem follows one commission down the chain: developer, brokerage, broker, then the gap to fund.
  assert.deepEqual(await page.locator('[id^="problem"] .c-eyebrow').allTextContents(),['02The problem · Developers','02The problem · Brokerages','02The problem · Brokers','02The problem · The gap']);
  assert.deepEqual(await page.locator('[id^="problem"] .chain .node.on').allTextContents(),['Developer','Brokerage','Broker']);

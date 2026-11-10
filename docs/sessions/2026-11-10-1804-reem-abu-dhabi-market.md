@@ -71,3 +71,15 @@ The user asked why 2023 and 2024 looked the same. Measured live, the bars were t
 **Reports available:** the 2024 annual report (2019 to 2024), H1 2025, the 2025 annual report (2019 to 2025), and H1 2026 (half-years from H1 2022 to H1 2026).
 
 **Verification:** `npm test` passed all four suites, and the slide was inspected.
+
+## Follow-up: 2026 highlighted
+
+At the user's request ("highlight the latest 26... on the side, we should highlight the 26 only"):
+- **Bars:** 2026 is now the orange bar and keeps its YTD tag; 2025 is grey like the earlier years.
+- **Side cards (2026 only):**
+  - AED 137B sold to 9 November;
+  - +45%, already above all of 2025 (AED 94B), which is 136.69 ÷ 94;
+  - 83% of 2026 residential sales value is off-plan, from the ADREC transaction records (residential, excluding court-mandated).
+- **Source:** the CSV has moved to `~/Downloads/Abu Dhabi/recent_sales.csv`.
+
+`npm test` passed all four suites, and the slide was inspected.
