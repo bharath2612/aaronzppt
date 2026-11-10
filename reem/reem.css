@@ -1,16 +1,21 @@
 /* Reem financier deck: builds on investor/investor.css, adds the bar chart and the money split. */
+/* Colour: orange is the brand accent and marks the problem; green marks what Aaronz fixes; the rest stays neutral. */
+:root{--fix:#1f6b4a;--fix-tint:#e8f2ec}
+.c-card.lead{background:var(--ink)}
+.inv-time.us::before,.inv-time.us li::before{background:var(--fix)}
+.inv-time.us .when{border-color:var(--fix);color:var(--fix)}
 .mkt-bars{width:100%;max-width:var(--w);margin:6px auto 0;display:grid;grid-template-columns:1fr 300px;gap:28px;align-items:end}
 .bars{height:390px;display:grid;grid-template-columns:repeat(6,1fr);gap:18px;align-items:end;border-bottom:2px solid var(--ink);padding:0 4px}
 .bars li{list-style:none;height:100%;margin:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;position:relative}
-.bars .bar{width:100%;border-radius:8px 8px 0 0;background:#ffd2bf}
+.bars .bar{width:100%;border-radius:8px 8px 0 0;background:#e4e4df}
 .bars li.now .bar{background:var(--orange)}
 .bars .val{font-size:18px;font-weight:600;margin-bottom:8px;white-space:nowrap}
 .bars li.now .val{color:var(--brand)}
-.bars li.ytd .bar{background:repeating-linear-gradient(135deg,#ffd2bf 0 10px,#fff3ec 10px 20px);border:2px solid var(--orange);border-bottom:0}
-.bars li.ytd .val{color:var(--brand)}
+.bars li.ytd .bar{background:repeating-linear-gradient(135deg,#e4e4df 0 10px,#f5f5f2 10px 20px);border:2px solid var(--faint);border-bottom:0}
+.bars li.ytd .val{color:var(--ink)}
 .bars .yr{position:absolute;bottom:-34px;font-size:16px;color:var(--muted)}
 .reveal .bars .sub{font-size:13px!important;color:var(--muted);margin:0 0 6px!important;white-space:nowrap}
-.reveal .bars .est{font-size:9px;font-weight:700;letter-spacing:.06em;line-height:1;color:var(--brand);border:1px solid var(--orange);border-radius:3px;padding:2px 4px;margin:0 0 5px;white-space:nowrap}
+.reveal .bars .est{font-size:9px;font-weight:700;letter-spacing:.06em;line-height:1;color:var(--muted);border:1px solid var(--faint);border-radius:3px;padding:2px 4px;margin:0 0 5px;white-space:nowrap}
 .bar-side{display:flex;flex-direction:column;gap:14px;margin-bottom:0}
 .bar-side .c-card{min-height:0;padding:20px 22px}
 .bar-side strong{display:block;font-size:34px;line-height:1.1;font-weight:600;letter-spacing:-.02em}
@@ -27,7 +32,7 @@
 /* Problem slides: the commission chain, then one visual per audience. */
 .chain{width:100%;max-width:var(--w);margin:-14px auto 26px;display:flex;align-items:center;gap:12px;font-size:14px}
 .chain .node{padding:6px 14px;border-radius:999px;border:1px solid var(--line);color:var(--muted);font-weight:600}
-.chain .node.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.chain .node.on{background:var(--ink);border-color:var(--ink);color:#fff}
 .chain .link{color:var(--faint);display:flex;align-items:center;gap:8px}
 .chain .link::after{content:'';width:28px;height:1px;background:var(--faint)}
 .pv{width:100%;max-width:var(--w);margin:0 auto}
@@ -50,7 +55,7 @@
 .months .wait{background:repeating-linear-gradient(135deg,#ffe3d6 0 10px,#fff3ec 10px 20px);color:var(--brand);border-radius:0 12px 12px 0;border-left:3px solid var(--paper)}
 .months .seg strong{font-size:19px}
 .months .seg span{font-size:15px;opacity:.85}
-.months .paid{position:absolute;right:0;top:-38px;background:var(--brand);color:#fff;font-weight:600;font-size:14px;padding:5px 12px;border-radius:999px}
+.months .paid{position:absolute;right:0;top:-38px;background:var(--ink);color:#fff;font-weight:600;font-size:14px;padding:5px 12px;border-radius:999px}
 .months .ticks{grid-column:1/-1;display:grid;grid-template-columns:repeat(5,1fr);margin:10px 0 0;padding:0;list-style:none}
 .months .ticks li{font-size:13px;color:var(--faint);margin:0}
 .pts{width:100%;max-width:var(--w);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px}
@@ -61,15 +66,19 @@
 .cal-row{display:grid;grid-template-columns:150px repeat(5,1fr);gap:6px;align-items:stretch;margin-bottom:6px}
 .cal-months span{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);padding:0 0 6px 4px;border-bottom:1px solid var(--line)}
 .cal-months span:first-child{border:0}
-.cal-fit .fit{grid-column:4/span 2;text-align:center;font-size:14px;font-weight:600;color:var(--brand);border:2px solid var(--orange);border-bottom:0;border-radius:10px 10px 0 0;padding:6px 0;margin-top:6px}
+.cal-fit .fit{grid-column:4/span 2;text-align:center;font-size:14px;font-weight:600;color:var(--fix);border:2px solid var(--fix);border-bottom:0;border-radius:10px 10px 0 0;padding:6px 0;margin-top:6px}
 .cal-label{display:flex;align-items:center;font-weight:600;font-size:18px}
-.cal-label.us{color:var(--brand)}
+.cal-label.us{color:var(--fix)}
 .cal .cell{min-height:78px;border-radius:10px;padding:12px 14px;display:flex;align-items:center;font-size:16px;font-weight:600;line-height:1.3}
 .cal .work{background:var(--card);color:var(--ink)}
 .cal .gapcell{grid-column:span 2;background:repeating-linear-gradient(135deg,#ffe3d6 0 10px,#fff3ec 10px 20px);color:var(--brand);justify-content:center;text-align:center}
-.cal .fill{grid-column:span 2;background:var(--brand);color:#fff;justify-content:center;text-align:center;font-size:18px}
+.cal .fill{grid-column:span 2;background:var(--fix);color:#fff;justify-content:center;text-align:center;font-size:18px}
 .cal .end{background:var(--ink);color:#fff}
-#problem-gap .inv-call{margin-top:22px}
+.cal-pins .pin{grid-column:4;font-size:14px;font-weight:600;line-height:1.35;color:var(--fix);border-left:2px solid var(--fix);padding:10px 12px 2px;margin-top:-6px}
+.cal-pins .pin-end{grid-column:5;text-align:right;border-left:0;border-right:2px solid var(--fix)}
+.cal-pins .pin b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px}
+#problem-gap .inv-call{margin-top:22px;background:var(--fix-tint);color:var(--fix)}
+.reveal #problem-gap .inv-call h3{color:var(--fix)}
 @media (max-width:900px){
  .mkt-bars,.split,.pv.dev,.pts{grid-template-columns:1fr}
  .bars{height:260px;gap:8px}.bars .val{font-size:13px}.reveal .bars .sub{display:none}
@@ -80,5 +89,5 @@
  .cal-row{grid-template-columns:64px repeat(5,minmax(0,1fr));gap:3px}
  .cal-months span{font-size:9px;letter-spacing:0;padding-left:0}
  .cal .cell{font-size:11px;padding:6px;min-height:70px;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}.cal .fill{font-size:12px}
- .cal-label{font-size:12px}.cal-fit .fit{font-size:11px}
+ .cal-label{font-size:12px}.cal-fit .fit{font-size:11px}.cal-pins .pin{font-size:10px;padding:6px 4px 0;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
 }
