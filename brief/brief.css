@@ -1,3 +1,4 @@
+@font-face{font-family:'Bodoni Moda';src:url('../assets/vendor/bodoni-moda-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
 /* Reem financier deck: builds on investor/investor.css, adds the bar chart and the money split. */
 /* Colour: orange is the brand accent and marks the problem; green marks what Aaronz fixes; the rest stays neutral. */
 :root{--fix:#1f6b4a;--fix-tint:#e8f2ec}
@@ -145,7 +146,7 @@ body:not(.reader) .reveal #problem-gap .inv-call h3{white-space:nowrap}
 .nav-logo .wm{font-size:27px}
 .c-lockup .wm{font-size:84px}
 /* Cover: Aaronz AI in black, then the AaronzPay.today address under the headline with .today in the primary colour. */
-.wm-ai{color:var(--ink)}
+.wm-ai{font-family:'Bodoni Moda',serif;font-weight:400;letter-spacing:-.01em;color:var(--ink)}
 .reveal .c-cover .c-url{margin:22px 0 0;font-family:Inter,sans-serif;font-size:30px;font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--ink)}
 .c-url-tld{color:var(--brand)}
 /* Primary colour choices. --orange is decoration, --brand carries text; green (--fix) stays the secondary colour. */
