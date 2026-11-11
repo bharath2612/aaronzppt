@@ -55,3 +55,10 @@ Abu Dhabi's earlier 78% was by residential value, so it wasn't comparable. The "
 ## Follow-up: gap labels
 
 The last two points on today's line now read "Invoice settled to brokerage" and "Payout to broker", after "Invoice raised" and "Payment due". `npm test` passed all four suites, and the slide was inspected.
+
+## Follow-up: Aaronz.Pay wordmark and wording
+
+- **Logo:** the logo in the top bar and on the cover is now an "Aaronz.Pay" wordmark: Inter bold with tight spacing, ".Pay" in the primary colour. The tab title and description say Aaronz Pay. `brief/aaronz-ai-logo.svg` was deleted; the brief no longer shows Aaronz.AI anywhere, and a test checks this.
+- **Developers problem, point 4:** "No risk partner or fin-real-tech solution is available to take on this challenge".
+- **Outcome, developer's last point:** "A risk partner who takes care of commission".
+- **Verification:** `npm test` passed all four suites. The cover, outcome slide and phone cover were inspected.

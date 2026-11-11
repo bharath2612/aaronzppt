@@ -136,6 +136,11 @@ body:not(.reader) .reveal .slides>section.c-break.present{justify-content:center
 .reveal .rail .sub{margin:8px 0 0!important;font-size:14px!important;line-height:1.4;color:var(--muted);text-wrap:balance}
 #business-model .inv-call{margin-top:44px;background:var(--fix-tint)}
 .reveal #business-model .inv-call h3{color:var(--fix)}
+/* Aaronz.Pay wordmark: Inter, tight and bold, with ".Pay" in the primary colour. */
+.wm{display:inline-block;font-family:Inter,sans-serif;font-weight:700;letter-spacing:-.045em;line-height:1;color:var(--ink);white-space:nowrap}
+.wm-pay{color:var(--brand)}
+.nav-logo .wm{font-size:27px}
+.c-lockup .wm{font-size:84px}
 /* Primary colour choices. --orange is decoration, --brand carries text; green (--fix) stays the secondary colour. */
 :root{--hatch-a:#ffe3d6;--hatch-b:#fff3ec}
 :root[data-accent="blue"]{--orange:#6ea8ff;--brand:#1d5fd1;--green:#1d5fd1;--tint:#eef4ff;--hatch-a:#dbe8ff;--hatch-b:#eef4ff}
@@ -180,7 +185,7 @@ body.presenting .set-sheet,body.presenting .set-scrim{display:none}
 @media (orientation:portrait){
  .phone-slides .site-nav{height:190px}
  .phone-slides .site-nav nav,.phone-slides .nav-pdf,.phone-slides #presentToggle{display:none}
- .phone-slides .nav-logo img{height:68px;width:auto}
+ .phone-slides .nav-logo .wm{font-size:70px}
  .phone-slides .nav-actions{gap:24px}
  .phone-slides .site-nav button{height:108px;padding:0 40px;font-size:38px;border-radius:20px}
  .phone-slides .site-nav .set-btn{width:108px;padding:0}

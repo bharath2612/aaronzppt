@@ -238,3 +238,7 @@ Indigo replaces amber as the default primary colour. Phones open as slides at th
 ## 2026-11-11 — Aaronz Pay, finance partner, average commission rate
 
 From the user's printed review: the product is "Aaronz Pay" (AaronzPay.today) on the solution and money-flow slides, with Aaronz.AI kept as the company logo. The money flow names only the finance partner, which receives a fee. The commission rate is shown as an average, default 4%, with a 3% to 6% dropdown in settings that recalculates the slide. The market slides no longer draw a box for the rest of 2026.
+
+## 2026-11-11 — Brief brand is Aaronz.Pay
+
+The user asked for the logo and cover to read Aaronz.Pay, in a clean font with a different colour. The brief now uses a text wordmark (Inter bold, ".Pay" in the primary colour) in place of the Aaronz.AI SVG. The investor deck keeps its Aaronz AI logo.
