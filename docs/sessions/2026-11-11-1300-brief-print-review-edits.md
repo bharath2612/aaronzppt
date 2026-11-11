@@ -125,3 +125,9 @@ The Aaronz Pay line now runs the full length of the Today line. After the immedi
 
 - Developers problem, point 4: dropped "right": "No fin-real-tech solution is available to take on this challenge".
 - Gap callout: 20px on one line in slide view; it still wraps in the phone reader view.
+
+## Follow-up (2026-11-11 15:05 +04): cover reads Aaronz AI, with AaronzPay.today
+
+- Request: replace the AaronzPay wordmark on the cover with "Aaronz AI" in black, and put "AaronzPay.today" under the headline with ".today" in the primary colour.
+- Done: `brief/index.html` cover lockup is `.wm.wm-ai` "Aaronz AI" (ink); new `p.c-url` after the h1. `brief/brief.css` adds `.wm-ai`, `.c-url` (30px Inter bold) and `.c-url-tld` (var(--brand)); hash updated. The nav logo stays AaronzPay.
+- Tests: `tests/brief.cjs` checks the cover text and colours. `npm run export:brief` wrote 18 pages; `npm test` passed all four suites.
