@@ -35,9 +35,11 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.deepEqual(await page.locator('#market-ad .bar').evaluateAll(b=>b.map(e=>parseFloat(e.style.height))),ad.map(v=>Math.round(v/ad[6]*850)/10));
  assert.match(await page.locator('#market-ad .source').textContent(),/H1 2026 report, sum of half-year values/);assert.equal(await page.locator('#market-ad h2').textContent(),'Abu Dhabi property sales are rising sharply');
  assert.equal(await page.locator('#market-ad .bars .est').count(),0);assert.equal(await page.locator('#market-ad .bar .in').textContent(),'YTDAED 137B');
- // 2026 is the highlighted bar and the only year on the side cards.
+ // 2025 is the highlighted bar.
  assert.deepEqual(await page.locator('#market-ad .bars li').evaluateAll(l=>l.map(e=>e.className)),['','','','','','now','']);
- assert.equal(await page.locator('#market-ad .bar-side .lead strong').textContent(),'AED 94B');assert.match(await page.locator('#market-ad .bar-side').textContent(),/AED 137B[\s\S]*78%/);
+ assert.equal(await page.locator('#market-ad .bar-side .lead strong').textContent(),'AED 94B');assert.match(await page.locator('#market-ad .bar-side').textContent(),/\+77%[\s\S]*78%/);assert.equal(Math.round((94/53-1)*100),77);
+ // All three market slides highlight 2025 and keep the side cards to 2025.
+ for(const id of ['market','market-ad','market-rak']){assert.equal(await page.locator('#'+id+' .bars li.now .yr').textContent(),'2025');assert(!/2026/.test(await page.locator('#'+id+' .bar-side').textContent()),id+' side cards mention 2026');}
  // RAK: completed property sales, 2020 to 2026 (January to September); off-plan is reported separately and left out.
  const rak=[1001412200,1738994965,2184141723,3482718683,6438983837,3192316419,2123794299].map(v=>v/1e9);
  assert.deepEqual(await page.locator('#market-rak .bars .val').allTextContents(),rak.slice(0,-1).map(v=>'AED '+v.toFixed(1)+'B'));
@@ -50,8 +52,8 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.equal((rak[5]-rak[6]).toFixed(1),'1.1');assert.equal(await page.locator('#market-rak .bar.fc').textContent(),'Q4');assert.equal(await page.locator('#market-rak .bar.fc').evaluate(e=>getComputedStyle(e).backgroundColor),'rgba(0, 0, 0, 0)','gap box must stay empty');
  for(const id of ['market','market-rak'])assert.equal(await page.locator('#'+id+' .bar.fc').evaluate(e=>getComputedStyle(e).backgroundColor),'rgba(0, 0, 0, 0)',id+' gap box must stay empty');assert.equal(await page.locator('#market-rak .bar.fc').evaluate(e=>getComputedStyle(e).backgroundColor),'rgba(0, 0, 0, 0)','gap box must stay empty');
  assert.equal(parseFloat(await page.locator('#market-rak .bar.fc').evaluate(e=>e.style.height)),Math.round((rak[5]-rak[6])/rak[4]*850)/10);
- // 2026 is the highlighted bar and leads the side cards.
- assert.deepEqual(await page.locator('#market-rak .bars li').evaluateAll(l=>l.map(e=>e.className)),['','','','','','','now']);assert.equal(Math.round(rak[6]/rak[5]*100),67);assert.match(await page.locator('#market-rak .bar-side').textContent(),/67%/);assert.equal(await page.locator('#market-rak .bar-side .lead strong').textContent(),'AED 2.1B');
+ // 2025 is the highlighted bar and leads the side cards.
+ assert.deepEqual(await page.locator('#market-rak .bars li').evaluateAll(l=>l.map(e=>e.className)),['','','','','','now','']);assert.match(await page.locator('#market-rak .bar-side').textContent(),/AED 3\.2B[\s\S]*2,964[\s\S]*AED 1\.08M/);assert.equal(await page.locator('#market-rak .bar-side .lead strong').textContent(),'AED 3.2B');
  assert.match(await page.locator('#market-rak .source').textContent(),/completed property sales; off-plan sales are reported separately and not included/);
  // Commissions: 4% of off-plan sales, 2025 and 2026 to date, for the three emirates (RAK 2026 not published).
  const off={dxb:[292886732524,200915946076],ad:[59220000000,103330000000],rak:[11198476786]};

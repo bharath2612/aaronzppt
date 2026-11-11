@@ -31,3 +31,7 @@ Open items are in `docs/STATUS.md`.
 ## Follow-up: 2026 value inside the bar
 
 On Dubai, Abu Dhabi and RAK, the 2026 figure now sits inside the solid part of the bar, directly under YTD, and no longer above the bar. `npm test` passed all four suites, and the three market slides were inspected.
+
+## Follow-up: 2025 on all three market slides
+
+Dubai, Abu Dhabi and RAK all highlight the 2025 bar, and their side cards cover 2025 only. RAK: AED 3.2B completed sales, 2,964 completed sales, average sale AED 1.08M. Abu Dhabi's middle card is now +77% on 2024 (AED 53B to AED 94B, from the bars). A test checks all three. `npm test` passed all four suites, and the RAK and Abu Dhabi slides were inspected.
