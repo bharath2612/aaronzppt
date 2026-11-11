@@ -226,3 +226,7 @@ Dubai 2026 shows DLD data to date plus a dashed box for the amount still needed 
 ## 2026-11-11 — Brief ends on outcome and money flow; settings are per browser
 
 At the user's request, the old finance-partner solution cards were replaced by a solution section (the gap) and an outcome section (broker, brokerage, developer benefits), followed by a six-step money flow. The ready commission slide was built and then removed. Primary colour and slide visibility are set in a side sheet and saved per browser, because the site is static; a share-link option is proposed but not built. Deck hide/show is not a confidentiality control, since hidden slides stay in the page source.
+
+## 2026-11-11 — Brief default primary colour is amber
+
+The user felt the orange read as red, and so as something bad. Amber is now the default for the page and the PDF; green stays the secondary colour. The other four colours remain available in the settings sheet. The investor deck keeps its orange.

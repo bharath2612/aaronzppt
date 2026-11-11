@@ -114,6 +114,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  // Settings: hide and show slides, pick the primary colour, and keep both on reload.
  const set=await browser.newPage({viewport:{width:1440,height:1000}});set.on('pageerror',e=>errors.push(e.message));
  await set.goto(url);await set.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());
+ assert.equal(await set.evaluate(()=>document.documentElement.dataset.accent),'amber');assert.equal(await set.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--brand').trim()),'#8f5a00');
  assert.equal(await set.locator('#settingsSheet').isVisible(),false);await set.click('#settingsToggle');assert(await set.locator('#settingsSheet').isVisible());
  assert.equal(await set.locator('.set-list input').count(),ids.length);assert.equal(await set.locator('.set-list .set-t').first().textContent(),'Cover');
  const toggle=async id=>set.locator('.set-list label').filter({has:set.locator('input[data-slide="'+id+'"]')}).click();

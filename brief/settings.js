@@ -17,7 +17,7 @@
  function place(){all.forEach(s=>{if(hidden.has(s.id))s.remove();else holder.appendChild(s);});
   document.querySelectorAll('.site-nav nav a').forEach(a=>{a.hidden=hidden.has(a.hash.replace('#/',''));});}
  function keepHashValid(){const id=location.hash.replace(/^#\/?/,'');if(id?hidden.has(id):hidden.has('home'))history.replaceState(null,'','#/'+visible()[0].id);}
- const savedAccent=read(ACCENT_KEY,'orange');applyAccent(accents.some(a=>a[0]===savedAccent)?savedAccent:'orange');
+ const savedAccent=read(ACCENT_KEY,'amber');applyAccent(accents.some(a=>a[0]===savedAccent)?savedAccent:'amber');
  place();keepHashValid();
  // After the first load the deck has to be told its slides changed.
  function refresh(){

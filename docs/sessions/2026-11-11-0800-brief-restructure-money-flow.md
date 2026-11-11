@@ -41,3 +41,7 @@ Cover; break "The market"; Dubai; Abu Dhabi; RAK; break "Commissions"; off-plan 
 The user asked for the brand to read "Aaronz.AI". All text in the brief (slides, speaker notes, page title and description) now says Aaronz.AI. The brief has its own logo, `brief/aaronz-ai-logo.svg`, which is the investor logo with a dot added; the investor deck's logo is unchanged. A test checks the name and the logo.
 
 An interrupted tool call still committed and pushed `6870577`; the user had asked to push, and was told. `npm test` passed all four suites after this change.
+
+## Follow-up: amber is the default
+
+The user asked for amber as the default primary colour. `brief/index.html` sets `data-accent="amber"`, and `brief/settings.js` falls back to amber, so the live page and the PDF are amber. A colour already chosen in a browser's settings still takes priority there. `npm test` passed all four suites, and the cover, Dubai and gap slides were inspected.
