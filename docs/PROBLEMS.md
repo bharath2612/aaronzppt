@@ -158,3 +158,7 @@ This happened three times in this deck: two line-based regexes cut parts of the 
 ## 2026-11-10 — The three market charts use different measures
 
 Dubai and Abu Dhabi show all property sales, including off-plan. RAK shows completed sales only, because its off-plan figures are missing for 2020, 2021 and 2026 and partial for 2024. The RAK source line states this. If RAK publishes full off-plan figures, switch RAK to completed plus off-plan to match.
+
+## 2026-11-11 — Money flow conflicts with Flow B wording
+
+The money flow shows money returning to Aaronz's capital pool and Aaronz collecting its fee, while the Flow B PDF says money never passes through Aaronz's bank and that Aaronz must stay a technology provider. The gap slide's green line also still names the finance partner as paying and being repaid, while the flow names the licensed partner. Both are open with the user.

@@ -9,15 +9,15 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  const page=await browser.newPage({viewport:{width:1440,height:1000}});page.on('pageerror',e=>errors.push(e.message));
  page.on('requestfailed',r=>errors.push('failed to load '+r.url()));
  await page.goto(url);await page.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());await page.evaluate(()=>document.fonts.ready);
- // The financier brief: market, the three problems, and the solution.
- const ids=['home','break-market','market','market-ad','market-rak','problem','problem-brokerages','problem-brokers','problem-gap','solution'];
+ // The financier brief: market, commissions, the three problems, the solution and the outcome.
+ const ids=['home','break-market','market','market-ad','market-rak','break-commission','commission','problem','problem-brokers','problem-brokerages','problem-developers','break-solution','problem-gap','break-outcome','outcome','break-model','business-model'];
  assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('.slides>section')].map(s=>s.id)),ids);
  for(let i=0;i<ids.length;i++){await page.evaluate(i=>deck.slide(i),i);await page.waitForTimeout(300);await page.screenshot({path:'.build/brief-'+ids[i]+'.png'});
   const problems=await page.locator('#'+ids[i]).evaluate(el=>{const r=el.getBoundingClientRect();const note=el.querySelector(':scope>.source');const limit=note?note.getBoundingClientRect().top:r.bottom;return [...el.querySelectorAll('*')].filter(n=>!n.closest('aside.notes,.source,.c-meta')).filter(n=>{const b=n.getBoundingClientRect();return b.width>0&&(b.bottom>limit+1||b.left<r.left-1||b.right>r.right+1);}).map(n=>n.tagName+'.'+n.className);});
   assert.deepEqual(problems,[],ids[i]+' overflow: '+problems);
   const orphans=await page.locator('#'+ids[i]).evaluate(el=>[...el.querySelectorAll('p,h3,h2,h1')].filter(n=>!n.closest('aside.notes')&&n.getClientRects().length).filter(n=>{const text=n.firstChild&&n.childNodes.length===1&&n.firstChild.nodeType===3?n.firstChild:null;if(!text)return false;const value=text.textContent;const cut=value.trimEnd().lastIndexOf(' ');if(cut<1)return false;const top=(a,b)=>{const r=document.createRange();r.setStart(text,a);r.setEnd(text,b);return r.getClientRects()[0].top;};return top(cut+1,value.trimEnd().length)-top(cut-1,cut)>2;}).map(n=>n.textContent));
   assert.deepEqual(orphans,[],ids[i]+' single word on a last line');}
- assert.equal(await page.locator('#slideCount').textContent(),'10 / 10');
+ assert.equal(await page.locator('#slideCount').textContent(),'17 / 17');
  assert(await page.evaluate(()=>document.fonts.check('500 48px Inter')),'Inter not loaded');
  assert(await page.evaluate(()=>[...document.images].every(i=>i.complete&&i.naturalWidth>0)),'logo failed to load');
  assert.equal(await page.evaluate(()=>deck.getConfig().transition),'none');
@@ -53,27 +53,44 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  // 2026 is the highlighted bar and leads the side cards.
  assert.deepEqual(await page.locator('#market-rak .bars li').evaluateAll(l=>l.map(e=>e.className)),['','','','','','','now']);assert.equal(Math.round(rak[6]/rak[5]*100),67);assert.match(await page.locator('#market-rak .bar-side').textContent(),/67%/);assert.equal(await page.locator('#market-rak .bar-side .lead strong').textContent(),'AED 2.1B');
  assert.match(await page.locator('#market-rak .source').textContent(),/completed property sales; off-plan sales are reported separately and not included/);
- // The problem follows one commission down the chain: developer, brokerage, broker, then the gap to fund.
- assert.deepEqual(await page.locator('[id^="problem"] .c-eyebrow').allTextContents(),['02The problem · Developers','02The problem · Brokerages','02The problem · Brokers','02The problem · The gap']);
- assert.deepEqual(await page.locator('[id^="problem"] .chain .node.on').allTextContents(),['Developer','Brokerage','Broker']);
- assert.match(await page.locator('#problem-brokers .months').textContent(),/About 2 months[\s\S]*2 to 3 months/);
- assert.deepEqual(await page.locator('#problem-brokers .ticks li').allTextContents(),['Month 1Engages the lead','Month 2Closes the deal','Month 3Completes registration','Month 4Waits for payment','Month 5Receives the commission']);
+ // Commissions: 4% of off-plan sales, 2025 and 2026 to date, for the three emirates (RAK 2026 not published).
+ const off={dxb:[292886732524,200915946076],ad:[59220000000,103330000000],rak:[11198476786]};
+ const c25=(off.dxb[0]+off.ad[0]+off.rak[0])*.04/1e9,c26=(off.dxb[1]+off.ad[1])*.04/1e9;
+ assert.equal(c25.toFixed(1),'14.5');assert.equal(c26.toFixed(1),'12.2');assert.equal((c25+c26).toFixed(1),'26.7');
+ assert.equal(await page.locator('#commission h2').textContent(),'AED 26.7B of off-plan commission in under two years');
+ assert.deepEqual(await page.locator('#commission .cm-total strong').allTextContents(),['AED 14.5B','AED 12.2B']);
+ assert.deepEqual(await page.locator('#commission .cm-row:not(.cm-head):not(.cm-total) strong').allTextContents(),['AED 11.7B','AED 8.0B','AED 2.4B','AED 4.1B','AED 0.45B']);
+ assert.match(await page.locator('#commission .cm-table').textContent(),/Not yet published/);assert.equal(await page.locator('#break-commission h2').textContent(),'Commissions');
+ // The problem: a section break, then brokers, brokerages and developers, each a statement and its facts.
+ assert.equal(await page.locator('#problem h2').textContent(),'The problem');
+ assert.deepEqual(await page.locator('[id^="problem-"] .c-eyebrow').allTextContents(),['03The problem · Brokers','03The problem · Brokerages','03The problem · Developers','04The solution · The gap']);
+ assert.deepEqual(await page.locator('#problem-brokers .facts p').allTextContents(),['No loan facility against the commission they are owed','No salary: they live from one commission to the next','Less motivation to sell more while earlier commissions are unpaid']);
+ assert.equal(await page.locator('#problem-brokerages .facts li').count(),3);assert.equal(await page.locator('#problem-developers .facts li').count(),3);
+ assert.match(await page.locator('#problem-developers .facts').textContent(),/no digital view of who is owed what/);
  // The gap slide: today the brokerage waits months 3 and 4; with Aaronz those two months are one block Aaronz funds.
  assert.equal(await page.locator('#problem-gap h2').textContent(),'Aaronz fills the market gap');
- // The gap: today's wait is the full five-month line; with Aaronz it ends at closing, 40% of that length.
+ // The gap: today's wait is the full four-month line; with Aaronz it ends at registration, half that length.
  await page.evaluate(()=>deck.slide([...document.querySelectorAll('.slides>section')].findIndex(s=>s.id==='problem-gap')));await page.waitForTimeout(200);
  const w=await page.evaluate(()=>[...document.querySelectorAll('#problem-gap .gap-wait .wait-track')].map(e=>e.getBoundingClientRect().width));
- assert.equal(w.length,2);assert(Math.abs(w[1]/w[0]-0.4)<0.01,'Aaronz line is not 40% of today: '+w);
- assert.match(await page.locator('#problem-gap .gap-wait').textContent(),/Up to 5 months[\s\S]*About 2 months[\s\S]*Paid at closing/);
+ assert.equal(w.length,2);assert(Math.abs(w[1]/w[0]-0.5)<0.01,'Aaronz line is not half of today: '+w);
+ assert.match(await page.locator('#problem-gap .gap-wait').textContent(),/Up to 4 months[\s\S]*2 months[\s\S]*Registration done, paid immediately/);
  // One thin line per row with its breakpoints, no filler boxes, and the lines stay slim.
- assert.deepEqual(await page.locator('#problem-gap .gap-wait .bp b').allTextContents(),['Work starts','Deal closes','Paid','Work starts','Paid at closing']);assert.equal(await page.locator('#problem-gap .saved,#problem-gap .seg').count(),0);
+ assert.deepEqual(await page.locator('#problem-gap .gap-wait .bp b').allTextContents(),['Engages lead','Unit booked','Registration complete','Developer releases payment','Brokerage releases payout','Engages lead','Unit booked','Registration done, paid immediately']);assert.equal(await page.locator('#problem-gap .saved,#problem-gap .seg').count(),0);
  assert(await page.locator('#problem-gap .gap-wait .wait-track').first().evaluate(e=>e.getBoundingClientRect().height)<=16,'gap lines too tall');
  assert.match(await page.locator('#problem-gap .inv-call').textContent(),/Aaronz pays the brokerage through a finance partner, and the developer repays the partner/);
- // Solution: benefits for each audience in words, with no pricing or worked example.
- assert.deepEqual(await page.locator('#solution .benefits .c-tag').allTextContents(),['Developers','Brokerages','Brokers']);
- assert.equal(await page.locator('#solution .inv-time').count(),0,'the gap slide already shows the timeline');
- assert(!/%|AED/.test(await page.locator('#solution').evaluate(e=>{const c=e.cloneNode(true);c.querySelector('aside.notes')?.remove();return c.textContent;})),'pricing shown on the solution slide');
- assert.equal(await page.locator('#commission,#allocation').count(),0,'removed slides are back');
+ // Money flow: six steps on one line, with Aaronz's own steps marked.
+ assert.equal(await page.locator('#break-model h2').textContent(),'Money flow');assert.equal(await page.locator('#commission-ready').count(),0);assert(!/business model/i.test(await page.evaluate(()=>document.body.innerText)),'old section name shown');assert.equal(await page.locator('#business-model h2').textContent(),'From registration to settlement in six steps');
+ assert.deepEqual(await page.locator('#business-model .rail .who').allTextContents(),['Developer','Brokerage','Aaronz','Licensed partner','Developer','Aaronz']);
+ assert.deepEqual(await page.locator('#business-model .rail li.us .n').allTextContents(),['3','6']);
+ assert.match(await page.locator('#business-model .rail').textContent(),/Marks the broker eligible for commission[\s\S]*Pays the commission amount[\s\S]*Settles the finance partner and collects its fee[\s\S]*interest only/);
+ assert(!/%/.test(await page.locator('#business-model .rail').textContent()),'pricing shown on the flow');
+ await page.evaluate(()=>deck.slide([...document.querySelectorAll('.slides>section')].findIndex(s=>s.id==='business-model')));await page.waitForTimeout(200);assert(await page.evaluate(()=>Math.abs(document.querySelector('.rail-phases span:last-child').getBoundingClientRect().left-document.querySelectorAll('.rail li')[4].getBoundingClientRect().left)<2),'Repayment label not above step 5');
+ // Outcome: broker, brokerage, developer in that order, three problem lines turned around for each, with no pricing.
+ assert.deepEqual(await page.locator('#outcome h3').allTextContents(),['Broker','Brokerage','Developer']);
+ assert.deepEqual(await page.locator('#outcome .c-card').evaluateAll(c=>c.map(e=>e.querySelectorAll('li').length)),[3,3,3]);
+ assert.deepEqual([await page.locator('#break-solution h2').textContent(),await page.locator('#break-outcome h2').textContent()],['The solution','The outcome']);
+ assert(!/%|AED/.test(await page.locator('#outcome').evaluate(e=>{const c=e.cloneNode(true);c.querySelector('aside.notes')?.remove();return c.textContent;})),'pricing shown on the outcome slide');
+ assert.equal(await page.locator('#allocation').count(),0,'removed slide is back');
  // The cover is the title alone, then a section break introduces the market.
  assert.equal(await page.locator('#home .c-lede').count(),0);assert.equal(await page.locator('#break-market h2').textContent(),'The market');
  assert.equal(await page.locator('#market h2').textContent(),'Dubai property sales grew 10× in five years');
@@ -92,6 +109,22 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert(await mobile.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'brief deck mobile overflow');await mobile.screenshot({path:'.build/brief-mobile.png',fullPage:true});
  // The old /reem/ address forwards to /brief/, keeping the slide.
  const old=await browser.newPage();await old.goto(pathToFileURL(process.cwd()+'/reem/index.html').href+'#/market-ad');await old.waitForURL(/\/brief\/index\.html#\/market-ad$/);await old.close();
- assert.deepEqual(errors,[]);console.log('Passed: financier brief deck, ten slide layouts, market figures, problem slides, solution benefits, old-address redirect, PDF and mobile reader layout.');
+ // Settings: hide and show slides, pick the primary colour, and keep both on reload.
+ const set=await browser.newPage({viewport:{width:1440,height:1000}});set.on('pageerror',e=>errors.push(e.message));
+ await set.goto(url);await set.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());
+ assert.equal(await set.locator('#settingsSheet').isVisible(),false);await set.click('#settingsToggle');assert(await set.locator('#settingsSheet').isVisible());
+ assert.equal(await set.locator('.set-list input').count(),ids.length);assert.equal(await set.locator('.set-list .set-t').first().textContent(),'Cover');
+ const toggle=async id=>set.locator('.set-list label').filter({has:set.locator('input[data-slide="'+id+'"]')}).click();
+ await toggle('market-rak');assert.equal(await set.locator('#market-rak').count(),0);assert.match(await set.locator('#slideCount').textContent(),/ \/ 16$/);assert.equal(await set.evaluate(()=>deck.getTotalSlides()),16);
+ await toggle('break-solution');assert.equal(await set.locator('.site-nav nav a[href="#/break-solution"]').isVisible(),false);
+ await set.locator('[data-accent-id="blue"]').click();assert.equal(await set.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--brand').trim()),'#1d5fd1');
+ assert.equal(await set.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--fix').trim()),'#1f6b4a');
+ await set.keyboard.press('Escape');assert.equal(await set.locator('#settingsSheet').isVisible(),false);assert.equal(await set.evaluate(()=>deck.isOverview()),false);
+ await set.reload();await set.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());assert.equal(await set.locator('#market-rak').count(),0);assert.equal(await set.evaluate(()=>document.documentElement.dataset.accent),'blue');
+ await set.click('#settingsToggle');await set.click('.set-all');assert.deepEqual(await set.evaluate(()=>[...document.querySelectorAll('.slides>section')].map(s=>s.id)),ids,'slides not restored in order');
+ // Hiding the slide on screen moves to the next one, and the cover can be hidden without errors.
+ await set.evaluate(()=>deck.slide(0));await toggle('home');assert.equal(await set.evaluate(()=>deck.getCurrentSlide().id),'break-market');await set.reload();await set.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());assert.equal(await set.evaluate(()=>deck.getCurrentSlide().id),'break-market');
+ await set.evaluate(()=>{localStorage.clear();});await set.close();
+ assert.deepEqual(errors,[]);console.log('Passed: financier brief deck, seventeen slide layouts, market figures, problem slides, outcome slide, old-address redirect, settings sheet, PDF and mobile reader layout.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});

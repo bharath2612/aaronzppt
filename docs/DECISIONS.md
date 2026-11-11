@@ -222,3 +222,7 @@ The deck goes to several parties, so it now lives at `/brief/` (files `brief/`, 
 ## 2026-11-10 — Market slides: Dubai 2026 gap box, RAK completed sales
 
 Dubai 2026 shows DLD data to date plus a dashed box for the amount still needed to match 2025. It is labelled as a gap, not a forecast, because DLD's own 2026 data points to about AED 476B, and a 700B forecast was declined. RAK uses completed sales for 2020 to 2026, the only RAK series that is complete for every year; off-plan, reported separately, is excluded and the slide says so. Sales figures exclude mortgages and gifts throughout, because commission is only paid on sales.
+
+## 2026-11-11 — Brief ends on outcome and money flow; settings are per browser
+
+At the user's request, the old finance-partner solution cards were replaced by a solution section (the gap) and an outcome section (broker, brokerage, developer benefits), followed by a six-step money flow. The ready commission slide was built and then removed. Primary colour and slide visibility are set in a side sheet and saved per browser, because the site is static; a share-link option is proposed but not built. Deck hide/show is not a confidentiality control, since hidden slides stay in the page source.
