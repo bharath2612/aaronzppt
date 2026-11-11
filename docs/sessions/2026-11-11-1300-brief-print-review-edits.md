@@ -66,3 +66,13 @@ The last two points on today's line now read "Invoice settled to brokerage" and 
 ## Follow-up: no dot in the wordmark
 
 The user asked for "AaronzPay" with no dot, with "Pay" kept in a different colour. The wordmark now reads AaronzPay, and its accessible label is "Aaronz Pay". `npm test` passed all four suites, and the cover was inspected.
+
+## Follow-up: Sharjah market slide
+
+- **Placement:** `#market-sharjah`, before RAK. The deck is now 18 slides.
+- **Source:** the user's Sharjah artifact, compiled from the Sharjah Real Estate Registration Department's annual and monthly reports.
+- **Measure:** sales value only exists to 2024, and 2025 and 2026 are published only as total transactions including mortgages. The user chose completed plus off-plan sales, 2021 to 2024 (AED 14.0B, 13.0B, 18.5B, 28.4B), with 2024 highlighted.
+- **Headline:** "Sharjah property sales have doubled since 2021".
+- **Side cards:** AED 28.4B sold in 2024; 13,522 completed sales; 42% of sales value off-plan. Sharjah publishes no off-plan count, so the share is by value, unlike the other three slides, and the source line says so.
+- **Not added:** a Sharjah commission row, because there is no 2025 or 2026 off-plan figure.
+- **Verification:** `npm test` passed all four suites, and the slide was inspected.

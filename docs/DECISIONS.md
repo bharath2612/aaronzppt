@@ -242,3 +242,7 @@ From the user's printed review: the product is "Aaronz Pay" (AaronzPay.today) on
 ## 2026-11-11 — Brief brand is Aaronz.Pay
 
 The user asked for the logo and cover to read Aaronz.Pay, in a clean font with a different colour. The brief now uses a text wordmark (Inter bold, ".Pay" in the primary colour) in place of the Aaronz.AI SVG. The investor deck keeps its Aaronz AI logo.
+
+## 2026-11-11 — Sharjah uses sales to 2024
+
+Sharjah publishes sales value only to 2024; 2025 and 2026 appear only as total transactions including mortgages. The user chose completed plus off-plan sales, 2021 to 2024, over total transactions. Its 2024 highlight and value-based off-plan share differ from the other three market slides, and the slide says so.

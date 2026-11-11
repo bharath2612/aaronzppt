@@ -10,14 +10,14 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  page.on('requestfailed',r=>errors.push('failed to load '+r.url()));
  await page.goto(url);await page.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());await page.evaluate(()=>document.fonts.ready);
  // The financier brief: market, commissions, the three problems, the solution and the outcome.
- const ids=['home','break-market','market','market-ad','market-rak','break-commission','commission','problem','problem-brokers','problem-brokerages','problem-developers','break-solution','problem-gap','break-outcome','outcome','break-model','business-model'];
+ const ids=['home','break-market','market','market-ad','market-sharjah','market-rak','break-commission','commission','problem','problem-brokers','problem-brokerages','problem-developers','break-solution','problem-gap','break-outcome','outcome','break-model','business-model'];
  assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('.slides>section')].map(s=>s.id)),ids);
  for(let i=0;i<ids.length;i++){await page.evaluate(i=>deck.slide(i),i);await page.waitForTimeout(300);await page.screenshot({path:'.build/brief-'+ids[i]+'.png'});
   const problems=await page.locator('#'+ids[i]).evaluate(el=>{const r=el.getBoundingClientRect();const note=el.querySelector(':scope>.source');const limit=note?note.getBoundingClientRect().top:r.bottom;return [...el.querySelectorAll('*')].filter(n=>!n.closest('aside.notes,.source,.c-meta')).filter(n=>{const b=n.getBoundingClientRect();return b.width>0&&(b.bottom>limit+1||b.left<r.left-1||b.right>r.right+1);}).map(n=>n.tagName+'.'+n.className);});
   assert.deepEqual(problems,[],ids[i]+' overflow: '+problems);
   const orphans=await page.locator('#'+ids[i]).evaluate(el=>[...el.querySelectorAll('p,h3,h2,h1')].filter(n=>!n.closest('aside.notes')&&n.getClientRects().length).filter(n=>{const text=n.firstChild&&n.childNodes.length===1&&n.firstChild.nodeType===3?n.firstChild:null;if(!text)return false;const value=text.textContent;const cut=value.trimEnd().lastIndexOf(' ');if(cut<1)return false;const top=(a,b)=>{const r=document.createRange();r.setStart(text,a);r.setEnd(text,b);return r.getClientRects()[0].top;};return top(cut+1,value.trimEnd().length)-top(cut-1,cut)>2;}).map(n=>n.textContent));
   assert.deepEqual(orphans,[],ids[i]+' single word on a last line');}
- assert.equal(await page.locator('#slideCount').textContent(),'17 / 17');
+ assert.equal(await page.locator('#slideCount').textContent(),'18 / 18');
  assert(await page.evaluate(()=>document.fonts.check('500 48px Inter')),'Inter not loaded');
  assert(await page.evaluate(()=>[...document.images].every(i=>i.complete&&i.naturalWidth>0)),'logo failed to load');
  assert.equal(await page.evaluate(()=>deck.getConfig().transition),'none');
@@ -41,6 +41,14 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.deepEqual(await page.evaluate(()=>['market','market-ad','market-rak'].map(id=>[...document.querySelectorAll('#'+id+' .bar-side strong')].map(e=>e.textContent))),[['AED 680B','217,889','63%'],['AED 94B','25,114','66%'],['AED 3.2B','8,599','66%']]);
  assert.deepEqual([134688/215116,16697/25114,5635/(2964+5635)].map(v=>Math.round(v*100)),[63,66,66]);
  for(const id of ['market','market-ad','market-rak'])assert.match(await page.locator('#'+id+' .bar-side').textContent(),/2025 sales were off.plan$/);
+ // Sharjah: completed plus off-plan sales, 2021 to 2024 (later years not published), latest year highlighted.
+ const shj=[[10.419899866,3.6],[8.821491836,4.2],[11.122070433,7.337288466],[16.448879975,11.98907533]].map(([c,o])=>c+o);
+ assert.deepEqual(await page.locator('#market-sharjah .bars .val').allTextContents(),shj.map(v=>'AED '+v.toFixed(1)+'B'));
+ assert.deepEqual(await page.locator('#market-sharjah .bar').evaluateAll(b=>b.map(e=>parseFloat(e.style.height))),shj.map(v=>Math.round(v/shj[3]*850)/10));
+ assert(shj[3]/shj[0]>=2,'doubled');assert.equal(await page.locator('#market-sharjah h2').textContent(),'Sharjah property sales have doubled since 2021');
+ assert.equal(await page.locator('#market-sharjah .bars li.now .yr').textContent(),'2024');assert.equal(Math.round(11.98907533/shj[3]*100),42);
+ assert.deepEqual(await page.locator('#market-sharjah .bar-side strong').allTextContents(),['AED 28.4B','13,522','42%']);
+ assert.match(await page.locator('#market-sharjah .source').textContent(),/completed sales plus off-plan sales[\s\S]*2025 and 2026 sales values are not yet published[\s\S]*off-plan share is by value/);
  // All three: 2025 highlighted, side cards about 2025 only, no box projecting the rest of 2026, no tags above the bars.
  for(const id of ['market','market-ad','market-rak']){assert.equal(await page.locator('#'+id+' .bars li.now .yr').textContent(),'2025');assert(!/2026/.test(await page.locator('#'+id+' .bar-side').textContent()),id+' side cards mention 2026');assert.equal(await page.locator('#'+id+' .bar.fc,#'+id+' .bars .est').count(),0,id+' projects 2026');assert(!/dashed|Q4|forecast/i.test(await page.locator('#'+id).textContent()),id+' mentions the rest of 2026');}
  // Commissions: 4% of off-plan sales, 2025 and 2026 to date, for the three emirates (RAK 2026 not published).
@@ -115,7 +123,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.equal(await set.locator('#settingsSheet').isVisible(),false);await set.click('#settingsToggle');assert(await set.locator('#settingsSheet').isVisible());
  assert.equal(await set.locator('.set-list input').count(),ids.length);assert.equal(await set.locator('.set-list .set-t').first().textContent(),'Cover');
  const toggle=async id=>set.locator('.set-list label').filter({has:set.locator('input[data-slide="'+id+'"]')}).click();
- await toggle('market-rak');assert.equal(await set.locator('#market-rak').count(),0);assert.match(await set.locator('#slideCount').textContent(),/ \/ 16$/);assert.equal(await set.evaluate(()=>deck.getTotalSlides()),16);
+ await toggle('market-rak');assert.equal(await set.locator('#market-rak').count(),0);assert.match(await set.locator('#slideCount').textContent(),/ \/ 17$/);assert.equal(await set.evaluate(()=>deck.getTotalSlides()),17);
  await toggle('break-solution');assert.equal(await set.locator('.site-nav nav a[href="#/break-solution"]').isVisible(),false);
  await set.locator('[data-accent-id="blue"]').click();assert.equal(await set.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--brand').trim()),'#1d5fd1');
  assert.equal(await set.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--fix').trim()),'#1f6b4a');
@@ -143,6 +151,6 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.deepEqual(await out.locator('#commission .cm-row:not(.cm-head):not(.cm-total) strong').allTextContents(),['AED 14.6B','AED 10.0B','AED 3.0B','AED 5.2B','AED 0.56B']);assert.match(await out.locator('#commission .c-head>p:not(.c-eyebrow)').textContent(),/average of 5%/);
  await out.emulateMedia({media:'screen'});await out.reload();await out.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());assert.equal(await out.locator('#commission .cm-total strong').first().textContent(),'AED 18.2B','rate not remembered');
  await out.evaluate(()=>{localStorage.clear();});await out.close();
- assert.deepEqual(errors,[]);console.log('Passed: financier brief deck, seventeen slide layouts, market figures, problem slides, outcome slide, old-address redirect, settings sheet, PDF for current settings, commission rate, phone slides and mobile reader layout.');
+ assert.deepEqual(errors,[]);console.log('Passed: financier brief deck, eighteen slide layouts, market figures, problem slides, outcome slide, old-address redirect, settings sheet, PDF for current settings, commission rate, phone slides and mobile reader layout.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});
