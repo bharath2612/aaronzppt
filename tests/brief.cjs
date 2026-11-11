@@ -78,7 +78,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  // Timeline labels above the line never overlap.
  assert.deepEqual(await page.evaluate(()=>{const b=[...document.querySelectorAll('#problem-gap .wait-row:first-child .bp b')].map(e=>e.getBoundingClientRect());const bad=[];for(let i=1;i<b.length;i++)if(b[i].left<b[i-1].right-1)bad.push(i);return bad;}),[]);
  assert(await page.locator('#problem-gap .gap-wait .wait-track').first().evaluate(e=>e.getBoundingClientRect().height)<=16,'gap lines too tall');
- assert.equal(await page.locator('#problem-gap .inv-call').textContent(),'AaronzPay settles the brokerage commission through a finance partner, and the developer repays the finance partner.');
+ assert(await page.locator('#problem-gap .inv-call h3').evaluate(e=>e.getBoundingClientRect().height<parseFloat(getComputedStyle(e).lineHeight)*1.5&&e.scrollWidth<=e.parentElement.clientWidth),'gap callout is not one line');assert.equal(await page.locator('#problem-gap .inv-call').textContent(),'AaronzPay settles the brokerage commission through a finance partner, and the developer repays the finance partner.');
  // The brand is the AaronzPay wordmark (no dot, Pay in the primary colour): no Aaronz.AI anywhere a viewer sees it.
  assert(!/Aaronz\.AI|aaronz-ai-logo/.test(await page.evaluate(()=>document.title+document.querySelector('meta[name=description]').content+document.body.innerHTML.replace(/<aside class="notes">[\s\S]*?<\/aside>/g,''))),'old brand shown');
  assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('.nav-logo .wm,.c-lockup .wm')].map(e=>e.textContent+'|'+e.getAttribute('aria-label'))),['AaronzPay|Aaronz Pay','AaronzPay|Aaronz Pay']);
