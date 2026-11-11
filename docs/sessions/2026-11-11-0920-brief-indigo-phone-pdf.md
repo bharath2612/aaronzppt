@@ -35,3 +35,7 @@ On Dubai, Abu Dhabi and RAK, the 2026 figure now sits inside the solid part of t
 ## Follow-up: 2025 on all three market slides
 
 Dubai, Abu Dhabi and RAK all highlight the 2025 bar, and their side cards cover 2025 only. RAK: AED 3.2B completed sales, 2,964 completed sales, average sale AED 1.08M. Abu Dhabi's middle card is now +77% on 2024 (AED 53B to AED 94B, from the bars). A test checks all three. `npm test` passed all four suites, and the RAK and Abu Dhabi slides were inspected.
+
+## Follow-up: gap slide line removed
+
+At the user's request, the green line under the gap slide's timeline was removed. The slide now ends on the timeline; the test checks this. `npm test` passed all four suites, and the slide was inspected.

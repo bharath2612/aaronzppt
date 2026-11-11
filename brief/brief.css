@@ -89,8 +89,6 @@
 .gap-wait .seg-label.late{color:var(--brand)}
 .reveal .wait-ticks{display:grid;grid-template-columns:repeat(4,1fr);margin:-40px 0 0 170px!important;padding:0;list-style:none}
 .wait-ticks li{font-size:13px;color:var(--faint);margin:0;border-left:1px solid var(--line);padding-left:6px}
-#problem-gap .inv-call{margin-top:22px;background:var(--fix-tint);color:var(--fix)}
-.reveal #problem-gap .inv-call h3{color:var(--fix)}
 /* Section break: one large title, left-aligned on the deck's column. */
 body:not(.reader) .reveal .slides>section.c-break.present{justify-content:center}
 .c-break .c-eyebrow,.c-break h2{width:100%;max-width:var(--w);margin-left:auto;margin-right:auto}

@@ -79,7 +79,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  // One thin line per row with its breakpoints, no filler boxes, and the lines stay slim.
  assert.deepEqual(await page.locator('#problem-gap .gap-wait .bp b').allTextContents(),['Engages lead','Unit booked','Registration complete','Developer releases payment','Brokerage releases payout','Engages lead','Unit booked','Registration done, paid immediately']);assert.equal(await page.locator('#problem-gap .saved,#problem-gap .seg').count(),0);
  assert(await page.locator('#problem-gap .gap-wait .wait-track').first().evaluate(e=>e.getBoundingClientRect().height)<=16,'gap lines too tall');
- assert.match(await page.locator('#problem-gap .inv-call').textContent(),/Aaronz\.AI pays the brokerage through a licensed partner, and the developer repays the licensed partner/);
+ assert.equal(await page.locator('#problem-gap .inv-call').count(),0,'gap slide ends on the timeline');
  // The brand reads Aaronz.AI everywhere a viewer sees it, in this deck's own logo too.
  assert(!/Aaronz(?!\.AI)/.test(await page.evaluate(()=>document.title+document.querySelector('.slides').textContent)),'brand must read Aaronz.AI');assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('.nav-logo img,.c-lockup img')].map(i=>i.getAttribute('src')+'|'+i.alt)),['aaronz-ai-logo.svg|Aaronz.AI','aaronz-ai-logo.svg|Aaronz.AI']);
  // Money flow: six steps on one line, with Aaronz's own steps marked.
