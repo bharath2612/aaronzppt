@@ -27,3 +27,7 @@ Open items are in `docs/STATUS.md`.
 - **Highlight:** Dubai and Abu Dhabi both highlight 2025. Abu Dhabi's side cards are AED 94B in 2025, AED 137B in 2026 to 9 November, and 78% of 2025 residential value off-plan. RAK stays highlighted on 2026.
 - **Gap slide line:** now "Aaronz.AI pays the brokerage through a licensed partner, and the developer repays the licensed partner", matching the money flow.
 - **Verification:** `npm test` passed all four suites, and the three market slides were inspected.
+
+## Follow-up: 2026 value inside the bar
+
+On Dubai, Abu Dhabi and RAK, the 2026 figure now sits inside the solid part of the bar, directly under YTD, and no longer above the bar. `npm test` passed all four suites, and the three market slides were inspected.

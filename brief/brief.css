@@ -17,6 +17,7 @@
 .bars li .bar.fc{background:transparent}
 .bars li.now .bar.fc{background:transparent;border-color:var(--orange)}
 .reveal .bars .bar .in{display:block;padding:12px 8px 0;font-size:12px;font-weight:600;line-height:1.35;text-align:center;color:var(--ink)}
+.reveal .bars .bar .in b{display:block;margin-top:3px;font-size:17px;font-weight:600;white-space:nowrap}
 .reveal .bars .bar.fc span{font-size:12px;font-weight:600;color:var(--muted);text-align:center;line-height:1.35}
 .bars li.ytd .bar{background:repeating-linear-gradient(135deg,#e4e4df 0 10px,#f5f5f2 10px 20px);border:2px solid var(--faint);border-bottom:0}
 .bars li.ytd .val{color:var(--ink)}
@@ -205,6 +206,7 @@ body.presenting .set-sheet,body.presenting .set-scrim{display:none}
  .reveal .facts li{grid-template-columns:40px 1fr;padding:16px 0}.reveal .facts li p{font-size:19px!important}
  .cm{grid-template-columns:minmax(0,1fr)}.cm-name{font-size:14px}.cm-row strong{font-size:18px}.cm-row em{font-size:11px}
  .reveal .bars .bar .in{font-size:9px;padding:6px 2px 0}
+ .reveal .bars .bar .in b{font-size:10px;white-space:normal}
  .chain{flex-wrap:wrap;margin-top:0}
  .vs-row{font-size:15px;grid-template-columns:1.2fr 1fr 1fr;gap:8px}
  .months .seg strong{font-size:15px}.pv.months{margin-top:48px}
