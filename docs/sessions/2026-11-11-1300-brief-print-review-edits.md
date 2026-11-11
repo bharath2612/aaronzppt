@@ -111,3 +111,7 @@ The commission slide has a Sharjah row between Abu Dhabi and RAK reading "Not ye
 ## Follow-up: Sharjah side cards on one year
 
 The user pointed out the Sharjah cards mixed "sales in 2025" with "of 2024 sales value was off-plan". Sharjah has no published 2025 off-plan share, so both now use 2024: 13,522 sales in 2024 (completed sales, from the Sharjah registration annual report) and 42% of 2024 sales value off-plan. The lead card stays AED 65.6B transactions in 2025. `npm test` passed all four suites and the slide was checked in a screenshot.
+
+## Follow-up: gap slide, broker enjoys the funds
+
+The Aaronz Pay line now runs the full length of the Today line. After the immediate payout at 1.5 months, the rest of the period is a lighter green segment labelled "Broker enjoys the funds". The test checks that the line matches Today's length and that the paid point is still 45 of 110 days. `npm test` passed all four suites and the slide was checked in a screenshot.

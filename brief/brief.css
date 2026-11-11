@@ -71,11 +71,11 @@
 .wait-label span{display:block;font-size:15px;font-weight:500;color:var(--muted);margin-top:4px}
 .wait-label.us{color:var(--fix)}
 .wait-track{position:relative;height:12px;display:flex}
-.wait-track.short{width:40.9%}
 .gap-wait .line{display:block;height:100%}
 .gap-wait .line.work{flex:2;background:#c9c9c4;border-radius:999px 0 0 999px}
 .gap-wait .line.late{flex:2;background:var(--orange);border-radius:0 999px 999px 0}
-.gap-wait .line.fix{flex:1;background:var(--fix);border-radius:999px}
+.gap-wait .line.fix{flex:1;background:var(--fix);border-radius:999px 0 0 999px}
+.gap-wait .line.enjoy{flex:1;background:color-mix(in srgb,var(--fix) 28%,var(--paper));border-radius:0 999px 999px 0}
 .gap-wait .bp{position:absolute;top:50%;width:0}
 .gap-wait .bp.start{left:0}.gap-wait .bp.end{left:100%}
 .gap-wait .bp i{position:absolute;left:-9px;top:-9px;width:18px;height:18px;border-radius:50%;background:var(--ink);box-shadow:0 0 0 4px var(--paper)}
@@ -89,7 +89,7 @@
 .gap-wait .bp.end b,.gap-wait .bp.r b{transform:translateX(-100%);left:9px;text-align:right}
 .gap-wait .bp.l b{transform:none;left:-9px;text-align:left}
 .gap-wait .seg-label{position:absolute;top:24px;text-align:center;font-size:14px;color:var(--muted);white-space:nowrap}
-.gap-wait .seg-label.late{color:var(--brand)}
+.gap-wait .seg-label.late{color:var(--brand)}.gap-wait .seg-label.us{color:var(--fix)}
 .reveal .wait-ticks{display:grid;grid-template-columns:repeat(4,27.27%);margin:-40px 0 0 170px!important;padding:0;list-style:none}
 .wait-ticks li{font-size:13px;color:var(--faint);margin:0;border-left:1px solid var(--line);padding-left:6px}
 /* Section break: one large title, left-aligned on the deck's column. */

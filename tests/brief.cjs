@@ -70,8 +70,9 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.equal(await page.locator('#problem-gap h2').textContent(),'Aaronz Pay fills the market gap');
  assert.equal(45+7+30+12.5+15,109.5);
  await page.evaluate(()=>deck.slide([...document.querySelectorAll('.slides>section')].findIndex(s=>s.id==='problem-gap')));await page.waitForTimeout(200);
- const w=await page.evaluate(()=>[...document.querySelectorAll('#problem-gap .gap-wait .wait-track')].map(e=>e.getBoundingClientRect().width));
- assert.equal(w.length,2);assert(Math.abs(w[1]/w[0]-45/110)<0.01,'Aaronz Pay line is not 45 of 110 days: '+w);
+ const w=await page.evaluate(()=>{const r=e=>e.getBoundingClientRect().width;const t=[...document.querySelectorAll('#problem-gap .gap-wait .wait-track')];return [...t.map(r),r(t[1].querySelector('.line.fix')),r(t[1].querySelector('.line.enjoy'))];});
+ assert.equal(w.length,4);assert(Math.abs(w[1]-w[0])<1,'Aaronz Pay line should match the Today line: '+w);assert(Math.abs(w[2]/w[0]-45/110)<0.01,'Aaronz Pay paid point is not 45 of 110 days: '+w);assert(Math.abs(w[3]/w[0]-65/110)<0.01,'enjoy segment is not the rest: '+w);
+ assert.equal(await page.locator('#problem-gap .seg-label.us').textContent(),'Broker enjoys the funds');
  assert.match(await page.locator('#problem-gap .gap-wait').textContent(),/3 to 4 months[\s\S]*1 week[\s\S]*30 days[\s\S]*10–15 days late[\s\S]*15 days[\s\S]*1\.5 months[\s\S]*Registration complete, invoice raised and paid immediately/);
  assert.deepEqual(await page.locator('#problem-gap .gap-wait .bp b').allTextContents(),['Engages lead','Unit booked','Registration complete','Invoice raised','Payment due','Invoice settled to brokerage','Payout to broker','Engages lead','Unit booked','Registration complete, invoice raised and paid immediately']);
  // Timeline labels above the line never overlap.
