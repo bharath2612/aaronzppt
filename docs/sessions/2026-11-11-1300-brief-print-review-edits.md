@@ -142,3 +142,9 @@ The Aaronz Pay line now runs the full length of the Today line. After the immedi
 
 - Request: change the cover title to "Aaronz & AI" (same Bodoni Moda regular, black).
 - Done: `brief/index.html` cover text and the matching `tests/brief.cjs` assertion. Export wrote 18 pages; `npm test` passed all four suites.
+
+## Follow-up (2026-11-11 16:01 +04): cover uses the supplied Aaronz & AI logo
+
+- Request: use the supplied "Aaronz & AI" logo image instead of the typed title.
+- Done: cropped the supplied JPEG to its edges and made the white background transparent (canvas in Playwright, no PIL installed), saved as `assets/aaronz-and-ai-logo.png` (973x157). The cover shows it as `img.logo-ai`, 471px wide (76px tall), shrinking to fit narrow screens. Removed the Bodoni Moda font, its vendored files and the `@fontsource/bodoni-moda` dev dependency, as nothing uses them now.
+- Tests: `tests/brief.cjs` checks the image loads, its alt text and size, and that the text wordmark is gone from the cover. Export wrote 18 pages; `npm test` passed all four suites.

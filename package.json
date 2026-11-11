@@ -22,7 +22,6 @@
     "reveal.js": "^6.0.2"
   },
   "devDependencies": {
-    "@fontsource/bodoni-moda": "^5.3.0",
     "@playwright/test": "^1.63.0"
   }
 }
