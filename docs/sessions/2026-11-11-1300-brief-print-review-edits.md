@@ -76,3 +76,7 @@ The user asked for "AaronzPay" with no dot, with "Pay" kept in a different colou
 - **Side cards:** AED 28.4B sold in 2024; 13,522 completed sales; 42% of sales value off-plan. Sharjah publishes no off-plan count, so the share is by value, unlike the other three slides, and the source line says so.
 - **Not added:** a Sharjah commission row, because there is no 2025 or 2026 off-plan figure.
 - **Verification:** `npm test` passed all four suites, and the slide was inspected.
+
+## Follow-up: RAK side-card wording
+
+At the user's request, RAK's second card reads "8,599 sales in 2025", worded as on Dubai and Abu Dhabi. The source line says the count and the 66% off-plan share include completed and off-plan sales. `npm test` passed all four suites.

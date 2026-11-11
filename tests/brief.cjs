@@ -39,8 +39,8 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.match(await page.locator('#market-rak .source').textContent(),/completed property sales; off-plan sales are reported separately and not included[\s\S]*2026 runs January to September/);
  // All three side cards follow one pattern: 2025 sales value, number of sales, and off-plan share by number of sales.
  assert.deepEqual(await page.evaluate(()=>['market','market-ad','market-rak'].map(id=>[...document.querySelectorAll('#'+id+' .bar-side strong')].map(e=>e.textContent))),[['AED 680B','217,889','63%'],['AED 94B','25,114','66%'],['AED 3.2B','8,599','66%']]);
- assert.deepEqual([134688/215116,16697/25114,5635/(2964+5635)].map(v=>Math.round(v*100)),[63,66,66]);
- for(const id of ['market','market-ad','market-rak'])assert.match(await page.locator('#'+id+' .bar-side').textContent(),/2025 sales were off.plan$/);
+ assert.deepEqual([134688/215116,16697/25114].map(v=>Math.round(v*100)),[63,66]);assert.equal(Math.round(5635/(2964+5635)*100),66);
+ for(const id of ['market','market-ad'])assert.match(await page.locator('#'+id+' .bar-side').textContent(),/2025 sales were off.plan$/);assert.match(await page.locator('#market-rak .bar-side').textContent(),/8,599sales in 2025[\s\S]*2025 sales were off.plan$/);
  // Sharjah: completed plus off-plan sales, 2021 to 2024 (later years not published), latest year highlighted.
  const shj=[[10.419899866,3.6],[8.821491836,4.2],[11.122070433,7.337288466],[16.448879975,11.98907533]].map(([c,o])=>c+o);
  assert.deepEqual(await page.locator('#market-sharjah .bars .val').allTextContents(),shj.map(v=>'AED '+v.toFixed(1)+'B'));
