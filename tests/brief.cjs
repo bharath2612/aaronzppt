@@ -69,9 +69,9 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.deepEqual(await page.evaluate(()=>{const b=[...document.querySelectorAll('#problem-gap .wait-row:first-child .bp b')].map(e=>e.getBoundingClientRect());const bad=[];for(let i=1;i<b.length;i++)if(b[i].left<b[i-1].right-1)bad.push(i);return bad;}),[]);
  assert(await page.locator('#problem-gap .gap-wait .wait-track').first().evaluate(e=>e.getBoundingClientRect().height)<=16,'gap lines too tall');
  assert.equal(await page.locator('#problem-gap .inv-call').count(),0,'gap slide ends on the timeline');
- // The brand is the Aaronz.Pay wordmark: no Aaronz.AI anywhere a viewer sees it.
+ // The brand is the AaronzPay wordmark (no dot, Pay in the primary colour): no Aaronz.AI anywhere a viewer sees it.
  assert(!/Aaronz\.AI|aaronz-ai-logo/.test(await page.evaluate(()=>document.title+document.querySelector('meta[name=description]').content+document.body.innerHTML.replace(/<aside class="notes">[\s\S]*?<\/aside>/g,''))),'old brand shown');
- assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('.nav-logo .wm,.c-lockup .wm')].map(e=>e.textContent+'|'+e.getAttribute('aria-label'))),['Aaronz.Pay|Aaronz.Pay','Aaronz.Pay|Aaronz.Pay']);
+ assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('.nav-logo .wm,.c-lockup .wm')].map(e=>e.textContent+'|'+e.getAttribute('aria-label'))),['AaronzPay|Aaronz Pay','AaronzPay|Aaronz Pay']);
  assert.equal(await page.locator('.c-lockup .wm-pay').evaluate(e=>getComputedStyle(e).color),await page.evaluate(()=>{const d=document.createElement('i');d.style.color='var(--brand)';document.body.append(d);const c=getComputedStyle(d).color;d.remove();return c;}));
  // Money flow: six steps on one line, with Aaronz's own steps marked.
  assert.equal(await page.locator('#break-model h2').textContent(),'Money flow');assert.equal(await page.locator('#commission-ready').count(),0);assert(!/business model/i.test(await page.evaluate(()=>document.body.innerText)),'old section name shown');assert.equal(await page.locator('#business-model h2').textContent(),'From registration to settlement in six steps');

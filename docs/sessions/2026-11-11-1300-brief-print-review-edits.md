@@ -62,3 +62,7 @@ The last two points on today's line now read "Invoice settled to brokerage" and 
 - **Developers problem, point 4:** "No risk partner or fin-real-tech solution is available to take on this challenge".
 - **Outcome, developer's last point:** "A risk partner who takes care of commission".
 - **Verification:** `npm test` passed all four suites. The cover, outcome slide and phone cover were inspected.
+
+## Follow-up: no dot in the wordmark
+
+The user asked for "AaronzPay" with no dot, with "Pay" kept in a different colour. The wordmark now reads AaronzPay, and its accessible label is "Aaronz Pay". `npm test` passed all four suites, and the cover was inspected.

@@ -136,7 +136,7 @@ body:not(.reader) .reveal .slides>section.c-break.present{justify-content:center
 .reveal .rail .sub{margin:8px 0 0!important;font-size:14px!important;line-height:1.4;color:var(--muted);text-wrap:balance}
 #business-model .inv-call{margin-top:44px;background:var(--fix-tint)}
 .reveal #business-model .inv-call h3{color:var(--fix)}
-/* Aaronz.Pay wordmark: Inter, tight and bold, with ".Pay" in the primary colour. */
+/* AaronzPay wordmark: Inter, tight and bold, with "Pay" in the primary colour and no dot. */
 .wm{display:inline-block;font-family:Inter,sans-serif;font-weight:700;letter-spacing:-.045em;line-height:1;color:var(--ink);white-space:nowrap}
 .wm-pay{color:var(--brand)}
 .nav-logo .wm{font-size:27px}
