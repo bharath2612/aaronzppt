@@ -39,3 +39,15 @@ Sharjah data is to follow.
 - `npm test`: all four suites passed, including the commission-rate recalculation at 5% (AED 33.4B) and a check that the gap labels do not overlap.
 - `npm run export:brief`: 17 pages.
 - The gap, outcome, brokerages, Dubai, money flow and commission slides were inspected.
+
+## Follow-up: consistent market side cards
+
+At the user's request, the three market slides' side cards follow one pattern: 2025 sales value, number of 2025 sales, and the 2025 off-plan share by number of sales.
+
+| | Sales value | Number of sales | Off-plan share |
+|---|---|---|---|
+| Dubai | AED 680B | 217,889 | 63% |
+| Abu Dhabi | AED 94B | 25,114 | 66% |
+| RAK | AED 3.2B completed | 8,599 completed and off-plan | 66% |
+
+Abu Dhabi's earlier 78% was by residential value, so it wasn't comparable. The "+77% on 2024", RAK's off-plan value card and RAK's average-sale card were dropped. Source lines say where the counts come from. `npm test` passed all four suites.
