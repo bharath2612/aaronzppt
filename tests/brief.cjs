@@ -106,7 +106,11 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert(fs.statSync('brief/aaronz-commission-finance.pdf').size>100000,'PDF missing');
  await page.click('#viewToggle');assert(await page.evaluate(()=>document.body.classList.contains('reader')));await page.click('#viewToggle');
  const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});mobile.on('pageerror',e=>errors.push(e.message));
- await mobile.goto(url);await mobile.waitForFunction(()=>document.body.classList.contains('reader'));await mobile.waitForTimeout(500);
+ await mobile.goto(url);await mobile.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());await mobile.waitForTimeout(500);
+ // Phones open as slides at the exact desktop layout, with swiping on; the stacked layout is only in "Read as page".
+ assert.equal(await mobile.evaluate(()=>document.body.classList.contains('reader')),false);assert.equal(await mobile.evaluate(()=>innerWidth),1440);assert.equal(await mobile.evaluate(()=>deck.getConfig().touch),true);
+ for(let i=0;i<ids.length;i++){await mobile.evaluate(i=>deck.slide(i),i);await mobile.waitForTimeout(120);const a=await mobile.locator('#'+ids[i]).evaluate(el=>[el.offsetWidth,el.offsetHeight,[...el.querySelectorAll('h2,h3,li,article')].map(n=>n.offsetLeft+','+n.offsetTop+','+n.offsetWidth).join(';')]);await page.evaluate(i=>deck.slide(i),i);await page.waitForTimeout(120);const b=await page.locator('#'+ids[i]).evaluate(el=>[el.offsetWidth,el.offsetHeight,[...el.querySelectorAll('h2,h3,li,article')].map(n=>n.offsetLeft+','+n.offsetTop+','+n.offsetWidth).join(';')]);assert.deepEqual(a,b,ids[i]+' layout differs on a phone');}
+ await mobile.evaluate(()=>document.getElementById('viewToggle').click());await mobile.waitForFunction(()=>document.body.classList.contains('reader')&&innerWidth<500);await mobile.waitForTimeout(500);
  for(const id of ['market','market-ad','market-rak'])assert(await mobile.evaluate(id=>[...document.querySelectorAll('#'+id+' .bars li')].every(l=>l.getBoundingClientRect().right<=innerWidth+1),id),id+' chart wider than the phone screen');
  assert(await mobile.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'brief deck mobile overflow');await mobile.screenshot({path:'.build/brief-mobile.png',fullPage:true});
  // The old /reem/ address forwards to /brief/, keeping the slide.
@@ -114,7 +118,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  // Settings: hide and show slides, pick the primary colour, and keep both on reload.
  const set=await browser.newPage({viewport:{width:1440,height:1000}});set.on('pageerror',e=>errors.push(e.message));
  await set.goto(url);await set.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());
- assert.equal(await set.evaluate(()=>document.documentElement.dataset.accent),'amber');assert.equal(await set.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--brand').trim()),'#8f5a00');
+ assert.equal(await set.evaluate(()=>document.documentElement.dataset.accent),'indigo');assert.equal(await set.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--brand').trim()),'#4f46e5');
  assert.equal(await set.locator('#settingsSheet').isVisible(),false);await set.click('#settingsToggle');assert(await set.locator('#settingsSheet').isVisible());
  assert.equal(await set.locator('.set-list input').count(),ids.length);assert.equal(await set.locator('.set-list .set-t').first().textContent(),'Cover');
  const toggle=async id=>set.locator('.set-list label').filter({has:set.locator('input[data-slide="'+id+'"]')}).click();
@@ -128,6 +132,19 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  // Hiding the slide on screen moves to the next one, and the cover can be hidden without errors.
  await set.evaluate(()=>deck.slide(0));await toggle('home');assert.equal(await set.evaluate(()=>deck.getCurrentSlide().id),'break-market');await set.reload();await set.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());assert.equal(await set.evaluate(()=>deck.getCurrentSlide().id),'break-market');
  await set.evaluate(()=>{localStorage.clear();});await set.close();
- assert.deepEqual(errors,[]);console.log('Passed: financier brief deck, seventeen slide layouts, market figures, problem slides, outcome slide, old-address redirect, settings sheet, PDF and mobile reader layout.');
+ // PDF: the default state downloads the file on the site; any other colour or hidden slide prints exactly what is on screen.
+ const out=await browser.newPage({viewport:{width:1440,height:1000}});out.on('pageerror',e=>errors.push(e.message));await out.goto(url);await out.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());
+ await out.evaluate(()=>{window.printed=0;window.print=()=>{window.printed++;};window.prevented=[];window.addEventListener('click',e=>{if(e.target.id==='deckPdf'){window.prevented.push(e.defaultPrevented);e.preventDefault();}});});
+ await out.click('#deckPdf');assert.deepEqual(await out.evaluate(()=>[window.printed,window.prevented]),[0,[false]],'default state should download the site PDF');
+ const pages=b=>(b.toString('latin1').match(/\/Type\s*\/Page\b/g)||[]).length;
+ assert.equal(pages(await out.pdf({preferCSSPageSize:true,printBackground:true})),ids.length,'one page per slide');
+ await out.click('#settingsToggle');await out.locator('.set-list label').filter({has:out.locator('input[data-slide="market-rak"]')}).click();await out.locator('[data-accent-id="amber"]').click();await out.click('.set-close');
+ await out.click('#deckPdf');assert.deepEqual(await out.evaluate(()=>[window.printed,window.prevented[1]]),[1,true],'changed settings should print');
+ assert.equal(pages(await out.pdf({preferCSSPageSize:true,printBackground:true})),ids.length-1,'hidden slide must not print');
+ await out.emulateMedia({media:'print'});assert.equal(await out.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--brand').trim()),'#8f5a00');
+ await out.setViewportSize({width:1440,height:800});await out.waitForTimeout(150);for(const id of ['market','problem-gap','outcome'])await out.locator('#'+id).screenshot({path:'.build/brief-print-'+id+'.png'});
+ assert.deepEqual(await out.evaluate(()=>[...document.querySelectorAll('.slides>section')].filter(s=>s.offsetHeight!==799||s.offsetWidth!==1440).map(s=>s.id)),[],'print pages must fit a 1440x800 page');
+ await out.evaluate(()=>{localStorage.clear();});await out.close();
+ assert.deepEqual(errors,[]);console.log('Passed: financier brief deck, seventeen slide layouts, market figures, problem slides, outcome slide, old-address redirect, settings sheet, PDF for current settings, phone slides and mobile reader layout.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});

@@ -172,6 +172,23 @@ body:not(.reader) .reveal .slides>section.c-break.present{justify-content:center
 .set-list input:disabled+.set-switch{opacity:.45}
 .set-foot{margin:0;font-size:12px;line-height:1.4;color:var(--muted)}
 body.presenting .set-sheet,body.presenting .set-scrim{display:none}
+/* Phones show slides at the desktop layout. In portrait only the bars around the slide grow, so they stay usable. */
+@media (orientation:portrait){
+ .phone-slides .site-nav{height:190px}
+ .phone-slides .site-nav nav,.phone-slides .nav-pdf,.phone-slides #presentToggle{display:none}
+ .phone-slides .nav-logo img{height:68px;width:auto}
+ .phone-slides .nav-actions{gap:24px}
+ .phone-slides .site-nav button{height:108px;padding:0 40px;font-size:38px;border-radius:20px}
+ .phone-slides .site-nav .set-btn{width:108px;padding:0}
+ .phone-slides .set-btn svg{width:52px;height:52px}
+ .phone-slides .reveal{height:calc(100dvh - 350px)}
+ .phone-slides .deck-footer{height:160px}
+ .phone-slides #slideTitle,.phone-slides .footer-hint{display:none}
+ .phone-slides .deck-footer>div{width:100%;justify-content:space-between}
+ .phone-slides .deck-footer button{font-size:84px;padding:0 30px}
+ .phone-slides #slideCount{font-size:40px}
+ .phone-slides .set-sheet{zoom:3.3}
+}
 @media (max-width:900px){
  .mkt-bars,.outcome,.pv.dev,.pts{grid-template-columns:1fr}
  .mkt-bars{grid-template-columns:minmax(0,1fr)!important}
@@ -197,4 +214,17 @@ body.presenting .set-sheet,body.presenting .set-scrim{display:none}
  .gap-wait .bp b{white-space:normal;width:62px;text-align:center;line-height:1.2}.gap-wait .bp.late b,.gap-wait .bp.us b{width:62px}.gap-wait .bp.start b{text-align:left}.gap-wait .bp.end b{text-align:right}
  .wait-row{row-gap:64px}
  .reveal .wait-ticks{margin:-20px 0 0!important}.wait-ticks li{font-size:10px}
+}
+/* Printing the deck on screen: one 1440x800 page per visible slide, with the chosen colour. */
+/* The print-pdf class on <html> switches off Reveal's own print rules, which would restyle every slide. */
+@media print{
+ @page{size:1440px 800px;margin:0}
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ html,body{width:1440px!important;height:auto!important;overflow:visible!important;background:#fff!important}
+ .site-nav,.deck-footer,.skip,.set-sheet,.set-scrim,.reveal .progress,.reveal .backgrounds,aside.notes{display:none!important}
+ html body .reveal{width:1440px!important;height:auto!important;overflow:visible!important}
+ html body .reveal .slides{position:static!important;inset:auto!important;width:1440px!important;height:auto!important;margin:0!important;transform:none!important;zoom:1!important;overflow:visible!important;perspective:none!important}
+ html body .reveal .slides>section{position:relative!important;inset:auto!important;display:flex!important;flex-direction:column;justify-content:center;width:1440px!important;height:799px!important;margin:0!important;transform:none!important;opacity:1!important;visibility:visible!important;overflow:hidden;break-after:page;break-inside:avoid}
+ html body .reveal .slides>section:not(.c-cover){padding-bottom:70px}
+ html body .reveal .slides>section:last-child{break-after:auto}
 }

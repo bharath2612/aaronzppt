@@ -6,6 +6,16 @@
  const save=(key,value)=>{try{localStorage.setItem(key,JSON.stringify(value));}catch{/* Storage can be blocked; the choice still applies for this visit. */}};
  const accents=[['orange','Orange','#ff6b35'],['blue','Blue','#6ea8ff'],['indigo','Indigo','#a5a6f6'],['amber','Amber','#f5b83d'],['slate','Slate','#a9b8cb']];
  const root=document.documentElement;
+ // Phones open as slides at the full desktop layout, so nothing inside a slide rearranges.
+ const phone=Math.min(screen.width,screen.height)<=800;
+ const viewport=document.querySelector('meta[name=viewport]');
+ function phoneSlides(on){viewport.content=on?'width=1440':'width=device-width,initial-scale=1';document.body.classList.toggle('phone-slides',on);}
+ if(phone){
+  phoneSlides(true);
+  const swipe=()=>deck.configure({touch:true});
+  window.addEventListener('load',()=>{if(deck.isReady())swipe();else deck.on('ready',swipe);});
+  document.getElementById('viewToggle').addEventListener('click',()=>setTimeout(()=>{const slides=!document.body.classList.contains('reader');phoneSlides(slides);deck.configure({touch:slides});if(slides)setTimeout(()=>deck.layout(),60);},0));
+ }
  const holder=document.querySelector('.slides');
  const all=[...holder.children].filter(n=>n.matches('section'));
  const titleOf=s=>s.id==='home'?'Cover':(s.classList.contains('c-break')?'Section: ':'')+s.querySelector('h2').textContent;
@@ -17,7 +27,8 @@
  function place(){all.forEach(s=>{if(hidden.has(s.id))s.remove();else holder.appendChild(s);});
   document.querySelectorAll('.site-nav nav a').forEach(a=>{a.hidden=hidden.has(a.hash.replace('#/',''));});}
  function keepHashValid(){const id=location.hash.replace(/^#\/?/,'');if(id?hidden.has(id):hidden.has('home'))history.replaceState(null,'','#/'+visible()[0].id);}
- const savedAccent=read(ACCENT_KEY,'amber');applyAccent(accents.some(a=>a[0]===savedAccent)?savedAccent:'amber');
+ const DEFAULT_ACCENT='indigo';
+ const savedAccent=read(ACCENT_KEY,DEFAULT_ACCENT);applyAccent(accents.some(a=>a[0]===savedAccent)?savedAccent:DEFAULT_ACCENT);
  place();keepHashValid();
  // After the first load the deck has to be told its slides changed.
  function refresh(){
@@ -25,6 +36,8 @@
   if(hidden.has(current.id)){const at=all.indexOf(current);target=all.slice(at+1).find(s=>!hidden.has(s.id))||all.slice(0,at).reverse().find(s=>!hidden.has(s.id));}
   place();deck.sync();deck.slide(visible().indexOf(target));keepHashValid();updateNavigation();
  }
+ // The PDF file on the site is the default deck. Any other choice prints what is on screen, so Save as PDF matches it.
+ document.getElementById('deckPdf').addEventListener('click',e=>{if(root.dataset.accent===DEFAULT_ACCENT&&hidden.size===0)return;e.preventDefault();window.print();});
  const button=document.getElementById('settingsToggle');
  const scrim=document.createElement('div');scrim.className='set-scrim';scrim.hidden=true;
  const sheet=document.createElement('aside');sheet.id='settingsSheet';sheet.className='set-sheet';sheet.hidden=true;sheet.setAttribute('role','dialog');sheet.setAttribute('aria-label','Deck settings');

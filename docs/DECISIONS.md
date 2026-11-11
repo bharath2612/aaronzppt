@@ -230,3 +230,7 @@ At the user's request, the old finance-partner solution cards were replaced by a
 ## 2026-11-11 — Brief default primary colour is amber
 
 The user felt the orange read as red, and so as something bad. Amber is now the default for the page and the PDF; green stays the secondary colour. The other four colours remain available in the settings sheet. The investor deck keeps its orange.
+
+## 2026-11-11 — Brief: indigo default, phones show slides, PDF follows settings
+
+Indigo replaces amber as the default primary colour. Phones open as slides at the full desktop layout (viewport width 1440) because the user wanted nothing inside a slide to change. Because the site is static, the PDF button cannot generate a file for every combination; with non-default settings it uses the browser's print dialog, and the default state still downloads the fixed file.
