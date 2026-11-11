@@ -64,7 +64,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  const w=await page.evaluate(()=>[...document.querySelectorAll('#problem-gap .gap-wait .wait-track')].map(e=>e.getBoundingClientRect().width));
  assert.equal(w.length,2);assert(Math.abs(w[1]/w[0]-45/110)<0.01,'Aaronz Pay line is not 45 of 110 days: '+w);
  assert.match(await page.locator('#problem-gap .gap-wait').textContent(),/3 to 4 months[\s\S]*1 week[\s\S]*30 days[\s\S]*10–15 days late[\s\S]*15 days[\s\S]*1\.5 months[\s\S]*Registration complete, invoice raised and paid immediately/);
- assert.deepEqual(await page.locator('#problem-gap .gap-wait .bp b').allTextContents(),['Engages lead','Unit booked','Registration complete','Invoice raised','Payment due','Brokerage paid','Broker paid','Engages lead','Unit booked','Registration complete, invoice raised and paid immediately']);
+ assert.deepEqual(await page.locator('#problem-gap .gap-wait .bp b').allTextContents(),['Engages lead','Unit booked','Registration complete','Invoice raised','Payment due','Invoice settled to brokerage','Payout to broker','Engages lead','Unit booked','Registration complete, invoice raised and paid immediately']);
  // Timeline labels above the line never overlap.
  assert.deepEqual(await page.evaluate(()=>{const b=[...document.querySelectorAll('#problem-gap .wait-row:first-child .bp b')].map(e=>e.getBoundingClientRect());const bad=[];for(let i=1;i<b.length;i++)if(b[i].left<b[i-1].right-1)bad.push(i);return bad;}),[]);
  assert(await page.locator('#problem-gap .gap-wait .wait-track').first().evaluate(e=>e.getBoundingClientRect().height)<=16,'gap lines too tall');
