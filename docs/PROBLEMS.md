@@ -166,3 +166,7 @@ The money flow shows money returning to Aaronz's capital pool and Aaronz collect
 ## 2026-11-11 — Dubai Q4 box implies more than the data supports
 
 At the user's request the dashed 2026 box now reads "Q4" with no amount. It is drawn up to 2025's AED 680B, about AED 257B above the year to date, while the recent pace points to about AED 52B for the rest of the year. The source line states it is not a forecast. The gap slide/money flow wording conflict noted earlier is resolved (licensed partner); the capital-pool compliance question remains.
+
+## 2026-11-11 — Sharjah chart mixes three measures
+
+At the user's request the Sharjah chart shows 2020 as completed sales only, 2021 to 2024 as completed plus off-plan, and 2025 and 2026 as total transactions including mortgages. Each is asterisked and explained, but the 2024 to 2025 jump (AED 28.4B to 65.6B) is partly the change of measure. Replace 2025 and 2026 when Sharjah publishes sales value.

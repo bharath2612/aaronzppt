@@ -80,3 +80,18 @@ The user asked for "AaronzPay" with no dot, with "Pay" kept in a different colou
 ## Follow-up: RAK side-card wording
 
 At the user's request, RAK's second card reads "8,599 sales in 2025", worded as on Dubai and Abu Dhabi. The source line says the count and the 66% off-plan share include completed and off-plan sales. `npm test` passed all four suites.
+
+## Follow-up: Sharjah 2020 to 2026
+
+At the user's request, Sharjah now runs 2020 to 2026 like the other markets, with asterisks where the measure differs:
+
+| Year | Value | Measure |
+|---|---|---|
+| 2020 | AED 5.0B* | completed sales only; off-plan not reported separately before 2021 |
+| 2021 to 2024 | AED 14.0B to 28.4B | completed plus off-plan |
+| 2025 | AED 65.6B* | total transactions including mortgages and others; highlighted |
+| 2026 | AED 46.5B* | total transactions, to September |
+
+- **Side cards:** AED 65.6B transactions in 2025 including mortgages; 18,333 sales in 2025 (completed, per the source line); 42% of 2024 sales value off-plan.
+- **Caution:** the jump from 2024 to 2025 is partly the change of measure. The asterisk and source line say so.
+- **Verification:** `npm test` passed all four suites, and the slide was inspected.
