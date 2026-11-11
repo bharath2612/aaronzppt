@@ -246,3 +246,7 @@ The user asked for the logo and cover to read Aaronz.Pay, in a clean font with a
 ## 2026-11-11 — Sharjah uses sales to 2024
 
 Sharjah publishes sales value only to 2024; 2025 and 2026 appear only as total transactions including mortgages. The user chose completed plus off-plan sales, 2021 to 2024, over total transactions. Its 2024 highlight and value-based off-plan share differ from the other three market slides, and the slide says so.
+
+## 2026-11-11 — Estimates for unpublished commission values are opt-in
+
+Sharjah 2025/2026 and RAK 2026 have no off-plan figure. The user asked for a settings toggle that estimates them by growing the latest known off-plan value with total market movement. It is off by default so the deck stays on published data; when on, every estimated cell and the method line are marked EST, and totals include them.

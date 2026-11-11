@@ -96,7 +96,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert(!/%|AED/.test(await page.locator('#outcome').evaluate(e=>{const c=e.cloneNode(true);c.querySelector('aside.notes')?.remove();return c.textContent;})),'pricing shown on the outcome slide');
  assert.equal(await page.locator('#allocation').count(),0,'removed slide is back');
  // The cover is the title alone, then a section break introduces the market.
- assert.equal(await page.locator('#home .c-lede').textContent(),'AaronzPay.today');assert.equal(await page.locator('#break-market h2').textContent(),'The market');
+ assert.equal(await page.locator('#home .c-lede').count(),0);assert.equal(await page.locator('#break-market h2').textContent(),'The market');
  assert.equal(await page.locator('#market h2').textContent(),'Dubai property sales grew 10× in five years');
  // The deck goes to more than one party, so it names no recipient anywhere a viewer can see.
  assert(!/reem/i.test(await page.evaluate(()=>document.title+document.querySelector('meta[name=description]').content+document.body.innerText+document.getElementById('deckPdf').getAttribute('href'))),'recipient named in the deck');
@@ -150,8 +150,17 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  await out.emulateMedia({media:'screen'});await out.setViewportSize({width:1440,height:1000});await out.click('#settingsToggle');await out.selectOption('#setRate','5');await out.click('.set-close');
  assert.equal(await out.locator('#commission h2').textContent(),'AED 33.4B of off-plan commission in under two years');assert.deepEqual(await out.locator('#commission .cm-total strong').allTextContents(),['AED 18.2B','AED 15.2B']);
  assert.deepEqual(await out.locator('#commission .cm-row:not(.cm-head):not(.cm-total) strong').allTextContents(),['AED 14.6B','AED 10.0B','AED 3.0B','AED 5.2B','AED 0.56B']);assert.match(await out.locator('#commission .c-head>p:not(.c-eyebrow)').textContent(),/average of 5%/);
+ // Estimate toggle: off shows "Not yet published"; on fills Sharjah 2025, Sharjah 2026 and RAK 2026 from market movement, tagged EST, and adds them to the totals.
+ assert.equal(await out.locator('#commission .na').count(),3);assert.equal(await out.locator('.cm-est-note').evaluate(e=>e.hidden),true);
+ await out.click('#settingsToggle');await out.locator('.set-toggle').click();await out.click('.set-close');
+ const shj25=11.98907533*65.6/39.939442771,shj26=shj25*46.5/65.6,rak26=11.198476786*2.123794299/3.192316419,m=v=>'AED '+(v>=1?v.toFixed(1):v.toFixed(2))+'B';
+ assert.equal(await out.locator('#commission .na').count(),0);assert.equal(await out.locator('#commission .cm-est-tag').count(),3);assert.equal(await out.locator('.cm-est-note').evaluate(e=>e.hidden),false);
+ assert.deepEqual(await out.locator('#commission .cm-total strong').allTextContents(),[m((292.886732524+59.22+11.198476786+shj25)*.05),m((200.915946076+103.33+rak26+shj26)*.05)]);
+ assert.deepEqual(await out.locator('[data-cm-est] strong').allTextContents(),[shj25,shj26,rak26].map(v=>m(v*.05)+'EST'));
+ assert.equal(Math.round((65.6/39.939442771-1)*100),64);
+ await out.click('#settingsToggle');await out.locator('.set-toggle').click();await out.click('.set-close');assert.equal(await out.locator('#commission .na').count(),3);
  await out.emulateMedia({media:'screen'});await out.reload();await out.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());assert.equal(await out.locator('#commission .cm-total strong').first().textContent(),'AED 18.2B','rate not remembered');
  await out.evaluate(()=>{localStorage.clear();});await out.close();
- assert.deepEqual(errors,[]);console.log('Passed: financier brief deck, eighteen slide layouts, market figures, problem slides, outcome slide, old-address redirect, settings sheet, PDF for current settings, commission rate, phone slides and mobile reader layout.');
+ assert.deepEqual(errors,[]);console.log('Passed: financier brief deck, eighteen slide layouts, market figures, problem slides, outcome slide, old-address redirect, settings sheet, PDF for current settings, commission rate and estimates, phone slides and mobile reader layout.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});

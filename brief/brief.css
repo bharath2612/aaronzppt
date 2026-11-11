@@ -179,6 +179,12 @@ body:not(.reader) .reveal .slides>section.c-break.present{justify-content:center
 .set-list input:disabled+.set-switch{opacity:.45}
 .set-rate{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:14px}
 .set-rate select{font:inherit;font-size:14px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink)}
+.set-toggle{position:relative;display:inline-flex}
+.set-toggle input{position:absolute;opacity:0;width:1px;height:1px}
+.set-toggle input:checked+.set-switch{background:var(--fix)}
+.set-toggle input:checked+.set-switch::after{left:16px}
+.set-toggle input:focus-visible+.set-switch{outline:2px solid var(--ink);outline-offset:2px}
+.cm-est-tag{display:inline-block;margin-left:8px;vertical-align:middle;font-size:10px!important;font-weight:700;letter-spacing:.06em;line-height:1;color:var(--muted);border:1px solid var(--faint);border-radius:3px;padding:2px 4px}
 .set-foot{margin:0;font-size:12px;line-height:1.4;color:var(--muted)}
 body.presenting .set-sheet,body.presenting .set-scrim{display:none}
 /* Phones show slides at the desktop layout. In portrait only the bars around the slide grow, so they stay usable. */

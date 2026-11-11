@@ -1,7 +1,7 @@
 // Deck settings: a side sheet to pick the primary colour and hide or show slides.
 // Choices are saved in this browser only, so they never change what other viewers see.
 (()=>{
- const HIDDEN_KEY='brief-hidden-slides',ACCENT_KEY='brief-accent',RATE_KEY='brief-commission-rate';
+ const HIDDEN_KEY='brief-hidden-slides',ACCENT_KEY='brief-accent',RATE_KEY='brief-commission-rate',EST_KEY='brief-commission-estimate';
  const read=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key))??fallback;}catch{return fallback;}};
  const save=(key,value)=>{try{localStorage.setItem(key,JSON.stringify(value));}catch{/* Storage can be blocked; the choice still applies for this visit. */}};
  const accents=[['orange','Orange','#ff6b35'],['blue','Blue','#6ea8ff'],['indigo','Indigo','#a5a6f6'],['amber','Amber','#f5b83d'],['slate','Slate','#a9b8cb']];
@@ -40,21 +40,27 @@
  // Commission slide: every figure is an off-plan base value times the average rate chosen here.
  const DEFAULT_RATE=4,rates=[3,3.5,4,4.5,5,5.5,6];
  let rate=read(RATE_KEY,DEFAULT_RATE);if(!rates.includes(rate))rate=DEFAULT_RATE;
+ let estimate=read(EST_KEY,false)===true;
  const money=v=>'AED '+(v>=1?v.toFixed(1):v.toFixed(2))+'B';
+ const sum=list=>list.split(',').reduce((a,b)=>a+parseFloat(b),0);
  function applyRate(){
   const r=rate/100;
   document.querySelectorAll('[data-cm]').forEach(el=>{el.textContent=money(parseFloat(el.dataset.cm)*r);});
-  document.querySelectorAll('[data-cm-sum]').forEach(el=>{el.textContent=money(el.dataset.cmSum.split(',').reduce((a,b)=>a+parseFloat(b),0)*r);});
+  document.querySelectorAll('[data-cm-sum]').forEach(el=>{el.textContent=money((sum(el.dataset.cmSum)+(estimate&&el.dataset.cmEstSum?sum(el.dataset.cmEstSum):0))*r);});
+  // Unpublished cells: an estimate when switched on, otherwise "Not yet published".
+  document.querySelectorAll('[data-cm-est]').forEach(el=>{const b=parseFloat(el.dataset.cmEst);el.innerHTML=estimate?'<strong>'+money(b*r)+'<i class="cm-est-tag">EST</i></strong><em>on AED '+b.toFixed(1)+'B off&#8209;plan, estimated</em>':'<em class="na">Not yet published</em>';});
+  document.querySelectorAll('.cm-est-note').forEach(el=>{el.hidden=!estimate;});
   document.querySelectorAll('.cm-rate').forEach(el=>{el.textContent=rate+'%';});
  }
  applyRate();
- document.getElementById('deckPdf').addEventListener('click',e=>{if(root.dataset.accent===DEFAULT_ACCENT&&hidden.size===0&&rate===DEFAULT_RATE)return;e.preventDefault();window.print();});
+ document.getElementById('deckPdf').addEventListener('click',e=>{if(root.dataset.accent===DEFAULT_ACCENT&&hidden.size===0&&rate===DEFAULT_RATE&&!estimate)return;e.preventDefault();window.print();});
  const button=document.getElementById('settingsToggle');
  const scrim=document.createElement('div');scrim.className='set-scrim';scrim.hidden=true;
  const sheet=document.createElement('aside');sheet.id='settingsSheet';sheet.className='set-sheet';sheet.hidden=true;sheet.setAttribute('role','dialog');sheet.setAttribute('aria-label','Deck settings');
  sheet.innerHTML='<div class="set-head"><h2>Settings</h2><button type="button" class="set-close" aria-label="Close settings">×</button></div>'
   +'<h3>Primary colour</h3><div class="set-swatches" role="radiogroup" aria-label="Primary colour">'+accents.map(([id,name,color])=>'<button type="button" role="radio" data-accent-id="'+id+'" aria-label="'+name+'" title="'+name+'"><i style="background:'+color+'"></i><span>'+name+'</span></button>').join('')+'</div>'
   +'<h3>Commission rate</h3><label class="set-rate">Average off-plan commission<select id="setRate">'+rates.map(r=>'<option value="'+r+'">'+r+'%</option>').join('')+'</select></label>'
+  +'<label class="set-rate">Estimate unpublished values<span class="set-toggle"><input type="checkbox" role="switch" id="setEst"><i class="set-switch"></i></span></label>'
   +'<div class="set-row"><h3>Slides</h3><button type="button" class="set-all">Show all</button></div><ul class="set-list"></ul>'
   +'<p class="set-foot">Saved in this browser only. The shared link is not changed; the PDF button follows these settings.</p>';
  document.body.append(scrim,sheet);
@@ -77,5 +83,7 @@
  list.addEventListener('change',e=>{const id=e.target.dataset.slide;if(e.target.checked)hidden.delete(id);else hidden.add(id);save(HIDDEN_KEY,[...hidden]);refresh();paint();});
  const rateSelect=sheet.querySelector('#setRate');rateSelect.value=String(rate);
  rateSelect.addEventListener('change',()=>{rate=parseFloat(rateSelect.value);save(RATE_KEY,rate);applyRate();});
+ const estBox=sheet.querySelector('#setEst');estBox.checked=estimate;
+ estBox.addEventListener('change',()=>{estimate=estBox.checked;save(EST_KEY,estimate);applyRate();});
  sheet.querySelector('.set-all').addEventListener('click',()=>{hidden.clear();save(HIDDEN_KEY,[]);refresh();paint();});
 })();

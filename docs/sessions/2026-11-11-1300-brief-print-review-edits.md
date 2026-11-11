@@ -99,3 +99,11 @@ At the user's request, Sharjah now runs 2020 to 2026 like the other markets, wit
 ## Follow-up: Sharjah commission row
 
 The commission slide has a Sharjah row between Abu Dhabi and RAK reading "Not yet published" for 2025 and 2026, because Sharjah has no off-plan sales figure for those years. The totals are unchanged. `npm test` passed all four suites.
+
+## Follow-up: estimate toggle and cover (14:00 +04)
+
+- **Estimate toggle:** settings has "Estimate unpublished values" (off by default, saved as `brief-commission-estimate`). When on, the three unpublished cells show estimated commission with an EST tag, the totals include them, and an EST line explains the method. The PDF button prints when it is on.
+- **Method, as the user asked (grow off-plan with how far the market moved):** Sharjah 2025 = 2024 off-plan AED 12.0B × 65.6/39.9 ≈ AED 19.7B; Sharjah 2026 = that × 46.5/65.6 ≈ AED 14.0B; RAK 2026 = 2025 off-plan AED 11.2B × 2.12/3.19 ≈ AED 7.5B. At 4% the totals become AED 15.3B (2025), AED 13.0B (2026), AED 28.3B overall.
+- The user dropped the idea of editing the commission rate in the title; the settings dropdown stays.
+- **Cover:** removed the "AaronzPay.today" line at the user's request.
+- **Verification:** `npm run export:brief` wrote 18 pages; `npm test` passed all four suites; the commission slide (toggle on), settings sheet and cover were inspected in screenshots.
