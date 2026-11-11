@@ -21,82 +21,67 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert(await page.evaluate(()=>document.fonts.check('500 48px Inter')),'Inter not loaded');
  assert(await page.evaluate(()=>[...document.images].every(i=>i.complete&&i.naturalWidth>0)),'logo failed to load');
  assert.equal(await page.evaluate(()=>deck.getConfig().transition),'none');
- // Market: DLD's reported sales value, with 2021 and 2022 estimated from DLD transaction data.
- const sales=[71.7,148.6,262.7,410.2,521,680];
+ // Market: DLD's reported sales value, with 2021 and 2022 estimated from DLD transaction data; 2026 shown only to the date the data runs to.
+ const sales=[71.7,148.6,262.7,410.2,521,680],ad=[38,15,26,52,53,94,136.7];
+ const rak=[1001412200,1738994965,2184141723,3482718683,6438983837,3192316419,2123794299].map(v=>v/1e9);
  assert.deepEqual(await page.locator('#market .bars .val').allTextContents(),sales.map(v=>'AED '+v+'B'));
- // 2026: DLD data to date, plus an empty box for the amount still needed to match 2025 (labelled as a gap, not a forecast).
- assert.equal(Math.round(680-423.4),257);assert.equal(await page.locator('#market .bar.fc').textContent(),'Q4');assert.equal(await page.locator('#market .bar:not(.fc) .in').textContent(),'YTDAED 423.4B');assert(!/forecast/i.test(await page.locator('#market .bars').textContent()));assert.match(await page.locator('#market .source').textContent(),/not a forecast/);
- assert.equal(await page.locator('#market .bars .est').count(),0);assert.deepEqual(await page.locator('#market .bars li').evaluateAll(l=>l.map(e=>e.className)),['','','','','','now','']);assert.match(await page.locator('#market .source').textContent(),/2021 and 2022 add up every sales registration in DLD transaction data/);assert(!/Atlas/.test(await page.evaluate(()=>document.querySelector('.slides').textContent)),'Atlas named in the deck');assert.match(await page.locator('#market .source').textContent(),/Annual Data Review 2025/);
- // Bar heights are proportional to the values, with the tallest at 85%.
- assert.deepEqual(await page.locator('#market .bar:not(.fc)').evaluateAll(b=>b.map(e=>parseFloat(e.style.height))),[...sales,423.4].map(v=>Math.round(v/sales[5]*850)/10));assert.equal(parseFloat(await page.locator('#market .bar.fc').evaluate(e=>e.style.height)),Math.round(256.6/680*850)/10);
- // Abu Dhabi: 2020 and 2021 from ADREC's 2025 report, 2022 to 2025 from its H1 2026 report (two halves added), 2026 to date from ADREC transaction records.
- const ad=[38,15,26,52,53,94,136.7];
+ assert.deepEqual(await page.locator('#market .bar').evaluateAll(b=>b.map(e=>parseFloat(e.style.height))),[...sales,423.4].map(v=>Math.round(v/sales[5]*850)/10));
+ assert.equal(await page.locator('#market .bar .in').textContent(),'Till 10 NovAED 423.4B');assert.match(await page.locator('#market .source').textContent(),/2021 and 2022 are estimated from DLD transaction data\. 2026 runs to 10 November\./);
  assert.deepEqual(await page.locator('#market-ad .bars .val').allTextContents(),ad.slice(0,-1).map(v=>'AED '+Math.round(v)+'B'));
  assert.deepEqual(await page.locator('#market-ad .bar').evaluateAll(b=>b.map(e=>parseFloat(e.style.height))),ad.map(v=>Math.round(v/ad[6]*850)/10));
- assert.match(await page.locator('#market-ad .source').textContent(),/H1 2026 report, sum of half-year values/);assert.equal(await page.locator('#market-ad h2').textContent(),'Abu Dhabi property sales are rising sharply');
- assert.equal(await page.locator('#market-ad .bars .est').count(),0);assert.equal(await page.locator('#market-ad .bar .in').textContent(),'YTDAED 137B');
- // 2025 is the highlighted bar.
- assert.deepEqual(await page.locator('#market-ad .bars li').evaluateAll(l=>l.map(e=>e.className)),['','','','','','now','']);
+ assert.equal(await page.locator('#market-ad .bar .in').textContent(),'Till 9 NovAED 137B');assert.match(await page.locator('#market-ad .source').textContent(),/H1 2026 report, sum of half-year values/);assert.equal(await page.locator('#market-ad h2').textContent(),'Abu Dhabi property sales are rising sharply');
  assert.equal(await page.locator('#market-ad .bar-side .lead strong').textContent(),'AED 94B');assert.match(await page.locator('#market-ad .bar-side').textContent(),/\+77%[\s\S]*78%/);assert.equal(Math.round((94/53-1)*100),77);
- // All three market slides highlight 2025 and keep the side cards to 2025.
- for(const id of ['market','market-ad','market-rak']){assert.equal(await page.locator('#'+id+' .bars li.now .yr').textContent(),'2025');assert(!/2026/.test(await page.locator('#'+id+' .bar-side').textContent()),id+' side cards mention 2026');}
- // RAK: completed property sales, 2020 to 2026 (January to September); off-plan is reported separately and left out.
- const rak=[1001412200,1738994965,2184141723,3482718683,6438983837,3192316419,2123794299].map(v=>v/1e9);
  assert.deepEqual(await page.locator('#market-rak .bars .val').allTextContents(),rak.slice(0,-1).map(v=>'AED '+v.toFixed(1)+'B'));
- assert.deepEqual(await page.locator('#market-rak .bar:not(.fc)').evaluateAll(b=>b.map(e=>parseFloat(e.style.height))),rak.map(v=>Math.round(v/rak[4]*850)/10));
+ assert.deepEqual(await page.locator('#market-rak .bar').evaluateAll(b=>b.map(e=>parseFloat(e.style.height))),rak.map(v=>Math.round(v/rak[4]*850)/10));
  assert(rak[5]/rak[0]>3,'more than tripled');assert.equal(await page.locator('#market-rak h2').textContent(),'RAK completed sales have more than tripled since 2020');
- assert.equal((1077030/1e6).toFixed(2),'1.08');assert.equal((563541/1e6).toFixed(2),'0.56');
- assert.equal(await page.locator('#market-rak .bars .est').count(),0);
- // The 2024 anomaly is labelled on its bar; 2026 carries an empty box for the gap to 2025, as on Dubai.
- assert.deepEqual(await page.locator('#market-rak .bar .in').allTextContents(),['Includes AED 2.65B of tourism land','YTDAED 2.1B']);
- assert.equal((rak[5]-rak[6]).toFixed(1),'1.1');assert.equal(await page.locator('#market-rak .bar.fc').textContent(),'Q4');assert.equal(await page.locator('#market-rak .bar.fc').evaluate(e=>getComputedStyle(e).backgroundColor),'rgba(0, 0, 0, 0)','gap box must stay empty');
- for(const id of ['market','market-rak'])assert.equal(await page.locator('#'+id+' .bar.fc').evaluate(e=>getComputedStyle(e).backgroundColor),'rgba(0, 0, 0, 0)',id+' gap box must stay empty');assert.equal(await page.locator('#market-rak .bar.fc').evaluate(e=>getComputedStyle(e).backgroundColor),'rgba(0, 0, 0, 0)','gap box must stay empty');
- assert.equal(parseFloat(await page.locator('#market-rak .bar.fc').evaluate(e=>e.style.height)),Math.round((rak[5]-rak[6])/rak[4]*850)/10);
- // 2025 is the highlighted bar and leads the side cards.
- assert.deepEqual(await page.locator('#market-rak .bars li').evaluateAll(l=>l.map(e=>e.className)),['','','','','','now','']);assert.match(await page.locator('#market-rak .bar-side').textContent(),/AED 3\.2B[\s\S]*2,964[\s\S]*AED 1\.08M/);assert.equal(await page.locator('#market-rak .bar-side .lead strong').textContent(),'AED 3.2B');
- assert.match(await page.locator('#market-rak .source').textContent(),/completed property sales; off-plan sales are reported separately and not included/);
+ assert.deepEqual(await page.locator('#market-rak .bar .in').allTextContents(),['Includes AED 2.65B of tourism land','Till SepAED 2.1B']);
+ assert.equal(await page.locator('#market-rak .bar-side .lead strong').textContent(),'AED 3.2B');assert.match(await page.locator('#market-rak .bar-side').textContent(),/AED 11\.2B[\s\S]*off.plan[\s\S]*AED 1\.08M/);assert.equal((1077030/1e6).toFixed(2),'1.08');
+ assert.match(await page.locator('#market-rak .source').textContent(),/completed property sales; off-plan sales are reported separately and not included[\s\S]*2026 runs January to September/);
+ // All three: 2025 highlighted, side cards about 2025 only, no box projecting the rest of 2026, no tags above the bars.
+ for(const id of ['market','market-ad','market-rak']){assert.equal(await page.locator('#'+id+' .bars li.now .yr').textContent(),'2025');assert(!/2026/.test(await page.locator('#'+id+' .bar-side').textContent()),id+' side cards mention 2026');assert.equal(await page.locator('#'+id+' .bar.fc,#'+id+' .bars .est').count(),0,id+' projects 2026');assert(!/dashed|Q4|forecast/i.test(await page.locator('#'+id).textContent()),id+' mentions the rest of 2026');}
  // Commissions: 4% of off-plan sales, 2025 and 2026 to date, for the three emirates (RAK 2026 not published).
  const off={dxb:[292886732524,200915946076],ad:[59220000000,103330000000],rak:[11198476786]};
  const c25=(off.dxb[0]+off.ad[0]+off.rak[0])*.04/1e9,c26=(off.dxb[1]+off.ad[1])*.04/1e9;
  assert.equal(c25.toFixed(1),'14.5');assert.equal(c26.toFixed(1),'12.2');assert.equal((c25+c26).toFixed(1),'26.7');
- assert.equal(await page.locator('#commission h2').textContent(),'AED 26.7B of off-plan commission in under two years');
+ assert.equal(await page.locator('#commission h2').textContent(),'AED 26.7B of off-plan commission in under two years');assert.match(await page.locator('#commission .c-head>p:not(.c-eyebrow)').textContent(),/an average of 4% of off-plan sales/);
  assert.deepEqual(await page.locator('#commission .cm-total strong').allTextContents(),['AED 14.5B','AED 12.2B']);
  assert.deepEqual(await page.locator('#commission .cm-row:not(.cm-head):not(.cm-total) strong').allTextContents(),['AED 11.7B','AED 8.0B','AED 2.4B','AED 4.1B','AED 0.45B']);
  assert.match(await page.locator('#commission .cm-table').textContent(),/Not yet published/);assert.equal(await page.locator('#break-commission h2').textContent(),'Commissions');
  // The problem: a section break, then brokers, brokerages and developers, each a statement and its facts.
  assert.equal(await page.locator('#problem h2').textContent(),'The problem');
  assert.deepEqual(await page.locator('[id^="problem-"] .c-eyebrow').allTextContents(),['03The problem · Brokers','03The problem · Brokerages','03The problem · Developers','04The solution · The gap']);
- assert.deepEqual(await page.locator('#problem-brokers .facts p').allTextContents(),['No loan facility against the commission they are owed','No salary: they live from one commission to the next','Less motivation to sell more while earlier commissions are unpaid']);
- assert.equal(await page.locator('#problem-brokerages .facts li').count(),3);assert.equal(await page.locator('#problem-developers .facts li').count(),3);
+ assert.deepEqual(await page.locator('#problem-brokers .facts p').allTextContents(),['No loan facility against the commission they are owed','No salary: they live from one commission to the next','Less motivation to sell more while earlier commissions are unpaid','Trust is missing']);
+ assert.equal(await page.locator('#problem-brokerages .facts li').count(),4);assert.equal(await page.locator('#problem-developers .facts li').count(),4);assert.equal(await page.locator('#problem-brokerages .facts li').last().textContent(),'04Managing a business on cash predictions is not a business');assert.match(await page.locator('#problem-developers .facts').textContent(),/Paying brokers late damages their reputation[\s\S]*No fintech or real-estate tech solution/);
  assert.match(await page.locator('#problem-developers .facts').textContent(),/no digital view of who is owed what/);
- // The gap slide: today the brokerage waits months 3 and 4; with Aaronz those two months are one block Aaronz funds.
- assert.equal(await page.locator('#problem-gap h2').textContent(),'Aaronz.AI fills the market gap');
- // The gap: today's wait is the full four-month line; with Aaronz it ends at registration, half that length.
+ // The gap slide: today 3 to 4 months (about 1.5 months to registration, a week to invoice, 30 days, 10 to 15 days late, 15 days to pay out); with Aaronz Pay, paid at registration.
+ assert.equal(await page.locator('#problem-gap h2').textContent(),'Aaronz Pay fills the market gap');
+ assert.equal(45+7+30+12.5+15,109.5);
  await page.evaluate(()=>deck.slide([...document.querySelectorAll('.slides>section')].findIndex(s=>s.id==='problem-gap')));await page.waitForTimeout(200);
  const w=await page.evaluate(()=>[...document.querySelectorAll('#problem-gap .gap-wait .wait-track')].map(e=>e.getBoundingClientRect().width));
- assert.equal(w.length,2);assert(Math.abs(w[1]/w[0]-0.5)<0.01,'Aaronz line is not half of today: '+w);
- assert.match(await page.locator('#problem-gap .gap-wait').textContent(),/Up to 4 months[\s\S]*2 months[\s\S]*Registration done, paid immediately/);
- // One thin line per row with its breakpoints, no filler boxes, and the lines stay slim.
- assert.deepEqual(await page.locator('#problem-gap .gap-wait .bp b').allTextContents(),['Engages lead','Unit booked','Registration complete','Developer releases payment','Brokerage releases payout','Engages lead','Unit booked','Registration done, paid immediately']);assert.equal(await page.locator('#problem-gap .saved,#problem-gap .seg').count(),0);
+ assert.equal(w.length,2);assert(Math.abs(w[1]/w[0]-45/110)<0.01,'Aaronz Pay line is not 45 of 110 days: '+w);
+ assert.match(await page.locator('#problem-gap .gap-wait').textContent(),/3 to 4 months[\s\S]*1 week[\s\S]*30 days[\s\S]*10–15 days late[\s\S]*15 days[\s\S]*1\.5 months[\s\S]*Registration complete, invoice raised and paid immediately/);
+ assert.deepEqual(await page.locator('#problem-gap .gap-wait .bp b').allTextContents(),['Engages lead','Unit booked','Registration complete','Invoice raised','Payment due','Brokerage paid','Broker paid','Engages lead','Unit booked','Registration complete, invoice raised and paid immediately']);
+ // Timeline labels above the line never overlap.
+ assert.deepEqual(await page.evaluate(()=>{const b=[...document.querySelectorAll('#problem-gap .wait-row:first-child .bp b')].map(e=>e.getBoundingClientRect());const bad=[];for(let i=1;i<b.length;i++)if(b[i].left<b[i-1].right-1)bad.push(i);return bad;}),[]);
  assert(await page.locator('#problem-gap .gap-wait .wait-track').first().evaluate(e=>e.getBoundingClientRect().height)<=16,'gap lines too tall');
  assert.equal(await page.locator('#problem-gap .inv-call').count(),0,'gap slide ends on the timeline');
  // The brand reads Aaronz.AI everywhere a viewer sees it, in this deck's own logo too.
- assert(!/Aaronz(?!\.AI)/.test(await page.evaluate(()=>document.title+document.querySelector('.slides').textContent)),'brand must read Aaronz.AI');assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('.nav-logo img,.c-lockup img')].map(i=>i.getAttribute('src')+'|'+i.alt)),['aaronz-ai-logo.svg|Aaronz.AI','aaronz-ai-logo.svg|Aaronz.AI']);
+ assert(!/Aaronz(?!\.AI| Pay|Pay\.today)/.test(await page.evaluate(()=>document.title+document.querySelector('.slides').textContent)),'brand must read Aaronz.AI');assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('.nav-logo img,.c-lockup img')].map(i=>i.getAttribute('src')+'|'+i.alt)),['aaronz-ai-logo.svg|Aaronz.AI','aaronz-ai-logo.svg|Aaronz.AI']);
  // Money flow: six steps on one line, with Aaronz's own steps marked.
  assert.equal(await page.locator('#break-model h2').textContent(),'Money flow');assert.equal(await page.locator('#commission-ready').count(),0);assert(!/business model/i.test(await page.evaluate(()=>document.body.innerText)),'old section name shown');assert.equal(await page.locator('#business-model h2').textContent(),'From registration to settlement in six steps');
- assert.deepEqual(await page.locator('#business-model .rail .who').allTextContents(),['Developer','Brokerage','Aaronz.AI','Licensed partner','Developer','Aaronz.AI']);
+ assert.deepEqual(await page.locator('#business-model .rail .who').allTextContents(),['Developer','Brokerage','Aaronz Pay','Finance partner','Developer','Aaronz Pay']);
  assert.deepEqual(await page.locator('#business-model .rail li.us .n').allTextContents(),['3','6']);
- assert.match(await page.locator('#business-model .rail').textContent(),/Marks the broker eligible for commission[\s\S]*Pays the commission amount[\s\S]*Settles the finance partner and collects its fee[\s\S]*interest only/);
+ assert.match(await page.locator('#business-model .rail').textContent(),/Marks the broker eligible for commission[\s\S]*Pays the commission amount[\s\S]*To the finance partner[\s\S]*Settles the finance partner and collects its fee[\s\S]*Finance partner receives a fee/);assert.match(await page.locator('#business-model .inv-call').textContent(),/Aaronz Pay settles with the finance partner and collects its fee/);
  assert(!/%/.test(await page.locator('#business-model .rail').textContent()),'pricing shown on the flow');
  await page.evaluate(()=>deck.slide([...document.querySelectorAll('.slides>section')].findIndex(s=>s.id==='business-model')));await page.waitForTimeout(200);assert(await page.evaluate(()=>Math.abs(document.querySelector('.rail-phases span:last-child').getBoundingClientRect().left-document.querySelectorAll('.rail li')[4].getBoundingClientRect().left)<2),'Repayment label not above step 5');
  // Outcome: broker, brokerage, developer in that order, three problem lines turned around for each, with no pricing.
- assert.deepEqual(await page.locator('#outcome h3').allTextContents(),['Broker','Brokerage','Developer']);
- assert.deepEqual(await page.locator('#outcome .c-card').evaluateAll(c=>c.map(e=>e.querySelectorAll('li').length)),[3,3,3]);
+ assert.deepEqual(await page.locator('#outcome h3').allTextContents(),['Broker','Brokerage','Developer']);assert.equal(await page.locator('#outcome h2').textContent(),'A win-win-win for brokers, brokerages and developers');assert.match(await page.locator('#outcome').textContent(),/Gains trust[\s\S]*not on speculation[\s\S]*core of the challenge/);
+ assert.deepEqual(await page.locator('#outcome .c-card').evaluateAll(c=>c.map(e=>e.querySelectorAll('li').length)),[4,4,4]);
  assert.deepEqual([await page.locator('#break-solution h2').textContent(),await page.locator('#break-outcome h2').textContent()],['The solution','The outcome']);
  assert(!/%|AED/.test(await page.locator('#outcome').evaluate(e=>{const c=e.cloneNode(true);c.querySelector('aside.notes')?.remove();return c.textContent;})),'pricing shown on the outcome slide');
  assert.equal(await page.locator('#allocation').count(),0,'removed slide is back');
  // The cover is the title alone, then a section break introduces the market.
- assert.equal(await page.locator('#home .c-lede').count(),0);assert.equal(await page.locator('#break-market h2').textContent(),'The market');
+ assert.equal(await page.locator('#home .c-lede').textContent(),'AaronzPay.today');assert.equal(await page.locator('#break-market h2').textContent(),'The market');
  assert.equal(await page.locator('#market h2').textContent(),'Dubai property sales grew 10× in five years');
  // The deck goes to more than one party, so it names no recipient anywhere a viewer can see.
  assert(!/reem/i.test(await page.evaluate(()=>document.title+document.querySelector('meta[name=description]').content+document.body.innerText+document.getElementById('deckPdf').getAttribute('href'))),'recipient named in the deck');
@@ -146,7 +131,12 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  await out.emulateMedia({media:'print'});assert.equal(await out.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--brand').trim()),'#8f5a00');
  await out.setViewportSize({width:1440,height:800});await out.waitForTimeout(150);for(const id of ['market','problem-gap','outcome'])await out.locator('#'+id).screenshot({path:'.build/brief-print-'+id+'.png'});
  assert.deepEqual(await out.evaluate(()=>[...document.querySelectorAll('.slides>section')].filter(s=>s.offsetHeight!==799||s.offsetWidth!==1440).map(s=>s.id)),[],'print pages must fit a 1440x800 page');
+ // Commission rate: the settings dropdown recalculates every commission figure, and a changed rate prints.
+ await out.emulateMedia({media:'screen'});await out.setViewportSize({width:1440,height:1000});await out.click('#settingsToggle');await out.selectOption('#setRate','5');await out.click('.set-close');
+ assert.equal(await out.locator('#commission h2').textContent(),'AED 33.4B of off-plan commission in under two years');assert.deepEqual(await out.locator('#commission .cm-total strong').allTextContents(),['AED 18.2B','AED 15.2B']);
+ assert.deepEqual(await out.locator('#commission .cm-row:not(.cm-head):not(.cm-total) strong').allTextContents(),['AED 14.6B','AED 10.0B','AED 3.0B','AED 5.2B','AED 0.56B']);assert.match(await out.locator('#commission .c-head>p:not(.c-eyebrow)').textContent(),/average of 5%/);
+ await out.emulateMedia({media:'screen'});await out.reload();await out.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());assert.equal(await out.locator('#commission .cm-total strong').first().textContent(),'AED 18.2B','rate not remembered');
  await out.evaluate(()=>{localStorage.clear();});await out.close();
- assert.deepEqual(errors,[]);console.log('Passed: financier brief deck, seventeen slide layouts, market figures, problem slides, outcome slide, old-address redirect, settings sheet, PDF for current settings, phone slides and mobile reader layout.');
+ assert.deepEqual(errors,[]);console.log('Passed: financier brief deck, seventeen slide layouts, market figures, problem slides, outcome slide, old-address redirect, settings sheet, PDF for current settings, commission rate, phone slides and mobile reader layout.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});

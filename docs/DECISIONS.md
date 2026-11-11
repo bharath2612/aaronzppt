@@ -234,3 +234,7 @@ The user felt the orange read as red, and so as something bad. Amber is now the 
 ## 2026-11-11 — Brief: indigo default, phones show slides, PDF follows settings
 
 Indigo replaces amber as the default primary colour. Phones open as slides at the full desktop layout (viewport width 1440) because the user wanted nothing inside a slide to change. Because the site is static, the PDF button cannot generate a file for every combination; with non-default settings it uses the browser's print dialog, and the default state still downloads the fixed file.
+
+## 2026-11-11 — Aaronz Pay, finance partner, average commission rate
+
+From the user's printed review: the product is "Aaronz Pay" (AaronzPay.today) on the solution and money-flow slides, with Aaronz.AI kept as the company logo. The money flow names only the finance partner, which receives a fee. The commission rate is shown as an average, default 4%, with a 3% to 6% dropdown in settings that recalculates the slide. The market slides no longer draw a box for the rest of 2026.
