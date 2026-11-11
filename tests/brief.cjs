@@ -25,8 +25,8 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  const sales=[71.7,148.6,262.7,410.2,521,680];
  assert.deepEqual(await page.locator('#market .bars .val').allTextContents(),[...sales.map(v=>'AED '+v+'B'),'AED 423.4B']);
  // 2026: DLD data to date, plus an empty box for the amount still needed to match 2025 (labelled as a gap, not a forecast).
- assert.equal(Math.round(680-423.4),257);assert.match(await page.locator('#market .bar.fc').textContent(),/To match 2025AED 257B/);assert(!/forecast/i.test(await page.locator('#market .bars').textContent()));assert.match(await page.locator('#market .source').textContent(),/not a forecast/);
- assert.deepEqual(await page.locator('#market .bars li').evaluateAll(l=>l.map(e=>e.querySelector('.est')?.textContent||'')),['','','','','','','YTD']);assert.match(await page.locator('#market .source').textContent(),/2021 and 2022 add up every sales registration in DLD transaction data/);assert(!/Atlas/.test(await page.evaluate(()=>document.querySelector('.slides').textContent)),'Atlas named in the deck');assert.match(await page.locator('#market .source').textContent(),/Annual Data Review 2025/);
+ assert.equal(Math.round(680-423.4),257);assert.equal(await page.locator('#market .bar.fc').textContent(),'Q4');assert.equal(await page.locator('#market .bar:not(.fc) .in').textContent(),'YTD');assert(!/forecast/i.test(await page.locator('#market .bars').textContent()));assert.match(await page.locator('#market .source').textContent(),/not a forecast/);
+ assert.equal(await page.locator('#market .bars .est').count(),0);assert.deepEqual(await page.locator('#market .bars li').evaluateAll(l=>l.map(e=>e.className)),['','','','','','now','']);assert.match(await page.locator('#market .source').textContent(),/2021 and 2022 add up every sales registration in DLD transaction data/);assert(!/Atlas/.test(await page.evaluate(()=>document.querySelector('.slides').textContent)),'Atlas named in the deck');assert.match(await page.locator('#market .source').textContent(),/Annual Data Review 2025/);
  // Bar heights are proportional to the values, with the tallest at 85%.
  assert.deepEqual(await page.locator('#market .bar:not(.fc)').evaluateAll(b=>b.map(e=>parseFloat(e.style.height))),[...sales,423.4].map(v=>Math.round(v/sales[5]*850)/10));assert.equal(parseFloat(await page.locator('#market .bar.fc').evaluate(e=>e.style.height)),Math.round(256.6/680*850)/10);
  // Abu Dhabi: 2020 and 2021 from ADREC's 2025 report, 2022 to 2025 from its H1 2026 report (two halves added), 2026 to date from ADREC transaction records.
@@ -34,20 +34,20 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.deepEqual(await page.locator('#market-ad .bars .val').allTextContents(),ad.map(v=>'AED '+Math.round(v)+'B'));
  assert.deepEqual(await page.locator('#market-ad .bar').evaluateAll(b=>b.map(e=>parseFloat(e.style.height))),ad.map(v=>Math.round(v/ad[6]*850)/10));
  assert.match(await page.locator('#market-ad .source').textContent(),/H1 2026 report, sum of half-year values/);assert.equal(await page.locator('#market-ad h2').textContent(),'Abu Dhabi property sales are rising sharply');
- assert.deepEqual(await page.locator('#market-ad .bars li').evaluateAll(l=>l.map(e=>e.querySelector('.est')?.textContent||'')),['','','','','','','YTD']);
+ assert.equal(await page.locator('#market-ad .bars .est').count(),0);assert.equal(await page.locator('#market-ad .bar .in').textContent(),'YTD');
  // 2026 is the highlighted bar and the only year on the side cards.
- assert.deepEqual(await page.locator('#market-ad .bars li').evaluateAll(l=>l.map(e=>e.className)),['','','','','','','now']);
- assert.equal(await page.locator('#market-ad .bar-side .lead strong').textContent(),'AED 137B');assert.equal(Math.round((ad[6]/ad[5]-1)*100),45);assert.match(await page.locator('#market-ad .bar-side').textContent(),/\+45%[\s\S]*83%/);
+ assert.deepEqual(await page.locator('#market-ad .bars li').evaluateAll(l=>l.map(e=>e.className)),['','','','','','now','']);
+ assert.equal(await page.locator('#market-ad .bar-side .lead strong').textContent(),'AED 94B');assert.match(await page.locator('#market-ad .bar-side').textContent(),/AED 137B[\s\S]*78%/);
  // RAK: completed property sales, 2020 to 2026 (January to September); off-plan is reported separately and left out.
  const rak=[1001412200,1738994965,2184141723,3482718683,6438983837,3192316419,2123794299].map(v=>v/1e9);
  assert.deepEqual(await page.locator('#market-rak .bars .val').allTextContents(),rak.map(v=>'AED '+v.toFixed(1)+'B'));
  assert.deepEqual(await page.locator('#market-rak .bar:not(.fc)').evaluateAll(b=>b.map(e=>parseFloat(e.style.height))),rak.map(v=>Math.round(v/rak[4]*850)/10));
  assert(rak[5]/rak[0]>3,'more than tripled');assert.equal(await page.locator('#market-rak h2').textContent(),'RAK completed sales have more than tripled since 2020');
  assert.equal((1077030/1e6).toFixed(2),'1.08');assert.equal((563541/1e6).toFixed(2),'0.56');
- assert.deepEqual(await page.locator('#market-rak .bars li').evaluateAll(l=>l.map(e=>e.querySelector('.est')?.textContent||'')),['','','','','','','JAN–SEP']);
+ assert.equal(await page.locator('#market-rak .bars .est').count(),0);
  // The 2024 anomaly is labelled on its bar; 2026 carries an empty box for the gap to 2025, as on Dubai.
- assert.equal(await page.locator('#market-rak .bar .in').textContent(),'Includes AED 2.65B of tourism land');
- assert.equal((rak[5]-rak[6]).toFixed(1),'1.1');assert.match(await page.locator('#market-rak .bar.fc').textContent(),/To match 2025AED 1.1B/);assert.equal(await page.locator('#market-rak .bar.fc').evaluate(e=>getComputedStyle(e).backgroundColor),'rgba(0, 0, 0, 0)','gap box must stay empty');
+ assert.deepEqual(await page.locator('#market-rak .bar .in').allTextContents(),['Includes AED 2.65B of tourism land','YTD']);
+ assert.equal((rak[5]-rak[6]).toFixed(1),'1.1');assert.equal(await page.locator('#market-rak .bar.fc').textContent(),'Q4');assert.equal(await page.locator('#market-rak .bar.fc').evaluate(e=>getComputedStyle(e).backgroundColor),'rgba(0, 0, 0, 0)','gap box must stay empty');
  for(const id of ['market','market-rak'])assert.equal(await page.locator('#'+id+' .bar.fc').evaluate(e=>getComputedStyle(e).backgroundColor),'rgba(0, 0, 0, 0)',id+' gap box must stay empty');assert.equal(await page.locator('#market-rak .bar.fc').evaluate(e=>getComputedStyle(e).backgroundColor),'rgba(0, 0, 0, 0)','gap box must stay empty');
  assert.equal(parseFloat(await page.locator('#market-rak .bar.fc').evaluate(e=>e.style.height)),Math.round((rak[5]-rak[6])/rak[4]*850)/10);
  // 2026 is the highlighted bar and leads the side cards.
@@ -77,7 +77,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  // One thin line per row with its breakpoints, no filler boxes, and the lines stay slim.
  assert.deepEqual(await page.locator('#problem-gap .gap-wait .bp b').allTextContents(),['Engages lead','Unit booked','Registration complete','Developer releases payment','Brokerage releases payout','Engages lead','Unit booked','Registration done, paid immediately']);assert.equal(await page.locator('#problem-gap .saved,#problem-gap .seg').count(),0);
  assert(await page.locator('#problem-gap .gap-wait .wait-track').first().evaluate(e=>e.getBoundingClientRect().height)<=16,'gap lines too tall');
- assert.match(await page.locator('#problem-gap .inv-call').textContent(),/Aaronz\.AI pays the brokerage through a finance partner, and the developer repays the partner/);
+ assert.match(await page.locator('#problem-gap .inv-call').textContent(),/Aaronz\.AI pays the brokerage through a licensed partner, and the developer repays the licensed partner/);
  // The brand reads Aaronz.AI everywhere a viewer sees it, in this deck's own logo too.
  assert(!/Aaronz(?!\.AI)/.test(await page.evaluate(()=>document.title+document.querySelector('.slides').textContent)),'brand must read Aaronz.AI');assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('.nav-logo img,.c-lockup img')].map(i=>i.getAttribute('src')+'|'+i.alt)),['aaronz-ai-logo.svg|Aaronz.AI','aaronz-ai-logo.svg|Aaronz.AI']);
  // Money flow: six steps on one line, with Aaronz's own steps marked.

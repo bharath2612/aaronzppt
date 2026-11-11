@@ -16,7 +16,7 @@
 .bars .bar.fc+.bar{border-radius:0}
 .bars li .bar.fc{background:transparent}
 .bars li.now .bar.fc{background:transparent;border-color:var(--orange)}
-.reveal .bars .bar .in{display:block;padding:12px 8px 0;font-size:12px;font-weight:600;line-height:1.35;text-align:center;color:var(--muted)}
+.reveal .bars .bar .in{display:block;padding:12px 8px 0;font-size:12px;font-weight:600;line-height:1.35;text-align:center;color:var(--ink)}
 .reveal .bars .bar.fc span{font-size:12px;font-weight:600;color:var(--muted);text-align:center;line-height:1.35}
 .bars li.ytd .bar{background:repeating-linear-gradient(135deg,#e4e4df 0 10px,#f5f5f2 10px 20px);border:2px solid var(--faint);border-bottom:0}
 .bars li.ytd .val{color:var(--ink)}

@@ -20,3 +20,10 @@
 ## Next
 
 Open items are in `docs/STATUS.md`.
+
+## Follow-up: market labels and gap line
+
+- **2026 bars:** Dubai and RAK's dashed box now just says "Q4" (no amount), and "YTD" sits inside the solid part. Abu Dhabi's 2026 has no dashed box, only YTD. The YTD and JAN–SEP tags above the bars were removed. The source lines still say the box marks the rest of the year, drawn up to the 2025 total, and is not a forecast.
+- **Highlight:** Dubai and Abu Dhabi both highlight 2025. Abu Dhabi's side cards are AED 94B in 2025, AED 137B in 2026 to 9 November, and 78% of 2025 residential value off-plan. RAK stays highlighted on 2026.
+- **Gap slide line:** now "Aaronz.AI pays the brokerage through a licensed partner, and the developer repays the licensed partner", matching the money flow.
+- **Verification:** `npm test` passed all four suites, and the three market slides were inspected.
