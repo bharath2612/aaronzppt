@@ -59,7 +59,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.equal(await page.locator('#commission h2').textContent(),'AED 26.7B of off-plan commission in under two years');assert.match(await page.locator('#commission .c-head>p:not(.c-eyebrow)').textContent(),/an average of 4% of off-plan sales/);
  assert.deepEqual(await page.locator('#commission .cm-total strong').allTextContents(),['AED 14.5B','AED 12.2B']);
  assert.deepEqual(await page.locator('#commission .cm-row:not(.cm-head):not(.cm-total) strong').allTextContents(),['AED 11.7B','AED 8.0B','AED 2.4B','AED 4.1B','AED 0.45B']);
- assert.match(await page.locator('#commission .cm-table').textContent(),/Not yet published/);assert.equal(await page.locator('#break-commission h2').textContent(),'Commissions');
+ assert.match(await page.locator('#commission .cm-table').textContent(),/Not yet published/);assert.deepEqual(await page.locator('#commission .cm-row:not(.cm-head):not(.cm-total) .cm-name').allTextContents(),['Dubai','Abu Dhabi','Sharjah','Ras Al Khaimah']);assert.equal(await page.locator('#commission .cm-row').filter({hasText:'Sharjah'}).locator('.na').count(),2);assert.equal(await page.locator('#break-commission h2').textContent(),'Commissions');
  // The problem: a section break, then brokers, brokerages and developers, each a statement and its facts.
  assert.equal(await page.locator('#problem h2').textContent(),'The problem');
  assert.deepEqual(await page.locator('[id^="problem-"] .c-eyebrow').allTextContents(),['03The problem · Brokers','03The problem · Brokerages','03The problem · Developers','04The solution · The gap']);

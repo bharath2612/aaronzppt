@@ -95,3 +95,7 @@ At the user's request, Sharjah now runs 2020 to 2026 like the other markets, wit
 - **Side cards:** AED 65.6B transactions in 2025 including mortgages; 18,333 sales in 2025 (completed, per the source line); 42% of 2024 sales value off-plan.
 - **Caution:** the jump from 2024 to 2025 is partly the change of measure. The asterisk and source line say so.
 - **Verification:** `npm test` passed all four suites, and the slide was inspected.
+
+## Follow-up: Sharjah commission row
+
+The commission slide has a Sharjah row between Abu Dhabi and RAK reading "Not yet published" for 2025 and 2026, because Sharjah has no off-plan sales figure for those years. The totals are unchanged. `npm test` passed all four suites.
