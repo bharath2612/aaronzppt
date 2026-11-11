@@ -107,3 +107,7 @@ The commission slide has a Sharjah row between Abu Dhabi and RAK reading "Not ye
 - The user dropped the idea of editing the commission rate in the title; the settings dropdown stays.
 - **Cover:** removed the "AaronzPay.today" line at the user's request.
 - **Verification:** `npm run export:brief` wrote 18 pages; `npm test` passed all four suites; the commission slide (toggle on), settings sheet and cover were inspected in screenshots.
+
+## Follow-up: Sharjah side cards on one year
+
+The user pointed out the Sharjah cards mixed "sales in 2025" with "of 2024 sales value was off-plan". Sharjah has no published 2025 off-plan share, so both now use 2024: 13,522 sales in 2024 (completed sales, from the Sharjah registration annual report) and 42% of 2024 sales value off-plan. The lead card stays AED 65.6B transactions in 2025. `npm test` passed all four suites and the slide was checked in a screenshot.

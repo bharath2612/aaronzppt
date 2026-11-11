@@ -48,7 +48,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.deepEqual(await page.locator('#market-sharjah .bar .in').allTextContents(),['Includes mortgages and others','Till SepAED 46.5B*']);
  assert(shj[4]/shj[1]>=2,'doubled');assert.equal(await page.locator('#market-sharjah h2').textContent(),'Sharjah property sales have doubled since 2021');
  assert.equal(await page.locator('#market-sharjah .bars li.now .yr').textContent(),'2025');assert.equal(Math.round(11.98907533/shj[4]*100),42);
- assert.deepEqual(await page.locator('#market-sharjah .bar-side strong').allTextContents(),['AED 65.6B','18,333','42%']);
+ assert.deepEqual(await page.locator('#market-sharjah .bar-side strong').allTextContents(),['AED 65.6B','13,522','42%']);
  assert.match(await page.locator('#market-sharjah .source').textContent(),/\* 2020 is completed sales only[\s\S]*2025 and 2026 are total transaction value, including mortgages/);
  // All three: 2025 highlighted, side cards about 2025 only, no box projecting the rest of 2026, no tags above the bars.
  for(const id of ['market','market-ad','market-rak']){assert.equal(await page.locator('#'+id+' .bars li.now .yr').textContent(),'2025');assert(!/2026/.test(await page.locator('#'+id+' .bar-side').textContent()),id+' side cards mention 2026');assert.equal(await page.locator('#'+id+' .bar.fc,#'+id+' .bars .est').count(),0,id+' projects 2026');assert(!/dashed|Q4|forecast/i.test(await page.locator('#'+id).textContent()),id+' mentions the rest of 2026');}
