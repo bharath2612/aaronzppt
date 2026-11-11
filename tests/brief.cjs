@@ -68,7 +68,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.equal(await page.locator('#problem-brokerages .facts li').count(),3);assert.equal(await page.locator('#problem-developers .facts li').count(),3);
  assert.match(await page.locator('#problem-developers .facts').textContent(),/no digital view of who is owed what/);
  // The gap slide: today the brokerage waits months 3 and 4; with Aaronz those two months are one block Aaronz funds.
- assert.equal(await page.locator('#problem-gap h2').textContent(),'Aaronz fills the market gap');
+ assert.equal(await page.locator('#problem-gap h2').textContent(),'Aaronz.AI fills the market gap');
  // The gap: today's wait is the full four-month line; with Aaronz it ends at registration, half that length.
  await page.evaluate(()=>deck.slide([...document.querySelectorAll('.slides>section')].findIndex(s=>s.id==='problem-gap')));await page.waitForTimeout(200);
  const w=await page.evaluate(()=>[...document.querySelectorAll('#problem-gap .gap-wait .wait-track')].map(e=>e.getBoundingClientRect().width));
@@ -77,10 +77,12 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  // One thin line per row with its breakpoints, no filler boxes, and the lines stay slim.
  assert.deepEqual(await page.locator('#problem-gap .gap-wait .bp b').allTextContents(),['Engages lead','Unit booked','Registration complete','Developer releases payment','Brokerage releases payout','Engages lead','Unit booked','Registration done, paid immediately']);assert.equal(await page.locator('#problem-gap .saved,#problem-gap .seg').count(),0);
  assert(await page.locator('#problem-gap .gap-wait .wait-track').first().evaluate(e=>e.getBoundingClientRect().height)<=16,'gap lines too tall');
- assert.match(await page.locator('#problem-gap .inv-call').textContent(),/Aaronz pays the brokerage through a finance partner, and the developer repays the partner/);
+ assert.match(await page.locator('#problem-gap .inv-call').textContent(),/Aaronz\.AI pays the brokerage through a finance partner, and the developer repays the partner/);
+ // The brand reads Aaronz.AI everywhere a viewer sees it, in this deck's own logo too.
+ assert(!/Aaronz(?!\.AI)/.test(await page.evaluate(()=>document.title+document.querySelector('.slides').textContent)),'brand must read Aaronz.AI');assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('.nav-logo img,.c-lockup img')].map(i=>i.getAttribute('src')+'|'+i.alt)),['aaronz-ai-logo.svg|Aaronz.AI','aaronz-ai-logo.svg|Aaronz.AI']);
  // Money flow: six steps on one line, with Aaronz's own steps marked.
  assert.equal(await page.locator('#break-model h2').textContent(),'Money flow');assert.equal(await page.locator('#commission-ready').count(),0);assert(!/business model/i.test(await page.evaluate(()=>document.body.innerText)),'old section name shown');assert.equal(await page.locator('#business-model h2').textContent(),'From registration to settlement in six steps');
- assert.deepEqual(await page.locator('#business-model .rail .who').allTextContents(),['Developer','Brokerage','Aaronz','Licensed partner','Developer','Aaronz']);
+ assert.deepEqual(await page.locator('#business-model .rail .who').allTextContents(),['Developer','Brokerage','Aaronz.AI','Licensed partner','Developer','Aaronz.AI']);
  assert.deepEqual(await page.locator('#business-model .rail li.us .n').allTextContents(),['3','6']);
  assert.match(await page.locator('#business-model .rail').textContent(),/Marks the broker eligible for commission[\s\S]*Pays the commission amount[\s\S]*Settles the finance partner and collects its fee[\s\S]*interest only/);
  assert(!/%/.test(await page.locator('#business-model .rail').textContent()),'pricing shown on the flow');

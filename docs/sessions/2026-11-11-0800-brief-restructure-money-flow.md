@@ -35,3 +35,9 @@ Cover; break "The market"; Dubai; Abu Dhabi; RAK; break "Commissions"; off-plan 
 - `npm test`: all four suites passed ("financier brief deck, seventeen slide layouts, ...").
 - `npm run export:brief`: 17 pages. `git diff --check` clean.
 - Gap, outcome, section break, flow and settings views were inspected on desktop; gap, outcome, flow and settings at 390px.
+
+## Follow-up: Aaronz.AI
+
+The user asked for the brand to read "Aaronz.AI". All text in the brief (slides, speaker notes, page title and description) now says Aaronz.AI. The brief has its own logo, `brief/aaronz-ai-logo.svg`, which is the investor logo with a dot added; the investor deck's logo is unchanged. A test checks the name and the logo.
+
+An interrupted tool call still committed and pushed `6870577`; the user had asked to push, and was told. `npm test` passed all four suites after this change.
