@@ -122,3 +122,5 @@ The Aaronz Pay line now runs the full length of the Today line. After the immedi
 - **Developers problem, point 4:** "No right fin-real-tech solution is available to take on this challenge".
 - **Outcome, developer point 4:** "A right partner who takes care of commissions". Speaker notes match.
 - `npm test` passed all four suites; the gap slide was checked in a screenshot.
+
+- Developers problem, point 4: dropped "right": "No fin-real-tech solution is available to take on this challenge".
