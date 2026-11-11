@@ -64,7 +64,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.equal(await page.locator('#problem h2').textContent(),'The problem');
  assert.deepEqual(await page.locator('[id^="problem-"] .c-eyebrow').allTextContents(),['03The problem · Brokers','03The problem · Brokerages','03The problem · Developers','04The solution · The gap']);
  assert.deepEqual(await page.locator('#problem-brokers .facts p').allTextContents(),['No loan facility against the commission they are owed','No salary: they live from one commission to the next','Less motivation to sell more while earlier commissions are unpaid','Trust is missing']);
- assert.equal(await page.locator('#problem-brokerages .facts li').count(),4);assert.equal(await page.locator('#problem-developers .facts li').count(),4);assert.equal(await page.locator('#problem-brokerages .facts li').last().textContent(),'04Managing a business on cash predictions is not a business');assert.match(await page.locator('#problem-developers .facts').textContent(),/Paying brokers late damages their reputation[\s\S]*No risk partner or fin-real-tech solution/);
+ assert.equal(await page.locator('#problem-brokerages .facts li').count(),4);assert.equal(await page.locator('#problem-developers .facts li').count(),4);assert.equal(await page.locator('#problem-brokerages .facts li').last().textContent(),'04Managing a business on cash predictions is not a business');assert.match(await page.locator('#problem-developers .facts').textContent(),/Paying brokers late damages their reputation[\s\S]*No right fin-real-tech solution is available to take on this challenge/);
  assert.match(await page.locator('#problem-developers .facts').textContent(),/no digital view of who is owed what/);
  // The gap slide: today 3 to 4 months (about 1.5 months to registration, a week to invoice, 30 days, 10 to 15 days late, 15 days to pay out); with Aaronz Pay, paid at registration.
  assert.equal(await page.locator('#problem-gap h2').textContent(),'Aaronz Pay fills the market gap');
@@ -78,7 +78,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  // Timeline labels above the line never overlap.
  assert.deepEqual(await page.evaluate(()=>{const b=[...document.querySelectorAll('#problem-gap .wait-row:first-child .bp b')].map(e=>e.getBoundingClientRect());const bad=[];for(let i=1;i<b.length;i++)if(b[i].left<b[i-1].right-1)bad.push(i);return bad;}),[]);
  assert(await page.locator('#problem-gap .gap-wait .wait-track').first().evaluate(e=>e.getBoundingClientRect().height)<=16,'gap lines too tall');
- assert.equal(await page.locator('#problem-gap .inv-call').count(),0,'gap slide ends on the timeline');
+ assert.equal(await page.locator('#problem-gap .inv-call').textContent(),'AaronzPay settles the brokerage commission through a finance partner, and the developer repays the finance partner.');
  // The brand is the AaronzPay wordmark (no dot, Pay in the primary colour): no Aaronz.AI anywhere a viewer sees it.
  assert(!/Aaronz\.AI|aaronz-ai-logo/.test(await page.evaluate(()=>document.title+document.querySelector('meta[name=description]').content+document.body.innerHTML.replace(/<aside class="notes">[\s\S]*?<\/aside>/g,''))),'old brand shown');
  assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('.nav-logo .wm,.c-lockup .wm')].map(e=>e.textContent+'|'+e.getAttribute('aria-label'))),['AaronzPay|Aaronz Pay','AaronzPay|Aaronz Pay']);
@@ -91,7 +91,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert(!/%/.test(await page.locator('#business-model .rail').textContent()),'pricing shown on the flow');
  await page.evaluate(()=>deck.slide([...document.querySelectorAll('.slides>section')].findIndex(s=>s.id==='business-model')));await page.waitForTimeout(200);assert(await page.evaluate(()=>Math.abs(document.querySelector('.rail-phases span:last-child').getBoundingClientRect().left-document.querySelectorAll('.rail li')[4].getBoundingClientRect().left)<2),'Repayment label not above step 5');
  // Outcome: broker, brokerage, developer in that order, three problem lines turned around for each, with no pricing.
- assert.deepEqual(await page.locator('#outcome h3').allTextContents(),['Broker','Brokerage','Developer']);assert.equal(await page.locator('#outcome h2').textContent(),'A win-win-win for brokers, brokerages and developers');assert.match(await page.locator('#outcome').textContent(),/Gains trust[\s\S]*not on speculation[\s\S]*A risk partner who takes care of commission/);
+ assert.deepEqual(await page.locator('#outcome h3').allTextContents(),['Broker','Brokerage','Developer']);assert.equal(await page.locator('#outcome h2').textContent(),'A win-win-win for brokers, brokerages and developers');assert.match(await page.locator('#outcome').textContent(),/Gains trust[\s\S]*not on speculation[\s\S]*A right partner who takes care of commissions/);
  assert.deepEqual(await page.locator('#outcome .c-card').evaluateAll(c=>c.map(e=>e.querySelectorAll('li').length)),[4,4,4]);
  assert.deepEqual([await page.locator('#break-solution h2').textContent(),await page.locator('#break-outcome h2').textContent()],['The solution','The outcome']);
  assert(!/%|AED/.test(await page.locator('#outcome').evaluate(e=>{const c=e.cloneNode(true);c.querySelector('aside.notes')?.remove();return c.textContent;})),'pricing shown on the outcome slide');

@@ -115,3 +115,10 @@ The user pointed out the Sharjah cards mixed "sales in 2025" with "of 2024 sales
 ## Follow-up: gap slide, broker enjoys the funds
 
 The Aaronz Pay line now runs the full length of the Today line. After the immediate payout at 1.5 months, the rest of the period is a lighter green segment labelled "Broker enjoys the funds". The test checks that the line matches Today's length and that the paid point is still 45 of 110 days. `npm test` passed all four suites and the slide was checked in a screenshot.
+
+## Follow-up: gap callout back, developer wording
+
+- **Gap slide:** the green callout is back under the timeline: "AaronzPay settles the brokerage commission through a finance partner, and the developer repays the finance partner."
+- **Developers problem, point 4:** "No right fin-real-tech solution is available to take on this challenge".
+- **Outcome, developer point 4:** "A right partner who takes care of commissions". Speaker notes match.
+- `npm test` passed all four suites; the gap slide was checked in a screenshot.

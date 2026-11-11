@@ -134,6 +134,8 @@ body:not(.reader) .reveal .slides>section.c-break.present{justify-content:center
 .reveal .rail li.us .who{color:var(--fix)}
 .reveal .rail h3{margin:0;font-size:20px;line-height:1.25;text-wrap:balance}
 .reveal .rail .sub{margin:8px 0 0!important;font-size:14px!important;line-height:1.4;color:var(--muted);text-wrap:balance}
+#problem-gap .inv-call{margin-top:22px;background:var(--fix-tint);color:var(--fix)}
+.reveal #problem-gap .inv-call h3{color:var(--fix)}
 #business-model .inv-call{margin-top:44px;background:var(--fix-tint)}
 .reveal #business-model .inv-call h3{color:var(--fix)}
 /* AaronzPay wordmark: Inter, tight and bold, with "Pay" in the primary colour and no dot. */
