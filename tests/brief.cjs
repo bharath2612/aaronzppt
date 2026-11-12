@@ -90,7 +90,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  // Money flow: six steps on one line, with Aaronz's own steps marked.
  assert.equal(await page.locator('#break-model h2').textContent(),'Money flow');assert.equal(await page.locator('#commission-ready').count(),0);assert(!/business model/i.test(await page.evaluate(()=>document.body.innerText)),'old section name shown');assert.equal(await page.locator('#business-model h2').textContent(),'From registration to settlement in six steps');
  assert.deepEqual(await page.locator('#business-model .rail .who').allTextContents(),['Developer','Brokerage','Aaronz Pay','Finance partner','Developer','Finance partner']);
- assert.deepEqual(await page.locator('#business-model .rail li.us .n').allTextContents(),['3']);
+ assert.deepEqual(await page.locator('#business-model .rail li.us .n').allTextContents(),['3','6']);
  assert.match(await page.locator('#business-model .rail').textContent(),/Marks the broker eligible for commission[\s\S]*Pays the commission amount[\s\S]*To the finance partner[\s\S]*Settles and pays the fee[\s\S]*To Aaronz Pay/);assert.match(await page.locator('#business-model .inv-call').textContent(),/the finance partner settles and pays Aaronz Pay its fee/);
  assert(!/%/.test(await page.locator('#business-model .rail').textContent()),'pricing shown on the flow');
  await page.evaluate(()=>deck.slide([...document.querySelectorAll('.slides>section')].findIndex(s=>s.id==='business-model')));await page.waitForTimeout(200);assert(await page.evaluate(()=>Math.abs(document.querySelector('.rail-phases span:last-child').getBoundingClientRect().left-document.querySelectorAll('.rail li')[4].getBoundingClientRect().left)<2),'Repayment label not above step 5');

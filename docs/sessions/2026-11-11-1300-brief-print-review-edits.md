@@ -154,3 +154,9 @@ The Aaronz Pay line now runs the full length of the Today line. After the immedi
 - Request: the developer repays the finance partner, and the finance partner settles and pays Aaronz its fee; step 6 was the wrong way round.
 - Done: `brief/index.html` step 6 is now "Finance partner: Settles and pays the fee, to Aaronz Pay" (no longer an Aaronz step, so only step 3 is highlighted). The callout reads "When the developer repays, the finance partner settles and pays Aaronz Pay its fee." Speaker note matches. `tests/brief.cjs` updated.
 - Checks: export wrote 18 pages; `npm test` passed all four suites.
+
+## Follow-up (2026-11-12 18:52 +04): step 6 green again
+
+- Request: keep the green highlight on step 6, where Aaronz Pay is paid its fee.
+- Done: step 6 has `class="us"` again, so steps 3 and 6 are green. Test expects 3 and 6.
+- Checks: export wrote 18 pages; `npm test` passed all four suites.
