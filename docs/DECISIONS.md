@@ -250,3 +250,7 @@ Sharjah publishes sales value only to 2024; 2025 and 2026 appear only as total t
 ## 2026-11-11 — Estimates for unpublished commission values are opt-in
 
 Sharjah 2025/2026 and RAK 2026 have no off-plan figure. The user asked for a settings toggle that estimates them by growing the latest known off-plan value with total market movement. It is off by default so the deck stays on published data; when on, every estimated cell and the method line are marked EST, and totals include them.
+
+## 2026-11-12: money flow, finance partner pays Aaronz Pay
+
+On the brief money-flow slide, after the developer repays, the finance partner settles and pays Aaronz Pay its fee (step 6). This replaces the earlier wording where Aaronz Pay settled the finance partner.
