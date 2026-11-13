@@ -102,6 +102,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - FastPay vs Aaronz lanes.
 - **Notion** (private pages):
   - [Launch tracker](https://app.notion.com/p/4086ebf7407281b9ab6af8f6ca4e04bd)
+  - [To-do list](https://app.notion.com/p/4176ebf74072811b87e2f7fbac57de8c) (created 2026-11-13 from the Next section below)
   - [Pitch](https://app.notion.com/p/4086ebf74072819a9a25f2ea0ac75ae5)
   - [Channel Connect agreement](https://app.notion.com/p/4096ebf7407281f7b22bd5fe6a90bbf1)
   - [Imtiaz: options we can offer](https://app.notion.com/p/4096ebf7407281cbaa4bf06a41bb28fe)
