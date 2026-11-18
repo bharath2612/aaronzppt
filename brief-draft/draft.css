@@ -18,17 +18,26 @@
 .px-split .bk{background:var(--brand);color:#fff}
 .px-split .dv{background:var(--ink);color:#fff}
 .reveal .px-note{margin:14px 0 0!important;font-size:16px!important;color:var(--ink)!important}
-/* Credit risk: risk, control and status. */
-.rk-table{width:100%;max-width:var(--w);margin:6px auto 0}
-.rk-table .cm-row{grid-template-columns:360px 1fr 170px;gap:24px;padding:13px 0}
-.rk-table .cm-row>span{font-size:16px;line-height:1.45}
-.rk-table .cm-head>span{font-size:13px}
-.rk-table .cm-name{font-size:17px}
-.rk-tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.02em;line-height:1;white-space:nowrap;color:var(--muted);border:1px dashed var(--faint);border-radius:999px;padding:6px 11px}
-.rk-tag.decide{color:var(--brand);background:var(--tint);border:1px solid var(--brand)}
+/* Credit risk: three facts about the exposure, then protection at each stage. */
+.cr-facts{width:100%;max-width:var(--w);margin:4px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cr-facts article{border-top:2px solid var(--ink);padding-top:14px}
+.cr-facts strong{display:block;font-size:30px;font-weight:600;letter-spacing:-.02em;line-height:1.1}
+.cr-facts span{display:block;margin-top:6px;font-size:16px;color:var(--muted)}
+.reveal .cr-stages{width:100%;max-width:var(--w);margin:34px auto 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cr-stage{background:var(--card);border-radius:16px;padding:22px 24px}
+.cr-stage:last-child{background:var(--tint)}
+.reveal .cr-when{margin:0 0 12px!important;font-family:var(--mono);font-size:12px!important;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)!important}
+.cr-when span{color:var(--brand);margin-right:10px}
+.reveal .cr-stage ul{display:block;list-style:none;margin:0;padding:0}
+.reveal .cr-stage li{padding:12px 0;border-top:1px solid var(--line)}
+.cr-stage li>span{display:block;font-size:16px;line-height:1.4;color:var(--ink);margin-bottom:8px}
+.cr-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.02em;line-height:1;white-space:nowrap;border-radius:999px;padding:5px 10px}
+.cr-tag.build{color:var(--muted);border:1px dashed var(--faint)}
+.cr-tag.agree{color:var(--ink);border:1px solid var(--ink)}
+.cr-tag.decide{color:#fff;background:var(--brand);border:1px solid var(--brand)}
 /* Phone reader view: one column, each option labelled. */
-.reader .rk-table .cm-row{grid-template-columns:1fr;gap:6px}
-.reader .rk-table .cm-head{display:none}
+.reader .cr-facts,.reader .reveal .cr-stages{grid-template-columns:minmax(0,1fr)}
+.reader .cr-facts strong{font-size:24px}
 .reader .px{grid-template-columns:minmax(0,1fr)}
 .reader .px-opt{min-width:0;padding:20px}
 .reader .px-split{height:auto;min-height:40px}

@@ -36,9 +36,12 @@ const {build}=require('../tools/build-brief-draft.cjs');
  assert.deepEqual(await page.locator('#pricing .px-split').evaluateAll(ss=>ss.map(s=>s.textContent)),['Brokerage · AED 1,500','Brokerage · AED 750Developer · AED 750']);
  assert.equal(Math.round(1.5*365/50),11);assert.match(await page.locator('#pricing .source').textContent(),/1\.5% charge for about 50 days is about 11% a year/);
  assert.match(await page.locator('#pricing .source').textContent(),/Example figures/);
- // Credit risk: six risks, each with a control and a status.
- assert.equal(await page.locator('#credit-risk .rk-table .cm-row:not(.cm-head)').count(),6);
- assert.deepEqual(await page.locator('#credit-risk .rk-tag').allTextContents(),['To be agreed','Decision needed','Decision needed','To be built','To be built','To be agreed']);
+ // Credit risk: three facts about the exposure, then seven controls across three stages, each with a status.
+ assert.deepEqual(await page.locator('#credit-risk .cr-facts strong').allTextContents(),['The developer','About 50 days','Confirmed']);
+ await page.evaluate(()=>deck.slide([...document.querySelectorAll('.slides>section')].findIndex(s=>s.id==='credit-risk')));await page.waitForTimeout(300);
+ assert(await page.evaluate(()=>{const f=document.querySelector('#credit-risk .cr-facts').getBoundingClientRect(),s=document.querySelector('#credit-risk .cr-stages').getBoundingClientRect();return f.bottom<s.top&&Math.abs(f.left-s.left)<1&&Math.abs(f.right-s.right)<1;}),'credit risk stages overlap or misalign with the facts');
+ assert.deepEqual(await page.locator('#credit-risk .cr-stage').evaluateAll(ss=>ss.map(s=>s.querySelectorAll('li').length)),[3,2,2]);
+ assert.deepEqual(await page.locator('#credit-risk .cr-tag').allTextContents(),['To be built','To be built','To be agreed','To be agreed','To be agreed','Decision needed','Decision needed']);
  // Same rules as the brief: no recipient named, no banned word, notes on every new slide.
  const text=await page.evaluate(()=>document.title+document.body.innerText);
  assert(!/\breem\b/i.test(text),'recipient named in the draft');assert(!/automatically/i.test(text),'banned word in the draft');
