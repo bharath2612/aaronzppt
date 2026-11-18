@@ -1,0 +1,24 @@
+/* Draft-only styles for the pricing and credit risk slides. Loaded after brief/brief.css; move into it when the slides join the brief. */
+.draft-tag{display:inline-block;margin-left:12px;vertical-align:middle;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;line-height:1;color:#8f5a00;background:#fff8e8;border:1px solid #f5b83d;border-radius:4px;padding:4px 7px}
+.phone-slides .nav-logo .draft-tag{font-size:28px;padding:8px 12px}
+/* Pricing: the two options side by side, with the scale cards on the right. */
+.pr-table .cm-row{grid-template-columns:225px 1fr 1fr;padding:13px 0}
+.pr-table .cm-row>span{font-size:17px;line-height:1.4;padding-right:24px}
+.pr-table .cm-head>span{font-size:13px}
+.pr-table .cm-name{font-size:16px}
+.reveal .pr .bar-side{gap:12px}
+.reveal .pr .bar-side .c-card{padding:20px 22px}
+.reveal .pr .bar-side .c-card strong{font-size:30px}
+.reveal .pr .bar-side .c-card .todo{display:inline-block;width:auto;font-size:15px}
+/* Credit risk: risk, control and status. */
+.rk-table{width:100%;max-width:var(--w);margin:6px auto 0}
+.rk-table .cm-row{grid-template-columns:330px 1fr 170px;gap:24px;padding:13px 0}
+.rk-table .cm-row>span{font-size:16px;line-height:1.45}
+.rk-table .cm-head>span{font-size:13px}
+.rk-table .cm-name{font-size:17px}
+.rk-tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.02em;line-height:1;white-space:nowrap;color:var(--muted);border:1px dashed var(--faint);border-radius:999px;padding:6px 11px}
+.rk-tag.decide{color:var(--brand);background:var(--tint);border:1px solid var(--brand)}
+/* Phone reader view: one column, each option labelled. */
+.reader .pr-table .cm-row,.reader .rk-table .cm-row{grid-template-columns:1fr;gap:6px}
+.reader .pr-table .cm-head,.reader .rk-table .cm-head{display:none}
+.reader .pr-table .cm-row>span[data-label]::before{content:attr(data-label);display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:2px}

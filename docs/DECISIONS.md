@@ -262,3 +262,7 @@ Every brief slide and PDF page carries a small confidentiality and copyright lin
 ## 2026-11-18: AaronzPay is one word
 
 The product name is written "AaronzPay" everywhere, in slide copy and speaker notes as well as the wordmark. This replaces the earlier choice of "Aaronz Pay" in copy. Older entries above keep the spelling used at the time.
+
+## 2026-11-18: pricing and credit risk live in a separate draft brief
+
+The pricing and credit risk slides are work in progress, so they sit in a draft copy of the brief at /brief-draft/, built from brief/index.html by tools/build-brief-draft.cjs, until the user approves merging them. Unknown terms (rate, AaronzPay share) show as "To be added"; open choices show as "Decision needed". The test fails if the draft is not rebuilt after a brief change.

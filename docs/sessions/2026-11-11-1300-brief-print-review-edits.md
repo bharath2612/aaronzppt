@@ -172,3 +172,12 @@ The Aaronz Pay line now runs the full length of the Today line. After the immedi
 - Request: "AaronzPay is one word", "everywhere do it".
 - Done: all 12 "Aaronz Pay" in `brief/index.html` (money-flow labels, sub-lines, callout, solution and gap slides, speaker notes, nav logo aria-label) are now "AaronzPay"; `tests/brief.cjs` updated. The other decks never used the two-word form. STATUS and DECISIONS updated; earlier session notes and decisions keep the old spelling as history. The Notion to-do page (now titled AaronzPay) had three blocks with "Aaronz Pay" and those are fixed.
 - Checks: export wrote 18 pages; `npm test` passed all four suites.
+
+## Follow-up (2026-11-18 15:51 +04): draft brief with pricing and credit risk
+
+- Request: after a finance-partner review of the brief, build the pricing and credit risk slides after the money flow, at a separate link and not in the main brief, as work in progress until the user says to merge.
+- Done: new draft at `/brief-draft/`. `tools/build-brief-draft.cjs` copies `brief/index.html` and inserts `brief-draft/slides.html` after the money flow: section break "07 Pricing and risk", `#pricing` (Option A brokerage pays a discount vs Option B developer pays a fee; About 50 days out; AED 137 per 1% a year on AED 100,000; rate and AaronzPay share shown as "To be added") and `#credit-risk` (six risks, each with a control and a status: To be agreed, Decision needed, To be built). Draft styles in `brief-draft/draft.css`; a "Draft" tag sits next to the logo, and the nav adds "Pricing and risk". Own PDF: `brief-draft/aaronz-commission-finance-draft.pdf` (21 pages). `tools/export-brief-pdf.cjs` now takes optional source and output paths.
+- Commands: `npm run export:brief-draft` rebuilds the draft page and its PDF; re-run after any brief change. `tests/brief-draft.cjs` (added to `npm test`) fails if the draft page is stale, checks layout, the confidentiality line, the formula, no recipient name (whole word, since "agreement" contains the letters), and the phone reader view.
+- Not done (needs the user): pick Option A/B, the rate, AaronzPay's share, recourse and cancellation rules. The draft's money-flow step 3 still says "AaronzPay approves", which conflicts with the credit risk slide saying the finance partner approves each developer.
+- Merge later: move the slides from `brief-draft/slides.html` into `brief/index.html` and `draft.css` into `brief/brief.css`, then remove the draft.
+- Checks: `npm test` passed all five suites.

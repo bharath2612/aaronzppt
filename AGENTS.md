@@ -8,10 +8,11 @@ Read `docs/STATUS.md` (current truth and next steps) and the newest file in `doc
 
 ## Commands
 
-- `npm test`: runs `tests/presentation.cjs`, `tests/imtiaz.cjs`, `tests/investor.cjs` and `tests/brief.cjs` (needs Playwright Chromium). Slide screenshots land in `.build/` (ignored by git).
+- `npm test`: runs `tests/presentation.cjs`, `tests/imtiaz.cjs`, `tests/investor.cjs`, `tests/brief.cjs` and `tests/brief-draft.cjs` (needs Playwright Chromium). Slide screenshots land in `.build/` (ignored by git).
 - `npm run export:imtiaz`: regenerates `imtiaz.pdf`. Re-run it after every Imtiaz deck change.
 - `npm run export:investor`: regenerates the USD and AED investor PDFs. Re-run it after every investor deck change.
 - `npm run export:brief`: regenerates `brief/aaronz-commission-finance.pdf`. Re-run it after every financier brief change.
+- `npm run export:brief-draft`: rebuilds `brief-draft/index.html` (the brief plus the draft pricing and credit risk slides) and its PDF. Re-run it after every brief change too; `npm test` fails while the draft is stale.
 - `npm start`: optional local server on port 4173.
 - No lint or build scripts are configured.
 
@@ -21,6 +22,7 @@ Read `docs/STATUS.md` (current truth and next steps) and the newest file in `doc
 - **Imtiaz deck:** `imtiaz.html`, `assets/imtiaz.css`, `assets/imtiaz-select.js` (payout picker), `assets/imtiaz-present.js` (Present button). It shares `assets/presentation.js` with the main deck, so check both decks when changing it.
 - **Investor deck:** `investor/index.html`, `investor/investor.css`. It builds on `assets/imtiaz.css`, so check it when changing that file. Show unknown facts as a visible "To be added", never invented text. After editing `investor/investor.css`, update the `?v=` hash in `investor/index.html` (first 8 hex characters of its SHA-256); `npm test` fails until it matches. Never use the word "automatically" in this deck. Money figures must be `<data data-usd data-aed>` so the currency switch can change them. Read `investor/notes.md` first, and add everything the user says about this deck to it. That file is local only and ignored by git: never commit it, and ask the user if it is missing.
 - **Financier brief:** `brief/index.html`, `brief/brief.css`, `brief/settings.js` (colour and slide hide/show sheet saved per browser, phone slide view, PDF button), on top of `investor/investor.css`. Default colour is set in both `settings.js` and the `data-accent` on `<html>`; keep `class="print-pdf"` on `<html>` or Reveal's print rules restyle the printed slides. Published at `/brief/`; `reem/index.html` only redirects the old address. AED only. It goes to several parties, so never name a recipient on it (the test checks); the folder name is internal. Update both `?v=` hashes after editing either stylesheet. The same "automatically" ban applies.
+- **Draft brief:** `brief-draft/slides.html` and `brief-draft/draft.css` hold work-in-progress slides; `tools/build-brief-draft.cjs` generates `brief-draft/index.html` from the brief. Never edit the generated page by hand. Published at `/brief-draft/` with a Draft tag; it is not merged into the brief until the user says so.
 - **Standalone calculator:** `commission-calculator.html` has its own inline copy of the calculation.
 - **Diagrams:** scripts in `diagrams/`, rendered with `@excalidraw/cli`.
 
