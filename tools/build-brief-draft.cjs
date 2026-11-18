@@ -13,7 +13,7 @@ function build(){
  once('href="brief.css?v='+v+'">','href="../brief/brief.css?v='+v+'"><link rel="stylesheet" href="draft.css?v='+cssHash+'">');
  once('<script src="settings.js"></script>','<script src="../brief/settings.js"></script>');
  once('aria-label="AaronzPay">Aaronz<span class="wm-pay">Pay</span></span></a>','aria-label="AaronzPay">Aaronz<span class="wm-pay">Pay</span></span><span class="draft-tag">Draft</span></a>');
- once('<a href="#/break-model">Money flow</a>','<a href="#/break-model">Money flow</a><a href="#/break-risk">Pricing and risk</a>');
+ once('<a href="#/break-model">Money flow</a>','<a href="#/break-model">Money flow</a><a href="#/break-pricing">Pricing</a><a href="#/break-credit">Credit risk</a>');
  once('href="aaronz-commission-finance.pdf"','href="aaronz-commission-finance-draft.pdf"');
  once('\n\n</div></div><footer','\n\n'+slides.replace(/<!--conf-->/g,conf)+'\n\n</div></div><footer');
  const total=(html.match(/<section id=/g)||[]).length;

@@ -13,21 +13,29 @@ const {build}=require('../tools/build-brief-draft.cjs');
  const page=await browser.newPage({viewport:{width:1440,height:1000}});page.on('pageerror',e=>errors.push(e.message));page.on('requestfailed',r=>errors.push('failed to load '+r.url()));
  await page.goto(pathToFileURL(process.cwd()+'/brief-draft/index.html').href);await page.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());await page.evaluate(()=>document.fonts.ready);
  const ids=await page.evaluate(()=>[...document.querySelectorAll('.slides>section')].map(s=>s.id));
- assert.equal(ids.length,21);assert.deepEqual(ids.slice(-4),['business-model','break-risk','pricing','credit-risk']);
+ assert.equal(ids.length,22);assert.deepEqual(ids.slice(-5),['business-model','break-pricing','pricing','break-credit','credit-risk']);
  assert.match(await page.title(),/Draft$/);assert.equal(await page.locator('.nav-logo .draft-tag').textContent(),'Draft');
  assert.equal(await page.locator('#deckPdf').getAttribute('href'),'aaronz-commission-finance-draft.pdf');assert(fs.existsSync('brief-draft/aaronz-commission-finance-draft.pdf'),'draft PDF missing');
  const conf=await page.locator('#home .conf').textContent();
- for(const id of ['break-risk','pricing','credit-risk']){
+ for(const id of ['break-pricing','pricing','break-credit','credit-risk']){
   await page.evaluate(id=>deck.slide([...document.querySelectorAll('.slides>section')].findIndex(s=>s.id===id)),id);await page.waitForTimeout(300);await page.screenshot({path:'.build/brief-draft-'+id+'.png'});
   const problems=await page.locator('#'+id).evaluate(el=>{const r=el.getBoundingClientRect();const note=el.querySelector(':scope>.source');const limit=note?note.getBoundingClientRect().top:r.bottom;return [...el.querySelectorAll('*')].filter(n=>!n.closest('aside.notes,.source,.conf')).filter(n=>{const b=n.getBoundingClientRect();return b.width>0&&(b.bottom>limit+1||b.left<r.left-1||b.right>r.right+1);}).map(n=>n.tagName+'.'+n.className);});
   assert.deepEqual(problems,[],id+' overflow: '+problems);
+  const orphans=await page.locator('#'+id).evaluate(el=>[...el.querySelectorAll('p,h3,h2,h1,strong,span')].filter(n=>!n.closest('aside.notes')&&n.getClientRects().length).filter(n=>{const text=n.firstChild&&n.childNodes.length===1&&n.firstChild.nodeType===3?n.firstChild:null;if(!text)return false;const value=text.textContent;const cut=value.trimEnd().lastIndexOf(' ');if(cut<1)return false;const top=(a,b)=>{const r=document.createRange();r.setStart(text,a);r.setEnd(text,b);return r.getClientRects()[0].top;};return top(cut+1,value.trimEnd().length)-top(cut-1,cut)>2;}).map(n=>n.textContent));
+  assert.deepEqual(orphans,[],id+' single word on a last line');
+  // Pricing labels such as "Finance partner" stay on one line.
+  const broken=await page.locator('#'+id).evaluate(el=>[...el.querySelectorAll('.px-path,.px-flow strong,.px-split span')].filter(n=>n.getClientRects().length&&n.getBoundingClientRect().height>parseFloat(getComputedStyle(n).lineHeight)*1.5&&!n.closest('.px-split')).map(n=>n.textContent));
+  assert.deepEqual(broken,[],id+' label wraps: '+broken);
   assert.equal(await page.locator('#'+id+'>.conf').textContent(),conf,id+' confidentiality line');
   assert(await page.locator('#'+id+'>.conf').evaluate(el=>{const n=el.parentElement.querySelector(':scope>.source');return !n||n.getBoundingClientRect().bottom<=el.getBoundingClientRect().top+1;}),id+' confidentiality line overlaps the source');
  }
- // Pricing: two options, unknown rates shown as To be added, and the scale figure matches its formula.
- assert.deepEqual(await page.locator('#pricing .pr-table .cm-head span').allTextContents(),['','Option A · Brokerage pays','Option B · Developer pays']);
- assert.equal(await page.locator('#pricing .todo').count(),3);
- assert.equal(Math.round(100000*0.01*50/365),137);assert.match(await page.locator('#pricing .source').textContent(),/AED 137 = AED 100,000 × 1% × 50 ÷ 365/);
+ // Pricing: one AED 100,000 commission through two options; the finance partner earns the same 1.5% either way.
+ assert.deepEqual(await page.locator('#pricing .px-opt h3').allTextContents(),['Brokerage pays','Brokerage and developer share']);
+ const flows=await page.locator('#pricing .px-opt').evaluateAll(os=>os.map(o=>[...o.querySelectorAll('.px-flow strong')].map(s=>+s.textContent.replace(/[^0-9]/g,''))));
+ assert.deepEqual(flows,[[98500,100000],[99250,100750]]);for(const [paid,repaid] of flows)assert.equal(repaid-paid,100000*0.015);
+ assert.deepEqual(await page.locator('#pricing .px-split').evaluateAll(ss=>ss.map(s=>s.textContent)),['Brokerage · AED 1,500','Brokerage · AED 750Developer · AED 750']);
+ assert.equal(Math.round(1.5*365/50),11);assert.match(await page.locator('#pricing .source').textContent(),/1\.5% charge for about 50 days is about 11% a year/);
+ assert.match(await page.locator('#pricing .source').textContent(),/Example figures/);
  // Credit risk: six risks, each with a control and a status.
  assert.equal(await page.locator('#credit-risk .rk-table .cm-row:not(.cm-head)').count(),6);
  assert.deepEqual(await page.locator('#credit-risk .rk-tag').allTextContents(),['To be agreed','Decision needed','Decision needed','To be built','To be built','To be agreed']);
@@ -41,8 +49,8 @@ const {build}=require('../tools/build-brief-draft.cjs');
  await mobile.evaluate(()=>document.getElementById('viewToggle').click());await mobile.waitForFunction(()=>document.body.classList.contains('reader')&&innerWidth<500);await mobile.waitForTimeout(500);
  const wide=await mobile.evaluate(()=>[...document.querySelectorAll('#pricing *,#credit-risk *')].filter(n=>n.getBoundingClientRect().right>innerWidth+1&&!n.closest('aside.notes')).map(n=>n.tagName+'.'+n.className));
  assert.deepEqual(wide,[],'draft slides overflow on a phone: '+wide);
- for(const id of ['home','pricing','credit-risk']){await mobile.locator('#'+id).scrollIntoViewIfNeeded();await mobile.locator('#'+id).screenshot({path:'.build/brief-draft-'+id+'-mobile.png'});}
+ for(const id of ['pricing','credit-risk']){await mobile.locator('#'+id).scrollIntoViewIfNeeded();await mobile.locator('#'+id).screenshot({path:'.build/brief-draft-'+id+'-mobile.png'});}
  assert.deepEqual(errors,[]);
- console.log('Passed: draft brief, built from the brief, twenty-one slides, pricing and credit risk slides, confidentiality line, draft PDF and phone reader layout.');
+ console.log('Passed: draft brief, built from the brief, twenty-two slides, pricing and credit risk slides, confidentiality line, draft PDF and phone reader layout.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});

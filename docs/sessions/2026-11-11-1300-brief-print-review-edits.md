@@ -181,3 +181,9 @@ The Aaronz Pay line now runs the full length of the Today line. After the immedi
 - Not done (needs the user): pick Option A/B, the rate, AaronzPay's share, recourse and cancellation rules. The draft's money-flow step 3 still says "AaronzPay approves", which conflicts with the credit risk slide saying the finance partner approves each developer.
 - Merge later: move the slides from `brief-draft/slides.html` into `brief/index.html` and `draft.css` into `brief/brief.css`, then remove the draft.
 - Checks: `npm test` passed all five suites.
+
+## Follow-up (2026-11-18 16:02 +04): draft pricing slide redesigned, separate breaks
+
+- Request: give pricing and credit risk their own section breaks; drop "developer pays" and use two options, brokerage pays or brokerage and developer share; illustrate it far better and less verbosely, focusing on pricing.
+- Done: `brief-draft/slides.html` now has "07 Pricing" and "08 Credit risk" breaks (nav: Pricing, Credit risk; 22 slides). The pricing slide, "The charge is the same. The choice is who pays it.", follows one example AED 100,000 commission through two cards: Option 1 Brokerage pays (day 0 AED 98,500 to the brokerage, about day 50 AED 100,000 from the developer) and Option 2 Brokerage and developer share (AED 99,250 / AED 100,750). A bar under each shows who carries the AED 1,500 charge. The source line marks the figures as an example (1.5% for about 50 days is about 11% a year) and says the rate, split and AaronzPay share are to be agreed. Credit risk: eyebrow 08, one label and two controls shortened so nothing leaves a single word on a line.
+- Tests: `tests/brief-draft.cjs` checks the two flows (the finance partner earns 1.5% in both), the charge bars, the example label, single-word last lines and wrapped labels. `npm test` passed all five suites.
