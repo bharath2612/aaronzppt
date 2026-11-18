@@ -160,3 +160,9 @@ The Aaronz Pay line now runs the full length of the Today line. After the immedi
 - Request: keep the green highlight on step 6, where Aaronz Pay is paid its fee.
 - Done: step 6 has `class="us"` again, so steps 3 and 6 are green. Test expects 3 and 6.
 - Checks: export wrote 18 pages; `npm test` passed all four suites.
+
+## Follow-up (2026-11-18 10:03 +04): confidentiality line on every slide
+
+- Request: a small confidentiality and all-rights-reserved line for Aaronz & Co at the bottom of every slide, as the brief is shared with partners.
+- Done: each of the 18 sections in `brief/index.html` ends with `p.conf`: "Confidential. For the intended recipient only; not to be copied or shared without the written consent of Aaronz & Co. (c) 2026 Aaronz & Co. All rights reserved." `brief/brief.css` places it 12px from the slide foot, 10px Inter in the faint grey, one line, below the source notes; in the phone reader view it flows after each section. It prints on every PDF page. No recipient is named.
+- Tests: `tests/brief.cjs` checks each slide has exactly one line, on one line, inside the slide and clear of the source note or cover date. Export wrote 18 pages (page 1 rendered and checked); `npm test` passed all four suites.

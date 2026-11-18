@@ -254,3 +254,7 @@ Sharjah 2025/2026 and RAK 2026 have no off-plan figure. The user asked for a set
 ## 2026-11-12: money flow, finance partner pays Aaronz Pay
 
 On the brief money-flow slide, after the developer repays, the finance partner settles and pays Aaronz Pay its fee (step 6). This replaces the earlier wording where Aaronz Pay settled the finance partner.
+
+## 2026-11-18: confidentiality line on the financier brief
+
+Every brief slide and PDF page carries a small confidentiality and copyright line for Aaronz & Co, kept generic ("the intended recipient") so the brief still names no recipient. It is a notice, not a substitute for an NDA with each partner.
