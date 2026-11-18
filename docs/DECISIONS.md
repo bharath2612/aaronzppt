@@ -258,3 +258,7 @@ On the brief money-flow slide, after the developer repays, the finance partner s
 ## 2026-11-18: confidentiality line on the financier brief
 
 Every brief slide and PDF page carries a small confidentiality and copyright line for Aaronz & Co, kept generic ("the intended recipient") so the brief still names no recipient. It is a notice, not a substitute for an NDA with each partner.
+
+## 2026-11-18: AaronzPay is one word
+
+The product name is written "AaronzPay" everywhere, in slide copy and speaker notes as well as the wordmark. This replaces the earlier choice of "Aaronz Pay" in copy. Older entries above keep the spelling used at the time.

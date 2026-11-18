@@ -166,3 +166,9 @@ The Aaronz Pay line now runs the full length of the Today line. After the immedi
 - Request: a small confidentiality and all-rights-reserved line for Aaronz & Co at the bottom of every slide, as the brief is shared with partners.
 - Done: each of the 18 sections in `brief/index.html` ends with `p.conf`: "Confidential. For the intended recipient only; not to be copied or shared without the written consent of Aaronz & Co. (c) 2026 Aaronz & Co. All rights reserved." `brief/brief.css` places it 12px from the slide foot, 10px Inter in the faint grey, one line, below the source notes; in the phone reader view it flows after each section. It prints on every PDF page. No recipient is named.
 - Tests: `tests/brief.cjs` checks each slide has exactly one line, on one line, inside the slide and clear of the source note or cover date. Export wrote 18 pages (page 1 rendered and checked); `npm test` passed all four suites.
+
+## Follow-up (2026-11-18 11:53 +04): AaronzPay as one word everywhere
+
+- Request: "AaronzPay is one word", "everywhere do it".
+- Done: all 12 "Aaronz Pay" in `brief/index.html` (money-flow labels, sub-lines, callout, solution and gap slides, speaker notes, nav logo aria-label) are now "AaronzPay"; `tests/brief.cjs` updated. The other decks never used the two-word form. STATUS and DECISIONS updated; earlier session notes and decisions keep the old spelling as history. The Notion to-do page (now titled AaronzPay) had three blocks with "Aaronz Pay" and those are fixed.
+- Checks: export wrote 18 pages; `npm test` passed all four suites.
