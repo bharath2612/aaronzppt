@@ -40,8 +40,8 @@ const {build}=require('../tools/build-brief-draft.cjs');
  assert.deepEqual(await page.locator('#credit-risk .cr-facts strong').allTextContents(),['The developer','About 50 days','Confirmed']);
  await page.evaluate(()=>deck.slide([...document.querySelectorAll('.slides>section')].findIndex(s=>s.id==='credit-risk')));await page.waitForTimeout(300);
  assert(await page.evaluate(()=>{const f=document.querySelector('#credit-risk .cr-facts').getBoundingClientRect(),s=document.querySelector('#credit-risk .cr-stages').getBoundingClientRect();return f.bottom<s.top&&Math.abs(f.left-s.left)<1&&Math.abs(f.right-s.right)<1;}),'credit risk stages overlap or misalign with the facts');
- assert.deepEqual(await page.locator('#credit-risk .cr-stage').evaluateAll(ss=>ss.map(s=>s.querySelectorAll('li').length)),[3,2,2]);
- assert.deepEqual(await page.locator('#credit-risk .cr-tag').allTextContents(),['To be built','To be built','To be agreed','To be agreed','To be agreed','Decision needed','Decision needed']);
+ assert.deepEqual(await page.locator('#credit-risk .cr-stage').evaluateAll(ss=>ss.map(s=>s.querySelectorAll('li').length)),[2,2,2]);
+ assert.deepEqual(await page.locator('#credit-risk .cr-tag').allTextContents(),['To be built','To be built','To be built','To be agreed','Decision needed','Agreed']);
  // Same rules as the brief: no recipient named, no banned word, notes on every new slide.
  const text=await page.evaluate(()=>document.title+document.body.innerText);
  assert(!/\breem\b/i.test(text),'recipient named in the draft');assert(!/automatically/i.test(text),'banned word in the draft');
