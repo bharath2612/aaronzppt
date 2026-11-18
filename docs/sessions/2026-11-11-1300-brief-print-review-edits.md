@@ -197,3 +197,7 @@ The Aaronz Pay line now runs the full length of the Today line. After the immedi
 ## Follow-up: credit risk controls revised (2026-11-18)
 
 User asked to remove "Finance partner approves the developer and its limit" (only AaronzPay approves), replace the unclear "developer accepts that the finance partner collects" with stopping new payouts for a developer overdue past a set number of days, and replace the recourse decision with per-day late interest, already agreed (new "Agreed" tag). Test updated to [2,2,2] controls and the new tag order. `npm test`: all five suites pass.
+
+## Follow-up: credit risk without badges (2026-11-18)
+
+User asked for plain lines with no status badges. Removed the six tags, the status legend and the tag CSS; the test now checks the six control lines and that no badge or legend remains. `npm test`: all five suites pass.

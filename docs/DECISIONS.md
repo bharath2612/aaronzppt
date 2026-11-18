@@ -270,3 +270,5 @@ The pricing and credit risk slides are work in progress, so they sit in a draft 
 ## 2026-11-18: credit risk controls
 
 AaronzPay approves each payout; the finance partner does not approve developers or limits, so that control is removed and money-flow step 3 ("AaronzPay approves") stands. A developer overdue past a set number of days gets no new payouts. Late repayment carries per-day interest, which is already agreed. The cancellation rule is still open.
+
+The controls show as plain lines; the user does not want status badges (built, agreed, decision needed) on the slide.

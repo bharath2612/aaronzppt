@@ -36,12 +36,13 @@ const {build}=require('../tools/build-brief-draft.cjs');
  assert.deepEqual(await page.locator('#pricing .px-split').evaluateAll(ss=>ss.map(s=>s.textContent)),['Brokerage · AED 1,500','Brokerage · AED 750Developer · AED 750']);
  assert.equal(Math.round(1.5*365/50),11);assert.match(await page.locator('#pricing .source').textContent(),/1\.5% charge for about 50 days is about 11% a year/);
  assert.match(await page.locator('#pricing .source').textContent(),/Example figures/);
- // Credit risk: three facts about the exposure, then seven controls across three stages, each with a status.
+ // Credit risk: three facts about the exposure, then six controls across three stages, as plain lines.
  assert.deepEqual(await page.locator('#credit-risk .cr-facts strong').allTextContents(),['The developer','About 50 days','Confirmed']);
  await page.evaluate(()=>deck.slide([...document.querySelectorAll('.slides>section')].findIndex(s=>s.id==='credit-risk')));await page.waitForTimeout(300);
  assert(await page.evaluate(()=>{const f=document.querySelector('#credit-risk .cr-facts').getBoundingClientRect(),s=document.querySelector('#credit-risk .cr-stages').getBoundingClientRect();return f.bottom<s.top&&Math.abs(f.left-s.left)<1&&Math.abs(f.right-s.right)<1;}),'credit risk stages overlap or misalign with the facts');
  assert.deepEqual(await page.locator('#credit-risk .cr-stage').evaluateAll(ss=>ss.map(s=>s.querySelectorAll('li').length)),[2,2,2]);
- assert.deepEqual(await page.locator('#credit-risk .cr-tag').allTextContents(),['To be built','To be built','To be built','To be agreed','Decision needed','Agreed']);
+ assert.deepEqual(await page.locator('#credit-risk .cr-stage li').allTextContents(),['Brokerage, broker card, project and marketing agreement checked','Paid only once, on a confirmed sale','Overdue past a set number of days: no new payouts on that developer\'s sales','Each developer stays under its limit','Sale cancelled: the developer still repays','Late payment: the developer pays interest for each day overdue']);
+ assert.equal(await page.locator('#credit-risk .cr-tag,#credit-risk>.source').count(),0,'credit risk shows plain lines, no status badges');
  // Same rules as the brief: no recipient named, no banned word, notes on every new slide.
  const text=await page.evaluate(()=>document.title+document.body.innerText);
  assert(!/\breem\b/i.test(text),'recipient named in the draft');assert(!/automatically/i.test(text),'banned word in the draft');
