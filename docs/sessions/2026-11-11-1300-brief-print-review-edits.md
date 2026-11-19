@@ -201,3 +201,7 @@ User asked to remove "Finance partner approves the developer and its limit" (onl
 ## Follow-up: credit risk without badges (2026-11-18)
 
 User asked for plain lines with no status badges. Removed the six tags, the status legend and the tag CSS; the test now checks the six control lines and that no badge or legend remains. `npm test`: all five suites pass.
+
+## Follow-up: thank-you slide (2026-11-19)
+
+User asked for a thank-you slide at the end of the main brief. Added `#thanks` (logo, "Thank you" h2 at 96px, 48px on narrow screens, AaronzPay.today, confidentiality line, speaker note). Brief is 19 slides and 19 PDF pages; the draft build now anchors its insertion on `<section id="thanks"` so the draft is 23 slides with thanks last. Tests: brief ids and counts updated, cover logo check scoped to `#home` (two logos now), hidden-slide count 18; draft expects 23 ids ending in thanks. `npm test`: all five suites pass.

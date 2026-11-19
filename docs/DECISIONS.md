@@ -272,3 +272,7 @@ The pricing and credit risk slides are work in progress, so they sit in a draft 
 AaronzPay approves each payout; the finance partner does not approve developers or limits, so that control is removed and money-flow step 3 ("AaronzPay approves") stands. A developer overdue past a set number of days gets no new payouts. Late repayment carries per-day interest, which is already agreed. The cancellation rule is still open.
 
 The controls show as plain lines; the user does not want status badges (built, agreed, decision needed) on the slide.
+
+## 2026-11-19: thank-you slide closes the brief
+
+The brief ends with a "Thank you" slide in the cover style: the Aaronz & AI logo, "Thank you" and AaronzPay.today, with no contact details. The draft brief now inserts its slides before this slide instead of at the end, so the thank-you slide stays last there too.

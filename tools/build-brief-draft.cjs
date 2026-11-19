@@ -1,4 +1,4 @@
-// Builds brief-draft/index.html: the financier brief plus the draft slides in brief-draft/slides.html, after the money flow.
+// Builds brief-draft/index.html: the financier brief plus the draft slides in brief-draft/slides.html, after the money flow and before the thank-you slide.
 // The brief stays the source for every other slide, so re-run this (npm run export:brief-draft) after any brief change.
 const fs=require('node:fs');const crypto=require('node:crypto');const path=require('node:path');
 const root=path.join(__dirname,'..');
@@ -15,7 +15,7 @@ function build(){
  once('aria-label="AaronzPay">Aaronz<span class="wm-pay">Pay</span></span></a>','aria-label="AaronzPay">Aaronz<span class="wm-pay">Pay</span></span><span class="draft-tag">Draft</span></a>');
  once('<a href="#/break-model">Money flow</a>','<a href="#/break-model">Money flow</a><a href="#/break-pricing">Pricing</a><a href="#/break-credit">Credit risk</a>');
  once('href="aaronz-commission-finance.pdf"','href="aaronz-commission-finance-draft.pdf"');
- once('\n\n</div></div><footer','\n\n'+slides.replace(/<!--conf-->/g,conf)+'\n\n</div></div><footer');
+ once('\n\n<section id="thanks"','\n\n'+slides.replace(/<!--conf-->/g,conf)+'\n\n<section id="thanks"');
  const total=(html.match(/<section id=/g)||[]).length;
  html=html.replace(/<span id="slideCount">01 \/ \d+<\/span>/,'<span id="slideCount">01 / '+total+'</span>');
  return html;

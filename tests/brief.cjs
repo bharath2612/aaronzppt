@@ -10,7 +10,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  page.on('requestfailed',r=>errors.push('failed to load '+r.url()));
  await page.goto(url);await page.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());await page.evaluate(()=>document.fonts.ready);
  // The financier brief: market, commissions, the three problems, the solution and the outcome.
- const ids=['home','break-market','market','market-ad','market-sharjah','market-rak','break-commission','commission','problem','problem-brokers','problem-brokerages','problem-developers','break-solution','problem-gap','break-outcome','outcome','break-model','business-model'];
+ const ids=['home','break-market','market','market-ad','market-sharjah','market-rak','break-commission','commission','problem','problem-brokers','problem-brokerages','problem-developers','break-solution','problem-gap','break-outcome','outcome','break-model','business-model','thanks'];
  assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('.slides>section')].map(s=>s.id)),ids);
  for(let i=0;i<ids.length;i++){await page.evaluate(i=>deck.slide(i),i);await page.waitForTimeout(300);await page.screenshot({path:'.build/brief-'+ids[i]+'.png'});
   const problems=await page.locator('#'+ids[i]).evaluate(el=>{const r=el.getBoundingClientRect();const note=el.querySelector(':scope>.source');const limit=note?note.getBoundingClientRect().top:r.bottom;return [...el.querySelectorAll('*')].filter(n=>!n.closest('aside.notes,.source,.c-meta,.conf')).filter(n=>{const b=n.getBoundingClientRect();return b.width>0&&(b.bottom>limit+1||b.left<r.left-1||b.right>r.right+1);}).map(n=>n.tagName+'.'+n.className);});
@@ -20,7 +20,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
   assert.equal(conf,'Confidential. For the intended recipient only; not to be copied or shared without the written consent of Aaronz & Co. © 2026 Aaronz & Co. All rights reserved.',ids[i]+' confidentiality line');
   const orphans=await page.locator('#'+ids[i]).evaluate(el=>[...el.querySelectorAll('p,h3,h2,h1')].filter(n=>!n.closest('aside.notes')&&n.getClientRects().length).filter(n=>{const text=n.firstChild&&n.childNodes.length===1&&n.firstChild.nodeType===3?n.firstChild:null;if(!text)return false;const value=text.textContent;const cut=value.trimEnd().lastIndexOf(' ');if(cut<1)return false;const top=(a,b)=>{const r=document.createRange();r.setStart(text,a);r.setEnd(text,b);return r.getClientRects()[0].top;};return top(cut+1,value.trimEnd().length)-top(cut-1,cut)>2;}).map(n=>n.textContent));
   assert.deepEqual(orphans,[],ids[i]+' single word on a last line');}
- assert.equal(await page.locator('#slideCount').textContent(),'18 / 18');
+ assert.equal(await page.locator('#slideCount').textContent(),'19 / 19');
  assert(await page.evaluate(()=>document.fonts.check('500 48px Inter')),'Inter not loaded');
  assert(await page.evaluate(()=>[...document.images].every(i=>i.complete&&i.naturalWidth>0)),'logo failed to load');
  assert.equal(await page.evaluate(()=>deck.getConfig().transition),'none');
@@ -88,7 +88,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  const brandColour=await page.evaluate(()=>{const d=document.createElement('i');d.style.color='var(--brand)';document.body.append(d);const c=getComputedStyle(d).color;d.remove();return c;});const inkColour=await page.evaluate(()=>{const d=document.createElement('i');d.style.color='var(--ink)';document.body.append(d);const c=getComputedStyle(d).color;d.remove();return c;});
  assert.equal(await page.locator('.nav-logo .wm-pay').evaluate(e=>getComputedStyle(e).color),brandColour);
  // Cover: the Aaronz & AI logo image, and AaronzPay.today under the headline with .today in the primary colour.
- assert.equal(await page.locator('.c-lockup .wm').count(),0);assert.deepEqual(await page.locator('.c-lockup img.logo-ai').evaluate(e=>[e.getAttribute('src'),e.alt,e.complete&&e.naturalWidth>0,e.offsetWidth,e.offsetHeight]),['../assets/aaronz-and-ai-logo.png','Aaronz & AI',true,471,76]);
+ assert.equal(await page.locator('.c-lockup .wm').count(),0);assert.deepEqual(await page.locator('#home .c-lockup img.logo-ai').evaluate(e=>[e.getAttribute('src'),e.alt,e.complete&&e.naturalWidth>0,e.offsetWidth,e.offsetHeight]),['../assets/aaronz-and-ai-logo.png','Aaronz & AI',true,471,76]);
  assert.equal(await page.locator('#home h1 + .c-url').textContent(),'AaronzPay.today');assert.equal(await page.locator('#home .c-url-tld').evaluate(e=>getComputedStyle(e).color),brandColour);assert.equal(await page.locator('#home .c-url').evaluate(e=>getComputedStyle(e).color),inkColour);
  // Money flow: six steps on one line, with Aaronz's own steps marked.
  assert.equal(await page.locator('#break-model h2').textContent(),'Money flow');assert.equal(await page.locator('#commission-ready').count(),0);assert(!/business model/i.test(await page.evaluate(()=>document.body.innerText)),'old section name shown');assert.equal(await page.locator('#business-model h2').textContent(),'From registration to settlement in six steps');
@@ -100,6 +100,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  // Outcome: broker, brokerage, developer in that order, three problem lines turned around for each, with no pricing.
  assert.deepEqual(await page.locator('#outcome h3').allTextContents(),['Broker','Brokerage','Developer']);assert.equal(await page.locator('#outcome h2').textContent(),'A win-win-win for brokers, brokerages and developers');assert.match(await page.locator('#outcome').textContent(),/Gains trust[\s\S]*not on speculation[\s\S]*A right partner who takes care of commissions/);
  assert.deepEqual(await page.locator('#outcome .c-card').evaluateAll(c=>c.map(e=>e.querySelectorAll('li').length)),[4,4,4]);
+ assert.equal(await page.locator('#thanks h2').textContent(),'Thank you');assert.equal(await page.locator('#thanks .c-url').textContent(),'AaronzPay.today');assert.equal(await page.locator('#thanks img.logo-ai').count(),1);
  assert.deepEqual([await page.locator('#break-solution h2').textContent(),await page.locator('#break-outcome h2').textContent()],['The solution','The outcome']);
  assert(!/%|AED/.test(await page.locator('#outcome').evaluate(e=>{const c=e.cloneNode(true);c.querySelector('aside.notes')?.remove();return c.textContent;})),'pricing shown on the outcome slide');
  assert.equal(await page.locator('#allocation').count(),0,'removed slide is back');
@@ -132,7 +133,7 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  assert.equal(await set.locator('#settingsSheet').isVisible(),false);await set.click('#settingsToggle');assert(await set.locator('#settingsSheet').isVisible());
  assert.equal(await set.locator('.set-list input').count(),ids.length);assert.equal(await set.locator('.set-list .set-t').first().textContent(),'Cover');
  const toggle=async id=>set.locator('.set-list label').filter({has:set.locator('input[data-slide="'+id+'"]')}).click();
- await toggle('market-rak');assert.equal(await set.locator('#market-rak').count(),0);assert.match(await set.locator('#slideCount').textContent(),/ \/ 17$/);assert.equal(await set.evaluate(()=>deck.getTotalSlides()),17);
+ await toggle('market-rak');assert.equal(await set.locator('#market-rak').count(),0);assert.match(await set.locator('#slideCount').textContent(),/ \/ 18$/);assert.equal(await set.evaluate(()=>deck.getTotalSlides()),18);
  await toggle('break-solution');assert.equal(await set.locator('.site-nav nav a[href="#/break-solution"]').isVisible(),false);
  await set.locator('[data-accent-id="blue"]').click();assert.equal(await set.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--brand').trim()),'#1d5fd1');
  assert.equal(await set.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--fix').trim()),'#1f6b4a');
@@ -169,6 +170,6 @@ const fs=require('node:fs');const crypto=require('node:crypto');
  await out.click('#settingsToggle');await out.locator('.set-toggle').click();await out.click('.set-close');assert.equal(await out.locator('#commission .na').count(),3);
  await out.emulateMedia({media:'screen'});await out.reload();await out.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());assert.equal(await out.locator('#commission .cm-total strong').first().textContent(),'AED 18.2B','rate not remembered');
  await out.evaluate(()=>{localStorage.clear();});await out.close();
- assert.deepEqual(errors,[]);console.log('Passed: financier brief deck, eighteen slide layouts, market figures, problem slides, outcome slide, old-address redirect, settings sheet, PDF for current settings, commission rate and estimates, phone slides and mobile reader layout.');
+ assert.deepEqual(errors,[]);console.log('Passed: financier brief deck, nineteen slide layouts, thank-you slide, market figures, problem slides, outcome slide, old-address redirect, settings sheet, PDF for current settings, commission rate and estimates, phone slides and mobile reader layout.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});

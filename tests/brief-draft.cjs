@@ -13,7 +13,7 @@ const {build}=require('../tools/build-brief-draft.cjs');
  const page=await browser.newPage({viewport:{width:1440,height:1000}});page.on('pageerror',e=>errors.push(e.message));page.on('requestfailed',r=>errors.push('failed to load '+r.url()));
  await page.goto(pathToFileURL(process.cwd()+'/brief-draft/index.html').href);await page.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());await page.evaluate(()=>document.fonts.ready);
  const ids=await page.evaluate(()=>[...document.querySelectorAll('.slides>section')].map(s=>s.id));
- assert.equal(ids.length,22);assert.deepEqual(ids.slice(-5),['business-model','break-pricing','pricing','break-credit','credit-risk']);
+ assert.equal(ids.length,23);assert.deepEqual(ids.slice(-6),['business-model','break-pricing','pricing','break-credit','credit-risk','thanks']);
  assert.match(await page.title(),/Draft$/);assert.equal(await page.locator('.nav-logo .draft-tag').textContent(),'Draft');
  assert.equal(await page.locator('#deckPdf').getAttribute('href'),'aaronz-commission-finance-draft.pdf');assert(fs.existsSync('brief-draft/aaronz-commission-finance-draft.pdf'),'draft PDF missing');
  const conf=await page.locator('#home .conf').textContent();
@@ -55,6 +55,6 @@ const {build}=require('../tools/build-brief-draft.cjs');
  assert.deepEqual(wide,[],'draft slides overflow on a phone: '+wide);
  for(const id of ['pricing','credit-risk']){await mobile.locator('#'+id).scrollIntoViewIfNeeded();await mobile.locator('#'+id).screenshot({path:'.build/brief-draft-'+id+'-mobile.png'});}
  assert.deepEqual(errors,[]);
- console.log('Passed: draft brief, built from the brief, twenty-two slides, pricing and credit risk slides, confidentiality line, draft PDF and phone reader layout.');
+ console.log('Passed: draft brief, built from the brief, twenty-three slides, thank-you slide last, pricing and credit risk slides, confidentiality line, draft PDF and phone reader layout.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});

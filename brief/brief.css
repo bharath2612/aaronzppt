@@ -149,6 +149,7 @@ body:not(.reader) .reveal #problem-gap .inv-call h3{white-space:nowrap}
 .c-lockup .wm{font-size:84px}
 /* Cover: the Aaronz & AI logo (black, transparent PNG), then the AaronzPay.today address under the headline with .today in the primary colour. */
 .reveal .c-lockup img.logo-ai{width:471px;max-width:100%;height:auto}
+.reveal .c-thanks h2{margin:44px 0 0;font-size:96px;line-height:1.02;letter-spacing:-.03em}
 .reveal .c-cover .c-url{margin:22px 0 0;font-family:Inter,sans-serif;font-size:30px;font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--ink)}
 .c-url-tld{color:var(--brand)}
 /* Primary colour choices. --orange is decoration, --brand carries text; green (--fix) stays the secondary colour. */
@@ -220,6 +221,7 @@ body.presenting .set-sheet,body.presenting .set-scrim{display:none}
  .bars{height:260px;gap:6px;padding:0}.bars .val{font-size:11px;white-space:normal;text-align:center;line-height:1.2;margin-bottom:4px}.reveal .bars .sub{display:none}
  .mkt-bars{row-gap:52px}
  .reveal .c-break h2{font-size:48px}
+ .reveal .c-thanks h2{font-size:48px;margin-top:28px}
  .rail-phases{display:none}
  .reveal .rail{grid-template-columns:minmax(0,1fr);row-gap:22px}
  .reveal .rail li{padding-left:56px;min-height:42px}
