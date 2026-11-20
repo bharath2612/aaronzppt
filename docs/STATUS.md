@@ -1,6 +1,6 @@
 # Project status
 
-Updated: 2026-11-11 13:00 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-11-1300-brief-print-review-edits.md`.
+Updated: 2026-11-20 12:54 +04 (Claude Code, Claude Opus 5.5). Latest session note: `docs/sessions/2026-11-20-1254-status-catch-up.md`.
 
 Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE real-estate commission finance. It contains:
 
@@ -29,7 +29,7 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
 ## Current state
 
 - **Financier brief** (`brief/index.html`, shared with several parties so it names no recipient, AED only; orange is the brand accent and marks problems, green `#1f6b4a` marks what Aaronz fixes, everything else is neutral ink and grey):
-  - **Slides (17):** cover; break "The market"; Dubai (10× in five years; 2026 AED 423.4B YTD to 10 November with a dashed Q4 box drawn up to the 2025 total, stated as not a forecast; 2025 highlighted); Abu Dhabi ("rising sharply", 2020 to 2026, 2025 highlighted, 2026 marked YTD); Ras Al Khaimah (completed sales only, 2020 to 2026, 2025 highlighted, 2026 YTD with a dashed Q4 box, 2024 bar notes AED 2.65B of tourism land); break "Commissions"; off-plan commission (AED 26.7B at 4%, from another session, not reviewed); break "The problem"; brokers, brokerages, developers as numbered lists; break "The solution"; the gap ("Aaronz fills the market gap": up to 4 months today against 2 months with Aaronz); break "The outcome"; broker, brokerage and developer benefits; break "Money flow"; "From registration to settlement in six steps".
+  - **Slides (19):** cover; break "The market"; Dubai (10× in five years; 2026 shown to 10 November, no projection; 2025 highlighted); Abu Dhabi ("rising sharply", 2020 to 2026, 2025 highlighted, 2026 to date); Sharjah (2020 to 2026, asterisked measures); Ras Al Khaimah (completed sales only, 2020 to 2026, 2025 highlighted, 2026 to date, 2024 bar notes AED 2.65B of tourism land); break "Commissions"; off-plan commission (average 4%, adjustable 3% to 6% in settings); break "The problem"; brokers, brokerages, developers as numbered lists; break "The solution"; the gap ("AaronzPay fills the market gap": 3 to 4 months today against 1.5 months with AaronzPay); break "The outcome"; broker, brokerage and developer benefits; break "Money flow"; "From registration to settlement in six steps"; "Thank you" (2026-11-19).
   - **Brand:** the brief uses an "AaronzPay" text wordmark (Inter bold, no dot, "Pay" in the primary colour) in the top bar, and the copy spells it the same way, as one word (2026-11-18). Every slide and PDF page ends with a small confidentiality and copyright line for Aaronz & Co (2026-11-18). The cover (2026-11-11) shows the supplied "Aaronz & AI" logo (`assets/aaronz-and-ai-logo.png`, black on transparent), the headline, then "AaronzPay.today" with ".today" in the primary colour. Aaronz.AI no longer appears.
   - **Draft brief (2026-11-18):** https://bharath2612.github.io/aaronzppt/brief-draft/ is the brief plus "07 Pricing" and "08 Credit risk", each with its own section break, before the thank-you slide (23 slides). Pricing follows an example AED 100,000 commission with a 1.5% charge through Option 1 (brokerage pays) and Option 2 (brokerage and developer share). Credit risk shows three facts (developer owes, about 50 days, confirmed) and six controls across before paying, while waiting and if it goes wrong: AaronzPay alone approves (the finance partner does not), payouts stop for a developer overdue past a set number of days, and per-day late interest is agreed. Work in progress; merge into the brief only when the user says so. Open: option choice, rate, Option 2 split, AaronzPay share, overdue cut-off days, and the cancellation rule.
   - **Product name (2026-11-11):** the solution and money-flow slides say "AaronzPay"; the cover shows "Aaronz & AI", the heading and the AaronzPay.today line. A settings toggle, "Estimate unpublished values" (off by default), fills the Sharjah 2025/2026 and RAK 2026 commission cells with EST values scaled by market movement and adds them to the totals. The commission slide uses an average rate, default 4%, adjustable from 3% to 6% in settings. Market 2026 bars show data only to its date ("Till 10 Nov", "Till 9 Nov", "Till Sep"), with no projection. Sharjah (before RAK) runs 2020 to 2026: completed plus off-plan sales for 2021 to 2024, with asterisked 2020 (completed only) and 2025 and 2026 (total transactions including mortgages); 2025 highlighted.
@@ -109,14 +109,15 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - [Imtiaz: options we can offer](https://app.notion.com/p/4096ebf7407281cbaa4bf06a41bb28fe)
 - `aaronz-admin-monthly-expenses.xlsx` exists locally and is deliberately uncommitted.
 
-## Verification (2026-11-11 08:00 +04)
+## Verification (2026-11-20 12:54 +04)
 
-- `npm test` passed all four suites, including "financier brief deck, seventeen slide layouts, market figures, problem slides, outcome slide, old-address redirect, settings sheet, PDF and mobile reader layout".
-- `npm run export:brief` wrote a 17-page `brief/aaronz-commission-finance.pdf`. New slides and the settings sheet were inspected on desktop and at 390px.
+- `npm test` passed all five suites: main deck (26 slides), Imtiaz deck (8), investor deck (13), financier brief (19, thank-you slide), draft brief (23, thank-you slide last).
+- No deck changed this session, so no PDF was re-exported.
 - No lint or build scripts are configured.
 
 ## Next
 
+- **Draft brief:** the user decides the pricing option, the rate, the Option 2 split, AaronzPay's share, the overdue cut-off days and the cancellation rule, then says whether to merge it into the brief.
 - **Financier brief:** decide on the share-link option for hide/show; get a legal view on money returning to the Aaronz capital pool; review the 4% off-plan commission slide.
 0. **Investor deck:** the user confirms the recalculated fee table, raise amount and use of funds. Also decide the market-figure mismatch in `docs/PROBLEMS.md`, which affects the Imtiaz market slide.
 1. **Live site:** the Imtiaz deck is published, and changes are now pushed automatically after verification (the user asked on 2026-10-31). It's at https://bharath2612.github.io/aaronzppt/imtiaz.html (the user approved the push). Still open: whether the usual date really is 45 days after DLD registration.
