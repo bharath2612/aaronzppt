@@ -170,3 +170,7 @@ At the user's request the dashed 2026 box now reads "Q4" with no amount. It is d
 ## 2026-11-11 — Sharjah chart mixes three measures
 
 At the user's request the Sharjah chart shows 2020 as completed sales only, 2021 to 2024 as completed plus off-plan, and 2025 and 2026 as total transactions including mortgages. Each is asterisked and explained, but the 2024 to 2025 jump (AED 28.4B to 65.6B) is partly the change of measure. Replace 2025 and 2026 when Sharjah publishes sales value.
+
+## 2026-11-26: Playwright's Chromium missing from the cache
+
+`npm test` and the PDF exports failed with "Executable doesn't exist" for chromium_headless_shell-1243, the build Playwright 1.63.0 expects; the cache held only other revisions. Fixed with `npx playwright install chromium` (with the user's approval). If it happens again, run the same command.

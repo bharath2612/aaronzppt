@@ -276,3 +276,14 @@ The controls show as plain lines; the user does not want status badges (built, a
 ## 2026-11-19: thank-you slide closes the brief
 
 The brief ends with a "Thank you" slide in the cover style: the Aaronz & AI logo, "Thank you" and AaronzPay.today, with no contact details. The draft brief now inserts its slides before this slide instead of at the end, so the thank-you slide stays last there too.
+
+## 2026-11-26: ready (secondary) deals join the one commission product
+
+AaronzPay serves one product, commission paid the same day, for both off-plan and ready (secondary) deals. Wills and insurance are out of scope for now. The user's answers on how ready deals work:
+
+- The brokerage collects its commission on transfer day, at the trustee office.
+- The buyer pays the commission; the seller does not.
+- MOU to transfer takes about 2 to 4 weeks for cash deals and about 6 to 8 weeks for mortgage deals.
+- Cash, mortgage and mixed deals are all eligible for payout after the MOU is signed; mortgage deals do not wait for the bank's final offer letter.
+
+On a ready deal the buyer owes the commission and repayment comes on transfer day, so the developer-based credit risk controls do not carry over. Still open: how the transfer-day commission reaches the finance partner, and what happens when a deal falls through before transfer.

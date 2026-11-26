@@ -1,4 +1,4 @@
-// Draft brief: the financier brief plus the pricing and credit risk slides after the money flow, at /brief-draft/.
+// Draft brief: the financier brief plus the ready-homes money flow, pricing and credit risk slides after the money flow, at /brief-draft/.
 const { chromium }=require('@playwright/test');
 const assert=require('node:assert/strict');
 const {pathToFileURL}=require('node:url');
@@ -13,11 +13,11 @@ const {build}=require('../tools/build-brief-draft.cjs');
  const page=await browser.newPage({viewport:{width:1440,height:1000}});page.on('pageerror',e=>errors.push(e.message));page.on('requestfailed',r=>errors.push('failed to load '+r.url()));
  await page.goto(pathToFileURL(process.cwd()+'/brief-draft/index.html').href);await page.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());await page.evaluate(()=>document.fonts.ready);
  const ids=await page.evaluate(()=>[...document.querySelectorAll('.slides>section')].map(s=>s.id));
- assert.equal(ids.length,23);assert.deepEqual(ids.slice(-6),['business-model','break-pricing','pricing','break-credit','credit-risk','thanks']);
+ assert.equal(ids.length,24);assert.deepEqual(ids.slice(-7),['business-model','business-model-ready','break-pricing','pricing','break-credit','credit-risk','thanks']);
  assert.match(await page.title(),/Draft$/);assert.equal(await page.locator('.nav-logo .draft-tag').textContent(),'Draft');
  assert.equal(await page.locator('#deckPdf').getAttribute('href'),'aaronz-commission-finance-draft.pdf');assert(fs.existsSync('brief-draft/aaronz-commission-finance-draft.pdf'),'draft PDF missing');
  const conf=await page.locator('#home .conf').textContent();
- for(const id of ['break-pricing','pricing','break-credit','credit-risk']){
+ for(const id of ['business-model-ready','break-pricing','pricing','break-credit','credit-risk']){
   await page.evaluate(id=>deck.slide([...document.querySelectorAll('.slides>section')].findIndex(s=>s.id===id)),id);await page.waitForTimeout(300);await page.screenshot({path:'.build/brief-draft-'+id+'.png'});
   const problems=await page.locator('#'+id).evaluate(el=>{const r=el.getBoundingClientRect();const note=el.querySelector(':scope>.source');const limit=note?note.getBoundingClientRect().top:r.bottom;return [...el.querySelectorAll('*')].filter(n=>!n.closest('aside.notes,.source,.conf')).filter(n=>{const b=n.getBoundingClientRect();return b.width>0&&(b.bottom>limit+1||b.left<r.left-1||b.right>r.right+1);}).map(n=>n.tagName+'.'+n.className);});
   assert.deepEqual(problems,[],id+' overflow: '+problems);
@@ -29,6 +29,10 @@ const {build}=require('../tools/build-brief-draft.cjs');
   assert.equal(await page.locator('#'+id+'>.conf').textContent(),conf,id+' confidentiality line');
   assert(await page.locator('#'+id+'>.conf').evaluate(el=>{const n=el.parentElement.querySelector(':scope>.source');return !n||n.getBoundingClientRect().bottom<=el.getBoundingClientRect().top+1;}),id+' confidentiality line overlaps the source');
  }
+ // Ready homes: the same six-step rail, starting at the MOU and repaid by the buyer on transfer day.
+ assert.deepEqual(await page.locator('#business-model-ready .rail .who').allTextContents(),['Buyer and seller','Brokerage','AaronzPay','Finance partner','Buyer','Finance partner']);
+ assert.deepEqual(await page.locator('#business-model-ready .rail h3').allTextContents(),await page.locator('#business-model .rail h3').allTextContents().then(h=>['Sign the MOU and agree the commission',h[1],h[2],h[3],'Pays the commission on transfer day',h[5]]));
+ assert.match(await page.locator('#business-model-ready .inv-call').textContent(),/2 to 4 weeks .* cash .* 6 to 8 weeks .* mortgage/);
  // Pricing: one AED 100,000 commission through two options; the finance partner earns the same 1.5% either way.
  assert.deepEqual(await page.locator('#pricing .px-opt h3').allTextContents(),['Brokerage pays','Brokerage and developer share']);
  const flows=await page.locator('#pricing .px-opt').evaluateAll(os=>os.map(o=>[...o.querySelectorAll('.px-flow strong')].map(s=>+s.textContent.replace(/[^0-9]/g,''))));
@@ -46,15 +50,15 @@ const {build}=require('../tools/build-brief-draft.cjs');
  // Same rules as the brief: no recipient named, no banned word, notes on every new slide.
  const text=await page.evaluate(()=>document.title+document.body.innerText);
  assert(!/\breem\b/i.test(text),'recipient named in the draft');assert(!/automatically/i.test(text),'banned word in the draft');
- assert.equal(await page.locator('#pricing aside.notes,#credit-risk aside.notes').count(),2);
+ assert.equal(await page.locator('#business-model-ready aside.notes,#pricing aside.notes,#credit-risk aside.notes').count(),3);
  // Phone reader view: the tables stack into one column without overflowing.
  const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});mobile.on('pageerror',e=>errors.push(e.message));
  await mobile.goto(pathToFileURL(process.cwd()+'/brief-draft/index.html').href);await mobile.waitForFunction(()=>typeof deck!=='undefined'&&deck.isReady());
  await mobile.evaluate(()=>document.getElementById('viewToggle').click());await mobile.waitForFunction(()=>document.body.classList.contains('reader')&&innerWidth<500);await mobile.waitForTimeout(500);
- const wide=await mobile.evaluate(()=>[...document.querySelectorAll('#pricing *,#credit-risk *')].filter(n=>n.getBoundingClientRect().right>innerWidth+1&&!n.closest('aside.notes')).map(n=>n.tagName+'.'+n.className));
+ const wide=await mobile.evaluate(()=>[...document.querySelectorAll('#business-model-ready *,#pricing *,#credit-risk *')].filter(n=>n.getBoundingClientRect().right>innerWidth+1&&!n.closest('aside.notes')).map(n=>n.tagName+'.'+n.className));
  assert.deepEqual(wide,[],'draft slides overflow on a phone: '+wide);
- for(const id of ['pricing','credit-risk']){await mobile.locator('#'+id).scrollIntoViewIfNeeded();await mobile.locator('#'+id).screenshot({path:'.build/brief-draft-'+id+'-mobile.png'});}
+ for(const id of ['business-model-ready','pricing','credit-risk']){await mobile.locator('#'+id).scrollIntoViewIfNeeded();await mobile.locator('#'+id).screenshot({path:'.build/brief-draft-'+id+'-mobile.png'});}
  assert.deepEqual(errors,[]);
- console.log('Passed: draft brief, built from the brief, twenty-three slides, thank-you slide last, pricing and credit risk slides, confidentiality line, draft PDF and phone reader layout.');
+ console.log('Passed: draft brief, built from the brief, twenty-four slides, thank-you slide last, ready-homes money flow, pricing and credit risk slides, confidentiality line, draft PDF and phone reader layout.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});
