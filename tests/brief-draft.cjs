@@ -29,11 +29,13 @@ const {build}=require('../tools/build-brief-draft.cjs');
   assert.equal(await page.locator('#'+id+'>.conf').textContent(),conf,id+' confidentiality line');
   assert(await page.locator('#'+id+'>.conf').evaluate(el=>{const n=el.parentElement.querySelector(':scope>.source');return !n||n.getBoundingClientRect().bottom<=el.getBoundingClientRect().top+1;}),id+' confidentiality line overlaps the source');
  }
- // Ready homes: the same six-step rail, starting at the MOU; the buyer pays the brokerage on transfer day and the brokerage repays the finance partner.
- assert.deepEqual(await page.locator('#business-model-ready .rail .who').allTextContents(),['Buyer and seller','Brokerage','AaronzPay','Finance partner','Buyer, then brokerage','Finance partner']);
- assert.deepEqual(await page.locator('#business-model-ready .rail h3').allTextContents(),await page.locator('#business-model .rail h3').allTextContents().then(h=>['Sign the MOU and agree the commission',h[1],h[2],h[3],'Buyer pays the brokerage on transfer day',h[5]]));
- assert.equal(await page.locator('#business-model-ready .rail li:nth-child(5) .sub').textContent(),'The brokerage repays the finance partner');
- assert.match(await page.locator('#business-model-ready .inv-call').textContent(),/2 to 4 weeks .* cash .* 6 to 8 weeks .* mortgage/);
+ // Ready homes: the same six-step rail, financed against the buyer's 2% commission cheque, which the brokerage cashes on transfer day to repay.
+ assert.match(await page.locator('#business-model-ready h2').textContent(),/2% commission cheque/);
+ assert.deepEqual(await page.locator('#business-model-ready .rail .who').allTextContents(),['Buyer','Brokerage','AaronzPay','Finance partner','Brokerage','Finance partner']);
+ assert.deepEqual(await page.locator('#business-model-ready .rail h3').allTextContents(),await page.locator('#business-model .rail h3').allTextContents().then(h=>['Signs the MOU and gives two cheques',h[1],'Holds the 2% cheque and approves',h[3],'Cashes the 2% cheque on transfer day',h[5]]));
+ assert.equal(await page.locator('#business-model-ready .rail li:first-child .sub').textContent(),'8% deposit and 2% commission');
+ assert.match(await page.locator('#business-model-ready .inv-call').textContent(),/cannot be taken back/);
+ assert.match(await page.locator('#business-model-ready aside.notes').textContent(),/2 to 4 weeks .* cash .* 6 to 8 weeks .* mortgage/);
  // Pricing: one AED 100,000 commission through two options; the finance partner earns the same 1.5% either way.
  assert.deepEqual(await page.locator('#pricing .px-opt h3').allTextContents(),['Brokerage pays','Brokerage and developer share']);
  const flows=await page.locator('#pricing .px-opt').evaluateAll(os=>os.map(o=>[...o.querySelectorAll('.px-flow strong')].map(s=>+s.textContent.replace(/[^0-9]/g,''))));

@@ -34,8 +34,8 @@ Playwright's Chromium (headless shell 1243) was missing from the cache; installe
 
 ## Unfinished
 
-- How soon after transfer the brokerage repays (repayment goes through the brokerage, decided in the follow-up).
-- What happens when a ready deal falls through before transfer.
+- Settled in the follow-ups: repayment goes through the brokerage, from the 2% commission cheque on transfer day.
+- Settled in the follow-ups: the commission cheque cannot be taken back, so a deal falling through does not change repayment.
 - Ready-homes commission row, pricing and credit risk; the pricing and credit risk slides still describe off-plan only.
 
 ## Next step
@@ -46,3 +46,10 @@ Get the user's answer on transfer-day collection and fall-through, then draft th
 
 - The user chose repayment via the brokerage. Step 5 now reads "Buyer, then brokerage: Buyer pays the brokerage on transfer day", with "The brokerage repays the finance partner". Notes and test updated; draft and PDF rebuilt; `npm test` passed all five suites; desktop screenshot checked.
 - Still open: how soon after transfer the brokerage repays, and the fall-through rule.
+
+## Follow-up (2% commission cheque)
+
+- The user's model: at the MOU the buyer gives two cheques, 8% deposit and 2% commission to the brokerage; AaronzPay holds the 2% cheque and finances against it; the brokerage cashes it on transfer day and repays. The commission cheque cannot be taken back, even if the deal falls through.
+- Slide reworked: headline "Ready homes: financed against the 2% commission cheque"; steps 1, 3 and 5 changed; the callout is now the no-take-back line, with the timings moved to the notes. Test updated. A first, longer headline left "cheque" alone on a line, which the test caught; shortened.
+- `npm test` passed all five suites; draft PDF rebuilt (24 pages); desktop screenshot checked.
+- This settles the fall-through rule and the repayment date. Still to do: ready-homes commission row, pricing and credit risk.

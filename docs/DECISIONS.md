@@ -289,3 +289,7 @@ AaronzPay serves one product, commission paid the same day, for both off-plan an
 On a ready deal the buyer owes the commission and repayment comes on transfer day, so the developer-based credit risk controls do not carry over. Still open: what happens when a deal falls through before transfer.
 
 Repayment goes through the brokerage (user's choice, 2026-11-26): the buyer pays the brokerage on transfer day as today, and the brokerage repays the finance partner. The finance partner is repaid by a brokerage, not by an individual buyer. Still open: how soon after transfer the brokerage must repay.
+
+## 2026-11-26: ready homes are financed against the buyer's 2% commission cheque
+
+At the MOU the buyer gives the usual 10% deposit as two cheques: 8% as the deposit, and 2% for the broker's commission, made out to the brokerage. AaronzPay holds the 2% cheque and finances the brokerage against it. On transfer day the brokerage cashes it and repays the finance partner. The commission cheque cannot be taken back, so it still covers the finance if the deal falls through. This settles the fall-through rule and how soon the brokerage repays (on transfer day, from the cheque). The repayment-through-the-brokerage entry above still holds.
