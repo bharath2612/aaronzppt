@@ -29,9 +29,10 @@ const {build}=require('../tools/build-brief-draft.cjs');
   assert.equal(await page.locator('#'+id+'>.conf').textContent(),conf,id+' confidentiality line');
   assert(await page.locator('#'+id+'>.conf').evaluate(el=>{const n=el.parentElement.querySelector(':scope>.source');return !n||n.getBoundingClientRect().bottom<=el.getBoundingClientRect().top+1;}),id+' confidentiality line overlaps the source');
  }
- // Ready homes: the same six-step rail, starting at the MOU and repaid by the buyer on transfer day.
- assert.deepEqual(await page.locator('#business-model-ready .rail .who').allTextContents(),['Buyer and seller','Brokerage','AaronzPay','Finance partner','Buyer','Finance partner']);
- assert.deepEqual(await page.locator('#business-model-ready .rail h3').allTextContents(),await page.locator('#business-model .rail h3').allTextContents().then(h=>['Sign the MOU and agree the commission',h[1],h[2],h[3],'Pays the commission on transfer day',h[5]]));
+ // Ready homes: the same six-step rail, starting at the MOU; the buyer pays the brokerage on transfer day and the brokerage repays the finance partner.
+ assert.deepEqual(await page.locator('#business-model-ready .rail .who').allTextContents(),['Buyer and seller','Brokerage','AaronzPay','Finance partner','Buyer, then brokerage','Finance partner']);
+ assert.deepEqual(await page.locator('#business-model-ready .rail h3').allTextContents(),await page.locator('#business-model .rail h3').allTextContents().then(h=>['Sign the MOU and agree the commission',h[1],h[2],h[3],'Buyer pays the brokerage on transfer day',h[5]]));
+ assert.equal(await page.locator('#business-model-ready .rail li:nth-child(5) .sub').textContent(),'The brokerage repays the finance partner');
  assert.match(await page.locator('#business-model-ready .inv-call').textContent(),/2 to 4 weeks .* cash .* 6 to 8 weeks .* mortgage/);
  // Pricing: one AED 100,000 commission through two options; the finance partner earns the same 1.5% either way.
  assert.deepEqual(await page.locator('#pricing .px-opt h3').allTextContents(),['Brokerage pays','Brokerage and developer share']);

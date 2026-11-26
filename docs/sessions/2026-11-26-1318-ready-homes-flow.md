@@ -34,10 +34,15 @@ Playwright's Chromium (headless shell 1243) was missing from the cache; installe
 
 ## Unfinished
 
-- How the buyer's transfer-day commission reaches the finance partner.
+- How soon after transfer the brokerage repays (repayment goes through the brokerage, decided in the follow-up).
 - What happens when a ready deal falls through before transfer.
 - Ready-homes commission row, pricing and credit risk; the pricing and credit risk slides still describe off-plan only.
 
 ## Next step
 
 Get the user's answer on transfer-day collection and fall-through, then draft the ready-deal credit risk.
+
+## Follow-up (13:25): repayment through the brokerage
+
+- The user chose repayment via the brokerage. Step 5 now reads "Buyer, then brokerage: Buyer pays the brokerage on transfer day", with "The brokerage repays the finance partner". Notes and test updated; draft and PDF rebuilt; `npm test` passed all five suites; desktop screenshot checked.
+- Still open: how soon after transfer the brokerage repays, and the fall-through rule.

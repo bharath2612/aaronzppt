@@ -286,4 +286,6 @@ AaronzPay serves one product, commission paid the same day, for both off-plan an
 - MOU to transfer takes about 2 to 4 weeks for cash deals and about 6 to 8 weeks for mortgage deals.
 - Cash, mortgage and mixed deals are all eligible for payout after the MOU is signed; mortgage deals do not wait for the bank's final offer letter.
 
-On a ready deal the buyer owes the commission and repayment comes on transfer day, so the developer-based credit risk controls do not carry over. Still open: how the transfer-day commission reaches the finance partner, and what happens when a deal falls through before transfer.
+On a ready deal the buyer owes the commission and repayment comes on transfer day, so the developer-based credit risk controls do not carry over. Still open: what happens when a deal falls through before transfer.
+
+Repayment goes through the brokerage (user's choice, 2026-11-26): the buyer pays the brokerage on transfer day as today, and the brokerage repays the finance partner. The finance partner is repaid by a brokerage, not by an individual buyer. Still open: how soon after transfer the brokerage must repay.
