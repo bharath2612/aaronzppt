@@ -293,3 +293,15 @@ Repayment goes through the brokerage (user's choice, 2026-11-26): the buyer pays
 ## 2026-11-26: ready homes are financed against the buyer's 2% commission cheque
 
 At the MOU the buyer gives the usual 10% deposit as two cheques: 8% as the deposit, and 2% for the broker's commission, made out to the brokerage. AaronzPay holds the 2% cheque and finances the brokerage against it. On transfer day the brokerage cashes it and repays the finance partner. The commission cheque cannot be taken back, so it still covers the finance if the deal falls through. This settles the fall-through rule and how soon the brokerage repays (on transfer day, from the cheque). The repayment-through-the-brokerage entry above still holds.
+
+## 2026-11-27: ready homes pay out in four stages against a non-cashable 2% cheque
+
+This replaces the 2026-11-26 entries where they differ (the cheque being cashed, a single payout, and repayment through the brokerage).
+
+- At the MOU (Form F) the buyer gives two non-cashable cheques in place of one: 8% deposit and 2% commission.
+- Both the 2% cheque and the manager's cheque given on transfer day are written in the finance partner's name.
+- The commission is paid in four stages: 50% at the start, 15% when the valuation is done or the bank issues its final offer letter, 15% when the transfer is booked, and 20% on transfer day. The user confirmed 20% for the last stage.
+- On transfer day the buyer takes the non-cashable cheque back and gives the manager's cheque, hand to hand. The buyer's process should not change.
+- Two flows are kept side by side. "The practically possible way": the broker hands the 2% cheque to AaronzPay, which holds it until transfer day; cheque pickup and delivery is the biggest risk and the only one highlighted. "AI-native" (recommended by Claude): the cheque stays with the broker, documents are uploaded and checked by AI, the brokerage gives one security cheque or direct debit mandate at onboarding, and the broker brings the manager's cheque to AaronzPay in person for the last 20%.
+- Cash buyers have no valuation or offer letter; the user will define another milestone, so it is not shown as a risk.
+- Still open: which flow to go with, and how money already paid out comes back if a deal falls through.
