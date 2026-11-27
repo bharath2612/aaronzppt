@@ -44,3 +44,7 @@ See `docs/DECISIONS.md`, 2026-11-27: four staged payouts against a non-cashable 
 ## Next step
 
 Ask the user which flow to go with, then update the draft brief's ready-homes slide to match.
+
+## Follow-up: flows renamed
+
+The user rejected "the practically possible way". The two flows are now the **manual flow** and the **advanced flow** in the diagrams, the PDF, `docs/STATUS.md` and `docs/DECISIONS.md`. The file names are unchanged. `npm test` passed all five suites; both PDF pages were read after the rebuild.

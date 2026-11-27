@@ -1,6 +1,6 @@
 # Project status
 
-Updated: 2026-11-27 12:17 +04 (Claude Code, Claude Fable 5.2). Latest session note: `docs/sessions/2026-11-27-1217-ready-homes-flows-pdf.md`.
+Updated: 2026-11-27 12:23 +04 (Claude Code, Claude Fable 5.2). Latest session note: `docs/sessions/2026-11-27-1217-ready-homes-flows-pdf.md`.
 
 Aaronz is a static, offline-capable Reveal.js presentation about proposed UAE real-estate commission finance. It contains:
 
@@ -99,8 +99,8 @@ There's no backend or build pipeline. GitHub Pages publishes it from `main`: htt
   - the roadmap slide covers 22 Oct–20 Nov.
 - **Ready-homes flows (2026-11-27)** (`diagrams/aaronz-ready-homes-flows.pdf`, two landscape pages, internal working draft):
   - Both flows: at the MOU the buyer gives two non-cashable cheques, 8% deposit and 2% commission; the 2% cheque and the transfer-day manager's cheque are written in the finance partner's name; the commission is paid in four stages (50% at the start, 15% on valuation or the bank's final offer letter, 15% on transfer booking, 20% on transfer day).
-  - Flow 1, "the practically possible way" (`aaronz-ready-homes-process.*`): the broker hands the 2% cheque to AaronzPay, which holds it until transfer day. The one risk highlighted is cheque pickup and delivery.
-  - Flow 2, AI-native, recommended (`aaronz-ready-homes-ai-flow.*`): the 2% cheque stays with the broker; the broker uploads a photo of it and the MOU, AI checks them and each milestone document; the brokerage gives one security cheque or direct debit mandate at onboarding; after the transfer-day swap the broker brings the manager's cheque to AaronzPay in person for the last 20%.
+  - Flow 1, the manual flow (`aaronz-ready-homes-process.*`): the broker hands the 2% cheque to AaronzPay, which holds it until transfer day. The one risk highlighted is cheque pickup and delivery.
+  - Flow 2, the advanced flow, recommended (`aaronz-ready-homes-ai-flow.*`): the 2% cheque stays with the broker; the broker uploads a photo of it and the MOU, AI checks them and each milestone document; the brokerage gives one security cheque or direct debit mandate at onboarding; after the transfer-day swap the broker brings the manager's cheque to AaronzPay in person for the last 20%.
   - `aaronz-ready-homes-flow.*` (2026-11-26, off-plan beside ready homes) is superseded: it shows the 2% cheque being cashed and no staged payout.
   - **Out of date:** the draft brief's ready-homes slide (`#business-model-ready`) still shows the 2026-11-26 version (cheque cashed by the brokerage, "cannot be taken back", no stages). The user has not asked for it to change yet.
 - **Developer flow diagram** (`diagrams/aaronz-developer-flows.*`, 161 elements). It has three sections:

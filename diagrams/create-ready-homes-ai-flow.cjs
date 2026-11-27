@@ -1,5 +1,5 @@
 // Native, editable Excalidraw elements. Render with the official @excalidraw/cli.
-// Ready homes, AI-native flow: the 2% cheque stays with the broker, documents are uploaded and checked, payouts are staged.
+// Ready homes, advanced flow: the 2% cheque stays with the broker, documents are uploaded and checked, payouts are staged.
 const fs = require('node:fs');
 const path = require('node:path');
 const elements = [];
@@ -45,7 +45,7 @@ function arrow(a, b, color, dashed = false) {
 
 const W = 340, GAP = 64, X0 = 40, col = i => X0 + i*(W+GAP);
 
-text('Ready homes: AI-native flow (recommended)', 40, 25, 2360, 44);
+text('Ready homes: advanced flow (recommended)', 40, 25, 2360, 44);
 text('The 2% cheque never leaves the broker. AI checks the documents, and the broker visits AaronzPay once, with the manager\'s cheque.', 40, 92, 2360, 24, muted);
 
 const steps = [

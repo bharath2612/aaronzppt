@@ -1,4 +1,4 @@
-// Builds diagrams/aaronz-ready-homes-flows.pdf: the normal flow and the AI-native flow for ready-home commissions, one per landscape A4 page.
+// Builds diagrams/aaronz-ready-homes-flows.pdf: the manual flow and the advanced flow for ready-home commissions, one per landscape A4 page.
 // Re-render the two PNGs first (see the create-ready-homes-*.cjs scripts), then run: node diagrams/export-ready-homes-pdf.cjs
 const { chromium } = require('@playwright/test');
 const fs = require('node:fs');
@@ -24,8 +24,8 @@ ol{margin:3.5mm 0 0;padding-left:5mm;columns:2;column-gap:12mm;font-size:9pt;lin
 li{break-inside:avoid;margin-bottom:1mm}
 footer{position:absolute;left:14mm;right:14mm;bottom:7mm;font-size:8pt;color:#68766d}
 </style></head><body>
-${page(1, 'Flow 1 &middot; Normal flow', 'The practically possible way', 'The broker hands the buyer\'s 2% commission cheque to AaronzPay, which holds it until transfer day and pays the commission in four stages. Both cheques are written in the finance partner\'s name.', 'aaronz-ready-homes-process.png')}
-${page(2, 'Flow 2 &middot; AI-native flow', 'Recommended: the cheque never leaves the broker', 'Same four payouts. Documents are uploaded and checked by AI, so the 2% cheque is never picked up or delivered. The broker visits AaronzPay once, at the end.', 'aaronz-ready-homes-ai-flow.png', `<ol>
+${page(1, 'Flow 1', 'Manual flow', 'The broker hands the buyer\'s 2% commission cheque to AaronzPay, which holds it until transfer day and pays the commission in four stages. Both cheques are written in the finance partner\'s name.', 'aaronz-ready-homes-process.png')}
+${page(2, 'Flow 2 &middot; Recommended', 'Advanced flow: the cheque never leaves the broker', 'Same four payouts. Documents are uploaded and checked by AI, so the 2% cheque is never picked up or delivered. The broker visits AaronzPay once, at the end.', 'aaronz-ready-homes-ai-flow.png', `<ol>
 <li><b>Onboarding, once per brokerage.</b> The brokerage signs the AaronzPay agreement online and gives one security cheque or a direct debit mandate.</li>
 <li><b>MOU signed.</b> The buyer gives two non-cashable cheques, 8% deposit and 2% commission, the 2% one in the finance partner's name. Both stay with the broker.</li>
 <li><b>Upload.</b> The broker uploads a photo of the 2% cheque and the signed MOU, and signs an undertaking to hold the cheque for AaronzPay.</li>

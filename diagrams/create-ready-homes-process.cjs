@@ -1,5 +1,5 @@
 // Native, editable Excalidraw elements. Render with the official @excalidraw/cli.
-// Ready homes: the staged commission payout against the buyer's 2% cheque, as the user defined it on 26 Nov 2026, with the transfer-day handover problem.
+// Ready homes, manual flow: the staged commission payout against the buyer's 2% cheque, as the user defined it on 26 Nov 2026, with the transfer-day handover problem.
 const fs = require('node:fs');
 const path = require('node:path');
 const elements = [];
@@ -46,7 +46,7 @@ function arrow(a, b, color, dashed = false) {
 const red = '#a12b2b';
 const W = 340, GAP = 64, X0 = 40, col = i => X0 + i*(W+GAP);
 
-text('Ready homes: normal flow (the practically possible way)', 40, 25, 2360, 44);
+text('Ready homes: manual flow', 40, 25, 2360, 44);
 text('The broker hands the buyer\'s 2% commission cheque to AaronzPay and is paid in four stages. Both cheques are written in the finance partner\'s name.', 40, 92, 2360, 24, muted);
 
 const steps = [
